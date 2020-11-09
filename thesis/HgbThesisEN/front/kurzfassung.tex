@@ -1,0 +1,23 @@
+\chapter{Kurzfassung}
+\begin{german}
+Technologie verschmilzt mehr und mehr mit dem Leben der Menschen. 
+Eine der wichtigsten Fragen hierbei wird sein, wie Menschen mit Technologie interagieren.
+Das menschliche Gehirn zeigt nur sehr geringe emotionale Reaktionen auf künstliche Objekte, wie Computer und Handys.
+Anders verhält es sich bei Dingen, die menschlich wirken. Dinge die einem Gesicht oder dem menschliche Körper ähneln, können eine stärkere emotionale Reaktion herbeiführen.
+Auf diese Grundlage stützt sich die These, dass humanoide Roboter das natürlichste Mittel zur Interaktion mit Technologie darstellen.
+Hierbei ist es einleuchtend, dass nicht nur die physische Form menschlich sein muss, sondern auch kognitive Konzepte greifen müssen, um ein menschenähnliches Verhalten zu simulieren.
+Moderne soziale Roboter, wie Pepper von SoftBank Robotics Group Corp. bringen bereits einige dieser kognitiven Fähigkeiten mit, wie zum Beispiel die Reaktion auf auditive und taktile Stimuli oder Blickkontakterkennung.
+Um die Mensch-Maschine-Kommunikation natürlicher zu machen, müssen weitere kognitive Fähigkeiten entwickelt werden.
+Im Rahmen dieser Masterarbeit wird eine visuelle Sprachaktivitätserkennung entwickelt, welche es einem Roboter ermöglicht ausschließlich anhand der Kameradaten zu erkennen, ob eine Person spricht oder nicht.
+Diese kognitive Fähigkeit ermöglicht es auch in lauten und überfüllten Umgebungen oder Situationen mit mehrere Personen im Blickfeld des Roboters eine sichere Prognose darüber zu stellen, welche Person mit dem Roboter spricht.
+Um die beschriebene visuelle Sprachaktivitätserkennung zu implementieren wird ein Ansatz auf Basis von Rekurrenten Neuronalen Netzen, um die zeitliche Abhängigkeit der Daten zu modellieren, sowie Convolutionalen Neuronalen Netzen, um die örtliche Abhängigkeit zu modellieren, verwendet.
+Die meisten klassischen Ansätze setzten auf die Erkennung von Lippenbewegungen, was allerdings zu vielen fälschlicherweise positiv klassifizierten Beispielen führt, weil der Mensch in Phasen, in denen nicht gesprochen wird unwillkürliche Lippenbewegungen durchführen kann.
+Um diese Falschklassifizierungen zu umgehen, wird eine angepasste Version des LRS3 Datensatzes verwendet.
+Der LRS3 Datensatz besteht aus über 100.000 Videosequenzen, die Menschen beim Sprechen zeigen.
+Aus diesen werden Sequenzen, die Gesichter zeigen, mittels korrelationsbasiertem Tracking, sowie Gesichtserkennung extrahiert.
+In der Evaluation werden zwei verschiedene Ansätze untersucht.
+Ersterer verwendet Merkmale aus der Gesichtserkennung, um anhand dieser Daten zu lernen, während der zweite Ansatz ein Ende-zu-Ende Lernansatz ist, welcher direkt auf den Pixelwerten lernt.
+Diese beiden Ansätze können noch einmal graduell anhand des Bereiches unterteilt werden, welcher für das Lernen verwendet wird.
+Hierbei wird der Fokus entweder auf das gesamte Gesicht oder nur auf  die Lippen gelegt.  
+Mit einem LSTM-FCN trainert auf Bildern von Gesichtern wurde eine Genauigkeit von 92\% für den VVAD Datensatz erreicht.
+\end{german}

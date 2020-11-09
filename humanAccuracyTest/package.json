@@ -1,0 +1,28 @@
+{
+  "name": "video-stream-sample",
+  "version": "1.0.0",
+  "description": "Streaming video example",
+  "main": "server.js",
+  "engines": {
+    "node": ">=6.2.0"
+  },
+  "scripts": {
+    "start": "concurrently --kill-others \"node server.js\" \"npm run mongo\"",
+    "server": "nodemon server.js ",
+    "mongo": "mkdir mongo-db; mongod --dbpath mongo-db",
+    "dev": "concurrently --kill-others \"npm run server\" \"npm run mongo\""
+  },
+  "author": "daspinola",
+  "license": "MIT",
+  "dependencies": {
+    "express":"4.17.1",
+    "nodemon": "^1.11.0",
+    "mongodb": "3.3.0-beta2",
+    "uniqid": "5.0.3",
+    "glob":"7.1.4",
+    "lodash": "4.17.15"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.1"
+  }
+}

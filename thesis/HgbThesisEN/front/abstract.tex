@@ -1,0 +1,26 @@
+\chapter{Abstract}
+Technology is integrating more and more into the life of the modern man. A very important
+question is how are people interacting with technology.
+The human brain does not react emotionally to artificial objects like computers and
+mobile phones. However, the human brain reacts strongly to human appearances like
+the shape of the human body or faces. Therefore humanoid robots are the most
+natural way for human-machine interaction, because of the human-like appearance.
+It is obvious that not only the physical appearance needs to be human-like, also the psychological concepts of interaction need to be implemented.
+Modern social robots like Pepper from SoftBank Robotics Group Corp. already come with a handful of cognitive features like stimuli reaction or gaze detection.
+
+To make human-machine interaction more natural further cognitive features need to be implemented. 
+For this purpose, this proposed master thesis will deal with the problem of a Visual Voice Activity Detection (VVAD), which can detect whether a person is speaking to a robot or not, given the visual input of the robot's camera.
+This cognitive feature can solve the problem of
+speaker identification in situations, where it is not trivial like crowded areas and when more than one person is in the robot's field of view.
+
+To implement the described VVAD an approach based on a recurrent neural network, to model the time dependencies in the input data,
+and convolutional layers, to learn features from pixels, is presented.
+Most classic approaches to VVAD unfold to lip motion detection which yields in a high false positive rate because humans make arbitrary lip motion even when not speaking.
+To deal with this the network is trained on a slightly adjusted version of the LRS3 dataset. 
+The LRS3 dataset contains more than 100.000 video sequences of people speaking. 
+Faces will be extracted from the video sequences using correlation based tracking and face detection. 
+The evaluation compares two different approaches.
+One extracts facial features from the face detection and uses them as the input vector for the network while the other is End-To-End-Learning which uses the whole image as an input vector of pixels. 
+These two approaches can again be gradually divided by the area used as input. 
+Either the whole face will be used or only the lips.
+We find that for this problem, an LTSM-FCN with images of the whole face works best with 92\% accuracy on the VVAD dataset.

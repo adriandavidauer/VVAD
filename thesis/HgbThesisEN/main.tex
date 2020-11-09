@@ -1,0 +1,111 @@
+%%% File encoding: UTF-8
+%% äöüÄÖÜß  <-- no German Umlauts here? Use an UTF-8 compatible editor!
+
+%%% Magic comments for setting the correct parameters in compatible IDEs
+% !TeX encoding = utf8
+% !TeX program = pdflatex
+% !TeX spellcheck = en_US
+% !BIB program = biber
+
+
+
+
+\documentclass[master,english, twoside, openright]{hgbthesis}
+% Permissible options in [..]:
+%   Type of work: diploma, master (default), bachelor, internship
+%   Main language: german, english (default)
+%%%----------------------------------------------------------
+
+
+
+
+\RequirePackage[utf8]{inputenc}		% Remove when using lualatex or xelatex entfernen!
+
+\graphicspath{{images/}}    % location of images and graphics
+\logofile{unib.png}				% logo file = images/logo.pdf (use \logofile{} for no logo)
+\bibliography{references}  	% name of bibliography file (references.bib)
+
+%%%----------------------------------------------------------
+% Title page entries
+%%%----------------------------------------------------------
+
+%%% Entries for ALL types of work: --------------------------
+\title{Development of a Visual Voice Activity Detection}
+\author{Adrian David Lubitz}
+\programname{Systems Engineering}
+\placeofstudy{University of Bremen}
+\dateofsubmission{2019}{10}{12}	% {YYYY}{MM}{DD}
+
+%%% Entries for Bachelor theses only: -----------------------
+\thesisnumber{XXXXXXXXXX-A}   %e.g. 1310238045-A
+% (Stud-ID, A = 1st Bachelor thesis)
+\semester{Fall Semester 2018} 	% Fall/Spring Semester YYYY
+\coursetitle{}
+\advisor{Matias Valdenegro Toro}
+
+
+%%% Restricted publication license instead of CC (master only):
+%\strictlicense
+
+%%%----------------------------------------------------------
+\begin{document}
+
+%%%----------------------------------------------------------
+
+%%%----------------------------------------------------------
+\frontmatter							% title part (roman page numbers)
+%%%----------------------------------------------------------
+
+\maketitle
+\setcounter{secnumdepth}{3}
+
+\include{front/preface} 	% preface is optional
+\include{front/abstract}
+\include{front/kurzfassung}
+
+\tableofcontents
+
+
+
+%%%----------------------------------------------------------
+\mainmatter          			% main part (arabic page numbers)
+%%%----------------------------------------------------------
+
+\include{chapters/introduction}
+%\include{chapters/thethesis}
+\include{chapters/theory}
+\include{chapters/data}
+\include{chapters/implementation}
+
+%\include{chapters/software}
+%\include{chapters/hardware}
+\include{chapters/evaluation}
+
+%\include{chapters/figures}
+%\include{chapters/mathematics}
+%\include{chapters/literature}
+%\include{chapters/printing}
+\include{chapters/closing}
+
+%%%----------------------------------------------------------
+\appendix                                         % appendix
+%%%----------------------------------------------------------
+
+%\include{back/appendix_a}	% sourceCode
+%\include{back/appendix_b}	% ...
+\include{back/appendix_c}	% sample
+%\include{back/appendix_d}	% ...
+\include{chapters/hardware} % hardware of Pepper
+
+
+%%%----------------------------------------------------------
+\MakeBibliography                        				% references
+%\nocite{*}
+%%%----------------------------------------------------------
+
+%%% special page for checking print size --------------------
+%\include{back/printbox}
+
+%%%----------------------------------------------------------
+\end{document}
+%%%----------------------------------------------------------

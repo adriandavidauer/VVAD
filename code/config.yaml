@@ -1,0 +1,16 @@
+# Configurations for the whole pipeline.
+dataPath : /media/al/bcaed2d1-c378-44e2-a581-fae772b468db/data/LRS3/pretrain
+shapeModelPath : /media/al/bcaed2d1-c378-44e2-a581-fae772b468db/models/shape_predictor_68_face_landmarks.dat
+debug : True          # defines if debug messages will be displayed
+fps : 25              # fps of the dataSet - is needed for translations between frames and seconds
+
+
+# Parameters that probably need tuning in the end
+# TODO: if possible define in seconds - more general and from a psychological view
+maxPauseLength : 1.0      # defines when to break a positive sample in seconds / maximal length for interSpeech pause
+sampleLength : 1.5     # defines the minimum length of a sample in seconds
+k : 25                    # defines the temporal sliding window in frames #DEPRECATED: can be calculated from fps and sampleLngth
+randomSeed : 42           # defines the randomSeed to make experiments reproducable
+dataAugmentation : True   # defines if dataAugmentation is used or not
+shape : [200, 200]      # defines the size to which face or lip images will be resized - this is the input size of the net
+maxOverlapPercentage: 0.2 # defines how much different samples can overlap

@@ -1,0 +1,13 @@
+@InProceedings{Fazle18,
+  author       = {"Fazle Karim, Somshubra Majumdar, Houshang Darabi, Samuel Harford"},
+  title        = {"Multivariate LSTM-FCNs for Time Series Classification"},
+  booktitle    = {"arXiv:1801.04503v1 [cs.LG] 14 Jan 2018"},
+  year         = {"2018"}
+}
+@InProceedings{Fazle17,
+  author       = {"Fazle Karim, Somshubra Majumdar, Houshang Darabi, Shun Chen"},
+  title        = {"LSTM Fully Convolutional Networks for Time
+Series Classification"},
+  booktitle    = {"arXiv:1709.05206v1 [cs.LG] 8 Sep 2017"},
+  year         = {"2017"}
+}

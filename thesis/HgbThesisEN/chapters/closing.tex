@@ -1,0 +1,24 @@
+\chapter{Closing Remarks}
+\label{cha:Closing}
+\section{Outlook}
+In the thesis all theoretical aspects of the development of a VVAD are discussed.
+In the following an outlook is created which shows were the developed solution might still have weaknesses, where more testing may be performed to make a more profound statement about the solution and which steps in general should be taken to make the conducted research more accessible.
+In the construction of the VVAD dataset depicted in Section \ref{sec:createVVAD} it is shown that an automated pipeline was used to construct VVAD samples from LRS3 samples but in Section \ref{ssec:VVADHACL} it is shown that these samples are not labeled perfectly.
+Although the performance shows to be better than human accuracy and the presented solutions seem to be robust enough to handle these outliers it may be possible to improve the results with a cleaned dataset.
+The cleaning can be done by manually testing all labels and correct or remove wrong labeled samples or by enhancing the algorithm to reduce the number of wrong labels.
+Due to the comparability of the test results with the human accuracy level it was only possible to use the 200 randomly seeded samples used for the test set, although it was described as best practice to hold back at least 10\% of the data for testing (see Section \ref{ssec:dataTheory}).
+10\% of the VVAD data would be almost 4500 samples it is hardly imaginable to perform a human accuracy level test on that amount of samples.
+If the test set would be bigger and comparability to the human performance can be secured the test results would have an even stronger meaning than right now. 
+A larger amount of samples that were tested on humans would make it possible to examine the relationship between DNNs for VVAD and the human brains approach to VVAD more closely.
+
+We hope to be able to publish the constructed VVAD dataset in the explained flavors.
+With a large scale publicly available dataset for VVAD the research on that topic can be accelerated massively.
+Further more we hope to be able to publish some of the trained models on PyPI \cite{PyPI} to make it easier to develop applications of the conducted research in this thesis.
+
+It is shown that the developed solution shows very good results on the hardware used to train the models.
+The next step would be to use the solution to implement the desired cognitive skill on the Pepper Robot which gave the initial motivation for the thesis. 
+Since Pepper provides only very weak hardware (see Appendix \ref{sec:pepper}) compared to state of the art PCs it is to be tested how well the developed solution can work on Pepper's hardware.
+As described in Section \ref{ssec:algorithm} a VVAD needs to be fast to make sense but still sustain a certain accuracy to be used in a productive environment.
+For a weaker hardware the solution may needs some adjustments to hold this promise.
+In conclusion it can be said, that the conducted research in this thesis was very successful in terms that \emph{superhuman performance} was reached and a large scale dataset  for  VVAD was produced.
+This work paves the way for further research and development of applications in the field of \emph{Visual Voice Activity Detection}.

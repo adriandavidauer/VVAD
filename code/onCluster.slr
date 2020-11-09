@@ -1,0 +1,6 @@
+#!/bin/bash
+#SBATCH --partition=gpu_volta
+#SBATCH --gres=gpu:1
+#SBATCH --mem=150000
+# Begin of section with executable commands
+srun --pty python onCluster.py bestFaceEndToEndFromCheckpoint &> /gluster/scratch/alubitz/trainingbestFaceEndToEndCheckpoint.out

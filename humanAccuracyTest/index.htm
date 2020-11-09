@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Video stream sample</title>
+  </head>
+  <body>
+    <div id='user_id' hidden>USER_ID</div>
+    <div>
+      <video id="videoPlayer" muted="muted" autoplay> 
+        <!-- <source src="https://3fcb39f1.ngrok.io/video/USER_ID" type="video/mp4"> -->
+          <source src="http://localhost:3000/video/USER_ID" type="video/mp4">
+      </video>
+    </div>
+    <div>
+      <button id="speaking" style="background-color:green;color:black">Speaking</button>
+      <button id="replay" style="background-color:orange;color:black">replay video</button>
+      <button id="not_speaking" style="background-color:red;color:black">Not Speaking</button>
+    </div>
+    <div id='text' style="visibility: hidden">Thanks for your help</div>
+    <div id='your_statistics' style="visibility: hidden">Your statiscs</div>
+    <div id='all_statistics' style="visibility: hidden">All statistics</div>
+
+  </body>
+  <script src="client.js"></script>
+</html>

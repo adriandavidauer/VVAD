@@ -1,0 +1,6 @@
+#!/bin/bash
+#SBATCH --partition=gpu_volta
+#SBATCH --gres=gpu:1
+#SBATCH --mem=24000
+# Begin of section with executable commands
+srun --pty python onCluster.py imageSize -m mobileNet -s 32 -g 32 &> /gluster/scratch/alubitz/ImageSizesTraining.out
