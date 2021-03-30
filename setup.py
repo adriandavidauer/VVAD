@@ -42,6 +42,7 @@ setup(
         "vvadlrs3": ["*.h5"],
     },
     long_description=read('README.md'),
+    long_description_content_type="text/markdown",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Topic :: Utilities",
