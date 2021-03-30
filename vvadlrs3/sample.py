@@ -16,14 +16,10 @@ import random
 
 
 # 3rd party imports
-from pytube import YouTube
 import cv2
-from ffmpy import FFmpeg
 import dlib
 import numpy as np
-from file_read_backwards import FileReadBackwards
 import matplotlib.pyplot as plt
-import yaml
 from matplotlib import animation, rc
 
 
