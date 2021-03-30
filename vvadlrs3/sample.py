@@ -1,5 +1,5 @@
 """
-This Module creates a dataset for the purpose of the visual speech detection system.
+This Module handles everything related to a sample.
 """
 # System imports
 import os
@@ -16,22 +16,18 @@ import random
 
 
 # 3rd party imports
-from pytube import YouTube
 import cv2
-from ffmpy import FFmpeg
 import dlib
 import numpy as np
-from file_read_backwards import FileReadBackwards
 import matplotlib.pyplot as plt
-import yaml
 from matplotlib import animation, rc
 
 
 
 
 # local imports
-from imageUtils import *
-from timeUtils import *
+from vvadlrs3.imageUtils import *
+from vvadlrs3.timeUtils import *
 
 
 class FaceTracker():
