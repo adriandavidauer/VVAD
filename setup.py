@@ -22,8 +22,8 @@ __author__      = 'Adrian Lubitz'
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
-if 'VERSION' in os.environ:
-    VERSION = os.environ['VERSION']
+if 'RELEASE_VERSION' in os.environ:
+    VERSION = os.environ['RELEASE_VERSION']
 else:
     VERSION = '0.0.0'
 
