@@ -30,6 +30,8 @@ cap = cv2.VideoCapture(0)
 # infer if sample is valid
 # annotate and visualize output image(first of sample data) - do I need to save the boundingbox as well in the sample?
 
+
+# TODO: This shows the camera output right now - should show predictiions at some point
 while(True):
     # Capture frame-by-frame
     ret, frame = cap.read()
