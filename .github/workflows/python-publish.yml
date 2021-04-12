@@ -48,6 +48,6 @@ jobs:
         uses: devmasx/merge-branch@v1.3.1
         with:
           type: now
-          from_branch: development
+          from_branch: develop
           target_branch: main
           github_token: ${{ github.token }}
