@@ -6,7 +6,7 @@ and stare detection for proactive approaches.
 <!-- Add link to the Paper when published -->
 
 # Prerequisites
-vvadlrs3 depends on dlib which needs build tolls to be installed over pip.
+vvadlrs3 depends on dlib which needs build tools to be installed over pip.
 [Here](https://www.pyimagesearch.com/2018/01/22/install-dlib-easy-complete-guide/) is described what is needed.
 
 For Ubuntu you just need to install the following:

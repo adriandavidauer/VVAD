@@ -4,7 +4,7 @@ Installer for the vvad-lrs3-lib
 
 # System imports
 import os
-from setuptools import setup
+from setuptools import setup, find_packages
 # 3rd party imports
 
 # local imports
@@ -36,7 +36,7 @@ setup(
     license="LGPLv2. Note that the license for the iBUG 300-W dataset which was used for face and lip features excludes commercial use.",
     keywords="VVAD LRS3 AI Social robotics",
     url="https://github.com/adrianlubitz/VVAD",
-    packages=['vvadlrs3'],
+    packages=find_packages(),
     package_data={
         # Include all h5 files in the vvadlrs3 package
         "vvadlrs3": ["*.h5"],
