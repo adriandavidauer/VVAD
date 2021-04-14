@@ -2,7 +2,3 @@
 
 vvadlrs3
 dvg-ringbuffer
-jupyterlab
-ipywebrtc
-ipywidgets
-ipyfilechooser
