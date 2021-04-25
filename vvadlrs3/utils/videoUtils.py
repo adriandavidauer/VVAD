@@ -20,6 +20,7 @@ import yaml
 from dvg_ringbuffer import RingBuffer
 from vvadlrs3 import pretrained_models, sample, dlibmodels
 from vvadlrs3.utils.imageUtils import cropImage
+from vvadlrs3.dataSet import transformPointsToNumpy
 
 
 # local imports
@@ -33,6 +34,8 @@ def getFramesfromVideo(video_path):
     vidObj = cv2.VideoCapture(str(video_path))
     while(success):
         success, image = vidObj.read()
+        if not success:
+            return
         yield success, image
 
 
@@ -60,33 +63,29 @@ def analyzeVideo(video_path, feature_type='faceImage', save_as_json=None):
                 'feature_type': feature_type}
     if feature_type == 'faceImage':
         model = pretrained_models.getFaceImageModel()  # model for predictions
-        k = 36  # Number of frames used for inference
-        shape = (96, 96)  # Resolution of the input imgae for the prediction
-        featureType = 'faceImage'  # Type of the features that will be created from the Image
-
     elif feature_type == 'lipImage':
-        raise NotImplementedError(
-            'Analysis for lipImage is not implemented yet')
+        model = pretrained_models.getLipImageModel()  # model for predictions
     elif feature_type == 'faceFeatures':
-        raise NotImplementedError(
-            'Analysis for faceFeatures is not implemented yet')
+        model = pretrained_models.getFaceFeatureModel()  # model for predictions
     elif feature_type == 'lipFeatures':
-        raise NotImplementedError(
-            'Analysis for lipFeatures is not implemented yet')
+        model = pretrained_models.getLipFeatureModel()  # model for predictions
     else:
         raise ValueError(
             'feature_type must be one of ["faceImage", "lipImage", "faceFeatures", "lipFeatures"]')
 
+    k = model.layers[0].input_shape[1]  # Number of frames used for inference
+    featureType = feature_type  # Type of the features that will be created from the Image
+    input_shape = model.layers[0].input_shape[2:]
     # TODO: this should actually only be needed if not using faceImage type
     shapeModelPath = str(dlibmodels.SHAPE_PREDICTOR_68_FACE_LANDMARKS())
     ffg = sample.FaceFeatureGenerator(
-        featureType, shapeModelPath=shapeModelPath, shape=shape)
+        featureType, shapeModelPath=shapeModelPath, shape=(input_shape[1], input_shape[0]))
 
     # TODO: Fist approach only with a detector - later we can try FaceTracker for multiple faces?
     detector = dlib.get_frontal_face_detector()
 
     # Ringbuffer for features
-    rb = RingBuffer(k, dtype=(np.uint8, (*shape, 3)))
+    rb = RingBuffer(k, dtype=(np.uint8, input_shape))
     cap = cv2.VideoCapture(video_path)
     analysis['fps'] = cap.get(cv2.CAP_PROP_FPS)
 
@@ -96,11 +95,22 @@ def analyzeVideo(video_path, feature_type='faceImage', save_as_json=None):
         dets = detector(frame, 1)   # Detect faces
         if dets:
             features = ffg.getFeatures(cropImage(frame, dets[0]))
+            if "Features" in featureType:
+                features = transformPointsToNumpy(features)
             # fill ringbuffer
             rb.append(features)
             if rb.is_full:
                 y = model.predict(np.array([rb]))
-                frame_scores[i].append(y)
+                ###TEST###REMOVE###
+                # s = sample.FeatureizedSample()
+                # s.label = bool(y > 0.5)
+                # s.data = np.array(rb)
+                # s.featureType = featureType
+                # s.visualize()
+                ####END OF TEST####
+                for x in range(i - (k-1), i):  # append to all involved frames
+                    # cast to float64 to make it json serializable
+                    frame_scores[x].append(np.float64(y[0, 0]))
         else:
             # empty ringbuffer - to prevent glitches
             rb.clear()

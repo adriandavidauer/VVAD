@@ -28,7 +28,7 @@ else:
 
 setup(
     name="vvadlrs3",
-    version=VERSION,  # TODO: version should be set from tag or whatever
+    version=VERSION,
     author="Adrian Lubitz",
     author_email="adrianlubitz@gmail.com",
     description=(
@@ -49,13 +49,20 @@ setup(
         "License :: OSI Approved :: GNU Lesser General Public License v2 (LGPLv2)",
     ],
     install_requires=[
-        'numpy',  # TODO: Which are the needed dependencies
+        'numpy',
         'opencv-contrib-python',
-        'dlib',  # TODO: This guy is problematic because it needs cmake...That needs to be communicated somewhere
+        'dlib',
         'matplotlib',
         'keras==2.4.3',
         'tensorflow==2.3.1',
-        'tqdm'
+        'tqdm',
+        'pymongo',
+        'keras_vggface',
+        # Keras-Applications is only needed because VGGFace is using it and not installing it correctly
+        'Keras-Applications',
+        'pytube',
+        'ffmpy',
+        'file-read-backwards'
     ],
     python_requires='>=3.7',
 )
