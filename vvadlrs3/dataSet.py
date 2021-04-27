@@ -1110,6 +1110,7 @@ def transformToHDF5(path, hdf5_path, validation_split=0.2, testing=False):
 
 
 def transformPointsToNumpy(points):
+    # TODO: this could be faster if we are not using a list at all. array size is known -> just fill an array
     array = []
     for point in points:
         array.append([point.x, point.y])

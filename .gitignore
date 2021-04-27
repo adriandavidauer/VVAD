@@ -268,3 +268,4 @@ TSWLatexianTemp*
 # standalone packages
 *.sta
 thesis/papers/stateOfTheArt/withNNs/2016_Book_ImageAndVideoTechnology_p380_391.pdf
+*default_fps_samples*

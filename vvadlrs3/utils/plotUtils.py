@@ -31,28 +31,32 @@ def visualizeHistory(history, path=None):
 
     plt.plot(epochs, loss_values, 'bo', label='Loss training')
     plt.plot(epochs, val_loss_values, 'b', label='Loss validation')
-    plt.hlines(min_val_loss, epochs[0], epochs[-1], colors='r', linestyles='dashed', label='minum loss[{:.2f}] on epoch {}'.format(min_val_loss, min_val_loss_arg + 1))
+    plt.hlines(min_val_loss, epochs[0], epochs[-1], colors='r', linestyles='dashed',
+               label='minum loss[{:.2f}] on epoch {}'.format(min_val_loss, min_val_loss_arg + 1))
     plt.title('Values of the loss function for training and validation')
     plt.xlabel('Epochs')
     plt.ylabel('Value of the loss function')
     plt.legend()
     if path:
-        plt.savefig(os.path.splitext(path)[0] + '_loss' + os.path.splitext(path)[1])
-
+        plt.savefig(os.path.splitext(path)[
+                    0] + '_loss' + os.path.splitext(path)[1])
 
     plt.figure(2)
     plt.plot(epochs, acc, 'bo', label='Accuracy training')
     plt.plot(epochs, val_acc, 'b', label='Accuracy validation')
-    plt.hlines(max_val_acc, epochs[0], epochs[-1], colors='r', linestyles='dashed', label='maximum accuracy[{:.2f} %] on epoch {}'.format(max_val_acc * 100,  max_val_acc_arg + 1))
+    plt.hlines(max_val_acc, epochs[0], epochs[-1], colors='r', linestyles='dashed',
+               label='maximum accuracy[{:.2f} %] on epoch {}'.format(max_val_acc * 100,  max_val_acc_arg + 1))
     plt.title('Accuracy for training and validation')
     plt.xlabel('Epochs')
     plt.ylabel('Accuracy')
     plt.legend()
 
     if path:
-        plt.savefig(os.path.splitext(path)[0] + '_accuracy' + os.path.splitext(path)[1])
-    
+        plt.savefig(os.path.splitext(path)[
+                    0] + '_accuracy' + os.path.splitext(path)[1])
+
     plt.show()
+
 
 def calculateHumanAccuracy(mongoURL='mongodb://localhost:27017/', visualize=True, saveTo=None, consider='all'):
     """
@@ -62,6 +66,7 @@ def calculateHumanAccuracy(mongoURL='mongodb://localhost:27017/', visualize=True
     :type mongoURL: String 
     """
     assert consider == 'all' or consider == 'neg' or consider == 'pos', 'consider can only be "all", "pos" or "neg"'
+
     def calcError(classification, gt):
         return int(classification == gt)
     client = MongoClient(mongoURL)
@@ -73,18 +78,24 @@ def calculateHumanAccuracy(mongoURL='mongodb://localhost:27017/', visualize=True
     for sample in data:
         if consider == 'all':
             color = 'blue'
-            samples[sample['sample_num']].append(calcError(sample['classification'], sample['ground_truth']))
-            all.append(calcError(sample['classification'], sample['ground_truth']))
+            samples[sample['sample_num']].append(
+                calcError(sample['classification'], sample['ground_truth']))
+            all.append(
+                calcError(sample['classification'], sample['ground_truth']))
         elif consider == 'neg':
             color = 'red'
             if not sample['ground_truth']:
-                samples[sample['sample_num']].append(calcError(sample['classification'], sample['ground_truth']))
-                all.append(calcError(sample['classification'], sample['ground_truth']))        
+                samples[sample['sample_num']].append(
+                    calcError(sample['classification'], sample['ground_truth']))
+                all.append(
+                    calcError(sample['classification'], sample['ground_truth']))
         else:
             color = 'green'
             if sample['ground_truth']:
-                samples[sample['sample_num']].append(calcError(sample['classification'], sample['ground_truth']))
-                all.append(calcError(sample['classification'], sample['ground_truth']))        
+                samples[sample['sample_num']].append(
+                    calcError(sample['classification'], sample['ground_truth']))
+                all.append(
+                    calcError(sample['classification'], sample['ground_truth']))
     averages = []
     # stds = {}
     y = []
@@ -107,12 +118,13 @@ def calculateHumanAccuracy(mongoURL='mongodb://localhost:27017/', visualize=True
     plt.xlabel('Sample')
     plt.ylabel('Human Accuracy')
     plt.grid(True)
-    plt.scatter(x,y, color=color, marker = "_")
+    plt.scatter(x, y, color=color, marker="_")
     if saveTo:
         plt.savefig(saveTo)
     plt.show()
-    # return np.mean(all), np.std(all), averages, stds 
+    # return np.mean(all), np.std(all), averages, stds
     return np.mean(all), averages
+
 
 def plotAccOverTimeSteps(histList, path=None, features=False):
     """
@@ -128,7 +140,7 @@ def plotAccOverTimeSteps(histList, path=None, features=False):
     for histPath in histList:
         # Extract numTimesteps
         shape = histPath.split('(')[1].split(')')[0]
-        if len(shape.split(',')) == 3: # that only counts for the images...
+        if len(shape.split(',')) == 3:  # that only counts for the images...
             if features:
                 numTimesteps = int(shape.split(',')[0])
             else:
@@ -136,7 +148,8 @@ def plotAccOverTimeSteps(histList, path=None, features=False):
         elif len(shape.split(',')) == 4:
             numTimesteps = int(shape.split(',')[0])
         else:
-            raise ValueError("Couldn't read shape of history file '{}'".format(histFile))
+            raise ValueError(
+                "Couldn't read shape of history file '{}'".format(histFile))
         x.append(numTimesteps)
 
         # Extract corresponding accuracy
@@ -146,10 +159,11 @@ def plotAccOverTimeSteps(histList, path=None, features=False):
 
     x, y = zip(*sorted(zip(x, y)))
 
-    x_new = np.linspace(min(x),max(x),300) #300 represents number of points to make between T.min and T.max
+    # 300 represents number of points to make between T.min and T.max
+    x_new = np.linspace(min(x), max(x), 300)
 
     #print("X.SHAPE: {}".format(x.shape))
-    spl = make_interp_spline(x, y,k=3) #BSpline object
+    spl = make_interp_spline(x, y, k=3)  # BSpline object
     y_smooth = spl(x_new)
 
     plt.title('Accuracy over the number of used frames')
@@ -159,7 +173,8 @@ def plotAccOverTimeSteps(histList, path=None, features=False):
     plt.plot(x_new, y_smooth)
     if path:
         plt.savefig(path)
-    plt.show
+    plt.show()
+
 
 def plotAccOverImagesize(histList, path=None):
     """
@@ -180,7 +195,8 @@ def plotAccOverImagesize(histList, path=None):
         elif len(shape.split(',')) == 4:
             imagesize = int(shape.split(',')[1])
         else:
-            raise ValueError("Couldn't read shape of history file '{}'".format(histFile))
+            raise ValueError(
+                "Couldn't read shape of history file '{}'".format(histFile))
         x.append(imagesize)
 
         # Extract corresponding accuracy
@@ -190,9 +206,10 @@ def plotAccOverImagesize(histList, path=None):
 
     x, y = zip(*sorted(zip(x, y)))
 
-    x_new = np.linspace(min(x),max(x),300) #300 represents number of points to make between T.min and T.max
+    # 300 represents number of points to make between T.min and T.max
+    x_new = np.linspace(min(x), max(x), 300)
 
-    spl = make_interp_spline(x, y,k=3) #BSpline object
+    spl = make_interp_spline(x, y, k=3)  # BSpline object
     y_smooth = spl(x_new)
 
     plt.title('Accuracy over the quadractic image size')
@@ -202,4 +219,39 @@ def plotAccOverImagesize(histList, path=None):
     plt.plot(x_new, y_smooth)
     if path:
         plt.savefig(path)
-    plt.show
+    plt.show()
+
+
+def plotVideoAnalysis(analysis, path=None, show=True):
+
+    plt.title('Mean predictions')
+    plt.xlabel('seconds')
+    plt.ylabel('prediction')
+    plt.grid(True)
+    frame_scores = analysis['frame_scores']
+    # convert to dict with int keys
+    frame_scores = {int(k): v for k, v in frame_scores.items()}
+
+    fps = float(analysis['fps'])
+    max_frame = max(frame_scores.keys())
+    # x = list(range(max_frame + 1))
+    x = np.linspace(0, max_frame / fps, max_frame + 1)
+    y = []
+    e = []
+    for i, v in enumerate(x):
+        try:
+            values = frame_scores[i]
+            y.append(np.mean(values))
+            e.append(np.std(values))
+        except KeyError:
+            y.append(np.nan)
+            e.append(np.nan)
+
+    plt.errorbar(x, y, e, color='orange', ecolor='green')
+    plt.hlines(0.5, x[0], x[-1], colors='r',
+               linestyles='dashed', label='Decision Boundary')
+    if path:
+        plt.savefig(path)
+    if show:
+        plt.show()
+    plt.clf()
