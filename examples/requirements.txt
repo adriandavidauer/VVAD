@@ -1,0 +1,8 @@
+# libs needed for the examples to work
+
+vvadlrs3
+dvg-ringbuffer
+jupyterlab
+ipywebrtc
+ipywidgets
+ipyfilechooser

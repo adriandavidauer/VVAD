@@ -2,9 +2,7 @@
 utils needed for keras.
 """
 # System imports
-from vvadlrs3.utils.timeUtils import *
-from sample import *
-from keras_vggface.vggface import VGGFace
+
 import glob
 import os
 import pickle
@@ -40,15 +38,19 @@ from keras.applications.mobilenet_v2 import MobileNetV2
 
 import cv2
 
+from vvadlrs3.sample import *
+from vvadlrs3.utils.timeUtils import *
+from keras_vggface.vggface import VGGFace
+
 
 ################################ Is not helping - maybe remove later ##########################
-import tensorflow as tf
-config = tf.ConfigProto()
-config.gpu_options.allow_growth = True
-sess = tf.Session(config=config)
-# Check available GPU devices.
-print("The following GPU devices are available: %s" %
-      tf.test.gpu_device_name())
+# import tensorflow as tf
+# config = tf.ConfigProto()
+# config.gpu_options.allow_growth = True
+# sess = tf.Session(config=config)
+# # Check available GPU devices.
+# print("The following GPU devices are available: %s" %
+#       tf.test.gpu_device_name())
 ###############################################################################################
 
 
@@ -967,7 +969,6 @@ def testModel(model_path, test_set_path, saveTo=None):
             imageSize = model.input_shape[-3:-1]
         # imageSize = (model.input_shape[-2], model.input_shape[-3])
 
-    imageSize = None  # HACK
     print('num_steps: {}'.format(num_steps))
     print("imageSize: {}".format(imageSize))
     print("normalize: {}".format(normalize))
@@ -987,6 +988,7 @@ def testModel(model_path, test_set_path, saveTo=None):
         # v.featureType = "faceImage"
         # v.visualize(saveTo=str(i) + '.gif')   #This seems to be okay.
         # make it a list of samples with only that one sample...
+        # TODO: dont need to create a new array y_percent = model.predict([data])[0][0] should work as well
         x = np.empty((1, *data.shape))
         x[0] = data
         label = sample.getLabel()
