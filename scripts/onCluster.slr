@@ -1,0 +1,4 @@
+#!/bin/bash
+#SBATCH --partition=standard
+# Begin of section with executable commands
+srun --pty python convert_samples_to_hdf5.py /gluster/scratch/alubitz/balancedCleandDataSet/ faceImages.h5 &> /gluster/scratch/alubitz/convert_dataset.out
