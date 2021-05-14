@@ -27,6 +27,9 @@ if __name__ == '__main__':
 
     parser.add_argument(
         "--chunk_resolution", help="How many samples to take for each chunk, affects compression performance", type=int, default=16)
+
+    parser.add_argument(
+        "--shape", help="For the image types a shape can be given to which the image will be resized", type=int, nargs=2)
     args = parser.parse_args()
     input_folder = Path(args.input_folder)
     test_set = input_folder / 'testSet'
@@ -35,9 +38,16 @@ if __name__ == '__main__':
     test_samples = list(test_set.glob('*/*.pickle'))
 
     # Get shape of a sample
+    if args.shape:
+        resize_shape = tuple(args.shape)
+    else:
+        resize_shape = args.shape
+    print(f'resize_shape: {resize_shape}')
     _sample = FeatureizedSample()
     _sample.load(train_samples[0])
-    sample_shape = _sample.getData().shape
+    sample_shape = _sample.getData(resize_shape).shape
+
+    print(f'sample_shape: {sample_shape}')
 
     x_chunk_shape = (args.chunk_resolution, *sample_shape)
     y_chunk_shape = (args.chunk_resolution,)
@@ -58,7 +68,7 @@ if __name__ == '__main__':
     for i, sample in enumerate(tqdm(train_samples)):
         s = FeatureizedSample()
         s.load(sample)
-        data = s.getData()  # The np.array for that sample
+        data = s.getData(resize_shape)  # The np.array for that sample
         label = s.getLabel()  # The label as int for that sample
 
         x_train_ds[i] = data
@@ -69,7 +79,7 @@ if __name__ == '__main__':
     for i, sample in enumerate(tqdm(test_samples)):
         s = FeatureizedSample()
         s.load(sample)
-        data = s.getData()  # The np.array for that sample
+        data = s.getData(resize_shape)  # The np.array for that sample
         label = s.getLabel()  # The label as int for that sample
 
         x_test_ds[i] = data
