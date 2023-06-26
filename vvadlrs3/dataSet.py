@@ -2,44 +2,29 @@
 This Module creates a dataset for the purpose of the visual speech detection system.
 """
 # System imports
-import os
-import pathlib
-import argparse
-from multiprocessing import Process
-import shutil
-import time
-import pickle
-import glob
 # from collections import deque
-import multiprocessing
-import random
 from pathlib import Path, PurePath
 
-
+import dlib
+import h5py
+import yaml
+from ffmpy import FFmpeg
+from file_read_backwards import FileReadBackwards
 # 3rd party imports
 from pytube import YouTube
-import cv2
-from ffmpy import FFmpeg
-import dlib
-import numpy as np
-from file_read_backwards import FileReadBackwards
-import matplotlib.pyplot as plt
-import yaml
-import h5py
 
-
-# local imports
-from vvadlrs3.utils.imageUtils import *
-from vvadlrs3.utils.multiprocessingUtils import *
 from vvadlrs3.sample import *
+# local imports
+from vvadlrs3.utils.multiprocessingUtils import *
 from vvadlrs3.utils.timeUtils import *
-
 
 # end file header
 __author__ = "Adrian Lubitz"
 __copyright__ = "Copyright (c)2017, Blackout Technologies"
 
+# Remove Sample as it is replaced by "Featured" Sample
 
+'''
 class Sample():
     """
     DEPRECATED: use FeatureizedSample in the future
@@ -304,6 +289,7 @@ class Sample():
                 cv2.waitKey(int((1/self.fps)*1000))
         else:
             print("Sample is invalid")
+'''
 
 
 class DataSet():
@@ -344,7 +330,7 @@ class DataSet():
         """
 
         currentFolder = os.path.abspath(path)
-        #print (currentFolder)
+        # print (currentFolder)
         # open folder and get a list of files
         try:
             files = list(os.walk(currentFolder, followlinks=True))[0][2]
@@ -355,6 +341,7 @@ class DataSet():
                  for file in files]
         # get the RefField
         for file in files:
+            # KZ Just any txt?
             if file.suffix == ".txt":
                 textFile = open(file)
                 # hat anscheinend noch ein return mit drinne
@@ -369,7 +356,7 @@ class DataSet():
         alreadyDownloaded = False
         for file in files:
             if file.suffix != ".txt":  # A video is there
-                if ref in file.resolve().stem:   # Fully downloaded
+                if ref in file.resolve().stem:  # Fully downloaded
                     print("Video already downloaded")
                     alreadyDownloaded = True
                 else:
@@ -389,6 +376,7 @@ class DataSet():
                 # if ready rename the file to the real name(will be the ref)
                 os.rename(self.tempPath, str(
                     videoFileWithoutExtension) + self.tempPath.resolve().suffix)
+
             p = Process(target=timeoutableDownload,
                         args=(videoUrl, currentFolder))
             p.start()
@@ -439,7 +427,7 @@ class DataSet():
             self.debugPrint("[getAllPSamples] Folder {} done".format(folder))
             if showStatus:
                 self.debugPrint("[getAllPSamples] ###### Status:   {}% done".format(
-                    float(i)/len(folders) * 100))
+                    float(i) / len(folders) * 100))
                 self.debugPrint("[getAllPSamples] ### Time elapsed: {} ms".format(
                     (time.perf_counter() - ts) * 1000))
 
@@ -543,20 +531,21 @@ class DataSet():
         count = 0
         # sampleList = []
         for sampleConfig in frameList:
-            if not self.checkSampleLength(self.getSecondFromFrame(sampleConfig[0]), self.getSecondFromFrame(sampleConfig[1])):
+            if not self.checkSampleLength(self.getSecondFromFrame(sampleConfig[0]),
+                                          self.getSecondFromFrame(sampleConfig[1])):
                 continue
             if not dryRun:
                 data = []
                 label = True
                 config = {"x": sampleConfig[2], "y": sampleConfig[3],
                           "w": sampleConfig[4], "h": sampleConfig[5], "fps": vidFps}
-            # grap frames from start to endframe
-                while(True):
+                # grap frames from start to endframe
+                while (True):
                     success, image = vidObj.read()
                     if not success:
                         raise Exception(
                             "Couldnt grap frame of file {}".format(videoPath))
-                    if(count >= sampleConfig[0] and count <= sampleConfig[1]):
+                    if (count >= sampleConfig[0] and count <= sampleConfig[1]):
                         data.append(image)
                     count += 1
                     if count > sampleConfig[1]:
@@ -784,8 +773,9 @@ class DataSet():
                         # first sample
                         pauseStart = currentConfig
                         # from start to pauseStart
-                        configList.append([int(firstFrameConfig[0]), int(pauseStart[0]), float(firstFrameConfig[1]), float(
-                            firstFrameConfig[2]), float(firstFrameConfig[3]), float(firstFrameConfig[4])])
+                        configList.append(
+                            [int(firstFrameConfig[0]), int(pauseStart[0]), float(firstFrameConfig[1]), float(
+                                firstFrameConfig[2]), float(firstFrameConfig[3]), float(firstFrameConfig[4])])
                     elif not pauseEnd and pauseStart:
                         # pauseStart is set so what I get is pauseEnd - just empty pauseStart and pop from pauses
                         pauseStart = []
@@ -871,13 +861,13 @@ class DataSet():
                 # check the three cases of the intersection
                 if len(intersection) == 0:
                     # its a positive sample - save and skip k frames
-                    sampleConfig = (True, [int(currentConfig[0]), int(currentConfig[0]) + (self.k-1), float(
+                    sampleConfig = (True, [int(currentConfig[0]), int(currentConfig[0]) + (self.k - 1), float(
                         currentConfig[1]), float(currentConfig[2]), float(currentConfig[3]), float(currentConfig[4])])
                     configList.append(sampleConfig)
                     counter += self.k
                 elif len(intersection) == self.k:
                     # its a negative sample - save and skip k frames
-                    sampleConfig = (False, [int(currentConfig[0]), int(currentConfig[0]) + (self.k-1), float(
+                    sampleConfig = (False, [int(currentConfig[0]), int(currentConfig[0]) + (self.k - 1), float(
                         currentConfig[1]), float(currentConfig[2]), float(currentConfig[3]), float(currentConfig[4])])
                     configList.append(sampleConfig)
                     counter += self.k
@@ -918,14 +908,16 @@ class DataSet():
             frames = []
             count = 0
             success = True
-            while(success and sampleConfigList):
+            while success and sampleConfigList:
+                # KZ Use env for additional debug/develop log
                 # print("Sample from Frame {} to {}".format(sampleConfigList[0][1][0], sampleConfigList[0][1][1]))
                 # print("Next Sample from Frame {} to {}".format(sampleConfigList[1][1][0], sampleConfigList[1][1][1]))
                 # print("Counter: {}".format(count))
                 if len(frames) == self.k:
-                    sample = FeatureizedSample()
+                    sample = FeaturedSample()
                     sample.generateSampleFromFixedFrames(
-                        self.k, frames, sampleConfigList[0][1][2:], sampleConfigList[0][0], featureType=featureType, shape=self.shape, shapeModelPath=self.shapeModelPath)
+                        self.k, frames, sampleConfigList[0][1][2:], sampleConfigList[0][0], featureType=featureType,
+                        shape=self.shape, shapeModelPath=self.shapeModelPath)
                     if sample.isValid():
                         yield sample
                     else:
@@ -937,7 +929,7 @@ class DataSet():
                 if sampleConfigList:
                     success, image = vidObj.read()
                     # TODO: Hier ist das Problem, dass die Liste leer gepopt wurde!!!!! BorderCase
-                    if(count >= sampleConfigList[0][1][0] and count <= sampleConfigList[0][1][1]):
+                    if (count >= sampleConfigList[0][1][0] and count <= sampleConfigList[0][1][1]):
                         frames.append(image)
                         # print ("Added Frame. len(frames): {}".format(len(frames)))
                     count += 1
@@ -963,7 +955,8 @@ class DataSet():
 
         fig1, ax1 = plt.subplots()
         fig1.suptitle('Sample Distribution', fontsize=14, fontweight='bold')
-        ax1.text(0, 0, 'Configuration\nsampleLength : {}s\nmaxPauseLength  : {}s\ntotal number of samples : {}'.format(self.sampleLength, self.maxPauseLength, numPositives + numNegatives),
+        ax1.text(0, 0, 'Configuration\nsampleLength : {}s\nmaxPauseLength  : {}s\ntotal number of samples : {}'.format(
+            self.sampleLength, self.maxPauseLength, numPositives + numNegatives),
                  style='italic',
                  bbox={'facecolor': 'white', 'alpha': 0.5, 'pad': 10})
         ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
@@ -995,13 +988,14 @@ class DataSet():
         samples = []
         files = glob.glob(os.path.join(sampleFolder, "*.pickle"))
         for file in files:
-            s = FeatureizedSample()
+            s = FeaturedSample()
             s.load(file)
             samples.append(s)
         return samples
 
 
-def saveBalancedDataset(dataset, saveTo, featureType, shape, path=None, ratioPositives=2, ratioNegatives=1, showStatus=False, **kwargs):
+def saveBalancedDataset(dataset, saveTo, featureType, shape, path=None, ratioPositives=2, ratioNegatives=1,
+                        showStatus=False, **kwargs):
     """
     saves a balanced dataset to disk
     """
@@ -1058,18 +1052,18 @@ def transformToHDF5(path, hdf5_path, validation_split=0.2, testing=False):
     allPickles = glob.glob(path + '/**/*.pickle', recursive=True)
     if not testing:
         assert len(allPickles) == 22245 + \
-            44489, "You didnt get alle the samples - make sure the path is correct!"
+               44489, "You didnt get alle the samples - make sure the path is correct!"
 
     np.random.shuffle(allPickles)
     validationPickles = allPickles[:int(len(allPickles) * validation_split)]
     trainPickles = allPickles[int(len(allPickles) * validation_split):]
 
-    s = FeatureizedSample()
+    s = FeaturedSample()
     s.load(allPickles[0])
     train_x_shape = (len(trainPickles), *s.getData().shape)
-    train_y_shape = (len(trainPickles), )
+    train_y_shape = (len(trainPickles),)
     valid_x_shape = (len(validationPickles), *s.getData().shape)
-    valid_y_shape = (len(validationPickles), )
+    valid_y_shape = (len(validationPickles),)
     x_dtype = s.getData().dtype
     y_dtype = np.uint8
 
@@ -1079,9 +1073,9 @@ def transformToHDF5(path, hdf5_path, validation_split=0.2, testing=False):
         hdf5_file.create_dataset('Y', shape=train_y_shape, dtype=y_dtype)
 
         for i, sample in enumerate(trainPickles):
-            pr = (i / len(trainPickles))*100
+            pr = (i / len(trainPickles)) * 100
             print('\r', 'Writing training data: {:.2f}%\r'.format(pr), end='')
-            s = FeatureizedSample()
+            s = FeaturedSample()
             s.load(sample)
             x = s.getData()
             y = s.getLabel()
@@ -1096,10 +1090,10 @@ def transformToHDF5(path, hdf5_path, validation_split=0.2, testing=False):
         hdf5_file.create_dataset('Y', shape=valid_y_shape, dtype=y_dtype)
 
         for i, sample in enumerate(validationPickles):
-            pr = (i / len(validationPickles))*100
+            pr = (i / len(validationPickles)) * 100
             print(
                 '\r', 'Writing validation data: {:.2f}%\r'.format(pr), end='')
-            s = FeatureizedSample()
+            s = FeaturedSample()
             s.load(sample)
             x = s.getData()
             y = s.getLabel()
@@ -1122,24 +1116,14 @@ def transformToFeatures(path, shapeModelPath=None, shape=None):
     get a Sample of type faceImage and transforms to lipImage, faceFeatures and lipFeatures
     """
     ffg = FaceFeatureGenerator(
-        "allwfaceImage", shapeModelPath=shapeModelPath, shape=shape)
-    input_sample = FeatureizedSample()
+        "allowfaceImage", shapeModelPath=shapeModelPath, shape=shape)
+    input_sample = FeaturedSample()
     input_sample.load(path)
     # # get all settings
-    # numSteps = input_sample.getData().shape[0]
-    # origImageSize = input_sample.getData().shape[1:]
-    # lipImage, faceFeatures, lipFeatures = ffg.getFeatures(input_sample.getData()[0])
-    # faceFeatures = transformPointsToNumpy(faceFeatures)
-    # lipFeatures = transformPointsToNumpy(lipFeatures)
-    # feature_dtype = faceFeatures.dtype
-    # print(numSteps)
-    # print(feature_dtype)
-    # print(origImageSize)
 
     lipImages = []
     faceFeaturesList = []
     lipFeaturesList = []
-    # lipImages = np.empty(, dtype=np.uint8)
     for i, frame in enumerate(input_sample.getData()):
         lipImage, faceFeatures, lipFeatures = ffg.getFeatures(
             input_sample.getData()[i])
@@ -1149,19 +1133,19 @@ def transformToFeatures(path, shapeModelPath=None, shape=None):
         faceFeaturesList.append(faceFeatures)
         lipFeaturesList.append(lipFeatures)
 
-    lipImageSample = FeatureizedSample()
+    lipImageSample = FeaturedSample()
     lipImageSample.data = np.array(lipImages)
     lipImageSample.k = len(lipImages)
     lipImageSample.label = input_sample.getLabel()
     lipImageSample.featureType = "lipImage"
 
-    faceFeaturesSample = FeatureizedSample()
+    faceFeaturesSample = FeaturedSample()
     faceFeaturesSample.data = np.array(faceFeaturesList)
     faceFeaturesSample.k = len(faceFeaturesList)
     faceFeaturesSample.label = input_sample.getLabel()
     faceFeaturesSample.featureType = "faceFeatures"
 
-    lipFeaturesSample = FeatureizedSample()
+    lipFeaturesSample = FeaturedSample()
     lipFeaturesSample.data = np.array(lipFeaturesList)
     lipFeaturesSample.k = len(lipFeaturesList)
     lipFeaturesSample.label = input_sample.getLabel()
@@ -1193,7 +1177,7 @@ def transformToFeatures(path, shapeModelPath=None, shape=None):
     faceFeaturesSample.save(os.path.join(faceFeaturesFolder, fileName))
     lipFeaturesSample.save(os.path.join(lipFeaturesFolder, fileName))
 
-    # TODO:call this in a multiproccessing way.
+    # TODO:call this in a multiprocessing way.
 
 
 def makeTestSet(path, namesPath):
@@ -1236,7 +1220,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("config", help='path to the config file', type=str)
     parser.add_argument("option", help="what you want to do.", type=str, choices=[
-                        "makeTestSet", "tests", "analyze", "convertAll", "pSamples", "pSamplesAll", "samples", "download"])  # TODO: remove unused
+        "makeTestSet", "tests", "analyze", "convertAll", "pSamples", "pSamplesAll", "samples",
+        "download"])  # TODO: remove unused
     parser.add_argument("-d", "--dataPath",
                         help="the path to the dataset", type=str)
     parser.add_argument("-m", "--shapeModelPath",
@@ -1250,7 +1235,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "-f", "--fps", help="the frames per second on the videos", type=int)
     parser.add_argument(
-        "-s", "--shape", help="[x,y] defines the size to which face or lip images will be resized - this is the input size of the net", type=list)
+        "-s", "--shape", help="[x,y] defines the size to which face or lip images will be resized - this is the input "
+                              "size of the net", type=list)
     parser.add_argument(
         "-n", "--names", help="path to the names pickle file", type=str)
 
@@ -1258,7 +1244,7 @@ if __name__ == "__main__":
 
     # get values from config
     config = yaml.load(open(args.config))
-    ### Config Values ###
+    # Config Values ###
     dataPath = args.dataPath if args.dataPath else config["dataPath"]
     shapeModelPath = args.shapeModelPath if args.shapeModelPath else config["shapeModelPath"]
     debug = args.debug if args.debug else config["debug"]
@@ -1290,6 +1276,8 @@ if __name__ == "__main__":
         #     assert len(sample[1]) == 6, "inner SampleConfig needs to have a len of 6 has {}\ninner sampleConfig: {}".format(len(sample[1]), sample[1])
         #     print(sample)
         ds.analyzeNegatives()
+        # KZ : duplicate as in "analyze"
+
 
         def testTime():
             logtime_data = {}
@@ -1305,7 +1293,7 @@ if __name__ == "__main__":
 
             print(logtime_data)
         # testTime()
-        #saveBalancedDataset(ds, "../data/balancedCleandDataSet/", "faceImage", shape, showStatus=True)
+        # saveBalancedDataset(ds, "../data/balancedCleandDataSet/", "faceImage", shape, showStatus=True)
         # samples = ds.grapFromDisk("TestPickles")
         # for sample in samples:
         #     if not sample.label:

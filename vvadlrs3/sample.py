@@ -1,43 +1,32 @@
 """
 This Module handles everything related to a sample.
 """
-# System imports
-import os
-import pathlib
-import argparse
-from multiprocessing import Process
-import shutil
-import time
-import pickle
 import glob
+# System imports
+import pickle
 # from collections import deque
-import multiprocessing
 import random
 
-
 # 3rd party imports
-import cv2
 import dlib
-import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import animation, rc
-
 
 # local imports
 from vvadlrs3.utils.imageUtils import *
 from vvadlrs3.utils.timeUtils import *
 
 
-class FaceTracker():
+class FaceTracker:
     """
     tracks faces in Images
     """
 
     def __init__(self, init_pos, internal_rect_oversize=0.2, relative=True):
         """
-        initilaize the tracker with a initial position of the face in the Image
+        initialize the tracker with an initial position of the face in the Image
 
-        :param init_pos: A bounding box for the initial face. Realative or absolute pixel values in format (x, y, w, h)
+        :param init_pos: A bounding box for the initial face. Relative or absolute pixel values in format (x, y, w, h)
         :type init_pos: list of floats
         :param internal_rect_oversize: the percentage of which the initial
         :type internal_rect_oversize: float
@@ -45,7 +34,6 @@ class FaceTracker():
         :type relative: boolean
         """
         if type(init_pos) == dlib.rectangle or type(init_pos) == dlib.drectangle:
-            #print("using dlib.rectangle")
             self.init_pos = (init_pos.tl_corner().x, init_pos.tl_corner(
             ).y, init_pos.width(), init_pos.height())
         else:
@@ -86,17 +74,16 @@ class FaceTracker():
                 y = self.init_pos[1]
                 w = self.init_pos[2]
                 h = self.init_pos[3]
-        xStart = x*(1-self.internal_rect_oversize)
-        yStart = y*(1-self.internal_rect_oversize)
-        xEnd = (x+w)*1.2
-        yEnd = (y+h)*1.2
+        xStart = x * (1 - self.internal_rect_oversize)
+        yStart = y * (1 - self.internal_rect_oversize)
+        xEnd = (x + w) * 1.2
+        yEnd = (y + h) * 1.2
         ROIrect = dlib.drectangle(xStart, yStart, xEnd, yEnd)
         ROI = cropImage(image, ROIrect)
         detector = dlib.get_frontal_face_detector()
         dets = detector(ROI, 1)
         # TODO: error if more than one face! - invalid
         if len(dets) != 1:
-            #self.valid = False
             print("Invalid Sample because there are {} faces".format(len(dets)))
             return False, False  # Means Error
         dInImage = toImageSpace(ROIrect, dets[0])
@@ -108,7 +95,7 @@ class FaceTracker():
         return face, dInImage
 
 
-class FaceFeatureGenerator():
+class FaceFeatureGenerator:
     """
     This class can generate the features for the different approaches.
     """
@@ -123,7 +110,7 @@ class FaceFeatureGenerator():
         :type shapeModelPath: String
         """
         self.supportedFeatureTypes = [
-            "faceImage", "lipImage", "faceFeatures", "lipFeatures", 'all', "allwfaceImage"]
+            "faceImage", "lipImage", "faceFeatures", "lipFeatures", 'all', "allowfaceImage"]
         assert featureType in self.supportedFeatureTypes, "unsupported featureType {}. Supported featureTypes are {}".format(
             featureType, self.supportedFeatureTypes)
         if featureType == "faceImage":
@@ -188,14 +175,14 @@ class FaceFeatureGenerator():
                 cropImage(image, lipRect), self.shape)
             faceImage = resizeAndZeroPadding(image, self.shape)
             return faceImage, lipImage, faceFeatures, lipFeatures
-        # returns in decending order without faceImage: lipImage, faceFeature, lipFeatures
-        elif self.featureType == "allwfaceImage":
+        # returns in descending order without faceImage: lipImage, faceFeature, lipFeatures
+        elif self.featureType == "allowfaceImage":
             shape = self.predictor(image, dlib.rectangle(
                 0, 0, image.shape[1], image.shape[0]))
             faceFeatures = shape.parts()
             lipShape = dlib.points()
             for i, point in enumerate(shape.parts()):
-                if i > 47 and i < 68:
+                if 47 < i < 68:
                     lipShape.append(point)
             lipFeatures = lipShape
             lipXStart = min(lipShape, key=lambda p: p.x).x
@@ -212,7 +199,7 @@ class FaceFeatureGenerator():
                 self.featureType, self.supportedFeatureTypes))
 
 
-class FeatureizedSample():
+class FeaturedSample:
     """
     This class represents a Sample(with the features for one specific approach)
     """
@@ -224,7 +211,7 @@ class FeatureizedSample():
         :param k: defines the temporal sliding window in frames
         :type k: int
         :param data: A list of featureVectors for this sample
-        :type data: List of numpyarrays
+        :type data: List of numpy arrays
         :param label: positive or negative Label
         :type label: bool
         :param type: the type of this sample for the specific approach
@@ -317,7 +304,7 @@ class FeatureizedSample():
         arrMax = np.max(arr)
         arrMin = np.min(arr)
         absMax = np.max([np.abs(arrMax), np.abs(arrMin)])
-        return arr/absMax
+        return arr / absMax
 
     def getLabel(self):
         """
@@ -325,7 +312,8 @@ class FeatureizedSample():
         """
         return int(self.label)
 
-    def generateSampleFromFixedFrames(self, k, frames, init_pos, label, featureType, shape, shapeModelPath=None, dataAugmentation=False, relative=True):
+    def generateSampleFromFixedFrames(self, k, frames, init_pos, label, featureType, shape, shapeModelPath=None,
+                                      dataAugmentation=False, relative=True):
         # assert len frames to k
         # trackface from init_pos
         self.label = label
@@ -342,6 +330,7 @@ class FeatureizedSample():
                 print("did not get a face for frame number {}".format(x))
                 break
 
+    #KZ Find unused functions and delete them
     def generate_sample_from_buffer(self, sourcebuffer, k):
         """
         just get another frame from sourcebuffer - returns False if sampleLngth is smaller k otherwise returns a sample of length k
@@ -357,27 +346,30 @@ class FeatureizedSample():
         if "Image" in self.featureType:
             rc('animation', html='html5')
             fig = plt.figure()
-            borderSize = int(self.data.shape[1]/8)
+            borderSize = int(self.data.shape[1] / 8)
             value = [0, 255, 0] if self.label else [255, 0, 0]
-            images = [[plt.imshow(cv2.copyMakeBorder(cv2.cvtColor(features, cv2.COLOR_BGR2RGB), top=borderSize, bottom=borderSize,
-                                  left=borderSize, right=borderSize, borderType=cv2.BORDER_CONSTANT, value=value), animated=True)] for features in self.data]
+            images = [[plt.imshow(
+                cv2.copyMakeBorder(cv2.cvtColor(features, cv2.COLOR_BGR2RGB), top=borderSize, bottom=borderSize,
+                                   left=borderSize, right=borderSize, borderType=cv2.BORDER_CONSTANT, value=value),
+                animated=True)] for features in self.data]
 
             print("shape: {}".format(self.data.shape))
 
             if supplier == "pyplot":
                 # images = [[plt.imshow(cv2.copyMakeBorder(cv2.cvtColor(features, cv2.COLOR_BGR2RGB), top=borderSize, bottom=borderSize, left=borderSize, right=borderSize, borderType=cv2.BORDER_CONSTANT, value=value), animated=True)] for features in self.data]
-                ani = animation.ArtistAnimation(fig, images, interval=(1/fps)*1000, blit=True,
+                ani = animation.ArtistAnimation(fig, images, interval=(1 / fps) * 1000, blit=True,
                                                 repeat_delay=1000)
                 if saveTo:
                     ani.save(saveTo, writer='imagemagick')
                 plt.show()
             elif supplier == "opencv":
                 for features in self.data:
-                    time.sleep(1/fps)
+                    time.sleep(1 / fps)
                     borderSize = 25
                     value = [0, 255, 0] if self.label else [0, 0, 255]
                     featuresWithBorder = cv2.copyMakeBorder(
-                        features, top=borderSize, bottom=borderSize, left=borderSize, right=borderSize, borderType=cv2.BORDER_CONSTANT, value=value)
+                        features, top=borderSize, bottom=borderSize, left=borderSize, right=borderSize,
+                        borderType=cv2.BORDER_CONSTANT, value=value)
                     cv2.imshow(self.featureType, featuresWithBorder)
                     key = cv2.waitKey(1) & 0xFF
                     # if the `q` key was pressed, break from the loop
@@ -398,20 +390,20 @@ class FeatureizedSample():
             rc('animation', html='html5')
             fig = plt.figure()
             # This does not make to much sense here...
-            borderSize = int(data.shape[1]/8)
+            borderSize = int(data.shape[1] / 8)
             value = [0, 255, 0] if self.label else [255, 0, 0]
             images = []
-            #features = np.zeros((max_x + 2*borderSize, max_y+ 2*borderSize, 3), dtype=np.uint8)
+            # features = np.zeros((max_x + 2*borderSize, max_y+ 2*borderSize, 3), dtype=np.uint8)
             features = np.zeros(
-                (imgRatio + 2*borderSize, imgRatio + 2*borderSize, 3), dtype=np.uint8)
+                (imgRatio + 2 * borderSize, imgRatio + 2 * borderSize, 3), dtype=np.uint8)
             for frame in data:
                 im = cv2.copyMakeBorder(cv2.cvtColor(features, cv2.COLOR_BGR2RGB), top=borderSize, bottom=borderSize,
                                         left=borderSize, right=borderSize, borderType=cv2.BORDER_CONSTANT, value=value)
                 for x, y in frame:
-                    cv2.circle(im, (int((x - min_x)*imgRatio),
-                               int((y - min_y)*imgRatio)), 1, (255, 255, 255), -1)
+                    cv2.circle(im, (int((x - min_x) * imgRatio),
+                                    int((y - min_y) * imgRatio)), 1, (255, 255, 255), -1)
                 images.append([plt.imshow(im, animated=True)])
-            ani = animation.ArtistAnimation(fig, images, interval=(1/fps)*1000, blit=True,
+            ani = animation.ArtistAnimation(fig, images, interval=(1 / fps) * 1000, blit=True,
                                             repeat_delay=1000)
             if saveTo:
                 ani.save(saveTo, writer='imagemagick')
@@ -434,6 +426,7 @@ class FeatureizedSample():
             self.__dict__.update(pickle.load(file))
 
 
+# Currently not used in the pipeline, is a "nice to have" feature
 def visualizeSamples(folder):
     """
     visualize positive and negative samples from a folder.
@@ -450,6 +443,6 @@ def visualizeSamples(folder):
     # put whole path
     random.shuffle(sampleFiles)
     for sampleFile in sampleFiles:
-        sample = FeatureizedSample()
+        sample = FeaturedSample()
         sample.load(sampleFile)
         sample.visualize()

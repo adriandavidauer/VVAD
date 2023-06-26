@@ -76,7 +76,7 @@ while(True):
 
         if rb.is_full:
             y = model.predict(np.array([rb]))
-            s = sample.FeatureizedSample()
+            s = sample.FeaturedSample()
             s.data = np.copy(rb)
             s.label = y > 0.5
             s.featureType = featureType

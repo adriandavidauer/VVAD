@@ -1,18 +1,17 @@
-'''This module offers scripts to download bigger models on the fly from the official dlib-models repo on github(https://github.com/davisking/dlib-models)'''
-# System imports
-import os
-from pathlib import Path
-import urllib.request
+"""
+    This module offers scripts to download bigger models on the fly from the
+    official dlib-models repo on github(https://github.com/davisking/dlib-models)
+"""
 import bz2
 import errno
 import os
-
-
-# 3rd Party imports
-from tqdm import tqdm
+# System imports
+from pathlib import Path
 
 # local imports
 from vvadlrs3.utils.downloadUtils import download_url
+
+# 3rd Party imports
 
 # end file header
 

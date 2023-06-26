@@ -28,6 +28,6 @@ except:
 files = [pathlib.Path(os.path.join(currentFolder, file))
          for file in files]
 for file in files:
-    viz_sample = sample.FeatureizedSample()
+    viz_sample = sample.FeaturedSample()
     viz_sample.load(file)
     viz_sample.visualize()

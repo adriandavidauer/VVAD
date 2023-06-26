@@ -155,7 +155,7 @@ class hdf5DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
         _Y = self.Y[index*self.batch_size:(index+1)*self.batch_size]
 
         # Generate data
-        s = FeatureizedSample()
+        s = FeaturedSample()
         s.data = _X[0]
         s.label = _Y[0]
         s.k = _X[0].shape[0]
@@ -169,7 +169,7 @@ class hdf5DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
         # Generate data
         for i, data in enumerate(zip(_X, _Y)):
 
-            s = FeatureizedSample()
+            s = FeaturedSample()
             s.data = data[0]
             s.label = data[1]
             s.k = data[0].shape[0]
@@ -254,7 +254,7 @@ class DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
         # X : (n_samples, *dim, n_channels)
         'Generates data containing batch_size samples'
         # get dims once
-        s = FeatureizedSample()
+        s = FeaturedSample()
         s.load(batch[0])
         xInit = s.getData(imageSize=self.imageSize, num_steps=self.num_steps,
                           grayscale=self.grayscale, normalize=self.normalize)
@@ -266,7 +266,7 @@ class DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
         # Generate data
         for i, path in enumerate(batch):
 
-            s = FeatureizedSample()
+            s = FeaturedSample()
             s.load(path)
             #s.path = path
             # Store sample
@@ -979,7 +979,7 @@ def testModel(model_path, test_set_path, saveTo=None):
     y_percents = []
     xList = []
     for i, samplePath in enumerate(glob.glob(os.path.join(os.path.join(test_set_path, '**'), '*.pickle'))):
-        sample = FeatureizedSample()
+        sample = FeaturedSample()
         sample.load(samplePath)
         data = sample.getData(normalize=normalize,
                               imageSize=imageSize, num_steps=num_steps)
