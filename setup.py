@@ -1,6 +1,6 @@
-'''
+"""
 Installer for the vvad-lrs3-lib
-'''
+"""
 
 # System imports
 import os

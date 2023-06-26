@@ -1,6 +1,6 @@
-'''
+"""
 This is an experiment to analyze videos with different fps and feature_types
-'''
+"""
 
 # System imports
 import argparse

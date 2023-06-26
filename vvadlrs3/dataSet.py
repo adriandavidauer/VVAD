@@ -1307,7 +1307,7 @@ if __name__ == "__main__":
         #     print("Sample {}".format(c))
         #     sample.save("testSample.pickle")
         #     break
-        # loadedSample = FeatureizedSample()
+        # loadedSample = FeaturedSample()
         # loadedSample.load("testSample.pickle")
         # loadedSample.visualize()
 

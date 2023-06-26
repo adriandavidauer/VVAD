@@ -17,7 +17,7 @@ __author__ = 'Adrian Lubitz'
 __copyright__ = 'Copyright (c)2017, Blackout Technologies'
 
 
-def convert_samples(input_path, output_path='generatedImages', num=20):
+def convert_samples_to_images(input_path, output_path='generatedImages', num=20):
     """
     Takes a path to a folder of samples and converts a given number of randomly picked samples(pickle files)
     and converts them to png images and saves them in the given output path
@@ -52,4 +52,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    convert_samples(args.input_path, args.output_path, args.num)
+    convert_samples_to_images(args.input_path, args.output_path, args.num)

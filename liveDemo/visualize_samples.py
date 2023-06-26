@@ -1,6 +1,6 @@
-'''
+"""
 This is a live Demo using the webcam
-'''
+"""
 
 # System imports
 import os

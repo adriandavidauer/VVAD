@@ -1,4 +1,4 @@
-'''Script to calculate the Accuracy for a given set of samples(test set)'''
+"""Script to calculate the Accuracy for a given set of samples(test set)"""
 # System imports
 import argparse
 
@@ -25,9 +25,6 @@ if __name__ == "__main__":
 
     action.add_argument("-m", "--model_path",
                         help="Path to a model.", type=str)
-
-    # parser.add_argument(
-    #     "-r", "--recursive", help="traverse folders recursive for pickle files", action='store_true')
 
     args = parser.parse_args()
 
