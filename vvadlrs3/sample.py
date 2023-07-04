@@ -23,15 +23,15 @@ class FaceTracker:
     """
 
     def __init__(self, init_pos, internal_rect_oversize=0.2, relative=True):
-        """
-        initialize the tracker with an initial position of the face in the Image
+        """ initialize the tracker with an initial position of the face in the Image
 
-        :param init_pos: A bounding box for the initial face. Relative or absolute pixel values in format (x, y, w, h)
-        :type init_pos: list of floats
-        :param internal_rect_oversize: the percentage of which the initial
-        :type internal_rect_oversize: float
-        :param relative: relative or absolute pixel values
-        :type relative: boolean
+        Args:
+            init_pos (list of floats): A bounding box for the initial face. Relative or absolute pixel values in format (x, y, w, h)
+            internal_rect_oversize (float): the percentage of which the initial
+            relative (boolean): relative or absolute pixel values
+
+        Returns:
+            Nothing
         """
         if type(init_pos) == dlib.rectangle or type(init_pos) == dlib.drectangle:
             self.init_pos = (init_pos.tl_corner().x, init_pos.tl_corner(
@@ -43,11 +43,14 @@ class FaceTracker:
         self.relative = relative
 
     def getNextFace(self, image):
-        """
-        Returns the next FaceImage and the pos of the face in the original image Space
+        """Returns the next FaceImage and the pos of the face in the original image Space
 
-        :param image: openCV image in RGB format
-        :type image: openCV image
+        Args:
+            image (image): openCV image in RGB format
+
+        Returns:
+            face (image): next FaceImage
+            dInImage (array of int): Position of the face in the original image space
         """
         if self.tracker:
             # get x,y, w,h from tracker
@@ -104,10 +107,12 @@ class FaceFeatureGenerator:
         """
         init for the specific featureType
 
-        :param featureType: type of the feature map that should be returned by getFeatures()
-        :type featureType: String ["faceImage", "lipImage", "faceFeatures", "lipFeatures"]
-        :param shapeModelPath: path to the model for the shape_predictor
-        :type shapeModelPath: String
+        Args:
+            featureType (String ["faceImage", "lipImage", "faceFeatures", "lipFeatures"]): type of the feature map that should be returned by getFeatures()
+            shapeModelPath (String): path to the model for the shape_predictor
+
+        Returns:
+            Nothing
         """
         self.supportedFeatureTypes = [
             "faceImage", "lipImage", "faceFeatures", "lipFeatures", 'all', "allowfaceImage"]
@@ -129,6 +134,12 @@ class FaceFeatureGenerator:
     def getFeatures(self, image):
         """
         generates a feature map of the type given in the constructor
+
+        Args:
+            image (image): openCV image in RGB format
+
+        Returns:
+            feature (depends): Returns feature map depending on given feature Type (faceImage, lipImage, faceFeature, lipFeatures, all)
         """
         if self.featureType == "faceImage":
             return resizeAndZeroPadding(image, self.shape)
@@ -208,16 +219,12 @@ class FeaturedSample:
         """
         init
 
-        :param k: defines the temporal sliding window in frames
-        :type k: int
-        :param data: A list of featureVectors for this sample
-        :type data: List of numpy arrays
-        :param label: positive or negative Label
-        :type label: bool
-        :param type: the type of this sample for the specific approach
-        :type type: String out of ["faceImages", "mouthImages", "faceFeatures", "mouthFeatures"]
-        :param shape: the shape to which an Image should be scaled and zeroPadded
-        :type shape: tuple of ints
+            k (int): defines the temporal sliding window in frames
+            data (List of numpy arrays): A list of featureVectors for this sample
+            label (boolean): positive or negative Label
+            type (String out of ["faceImages", "mouthImages", "faceFeatures", "mouthFeatures"]): the type of this sample
+            for the specific approach
+            shape (Tuple of ints): the shape to which an Image should be scaled and zeroPadded
         """
         self.data = []
         self.label = None
@@ -230,15 +237,16 @@ class FeaturedSample:
 
     # @timeit
     def getData(self, imageSize=None, num_steps=None, grayscale=False, normalize=False):
-        """
-        returns tha feature map as a numpyarray
+        # TODO: Add description
+        """ DESCRIPTION MISSING
 
-        :param imageSize: size of the sample's images
-        :type imageSize: tuple of ints
-        :param num_steps: number of steps for the sample
-        :type num_steps: int
-        :param grayscale: decides wheater to use grayscale images or not
-        :type grayscale: bool
+        Args:
+            imageSize (Tuple of ints): size of the sample's images
+            num_steps (int): number of steps for the sample
+            grayscale (boolean): decides wheater to use grayscale images or not
+
+        Returns:
+            feature_map (numpy array): Return the feature map as a numpy array
         """
         # TODO assert imageSize is quadratic - Nope! not for lipImages - cv2.resize wont work - mayberesizeandpadding??
         if num_steps and num_steps < self.k:
@@ -277,20 +285,22 @@ class FeaturedSample:
         return np.array(outputArray)
 
     def _getDist(self, sample):
-        """
-        calcing the distance vectors for a sample
+        # ToDo check functionality and add RETURN value
+        """ calculating the distance vectors for a sample
 
-        :param sample: the sample we want the distances to be calculated
-        :type sample: numpy array
+        Args:
+            sample (numpy array): the sample we want the distances to be calculated
+
+        Returns:
+            outSample (unclear): Returns unclear data
         """
         outSample = np.empty(sample.shape)  # this sets the dtype to np.float64
         base = sample[0][0]
-        # print('SAMPLESHAPE: {}  -  should be (38, 68, 2)'.format(sample.shape))
-        # print("BASE for sample: {}".format(base))
+
         for frame_num, frame in enumerate(sample):
             newFrame = np.empty(frame.shape)
             for pos_num, pos in enumerate(frame):
-                # TODO: calc distance to base
+                # TODO: calculate distance to base
                 xdist = pos[0] - base[0]
                 ydist = pos[1] - base[1]
                 newFrame[pos_num] = [xdist, ydist]
@@ -298,8 +308,13 @@ class FeaturedSample:
         return outSample
 
     def _normalize(self, arr):
-        """
-        Normalizes the features of the the array to [-1, 1]. 
+        """ Normalizes the features of the array to [-1, 1].
+
+            Args:
+                arr (numpy array): array with features to normalize
+
+            Returns:
+                arr_norm (numpy array): numpy array with features normalized to [-1, 1]
         """
         arrMax = np.max(arr)
         arrMin = np.min(arr)
@@ -307,15 +322,30 @@ class FeaturedSample:
         return arr / absMax
 
     def getLabel(self):
-        """
-        returns the label as int
+        """ returns the label as int
+
+        Returns:
+            label (int): Returns label as integer value
         """
         return int(self.label)
 
     def generateSampleFromFixedFrames(self, k, frames, init_pos, label, featureType, shape, shapeModelPath=None,
-                                      dataAugmentation=False, relative=True):
+                                      relative=True):
+        #ToDo add description
+        """ Generates Sample from fixed frames without return value
+
+        Args:
+            k (int): defines the temporal sliding window in frames
+            frames ():
+            init_pos ():
+            label (boolean): positive or negative Label
+            featureType (String): type of the feature map that should be returned by getFeatures()
+            shape (Tuple of ints): the shape to which an Image should be scaled and zeroPadded
+            shapeModelPath (String): path to the model for the shape_predictor
+            relative (boolean): ??
+        """
         # assert len frames to k
-        # trackface from init_pos
+        # track face from init_pos
         self.label = label
         self.k = k
         self.featureType = featureType
@@ -324,7 +354,7 @@ class FeaturedSample:
         tracker = FaceTracker(init_pos, relative=relative)
         for x, image in enumerate(frames):
             face, boundingBox = tracker.getNextFace(image)
-            if boundingBox:  # check if tracker was successfull
+            if boundingBox:  # check if tracking was successful
                 self.data.append(ffg.getFeatures(face))
             else:
                 print("did not get a face for frame number {}".format(x))
@@ -332,16 +362,29 @@ class FeaturedSample:
 
     #KZ Find unused functions and delete them
     def generate_sample_from_buffer(self, sourcebuffer, k):
+        """ get another frame from sourcebuffer
+
+        Args:
+            sourcebuffer ():
+            k (int): defines the temporal sliding window in frames
+
+        Returns:
+            sample (any): returns False if sampleLength is smaller k otherwise returns a sample of length k
+
         """
-        just get another frame from sourcebuffer - returns False if sampleLngth is smaller k otherwise returns a sample of length k
-        """
-        pass  # is only needed for live data...see if I go there
+        pass
+        # is needed for live data and must be implemented
         # use a ringbuffer here
         # empty buffer if one frame is invalid(no face)
 
     def visualize(self, fps=25, saveTo=None, supplier="pyplot"):
-        """
-        visualize the sample depending on the featureType
+        """ visualize the sample depending on the featureType
+
+        Args:
+            fps (int): Frames per second
+            saveTo (String): Path to save the visualization to (Default: None)
+            supplier (String): Selection between "pyplot" and "opencv"
+
         """
         if "Image" in self.featureType:
             rc('animation', html='html5')
@@ -410,16 +453,20 @@ class FeaturedSample:
             plt.show()
 
     def save(self, path):
-        """
-        saves the sample to a pickle file - data is converted to a numpyArray first
+        """ saves the sample to a pickle file - data is converted to a numpyArray first
+
+        Args:
+            path (String): Path to save the file to
         """
         self.data = np.array(self.data)
         with open(path, 'wb') as file:
             pickle.dump(self.__dict__, file)
 
     def load(self, path):
-        """
-        loads from a pickle file
+        """ loads from a pickle file
+
+        Args:
+            path (String): Path to load the pickle file from
         """
         with open(path, 'rb') as file:
             self.__dict__.clear()
@@ -428,8 +475,10 @@ class FeaturedSample:
 
 # Currently not used in the pipeline, is a "nice to have" feature
 def visualizeSamples(folder):
-    """
-    visualize positive and negative samples from a folder.
+    """ visualize positive and negative samples from a folder.
+
+    Args:
+        folder (String): Path to folder where negative and positive samples are saved (positiveSamples/negativeSamples)
     """
     positiveFolder = os.path.join(folder, "positiveSamples")
     negativeFolder = os.path.join(folder, "negativeSamples")

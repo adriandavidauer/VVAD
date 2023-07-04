@@ -1,17 +1,10 @@
 """
 Utils for multiprocessing
 """
-# System imports
-import os
-import pathlib
-import argparse
-import shutil
-import time
-import pickle
-import glob
 # from collections import deque
 import multiprocessing
-
+# System imports
+import os
 
 # 3rd party imports
 
@@ -26,6 +19,14 @@ pool = multiprocessing.Pool()
 
 # positivesQueue, negativesQueue, getSamplesParams, dataset, semaphore
 def producer(dataset, getSamplesParams):
+    # ToDo: Add description
+    """
+    Args:
+        dataset ():??
+        getSamplesParams ():??
+
+    """
+
     dataset.debugPrint("started Producer for {}".format(getSamplesParams))
     for sample in dataset.getSamples(*getSamplesParams):
         # Put Samples
@@ -50,12 +51,22 @@ def producer(dataset, getSamplesParams):
 
 # There will be only one consumer, therefore it is thread safe enough
 def consumer(positivesFolder, negativesFolder, ratioPositives, ratioNegatives):
+    # ToDo: Add else case?
+    """
+
+    Args:
+        positivesFolder (): ??
+        negativesFolder (): ??
+        ratioPositives (): ??
+        ratioNegatives ():??
+
+    """
     print("started consumer")
     positiveCounter = 0
     negativeCounter = 0
     savedPositives = 0
     saveNegatives = 0
-    while(True):
+    while True:
         print("[CONSUMER] in loop")
         # check ratio and save Samples
         sem.acquire()
@@ -80,6 +91,7 @@ def consumer(positivesFolder, negativesFolder, ratioPositives, ratioNegatives):
 
 
 if __name__ == "__main__":
+    # ToDo: What is this test for?
     # TEST
     if not positivesQueue.empty():
         print("positivesQueue not empty???")

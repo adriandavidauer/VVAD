@@ -1,38 +1,33 @@
 """utils for videos"""
 
-# System imports
-import os
-import pathlib
-import argparse
-from multiprocessing import Process
-import shutil
-from collections import defaultdict
 import json
+# System imports
+from collections import defaultdict
 from pathlib import Path
-
 
 # 3rd party imports
 import cv2
 import dlib
 import numpy as np
-import matplotlib.pyplot as plt
-import yaml
 from dvg_ringbuffer import RingBuffer
+
 from vvadlrs3 import pretrained_models, sample, dlibmodels
-from vvadlrs3.utils.imageUtils import cropImage
 from vvadlrs3.dataSet import transformPointsToNumpy
+from vvadlrs3.utils.imageUtils import cropImage
 
 
 # local imports
 
 
 def getFramesfromVideo(video_path):
-    """
-    yields the frames from a video
+    """ yields the frames from a video
+
+    Args:
+        video_path (String): Path to the video file
     """
     success = True
     vidObj = cv2.VideoCapture(str(video_path))
-    while(success):
+    while success:
         success, image = vidObj.read()
         if not success:
             return
@@ -40,8 +35,7 @@ def getFramesfromVideo(video_path):
 
 
 def analyzeVideo(video_path, feature_type='faceImage', save_as_json=None):
-    """
-    returns a analysis of the video in the following format:
+    """ returns an analysis of the video in the following format:
 
     analysis = {
         video_path: path to the video
@@ -51,13 +45,13 @@ def analyzeVideo(video_path, feature_type='faceImage', save_as_json=None):
 
     }
 
-    :param video_path: path to the video file to analyze
-    :type video_path: 
-    :param feature_type: type of the features that should be used when creating samples.
-    :type feature_type: String ["faceImage", "lipImage", "faceFeatures", "lipFeatures"]
-    :param save_as_json: Path where to save the analysis as json file
-    :type save_as_json: String
-    :returns: analysis dict
+    Args:
+        video_path (String): path to the video file to analyze
+        feature_type (String): type of the features that should be used when creating samples. ["faceImage", "lipImage", "faceFeatures", "lipFeatures"]
+        save_as_json (String): Path where to save the analysis as json file
+
+    Returns:
+        analysis (dict):
     """
     analysis = {'video_path': video_path,
                 'feature_type': feature_type}
@@ -101,13 +95,6 @@ def analyzeVideo(video_path, feature_type='faceImage', save_as_json=None):
             rb.append(features)
             if rb.is_full:
                 y = model.predict(np.array([rb]))
-                ###TEST###REMOVE###
-                # s = sample.FeatureizedSample()
-                # s.label = bool(y > 0.5)
-                # s.data = np.array(rb)
-                # s.featureType = featureType
-                # s.visualize()
-                ####END OF TEST####
                 for x in range(i - (k-1), i):  # append to all involved frames
                     # cast to float64 to make it json serializable
                     frame_scores[x].append(np.float64(y[0, 0]))

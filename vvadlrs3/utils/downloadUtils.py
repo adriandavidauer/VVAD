@@ -1,4 +1,4 @@
-''' Utils for downloads '''
+""" Utils for downloads """
 
 # System imports
 from pathlib import Path
@@ -29,6 +29,12 @@ class DownloadProgressBar(tqdm):
 
 
 def download_url(url, output_path):
+    """ Download file from URL and save to output path
+
+    Args:
+        url (String): URL to video to download
+        output_path (String): Path to directory in which the downloaded file should be saved
+    """
     with DownloadProgressBar(unit='B', unit_scale=True,
                              miniters=1, desc=url.split('/')[-1]) as t:
         urllib.request.urlretrieve(

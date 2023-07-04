@@ -8,13 +8,11 @@ from scipy.interpolate import make_interp_spline, BSpline
 
 
 def visualizeHistory(history, path=None):
-    """
-    visualizes the accuracy and loss for training and validation
+    """ visualizes the accuracy and loss for training and validation
 
-    :param history: a history from the learninig process
-    :type history: dict
-    :param path: if set it saves the visualizations to that path
-    :type path: string
+    Args:
+        history (dict): a history from the learning process
+        path (String): if set it saves the visualizations to that path
     """
     loss_values = history['loss']
     val_loss_values = history['val_loss']
@@ -58,12 +56,15 @@ def visualizeHistory(history, path=None):
     plt.show()
 
 
-def calculateHumanAccuracy(mongoURL='mongodb://localhost:27017/', visualize=True, saveTo=None, consider='all'):
-    """
-    calculates the average accuracy and standard deviation on every sample
+def calculateHumanAccuracy(mongoURL='mongodb://localhost:27017/', saveTo=None, consider='all'):
+    # ToDo: complete implementation
+    """ calculates the average accuracy and standard deviation on every sample. Will fail if samples to consider
+    are not correct
 
-    :param mongoURL: the URL to the mongoDB holding the results
-    :type mongoURL: String 
+    Args:
+        mongoURL (String): the URL to the mongoDB holding the results
+        saveTo (String): default = None
+        consider (String): Selection of "pos", "neg", and "all", default = "all"
     """
     assert consider == 'all' or consider == 'neg' or consider == 'pos', 'consider can only be "all", "pos" or "neg"'
 
@@ -127,13 +128,14 @@ def calculateHumanAccuracy(mongoURL='mongodb://localhost:27017/', visualize=True
 
 
 def plotAccOverTimeSteps(histList, path=None, features=False):
-    """
-    plot the accuracy over different timeDistributed models with different numbers of timeSteps
+    # ToDo: Check description FEATURES
+    """ plot the accuracy over different timeDistributed models with different numbers of timeSteps
 
-    :param histList: a list of history files from the learninig process
-    :type histList: list of Strings
-    :param path: if set it saves the visualizations to that path
-    :type path: string
+    Args:
+        histList (list of Strings): a list of history files from the learning process
+        path (String): if set it saves the visualizations to that path
+        features (boolean): ?
+
     """
     x = []  # x shows the timesteps/frames used
     y = []  # y shows the reached maximum accuracy
@@ -162,7 +164,6 @@ def plotAccOverTimeSteps(histList, path=None, features=False):
     # 300 represents number of points to make between T.min and T.max
     x_new = np.linspace(min(x), max(x), 300)
 
-    #print("X.SHAPE: {}".format(x.shape))
     spl = make_interp_spline(x, y, k=3)  # BSpline object
     y_smooth = spl(x_new)
 
@@ -177,13 +178,13 @@ def plotAccOverTimeSteps(histList, path=None, features=False):
 
 
 def plotAccOverImagesize(histList, path=None):
-    """
-    plot the accuracy over one timeDistributed models with different image sizes
+    # ToDo: Add checks (generic) for existing path??
+    """ plot the accuracy over one timeDistributed models with different image sizes
 
-    :param histList: a list of history files from the learninig process
-    :type histList: list of Strings
-    :param path: if set it saves the visualizations to that path
-    :type path: string
+    Args:
+        histList (list of String): a list of history files from the learning process
+        path (String): if set, it saves the visualizations to that provided path
+
     """
     x = []  # x shows the timesteps/frames used
     y = []  # y shows the reached maximum accuracy
@@ -223,6 +224,7 @@ def plotAccOverImagesize(histList, path=None):
 
 
 def plotVideoAnalysis(analysis, path=None, show=True):
+    # ToDo: Check code and add description
 
     plt.title('Mean predictions')
     plt.xlabel('seconds')

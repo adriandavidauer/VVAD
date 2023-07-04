@@ -292,7 +292,7 @@ class Sample():
 '''
 
 
-class DataSet():
+class DataSet:
     """
     This class handles everything involved with the datasets.
     From creation and downloading over cleaning and balancing to converting and displaying.
