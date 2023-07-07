@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+site_name: VVAD-LRS3 documentation
+repo_url: https://github.com/adrianlubitz/VVAD
+repo_name: adrianlubitz/VVAD
+
+nav:
+  - Index: index.md
+  - Home: getting-started.md
+  - Test: test.md
+  - Getting Started: getting-started.md
+  - Human Accuracy: human-accuracy.md
+  - VVAD LRS3:
+      - vvadlrs3/index.md
+      - Utils: vvad-lrs3-utils.md
+      - Samples: vvad-lrs3-samples.md
+      - Dataset: vvad-lrs3-dataset.md
+      - Cluster: vvad-lrs3-cluster.md
+      - Models: vvad-lrs3-models.md
+  - WildVVAD:
+      - Models: wildvvad-models.md
+      - Dataset: wildvvad-dataset.md
+  - Release Notes: release-notes.md
+  - About: about.md
+  - Licenses: licenses.md
+
+theme:
+  name: material
+  palette:
+    primary: indigo
+  icon:
+    repo: material/robot-happy
+
+plugins:
+  - mkdocstrings
+  - git-authors
+  - git-committers:
+      repository: adrianlubitz/VVAD
+      branch: maintenance/01_remove-unused-code
