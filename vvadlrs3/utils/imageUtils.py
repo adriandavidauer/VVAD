@@ -1,11 +1,6 @@
 """utils for images"""
 
 # System imports
-import os
-import pathlib
-import argparse
-from multiprocessing import Process
-import shutil
 
 # 3rd party imports
 import cv2
@@ -75,6 +70,7 @@ def resizeAndZeroPadding(image, shape):
     image = cv2.copyMakeBorder(image,0,heightDelta,0,widthDelta,cv2.BORDER_CONSTANT,value=[0,0,0])
     #image = np.pad(image, [(0, heightDelta), (0, widthDelta)], 'constant')
     assert min([heightDelta, widthDelta]) == 0, "Padding must only be aplied on one side. widthDelta: {}, heightDelta: {}".format(widthDelta, heightDelta)
+    # ToDo: needed when in test case?
     assert image.shape[0] == shape[1], "Desired height was {} transformed to {}".format(shape[1], image.shape[0])
     assert image.shape[1] == shape[0], "Desired width was {} transformed to {}".format(shape[0], image.shape[1])
 

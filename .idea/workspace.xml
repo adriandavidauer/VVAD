@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="30b4d92d-1d68-4d00-81b0-e906de24ce5b" name="Changes" comment="Commit changes">
+      <change afterPath="$PROJECT_DIR$/testing/unit-tests/utils/test_downloadUtils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testing/unit-tests/utils/test_imageUtils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testing/unit-tests/utils/test_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/downloadUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/downloadUtils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/imageUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/imageUtils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/multiprocessingUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/multiprocessingUtils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/videoUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/videoUtils.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="maintenance/01_remove-unused-code" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2SL3iu3HgYuEJwyawIfHNwvfZmZ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Python tests.Unittests for test_videoUtils.TestVideoUtils.test_analyze_video">
+    <configuration name="Python tests for test_downloadUtils.TestDownloadUtils.test_download_url" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="VVAD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing/unit-tests/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_downloadUtils.TestDownloadUtils.test_download_url&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test_timeUtils.TestTimeUtils.test_timeit" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="VVAD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing/unit-tests/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_timeUtils.TestTimeUtils.test_timeit&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test_videoUtils.TestVideoUtils.test_analyze_video" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="VVAD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing/unit-tests/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_videoUtils.TestVideoUtils.test_analyze_video&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python tests.Unittests for test_timeUtils.TestTimeUtils.test_timeit" />
+      <item itemvalue="Python tests.Unittests for test_videoUtils.TestVideoUtils.test_analyze_video" />
+      <item itemvalue="Python tests.Python tests for test_downloadUtils.TestDownloadUtils.test_download_url" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Unittests for test_videoUtils.TestVideoUtils.test_analyze_video" />
+        <item itemvalue="Python tests.Python tests for test_downloadUtils.TestDownloadUtils.test_download_url" />
+        <item itemvalue="Python tests.Unittests for test_timeUtils.TestTimeUtils.test_timeit" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="30b4d92d-1d68-4d00-81b0-e906de24ce5b" name="Changes" comment="" />
+      <created>1688912166066</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1688912166066</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Commit changes">
+      <created>1688912229677</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1688912229677</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Commit changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit changes" />
+  </component>
+</project>
