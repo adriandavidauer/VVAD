@@ -1,26 +1,19 @@
 """utils for videos"""
 
-# System imports
-import os
-import pathlib
-import argparse
-from multiprocessing import Process
-import shutil
-from collections import defaultdict
 import json
+# System imports
+from collections import defaultdict
 from pathlib import Path
-
 
 # 3rd party imports
 import cv2
 import dlib
 import numpy as np
-import matplotlib.pyplot as plt
-import yaml
 from dvg_ringbuffer import RingBuffer
+
 from vvadlrs3 import pretrained_models, sample, dlibmodels
-from vvadlrs3.utils.imageUtils import cropImage
 from vvadlrs3.dataSet import transformPointsToNumpy
+from vvadlrs3.utils.imageUtils import cropImage
 
 
 # local imports
@@ -32,7 +25,7 @@ def getFramesfromVideo(video_path):
     """
     success = True
     vidObj = cv2.VideoCapture(str(video_path))
-    while(success):
+    while success:
         success, image = vidObj.read()
         if not success:
             return
