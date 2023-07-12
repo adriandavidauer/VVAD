@@ -39,15 +39,17 @@ from vvadlrs3.utils.timeUtils import *
 __author__ = "Adrian Lubitz"
 __copyright__ = "Copyright (c)2017, Blackout Technologies"
 
+"""
+class "Sample" is deprecated
 
 class Sample():
-    """
+    
     DEPRECATED: use FeatureizedSample in the future
     This class represents a Sample(Kind of a raw sample which can be transformed into a more specific sample for different approaches)
-    """
+    
 
     def __init__(self, data, label, config, shapeModelPath):
-        """
+        
         FRAMERATE NEEDS TO BE ADJUSTED BEFORE!!!
         initilaize the sample with the data, label and the config(x, y, w, h of bounding box of the start frame)
 
@@ -57,7 +59,7 @@ class Sample():
         :type label: bool
         :param config: a dict holding the values for the bounding box in the start frame(x, y, w, h) and the frameRate
         :type config: dict of ints
-        """
+        
         self.data = data
         self.label = label
         self.config = config
@@ -74,25 +76,25 @@ class Sample():
             self.valid = True
 
     def isValid(self):
-        """
+        
         returns whether the Sample is valid or not
-        """
+        
         return self.valid
 
     def getData(self):
-        """
+        
         Return the data
-        """
+        
         return self.data
 
     def makeFeatures(self, classifier="HOG"):
-        """
+        
         DEPRECATED because time inefficent and not modular - can be used for analyzis, shouldnt be used later
         return the image of the face with a generator
         You can download a trained facial shape predictor from:
         (HOG)    http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2
         (CNN)   http://dlib.net/files/mmod_human_face_detector.dat.bz2
-        """
+        
         # TODO: maybe make splitted version for different features for realtime capability
         self.__faceImages = []
         self.__mouthImages = []
@@ -181,9 +183,9 @@ class Sample():
                 tracker.start_track(image, dInImage)
 
     def cropImage(self, image, drect):
-        """
+        
         crop the image with a drect
-        """
+        
         # make rect from drect
         rect = dlib.rectangle(drect)
         #print("ROI shape: {}\nlipRect: {}".format(image.shape, rect))
@@ -193,20 +195,20 @@ class Sample():
         return image[np.clip(rect.top(), 0, maxY):np.clip(rect.bottom(), 0, maxY), np.clip(rect.left(), 0, maxX):np.clip(rect.right(), 0, maxX)]
 
     def toImageSpace(self, ROIrect, rect):
-        """
+        
         returns a rectangle in the coordinate space of the whole image
 
         :param ROIrect: rectangle in Image Space, which contains the rect
         :type ROIrect: dlib.drectangle
         :param rect: rectangle in ROI Space
         :type ROI: dlib.drectangle
-        """
+        
         return dlib.drectangle(ROIrect.left() + rect.left(), ROIrect.top() + rect.top(), ROIrect.left() + rect.right(), ROIrect.top() + rect.bottom())
 
     def getMouthImages(self, classifier="HOG"):
-        """
+        
         return the image of the mouth
-        """
+        
         if self.__mouthImages and self.__classifier == classifier and self.isValid():
             return self.__mouthImages
         else:
@@ -217,9 +219,9 @@ class Sample():
                 raise Exception("Sample not valid")
 
     def getFaceFeatures(self, classifier="HOG"):
-        """
+        
         return the features of the face
-        """
+        
         if self.__faceFeatures and self.__classifier == classifier and self.isValid():
             return self.__faceFeatures
         else:
@@ -230,9 +232,9 @@ class Sample():
                 raise Exception("Sample not valid")
 
     def getMouthFeatures(self, classifier="HOG"):
-        """
+        
         return the features of the mouth
-        """
+        
         if self.__mouthFeatures and self.__classifier == classifier and self.isValid():
             return self.__mouthFeatures
         else:
@@ -243,9 +245,9 @@ class Sample():
                 raise Exception("Sample not valid")
 
     def getFaceImages(self, classifier="HOG"):
-        """
+        
         return the images of the face
-        """
+        
         if self.__faceImages and self.__classifier == classifier and self.isValid():
             return self.__faceImages
         else:
@@ -256,12 +258,12 @@ class Sample():
                 raise Exception("Sample not valid")
 
     def visualize(self, option="data"):
-        """
+        
         Visualize the sample of a video
 
         :param option: option can be of the following ["data", "faceImages", "mouthImages", "faceFeatures", "mouthFeatures"]
         :type boundingBox: String
-        """
+        
         if option not in ["data", "faceImages", "mouthImages", "faceFeatures", "mouthFeatures"]:
             raise Exception(
                 'Option given to Sample.visualize needs to one of the following ["data", "faceImages", "mouthImages", "faceFeatures", "mouthFeatures"]')
@@ -294,9 +296,9 @@ class Sample():
             # raise Exception("Not implemented yet!")
 
     def visualizeFaces(self):
-        """
+        
         Visualize the cropped face from the video
-        """
+        
         self.makeFeatures()
         if self.isValid():
             for face in self.__faceImages:
@@ -304,7 +306,7 @@ class Sample():
                 cv2.waitKey(int((1/self.fps)*1000))
         else:
             print("Sample is invalid")
-
+"""
 
 class DataSet():
     """
