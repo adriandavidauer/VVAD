@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30b4d92d-1d68-4d00-81b0-e906de24ce5b" name="Changes" comment="Utils framework, some tests integrated">
-      <change afterPath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_sample.py" afterDir="false" />
+    <list default="true" id="30b4d92d-1d68-4d00-81b0-e906de24ce5b" name="Changes" comment="Frames for dataSet tests">
+      <change beforePath="$PROJECT_DIR$/.idea/VVAD.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VVAD.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_sample.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vvadlrs3/dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/dataSet.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,29 +30,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/VVAD/testing/unit-tests/data-and-models/testData",
+    "settings.editor.selected.configurable": "advanced.settings"
   }
-}</component>
-  <component name="RunManager" selected="Python tests.Unittests for test_sample.TestVisualizeSamples.test_visualize_samples">
-    <configuration name="Python tests for test_downloadUtils.TestDownloadUtils.test_download_url" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="VVAD" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing/unit-tests/utils" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_downloadUtils.TestDownloadUtils.test_download_url&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Unittests for test_sample.TestVisualizeSamples.test_visualize_samples" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\VVAD\testing\unit-tests\data-and-models\testData" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python tests.Unittests for test_dataSet.TestDataSet.test_fail_get_txt_files">
+    <configuration name="Unittests for test_dataSet.TestDataSet.test_fail_get_txt_files" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -60,50 +54,80 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_sample.TestVisualizeSamples.test_visualize_samples&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_fail_get_txt_files&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_timeUtils.TestTimeUtils.test_timeit" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_dataSet.TestDataSet.test_get_no_pause_length" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing/unit-tests/utils" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing/unit-tests/data-and-models" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_timeUtils.TestTimeUtils.test_timeit&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_get_no_pause_length&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_videoUtils.TestVideoUtils.test_analyze_video" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_dataSet.TestDataSet.test_get_pause_length" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing/unit-tests/utils" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing/unit-tests/data-and-models" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_videoUtils.TestVideoUtils.test_analyze_video&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_get_pause_length&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test_dataSet.TestDataSet.test_get_second_from_frame" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="VVAD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing/unit-tests/data-and-models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_get_second_from_frame&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test_dataSet.TestDataSet.test_get_txt_files" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="VVAD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing/unit-tests/data-and-models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_get_txt_files&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python tests.Unittests for test_sample.TestVisualizeSamples.test_visualize_samples" />
-      <item itemvalue="Python tests.Unittests for test_timeUtils.TestTimeUtils.test_timeit" />
-      <item itemvalue="Python tests.Unittests for test_videoUtils.TestVideoUtils.test_analyze_video" />
-      <item itemvalue="Python tests.Python tests for test_downloadUtils.TestDownloadUtils.test_download_url" />
+      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_fail_get_txt_files" />
+      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_no_pause_length" />
+      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_pause_length" />
+      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_txt_files" />
+      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_second_from_frame" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Unittests for test_sample.TestVisualizeSamples.test_visualize_samples" />
-        <item itemvalue="Python tests.Unittests for test_videoUtils.TestVideoUtils.test_analyze_video" />
-        <item itemvalue="Python tests.Python tests for test_downloadUtils.TestDownloadUtils.test_download_url" />
-        <item itemvalue="Python tests.Unittests for test_timeUtils.TestTimeUtils.test_timeit" />
+        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_fail_get_txt_files" />
+        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_txt_files" />
+        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_no_pause_length" />
+        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_pause_length" />
+        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_second_from_frame" />
       </list>
     </recent_temporary>
   </component>
@@ -130,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689166959617</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Frames for dataSet tests">
+      <created>1689170693745</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1689170693745</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,6 +178,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Commit changes" />
     <MESSAGE value="Utils framework, some tests integrated" />
-    <option name="LAST_COMMIT_MESSAGE" value="Utils framework, some tests integrated" />
+    <MESSAGE value="Frames for dataSet tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Frames for dataSet tests" />
   </component>
 </project>
