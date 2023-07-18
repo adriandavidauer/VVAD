@@ -4,11 +4,10 @@ import vvadlrs3.sample as sample
 import tempfile
 from pathlib import Path
 
+
 class TestFaceTracker(unittest.TestCase):
     def test_get_next_face(self):
         pass
-
-
 
 
 class TestFaceFeatureGenerator(unittest.TestCase):
@@ -48,13 +47,18 @@ class TestFaceFeatureGenerator(unittest.TestCase):
             self.assertEqual(data_dir.exists(), True)
             # ToDo check if file is empty
 
-
     def test_load_existing_pickle(self):
-        pass
+        # ToDo: Check exception type
+        sample_path = "./testData/testSample.pickle"
+        try:
+            sample.FeatureizedSample.load(sample_path)
+        except ValueError:
+            self.fail("ValueError raised unexpectedly!")
 
     def test_load_non_existing_pickle(self):
-        pass
-
+        # ToDo: Check exception type
+        sample_path = "./testData/noTestSample.pickle"
+        self.assertRaises(ValueError, sample.FeatureizedSample.load(sample_path))
 
 
 class TestFeaturedSample(unittest.TestCase):

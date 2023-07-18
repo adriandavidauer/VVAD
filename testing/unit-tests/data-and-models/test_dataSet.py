@@ -1,5 +1,7 @@
 import unittest
 
+import vvadlrs3.dataSet as dSet
+
 class TestDataSet(unittest.TestCase):
     def test_download_LRS3_sample_from_yt(self):
         pass
@@ -17,7 +19,11 @@ class TestDataSet(unittest.TestCase):
         pass
 
     def test_get_txt_files(self):
-        pass
+        for textfile in dSet.DataSet.getTXTFiles(self, path="./testData/getTXT"):
+            self.assertTrue(str(textfile).__contains__("myTXT.txt"))
+
+    def test_fail_get_txt_files(self):
+        self.assertRaises(dSet.WrongPathException, callable=dSet.DataSet.getTXTFiles(self, path="./testData/getNoTXTs"))
 
     # ToDo: check if same as test_get_all_positive_samples
     def test_get_positive_samples(self):
@@ -36,14 +42,20 @@ class TestDataSet(unittest.TestCase):
     def test_analyze_positives(self):
         pass
 
-    def test_get_fram_from_second(self):
-        pass
+    def test_get_frame_from_second(self):
+        self.assertEqual(dSet.DataSet.getFrameFromSecond(self, second=15.5, fps=25), 387.5)
 
     def test_get_second_from_frame(self):
-        pass
+        self.assertEqual(dSet.DataSet.getSecondFromFrame(self, frame=1500, fps=25), 60.0)
 
     def test_get_pause_length(self):
-        pass
+        data_set = dSet.DataSet(maxPauseLength=0.5, shapeModelPath=None, debug=True, sampleLength=25, shape=None, path=None, fps=25)
+        print(data_set.getPauseLength(txtFile="./testData/pause_example.txt"))
+        self.assertEqual(data_set.getPauseLength(txtFile="./testData/pause_example.txt"), [(26.14, 27.64), (17.04, 18.01), (11.29, 12.0), (3.55, 5.63)])
+
+    def test_get_no_pause_length(self):
+        data_set=dSet.DataSet(maxPauseLength=1.5, shapeModelPath=None, debug=True, sampleLength=25, shape=None, path=None, fps=25)
+        self.assertEqual(data_set.getPauseLength(txtFile="./testData/no_pause_example.txt"), [])
 
     def test_get_sample_configs_for_positive_samples(self):
         pass
@@ -63,7 +75,7 @@ class TestDataSet(unittest.TestCase):
     def test_grap_from_video(self):
         pass
 
-    def test_grapp_from_disk(self):
+    def test_grap_from_disk(self):
         pass
 
 class TestSaveBalancedDataset(unittest.TestCase):
