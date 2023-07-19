@@ -5,7 +5,7 @@ attrs==19.1.0
 backcall==0.1.0
 backports.ssl-match-hostname==3.7.0.1
 bleach==3.1.0
-btnexus-node-python==3.2.2
+btnexus-node-python==3.2.5
 certifi==2018.11.29
 chardet==3.0.4
 cycler==0.10.0
