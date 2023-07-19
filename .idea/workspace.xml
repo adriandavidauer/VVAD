@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30b4d92d-1d68-4d00-81b0-e906de24ce5b" name="Changes" comment="change requirements.txt" />
+    <list default="true" id="30b4d92d-1d68-4d00-81b0-e906de24ce5b" name="Changes" comment="adjust mkl-fft requirements.txt">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -189,7 +191,21 @@
       <option name="project" value="LOCAL" />
       <updated>1689775864227</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="change requirements.txt">
+      <created>1689775974880</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1689775974880</updated>
+    </task>
+    <task id="LOCAL-00010" summary="adjust mkl-fft requirements.txt">
+      <created>1689776158350</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1689776158350</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -212,6 +228,7 @@
     <MESSAGE value="Add CI workflow" />
     <MESSAGE value="Add CI workflow (adjustments)" />
     <MESSAGE value="change requirements.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="change requirements.txt" />
+    <MESSAGE value="adjust mkl-fft requirements.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="adjust mkl-fft requirements.txt" />
   </component>
 </project>
