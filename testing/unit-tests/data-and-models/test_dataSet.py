@@ -1,3 +1,4 @@
+import os.path
 import unittest
 
 import vvadlrs3.dataSet as dSet
@@ -5,8 +6,20 @@ import vvadlrs3.dataSet as dSet
 
 class TestDataSet(unittest.TestCase):
     def test_download_LRS3_sample_from_yt(self):
-        # ToDo: Test must be checked again on Linux
-        dSet.DataSet.downloadLRS3SampleFromYoutube(self, path="./testData/video/00j9bKdiOjk")
+        folder_path = "./testData/video/00j9bKdiOjk"
+        file_path = "./testData/video/00j9bKdiOjk/00j9bKdiOjk.3gpp"
+        data_set = dSet.DataSet(shapeModelPath="",
+                                debug=True,
+                                sampleLength=0,
+                                maxPauseLength=1.5,
+                                shape=None,
+                                path=None,
+                                fps=25,
+                                multiprocessing=False
+                                )
+        data_set.downloadLRS3SampleFromYoutube(path=folder_path)
+        self.assertTrue(os.path.exists(file_path))
+        os.remove(file_path)
 
     def test_download_LRS3_from_yt_wrong_path(self):
         self.assertRaises(dSet.WrongPathException, callable=dSet.DataSet.downloadLRS3SampleFromYoutube(self,
@@ -33,7 +46,17 @@ class TestDataSet(unittest.TestCase):
 
     # ToDo: check if same as test_get_all_positive_samples
     def test_get_positive_samples(self):
-        pass
+        #ToDo somehow wrong
+        folder_path = "./testData/video/00j9bKdiOjk/"
+        file_path = "./testData/video/00j9bKdiOjk/00j9bKdiOjk.3gpp"
+
+        #data_set.downloadLRS3SampleFromYoutube(path=folder_path)
+        dSet.DataSet.getPositiveSamples(path=folder_path, dryRun=False)
+        print(dSet.DataSet.getPositiveSamples(path=folder_path, dryRun=True))
+        for sample in dSet.DataSet.getPositiveSamples(folder_path, True):
+            print("hey")
+            yield sample
+        print("[getAllPSamples] Folder {} done".format(folder_path))
 
     # ToDo: check if same as test_convert_all_fps
     def test_convert_fps(self):
@@ -56,14 +79,14 @@ class TestDataSet(unittest.TestCase):
 
     def test_get_pause_length(self):
         data_set = dSet.DataSet(maxPauseLength=0.5, shapeModelPath=None, debug=True, sampleLength=25, shape=None,
-                                path=None, fps=25)
+                                path=None, fps=25, multiprocessing=False)
         print(data_set.getPauseLength(txtFile="./testData/pause_example.txt"))
         self.assertEqual(data_set.getPauseLength(txtFile="./testData/pause_example.txt"),
                          [(26.14, 27.64), (17.04, 18.01), (11.29, 12.0), (3.55, 5.63)])
 
     def test_get_no_pause_length(self):
         data_set = dSet.DataSet(maxPauseLength=1.5, shapeModelPath=None, debug=True, sampleLength=25, shape=None,
-                                path=None, fps=25)
+                                path=None, fps=25, multiprocessing=False)
         self.assertEqual(data_set.getPauseLength(txtFile="./testData/no_pause_example.txt"), [])
 
     def test_get_sample_configs_for_positive_samples(self):

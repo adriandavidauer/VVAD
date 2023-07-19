@@ -5,6 +5,7 @@ This Module creates a dataset for the purpose of the visual speech detection sys
 import os
 import pathlib
 import argparse
+import sys
 from multiprocessing import Process
 import shutil
 import time
@@ -14,6 +15,7 @@ import glob
 import multiprocessing
 import random
 from pathlib import Path, PurePath
+from importlib import import_module
 
 # 3rd party imports
 from pytube import YouTube
@@ -28,7 +30,7 @@ import h5py
 
 # local imports
 from vvadlrs3.utils.imageUtils import *
-from vvadlrs3.utils.multiprocessingUtils import *
+#from vvadlrs3.utils.multiprocessingUtils import *
 from vvadlrs3.sample import *
 from vvadlrs3.utils.timeUtils import *
 
@@ -319,7 +321,7 @@ class DataSet():
     """
 
     # TODO: add path to Parameters
-    def __init__(self, shapeModelPath, debug, sampleLength, maxPauseLength, shape, path, fps):
+    def __init__(self, shapeModelPath, debug, sampleLength, maxPauseLength, shape, path, fps, multiprocessing):
         """
         Just initializing an empty dataset
         """
@@ -333,6 +335,15 @@ class DataSet():
         self.fps = fps
         self.shape = shape
         self.dropouts = 0
+        self.multiprocessing = False
+
+        if multiprocessing:
+            self.multiprocessing = True
+            self.importedModule = import_module('vvadlrs3.utils.multiprocessingUtils')
+
+            # ---
+            if 'vvadlrs3.utils.multiprocessingUtils' in sys.modules:
+                print("hurray")
 
     def debugPrint(self, debugMsg):
         """
@@ -350,6 +361,7 @@ class DataSet():
         """
 
         currentFolder = os.path.abspath(path)
+        print("current folder is: ", currentFolder)
         # print (currentFolder)
         # open folder and get a list of files
         try:
@@ -364,7 +376,6 @@ class DataSet():
                 textFile = open(file)
                 # hat anscheinend noch ein return mit drinne
                 ref = textFile.readlines()[2][7:].rstrip()
-                # print(ref)
                 break
 
         # Prep ref checking
@@ -395,20 +406,26 @@ class DataSet():
                 print("tempPath:", self.tempPath)
                 self.tempPath = pathlib.Path(self.tempPath)
                 # if ready rename the file to the real name(will be the ref)
-                print("tempPath:", self.tempPath)
                 os.rename(self.tempPath, str(
                     videoFileWithoutExtension) + self.tempPath.resolve().suffix)
 
-            p = Process(target=timeoutableDownload,
-                        args=(videoUrl, currentFolder))
+            if self.multiprocessing:
+                p = Process(target=timeoutableDownload,
+                            args=(videoUrl, currentFolder))
 
-            p.start()
-            p.join(600)
-            if p.is_alive():
-                print("Timeout for Download reached!")
-                # Terminate
-                p.terminate()
-                p.join()
+                print("name is: ", __name__)
+                if __name__ == '__main__':
+                    multiprocessing.freeze_support()
+                    print("in if")
+                    p.start()
+                    p.join(600)
+                    if p.is_alive():
+                        print("Timeout for Download reached!")
+                        # Terminate
+                        p.terminate()
+                        p.join()
+            else:
+                timeoutableDownload(videoUrl, currentFolder)
 
     # TODO add option if you want to use whats there or download if neccessary
     def getAllPSamples(self, path, **kwargs):
@@ -482,7 +499,9 @@ class DataSet():
         # for folder in path call cutTedVideo - need to extract the Video File first
         folders = list(os.walk(path, followlinks=True))[0][1]
         folders.sort()
+        print("download videos")
         for folder in folders:
+            print("Enter folder: ", folder)
             # Video file is the only not txt file
             currentFolder = os.path.abspath(os.path.join(path, folder))
             self.downloadLRS3SampleFromYoutube(currentFolder)
@@ -512,7 +531,9 @@ class DataSet():
         :type dryRun: boolean
         :returns: generator
         """
+        print("ghello")
         try:
+            print("videoPath: ", self.getVideoPathFromFolder(path))
             videoPath = self.getVideoPathFromFolder(path)
         except FileNotFoundError as e:
             self.debugPrint(e)
@@ -522,7 +543,7 @@ class DataSet():
 
         folder = os.path.dirname(videoPath)
         frameList = []  # list of configs    [startFrame, endFrame , x, y, w, h] x,y,w,h are relative pixels
-
+        print("framelist: ", frameList)
         # for every txt file
         for textFile in self.getTXTFiles(folder):
             frameList.extend(self.getSampleConfigsForPositiveSamples(textFile))
@@ -552,6 +573,7 @@ class DataSet():
             vidFps = vidObj.get(cv2.CAP_PROP_FPS)
         count = 0
         # sampleList = []
+        print("framelist: ", frameList)
         for sampleConfig in frameList:
             if not self.checkSampleLength(self.getSecondFromFrame(sampleConfig[0]),
                                           self.getSecondFromFrame(sampleConfig[1])):
@@ -1045,12 +1067,16 @@ def saveBalancedDataset(dataset, saveTo, featureType, shape, path=None, ratioPos
     # start consumer in Thread
     p = multiprocessing.Process(target=consumer, args=(
         positivesFolder, negativesFolder, ratioPositives, ratioNegatives))
-    p.start()
-    # Pool.join()
-    pool.close()
-    pool.join()
-    # kill consumer
-    p.terminate()
+    print("In multiprocess")
+
+    if __name__ == '__main__':
+        multiprocessing.freeze_support()
+        p.start()
+        # Pool.join()
+        pool.close()
+        pool.join()
+        # kill consumer
+        p.terminate()
 
     self.debugPrint(
         "[saveBalancedDataset] Saved balanced dataset! {} samples were droped.".format(dataset.dropouts))
