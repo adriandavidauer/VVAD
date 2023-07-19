@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30b4d92d-1d68-4d00-81b0-e906de24ce5b" name="Changes" comment="adjust mkl-random requirements.txt">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/python-testing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/python-testing.yml" afterDir="false" />
+    <list default="true" id="30b4d92d-1d68-4d00-81b0-e906de24ce5b" name="Changes" comment="stick to 3.7 first">
+      <change beforePath="$PROJECT_DIR$/requirementsBeforeKerasUpdate.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirementsBeforeKerasUpdate.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689781420220</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="stick to 3.7 first">
+      <created>1689781616097</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1689781616097</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -237,6 +244,7 @@
     <MESSAGE value="change requirements.txt" />
     <MESSAGE value="adjust mkl-fft requirements.txt" />
     <MESSAGE value="adjust mkl-random requirements.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="adjust mkl-random requirements.txt" />
+    <MESSAGE value="stick to 3.7 first" />
+    <option name="LAST_COMMIT_MESSAGE" value="stick to 3.7 first" />
   </component>
 </project>
