@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30b4d92d-1d68-4d00-81b0-e906de24ce5b" name="Changes" comment="Add CI workflow">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/python-testing" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="30b4d92d-1d68-4d00-81b0-e906de24ce5b" name="Changes" comment="change requirements.txt" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -178,7 +175,21 @@
       <option name="project" value="LOCAL" />
       <updated>1689775353224</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Add CI workflow (adjustments)">
+      <created>1689775592542</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1689775592542</updated>
+    </task>
+    <task id="LOCAL-00008" summary="change requirements.txt">
+      <created>1689775864227</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1689775864227</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -199,6 +210,8 @@
     <MESSAGE value="Insert examples and add tests for file reading" />
     <MESSAGE value="Added sample and dataset tests" />
     <MESSAGE value="Add CI workflow" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add CI workflow" />
+    <MESSAGE value="Add CI workflow (adjustments)" />
+    <MESSAGE value="change requirements.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="change requirements.txt" />
   </component>
 </project>
