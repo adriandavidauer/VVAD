@@ -378,7 +378,7 @@ class DataSet():
                     print("Video already downloaded")
                     alreadyDownloaded = True
                 else:
-                    print("Resatarting download of unfinished video")
+                    print("Restarting download of unfinished video")
                     os.remove(file)
                 break
         if not alreadyDownloaded:
@@ -387,16 +387,21 @@ class DataSet():
             # download in a temp file (will be the title of the Video in youtube)
             self.tempPath = None
 
+            global timeoutableDownload
+
             def timeoutableDownload(videoUrl, currentFolder):
                 self.tempPath = YouTube(
                     videoUrl).streams.first().download(currentFolder)
+                print("tempPath:", self.tempPath)
                 self.tempPath = pathlib.Path(self.tempPath)
                 # if ready rename the file to the real name(will be the ref)
+                print("tempPath:", self.tempPath)
                 os.rename(self.tempPath, str(
                     videoFileWithoutExtension) + self.tempPath.resolve().suffix)
 
             p = Process(target=timeoutableDownload,
                         args=(videoUrl, currentFolder))
+
             p.start()
             p.join(600)
             if p.is_alive():
@@ -468,7 +473,7 @@ class DataSet():
 
     def downloadLRS3(self, path):
         """
-        downloading corrosponding video data for the LRS3 dataset from youtube and saving the faceFrames in the corrosponding folder
+        downloading corresponding video data for the LRS3 dataset from youtube and saving the faceFrames in the corrosponding folder
 
         :param path: Path to the DataSet folder containing folders, which contain txt files. (For Example the pretrain folder)
         :type path: String
