@@ -1,6 +1,12 @@
-name: Python package
+# This workflow will trigger unit tests
 
-on: [push]
+name: Test Python Project
+
+on:
+  push:
+    branches:
+      - main
+      - 02_establish-py-unit-tests
 
 jobs:
   build:

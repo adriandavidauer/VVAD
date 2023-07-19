@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30b4d92d-1d68-4d00-81b0-e906de24ce5b" name="Changes" comment="Added sample and dataset tests">
+    <list default="true" id="30b4d92d-1d68-4d00-81b0-e906de24ce5b" name="Changes" comment="Add CI workflow">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/python-testing" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/dataSet.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689749652443</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add CI workflow">
+      <created>1689775353224</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1689775353224</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -192,6 +198,7 @@
     <MESSAGE value="Frames for dataSet tests" />
     <MESSAGE value="Insert examples and add tests for file reading" />
     <MESSAGE value="Added sample and dataset tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added sample and dataset tests" />
+    <MESSAGE value="Add CI workflow" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add CI workflow" />
   </component>
 </project>
