@@ -149,7 +149,7 @@ def plotAccOverTimeSteps(histList, path=None, features=False):
             numTimesteps = int(shape.split(',')[0])
         else:
             raise ValueError(
-                "Couldn't read shape of history file '{}'".format(histFile))
+                "Couldn't read shape of history file '{}'".format(histPath))
         x.append(numTimesteps)
 
         # Extract corresponding accuracy
@@ -196,7 +196,7 @@ def plotAccOverImagesize(histList, path=None):
             imagesize = int(shape.split(',')[1])
         else:
             raise ValueError(
-                "Couldn't read shape of history file '{}'".format(histFile))
+                "Couldn't read shape of history file '{}'".format(histPath))
         x.append(imagesize)
 
         # Extract corresponding accuracy
