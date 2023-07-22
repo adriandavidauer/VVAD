@@ -47,4 +47,4 @@ jobs:
     steps:
       - name: Test with python unittest
         run: |
-          unittest
+          python -m unittest
