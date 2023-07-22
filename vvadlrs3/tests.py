@@ -1,3 +1,4 @@
+"""
 #system imports
 #from imutils import paths
 
@@ -129,3 +130,4 @@ if __name__ == "__main__":
 # #     image = resizeAndZeroPadding(image, (200, 200))
 # #     # cv2.imshow("", image)
 # #     # cv2.waitKey(0)
+"""

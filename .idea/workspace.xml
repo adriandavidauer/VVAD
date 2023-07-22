@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30b4d92d-1d68-4d00-81b0-e906de24ce5b" name="Changes" comment="fix ruff lint issues">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/python-testing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/python-testing.yml" afterDir="false" />
+    <list default="true" id="30b4d92d-1d68-4d00-81b0-e906de24ce5b" name="Changes" comment="use unittest instead of pytest">
+      <change afterPath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_data_and_models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/tests.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -241,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689786109404</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="use unittest instead of pytest">
+      <created>1689847222889</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1689847222889</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -270,6 +286,7 @@
     <MESSAGE value="exclude conda" />
     <MESSAGE value="change requirement operator" />
     <MESSAGE value="fix ruff lint issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix ruff lint issues" />
+    <MESSAGE value="use unittest instead of pytest" />
+    <option name="LAST_COMMIT_MESSAGE" value="use unittest instead of pytest" />
   </component>
 </project>
