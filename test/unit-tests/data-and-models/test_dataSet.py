@@ -20,8 +20,8 @@ class TestDataSet(unittest.TestCase):
                                      maxPauseLength=1.5,
                                      shape=None,
                                      path=None,
-                                     fps=25#,
-                                     #multiprocessing=False
+                                     fps=25,
+                                     multiprocessing=False
                                      )
 
     def test_download_LRS3_sample_from_yt(self):

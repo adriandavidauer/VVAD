@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Add package unittests for runner">
-      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" afterDir="false" />
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Small adjustments in file access">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
     </list>
@@ -54,7 +53,7 @@
       <recent name="C:\VVAD\test\unit-tests\utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_dataSet.TestDataSet">
+  <component name="RunManager" selected="Python tests.Unittests for test_dataSet.TestDataSet.test_download_LRS3_from_yt_wrong_path">
     <configuration name="Unittests for test_dataSet.TestDataSet (1)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -83,6 +82,20 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Unittests for test_dataSet.TestDataSet.test_download_LRS3_from_yt_wrong_path" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="VVAD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_download_LRS3_from_yt_wrong_path&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Unittests for test_dataSet.TestDataSet.test_download_LRS3_sample_from_yt" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -94,20 +107,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_download_LRS3_sample_from_yt&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Unittests for test_sample.TestFaceFeatureGenerator.test_is_valid" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="VVAD" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing/unit-tests/data-and-models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_sample.TestFaceFeatureGenerator.test_is_valid&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -129,16 +128,16 @@
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet (1)" />
       <item itemvalue="Python tests.Unittests in C:/VVAD/testing/unit-tests/data-and-models/test_dataSet.py" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet" />
+      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_download_LRS3_from_yt_wrong_path" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_download_LRS3_sample_from_yt" />
-      <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_is_valid" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_download_LRS3_from_yt_wrong_path" />
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet" />
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet (1)" />
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_download_LRS3_sample_from_yt" />
         <item itemvalue="Python tests.Unittests in C:/VVAD/testing/unit-tests/data-and-models/test_dataSet.py" />
-        <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_is_valid" />
       </list>
     </recent_temporary>
   </component>
@@ -270,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690126157633</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Small adjustments in file access">
+      <created>1690126845981</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1690126845981</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -301,6 +307,7 @@
     <MESSAGE value="fix ruff lint issues" />
     <MESSAGE value="use unittest instead of pytest" />
     <MESSAGE value="Add package unittests for runner" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add package unittests for runner" />
+    <MESSAGE value="Small adjustments in file access" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small adjustments in file access" />
   </component>
 </project>
