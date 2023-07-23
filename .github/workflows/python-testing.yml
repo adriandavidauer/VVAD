@@ -47,4 +47,7 @@ jobs:
     steps:
       - name: Test with python unittest
         run: |
-          python -m unittest
+          # go to unittest directory
+          cd /test/unittests
+          # run unittests for data and models
+          python -m unittest discover -s data-and-models

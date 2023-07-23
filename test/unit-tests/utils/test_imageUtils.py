@@ -40,7 +40,7 @@ class TestImageUtils(unittest.TestCase):
     """
 
     def test_resize_and_zero_padding(self):
-        test_img_path = "./testData/imgUtils_image_example.jpg"
+        test_img_path = "testData/imgUtils_image_example.jpg"
         shape = (120, 150)
 
         new_img = imgUtils.resizeAndZeroPadding(load_local_img(test_img_path), shape)
