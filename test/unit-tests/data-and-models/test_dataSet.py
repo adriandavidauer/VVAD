@@ -15,8 +15,8 @@ class TestDataSet(unittest.TestCase):
                                      maxPauseLength=1.5,
                                      shape=None,
                                      path=None,
-                                     fps=25,
-                                     multiprocessing=False
+                                     fps=25#,
+                                     #multiprocessing=False
                                      )
 
     def test_download_LRS3_sample_from_yt(self):
@@ -25,8 +25,7 @@ class TestDataSet(unittest.TestCase):
         os.remove(self.video_file_path)
 
     def test_download_LRS3_from_yt_wrong_path(self):
-        self.assertRaises(dSet.WrongPathException, callable=self.data_set.DataSet.downloadLRS3SampleFromYoutube(self,
-                                                                                                                path="./testData/video/noVideoFolder"))
+        self.assertRaises(dSet.WrongPathException, callable=self.data_set.downloadLRS3SampleFromYoutube(path="./testData/video/noVideoFolder"))
 
     def test_get_all_positive_samples(self):
         pass
@@ -41,12 +40,12 @@ class TestDataSet(unittest.TestCase):
         pass
 
     def test_get_txt_files(self):
-        for textfile in self.data_set.DataSet.getTXTFiles(self, path="./testData/getTXT"):
+        for textfile in self.data_set.getTXTFiles(path="./testData/getTXT"):
             self.assertTrue(str(textfile).__contains__("myTXT.txt"))
 
     def test_fail_get_txt_files(self):
         self.assertRaises(dSet.WrongPathException,
-                          callable=self.data_set.DataSet.getTXTFiles(self, path="./testData/getNoTXTs"))
+                          callable=self.data_set.getTXTFiles(path="./testData/getNoTXTs"))
 
     # ToDo: check if same as test_get_all_positive_samples
     @unittest.expectedFailure
@@ -54,8 +53,8 @@ class TestDataSet(unittest.TestCase):
         # ToDo somehow wrong
 
         # data_set.downloadLRS3SampleFromYoutube(path=folder_path)
-        self.data_set.DataSet.getPositiveSamples(path=self.video_folder_path, dryRun=False)
-        print(self.data_set.DataSet.getPositiveSamples(path=self.video_folder_path, dryRun=True))
+        self.data_set.getPositiveSamples(path=self.video_folder_path, dryRun=False)
+        print(self.data_set.getPositiveSamples(path=self.video_folder_path, dryRun=True))
         for sample in dSet.DataSet.getPositiveSamples(self.video_folder_path, True):
             print("hey")
             yield sample
@@ -75,10 +74,10 @@ class TestDataSet(unittest.TestCase):
         pass
 
     def test_get_frame_from_second(self):
-        self.assertEqual(self.data_set.DataSet.getFrameFromSecond(self, second=15.5, fps=25), 387.5)
+        self.assertEqual(self.data_set.getFrameFromSecond(second=15.5, fps=25), 387.5)
 
     def test_get_second_from_frame(self):
-        self.assertEqual(self.data_set.DataSet.getSecondFromFrame(self, frame=1500, fps=25), 60.0)
+        self.assertEqual(self.data_set.getSecondFromFrame(frame=1500, fps=25), 60.0)
 
     def test_get_pause_length(self):
         self.data_set.maxPauseLength = 0.5
@@ -133,5 +132,6 @@ class TestMakeTestSet(unittest.TestCase):
         pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+    print("name", __name__)
     unittest.main()

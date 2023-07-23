@@ -1,11 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30b4d92d-1d68-4d00-81b0-e906de24ce5b" name="Changes" comment="use unittest instead of pytest">
-      <change afterPath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_data_and_models.py" afterDir="false" />
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="prepare docstring coverage actions">
+      <change afterPath="$PROJECT_DIR$/test/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/getTXT/myTXT.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/no_pause_example.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/pause_example.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/00j9bKdiOjk/00001.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/00j9bKdiOjk/00002.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/00j9bKdiOjk/00003.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/python-testing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/python-testing.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/testData/getTXT/myTXT.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/testData/no_pause_example.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/testData/pause_example.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/testData/video/00j9bKdiOjk/00001.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/testData/video/00j9bKdiOjk/00002.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/testData/video/00j9bKdiOjk/00003.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_data_and_models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_sample.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/testData/imgUtils_image_example.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/testData/imgUtils_image_neg_example.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/testData/videoUtils_example.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/test_downloadUtils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/test_imageUtils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/test_kerasUtils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/test_multiprocessingUtils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/test_plotUtils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/test_timeUtils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/test_utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/test_videoUtils.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,20 +65,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/VVAD/testing/unit-tests/data-and-models/testData&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/VVAD/test/unit-tests/dat-and-models/testData",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\VVAD\test\unit-tests\dat-and-models\testData" />
+      <recent name="C:\VVAD\test\unit-tests" />
+      <recent name="C:\VVAD\test\unit-tests\dat-and-models" />
       <recent name="C:\VVAD\testing\unit-tests\data-and-models\testData" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\VVAD\test\unit-tests\utils" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_dataSet.TestDataSet.test_get_positive_samples">
+  <component name="RunManager" selected="Python tests.Unittests for test_dataSet.TestDataSet">
     <configuration name="Unittests for test_dataSet.TestDataSet" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -91,20 +127,6 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_dataSet.TestDataSet.test_get_positive_samples" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="VVAD" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing/unit-tests/data-and-models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_get_positive_samples&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="Unittests for test_sample.TestFaceFeatureGenerator.test_is_valid" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -119,27 +141,41 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Unittests in C:/VVAD/testing/unit-tests/data-and-models/test_dataSet.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="VVAD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing/unit-tests/data-and-models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/testing/unit-tests/data-and-models/test_dataSet.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <list>
+      <item itemvalue="Python tests.Unittests in C:/VVAD/testing/unit-tests/data-and-models/test_dataSet.py" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet" />
-      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_positive_samples" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_download_LRS3_from_yt_wrong_path" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_download_LRS3_sample_from_yt" />
       <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_is_valid" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_positive_samples" />
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet" />
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_download_LRS3_from_yt_wrong_path" />
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_download_LRS3_sample_from_yt" />
+        <item itemvalue="Python tests.Unittests in C:/VVAD/testing/unit-tests/data-and-models/test_dataSet.py" />
         <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_is_valid" />
+        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_download_LRS3_from_yt_wrong_path" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="30b4d92d-1d68-4d00-81b0-e906de24ce5b" name="Changes" comment="" />
+      <changelist id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="prepare docstring coverage actions" />
       <created>1688912166066</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
