@@ -1,41 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="prepare docstring coverage actions">
-      <change afterPath="$PROJECT_DIR$/test/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/unit-tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/getTXT/myTXT.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/no_pause_example.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/pause_example.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/00j9bKdiOjk/00001.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/00j9bKdiOjk/00002.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/00j9bKdiOjk/00003.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/unit-tests/utils/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/python-testing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/python-testing.yml" afterDir="false" />
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Add package unittests for runner">
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/testData/getTXT/myTXT.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/testData/no_pause_example.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/testData/pause_example.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/testData/video/00j9bKdiOjk/00001.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/testData/video/00j9bKdiOjk/00002.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/testData/video/00j9bKdiOjk/00003.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_data_and_models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/data-and-models/test_sample.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/testData/imgUtils_image_example.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/testData/imgUtils_image_neg_example.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/testData/videoUtils_example.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/test_downloadUtils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/test_imageUtils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/test_kerasUtils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/test_multiprocessingUtils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/test_plotUtils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/test_timeUtils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/test_utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/unit-tests/utils/test_videoUtils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,12 +38,13 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/VVAD/test/unit-tests/dat-and-models/testData",
+    "last_opened_file_path": "C:/VVAD/test/unit-tests/data-and-models",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\VVAD\test\unit-tests\data-and-models" />
       <recent name="C:\VVAD\test\unit-tests\dat-and-models\testData" />
       <recent name="C:\VVAD\test\unit-tests" />
       <recent name="C:\VVAD\test\unit-tests\dat-and-models" />
@@ -85,6 +55,20 @@
     </key>
   </component>
   <component name="RunManager" selected="Python tests.Unittests for test_dataSet.TestDataSet">
+    <configuration name="Unittests for test_dataSet.TestDataSet (1)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="VVAD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_1/unit-tests/data-and-models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Unittests for test_dataSet.TestDataSet" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -96,20 +80,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_dataSet.TestDataSet&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Unittests for test_dataSet.TestDataSet.test_download_LRS3_from_yt_wrong_path" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="VVAD" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing/unit-tests/data-and-models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_download_LRS3_from_yt_wrong_path&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -156,19 +126,19 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet (1)" />
       <item itemvalue="Python tests.Unittests in C:/VVAD/testing/unit-tests/data-and-models/test_dataSet.py" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet" />
-      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_download_LRS3_from_yt_wrong_path" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_download_LRS3_sample_from_yt" />
       <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_is_valid" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet" />
+        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet (1)" />
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_download_LRS3_sample_from_yt" />
         <item itemvalue="Python tests.Unittests in C:/VVAD/testing/unit-tests/data-and-models/test_dataSet.py" />
         <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_is_valid" />
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_download_LRS3_from_yt_wrong_path" />
       </list>
     </recent_temporary>
   </component>
@@ -293,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689847222889</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Add package unittests for runner">
+      <created>1690126157633</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1690126157633</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -323,6 +300,7 @@
     <MESSAGE value="change requirement operator" />
     <MESSAGE value="fix ruff lint issues" />
     <MESSAGE value="use unittest instead of pytest" />
-    <option name="LAST_COMMIT_MESSAGE" value="use unittest instead of pytest" />
+    <MESSAGE value="Add package unittests for runner" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add package unittests for runner" />
   </component>
 </project>
