@@ -97,7 +97,6 @@ PySocks==1.7.1
 python-dateutil==2.8.0
 pytube==15.0.0
 PyWavelets==1.0.3
-pywin32==305.1
 pywinpty==2.0.10
 PyYAML==6.0.1
 pyzmq==18.0.0
