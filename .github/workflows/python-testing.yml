@@ -48,7 +48,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Test with python unittest
-        working-directory:
+        working-directory: test/unit-tests
         run: |
           ls ${{github.workspace}}
           # run unittests for data and models

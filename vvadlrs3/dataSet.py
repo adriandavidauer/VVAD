@@ -531,7 +531,6 @@ class DataSet():
         :type dryRun: boolean
         :returns: generator
         """
-        print("ghello")
         try:
             print("videoPath: ", self.getVideoPathFromFolder(path))
             videoPath = self.getVideoPathFromFolder(path)
