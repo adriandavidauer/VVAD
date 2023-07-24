@@ -44,7 +44,7 @@ Jinja2==2.10.1
 jsonschema==3.0.1
 jupyter-client==7.1.2
 jupyter_core==4.11.2
-Keras==2.4.3
+Keras>=2.4.3
 Keras-Preprocessing==1.0.9
 keras-vggface==0.6
 kiwisolver==1.4.4
