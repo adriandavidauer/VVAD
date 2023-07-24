@@ -44,10 +44,11 @@ jobs:
   test:
     needs: build
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./test/unittests
     steps:
       - name: Test with python unittest
         run: |
-          # go to unittest directory
-          cd /test/unittests
           # run unittests for data and models
           python -m unittest discover -s data-and-models

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="New Env and updated requirements">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/python-testing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/python-testing.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/requirements.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
