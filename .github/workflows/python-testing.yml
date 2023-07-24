@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./test/unittests
+        working-directory: test/unittests
     steps:
       - name: Test with python unittest
         run: |
