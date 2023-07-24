@@ -62,7 +62,7 @@ class TestDataSet(unittest.TestCase):
         self.data_set.getPositiveSamples(path=os.path.join(self.test_data_root,self.video_folder_path), dryRun=False)
         print(self.data_set.getPositiveSamples(path=os.path.join(self.test_data_root,self.video_folder_path),
                                                dryRun=True))
-        for sample in dSet.DataSet.getPositiveSamples(os.path.join(self.test_data_root,self.video_folder_path), True):
+        for sample in dSet.DataSet.getPositiveSamples(os.path.join(self.test_data_root, self.video_folder_path), True):
             print("hey")
             yield sample
         print("[getAllPSamples] Folder {} done".format(os.path.join(self.test_data_root, self.video_folder_path)))
