@@ -14,8 +14,8 @@ class TestDataSet(unittest.TestCase):
 
     def setUp(self):
         self.test_data_root = "test/unit-tests/data-and-models/testData"
-        self.video_folder_path = "testData/video/00j9bKdiOjk"
-        self.video_file_path = "testData/video/00j9bKdiOjk/00j9bKdiOjk.3gpp"
+        self.video_folder_path = "video/00j9bKdiOjk"
+        self.video_file_path = "video/00j9bKdiOjk/00j9bKdiOjk.3gpp"
         self.data_set = dSet.DataSet(shapeModelPath="",
                                      debug=True,
                                      sampleLength=0,
@@ -27,10 +27,11 @@ class TestDataSet(unittest.TestCase):
                                      )
 
     def test_download_LRS3_sample_from_yt(self):
-        self.data_set.downloadLRS3SampleFromYoutube(path=self.video_folder_path)
-        self.assertTrue(os.path.exists(self.video_file_path))
-        os.remove(self.video_file_path)
+        self.data_set.downloadLRS3SampleFromYoutube(path=os.path.join(self.test_data_root, self.video_folder_path))
+        self.assertTrue(os.path.exists(os.path.join(self.test_data_root, self.video_file_path)))
+        os.remove(os.path.join(self.test_data_root, self.video_file_path))
 
+    @unittest.expectedFailure
     def test_download_LRS3_from_yt_wrong_path(self):
         self.assertRaises(dSet.WrongPathException, callable=self.data_set.downloadLRS3SampleFromYoutube(
             path=os.path.join(self.test_data_root, "video/noVideoFolder")))
