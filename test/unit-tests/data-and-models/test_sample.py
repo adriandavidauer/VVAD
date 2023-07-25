@@ -1,9 +1,10 @@
 import unittest
-
-import vvadlrs3.sample as sample
+import sys
 import tempfile
 from pathlib import Path
 import numpy as np
+from vvadlrs3 import sample as sample
+
 
 
 class TestFaceTracker(unittest.TestCase):
@@ -18,7 +19,7 @@ class TestFaceFeatureGenerator(unittest.TestCase):
     def test_is_valid(self):
         # Use arbitrary np array to do proof of concept
         test_sample = sample.FeatureizedSample()
-        test_sample.data = [np.ones((2, 2))]*5
+        test_sample.data = [np.ones((2, 2))] * 5
         test_sample.k = 5
         self.assertTrue(test_sample.isValid())
         test_sample.k = 2
