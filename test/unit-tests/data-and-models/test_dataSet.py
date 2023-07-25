@@ -1,12 +1,14 @@
 import os.path
 import unittest
-
-import vvadlrs3.dataSet as dSet
+import sys
+sys.path.append('../../../vvadlrs3')
+from vvadlrs3 import dataSet as dSet
 
 """
     All tests are run from the unit-tests folder as root! This must be considered when running these tests 
     with the GitHub action runner
 """
+
 
 class TestDataSet(unittest.TestCase):
 
@@ -59,8 +61,8 @@ class TestDataSet(unittest.TestCase):
         # ToDo somehow wrong
 
         # data_set.downloadLRS3SampleFromYoutube(path=folder_path)
-        self.data_set.getPositiveSamples(path=os.path.join(self.test_data_root,self.video_folder_path), dryRun=False)
-        print(self.data_set.getPositiveSamples(path=os.path.join(self.test_data_root,self.video_folder_path),
+        self.data_set.getPositiveSamples(path=os.path.join(self.test_data_root, self.video_folder_path), dryRun=False)
+        print(self.data_set.getPositiveSamples(path=os.path.join(self.test_data_root, self.video_folder_path),
                                                dryRun=True))
         for sample in dSet.DataSet.getPositiveSamples(os.path.join(self.test_data_root, self.video_folder_path), True):
             print("hey")
@@ -89,12 +91,13 @@ class TestDataSet(unittest.TestCase):
     def test_get_pause_length(self):
         self.data_set.maxPauseLength = 0.5
         self.data_set.sampleLength = 25
-        print(self.data_set.getPauseLength(txtFile=os.path.join(self.test_data_root,"pause_example.txt")))
+        print(self.data_set.getPauseLength(txtFile=os.path.join(self.test_data_root, "pause_example.txt")))
         self.assertEqual(self.data_set.getPauseLength(txtFile=os.path.join(self.test_data_root, "pause_example.txt")),
                          [(26.14, 27.64), (17.04, 18.01), (11.29, 12.0), (3.55, 5.63)])
 
     def test_get_no_pause_length(self):
-        self.assertEqual(self.data_set.getPauseLength(txtFile=os.path.join(self.test_data_root,"no_pause_example.txt")), [])
+        self.assertEqual(
+            self.data_set.getPauseLength(txtFile=os.path.join(self.test_data_root, "no_pause_example.txt")), [])
 
     def test_get_sample_configs_for_positive_samples(self):
         pass
