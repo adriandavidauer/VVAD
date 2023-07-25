@@ -50,4 +50,4 @@ jobs:
       - name: Test with python unittest
         run: |
           # run unittests for data and models
-          python -m unittest discover -s test.unit-test.data-and-models
+          python -m unittest discover -s test.unit-tests.data-and-models
