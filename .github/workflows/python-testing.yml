@@ -35,8 +35,6 @@ jobs:
           # run unittests for data and models
           python -m unittest discover -s test.unit-tests.data-and-models -v
   lint:
-    if: github.repository == 'main' || github.repository == '02_establish-py-unit-tests'
-    needs: build_and_test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
