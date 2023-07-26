@@ -57,7 +57,7 @@ class TestDataSet(unittest.TestCase):
                           callable=self.data_set.getTXTFiles(path=os.path.join(self.test_data_root, "getNoTXTs")))
 
     # ToDo: check if same as test_get_all_positive_samples
-    @unittest.expectedFailure
+    #@unittest.expectedFailure
     def test_get_positive_samples(self):
         # ToDo somehow wrong
 

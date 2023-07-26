@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Put test into build">
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Fix failed test errors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/dataSet.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -423,7 +424,21 @@
       <option name="project" value="LOCAL" />
       <updated>1690313278554</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Fix failed test errors">
+      <created>1690314812744</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1690314812744</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Fix failed test errors">
+      <created>1690315609918</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1690315609918</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -438,7 +453,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Insert examples and add tests for file reading" />
     <MESSAGE value="Added sample and dataset tests" />
     <MESSAGE value="Add CI workflow" />
     <MESSAGE value="Add CI workflow (adjustments)" />
@@ -463,6 +477,7 @@
     <MESSAGE value="import directory into testDataSet" />
     <MESSAGE value="clean up and try discovery from global" />
     <MESSAGE value="Put test into build" />
-    <option name="LAST_COMMIT_MESSAGE" value="Put test into build" />
+    <MESSAGE value="Fix failed test errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix failed test errors" />
   </component>
 </project>

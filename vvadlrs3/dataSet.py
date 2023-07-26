@@ -361,7 +361,6 @@ class DataSet():
         """
 
         currentFolder = os.path.abspath(path)
-        print("current folder is: ", currentFolder)
         # print (currentFolder)
         # open folder and get a list of files
         try:
@@ -401,9 +400,7 @@ class DataSet():
             global timeoutableDownload
 
             def timeoutableDownload(videoUrl, currentFolder):
-                self.tempPath = YouTube(
-                    videoUrl).streams.first().download(currentFolder)
-                print("tempPath:", self.tempPath)
+                self.tempPath = YouTube(videoUrl).streams.first().download(currentFolder)
                 self.tempPath = pathlib.Path(self.tempPath)
                 # if ready rename the file to the real name(will be the ref)
                 os.rename(self.tempPath, str(
