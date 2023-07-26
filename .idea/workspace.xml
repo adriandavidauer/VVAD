@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Fix failed test errors">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/dataSet.py" afterDir="false" />
-    </list>
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Fixed wrong path and unexpected success" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -438,7 +434,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690315609918</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Fixed wrong path and unexpected success">
+      <created>1690356408965</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1690356408965</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -453,7 +456,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added sample and dataset tests" />
     <MESSAGE value="Add CI workflow" />
     <MESSAGE value="Add CI workflow (adjustments)" />
     <MESSAGE value="change requirements.txt" />
@@ -478,6 +480,7 @@
     <MESSAGE value="clean up and try discovery from global" />
     <MESSAGE value="Put test into build" />
     <MESSAGE value="Fix failed test errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix failed test errors" />
+    <MESSAGE value="Fixed wrong path and unexpected success" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed wrong path and unexpected success" />
   </component>
 </project>
