@@ -7,7 +7,8 @@ from pathlib import Path
 
 class TestDownloadUtils(unittest.TestCase):
     """
-    Test_Download_URL accepts a URL for a video to download and will save that video in the output path.
+    Test_Download_URL accepts a URL for a video to download and will save that video in
+    the output path.
     Output path is defined
     """
 
@@ -17,7 +18,8 @@ class TestDownloadUtils(unittest.TestCase):
             print('created temporary directory', tmpdirname)
             temp_dir = Path(tmpdirname)
             file_dir = temp_dir.joinpath("test.mp4")
-            dlUtils.download_url('https://www.youtube.com/watch?v=00j9bKdiOjk', file_dir)
+            dlUtils.download_url('https://www.youtube.com/watch?v=00j9bKdiOjk',
+                                 file_dir)
 
             self.assertEqual(file_dir.exists(), True)
             # ~ ... /tmp/tmp81iox6s2/test.mp4 True

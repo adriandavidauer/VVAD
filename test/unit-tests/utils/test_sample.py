@@ -1,10 +1,10 @@
-import unittest
-import sys
 import tempfile
+import unittest
 from pathlib import Path
-import numpy as np
-from vvadlrs3 import sample as sample
 
+import numpy as np
+
+from vvadlrs3 import sample as sample
 
 
 class TestFaceTracker(unittest.TestCase):
@@ -21,9 +21,9 @@ class TestFaceFeatureGenerator(unittest.TestCase):
         test_sample = sample.FeatureizedSample()
         test_sample.data = [np.ones((2, 2))] * 5
         test_sample.k = 5
-        self.assertTrue(test_sample.isValid())
+        self.assertTrue(test_sample.is_valid())
         test_sample.k = 2
-        self.assertFalse(test_sample.isValid())
+        self.assertFalse(test_sample.is_valid())
 
     def test_get_data(self):
         pass
@@ -75,4 +75,4 @@ class TestFeaturedSample(unittest.TestCase):
 
 class TestVisualizeSamples(unittest.TestCase):
     def test_visualize_samples(self):
-        sample.visualizeSamples()
+        sample.visualize_samples()

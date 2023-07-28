@@ -1,11 +1,13 @@
 import os.path
 import unittest
 import sys
+
 sys.path.append('../../../vvadlrs3')
 from vvadlrs3 import dataSet as dSet
 
 """
-    All tests are run from the unit-tests folder as root! This must be considered when running these tests 
+    All tests are run from the unit-tests folder as root! This must be considered when 
+    running these tests 
     with the GitHub action runner
 """
 
@@ -16,24 +18,27 @@ class TestDataSet(unittest.TestCase):
         self.test_data_root = "test/unit-tests/data-and-models/testData"
         self.video_folder_path = "video/00j9bKdiOjk"
         self.video_file_path = "video/00j9bKdiOjk/00j9bKdiOjk.3gpp"
-        self.data_set = dSet.DataSet(shapeModelPath="",
-                                     debug=True,
-                                     sampleLength=0,
-                                     maxPauseLength=1.5,
-                                     shape=None,
+        self.data_set = dSet.DataSet(shape_model_path="",
+                                     debug_flag=True,
+                                     sample_length=0,
+                                     max_pause_length=1.5,
+                                     init_shape=None,
                                      path=None,
-                                     fps=25,
-                                     multiprocessing=False
+                                     target_fps=25,
+                                     init_multiprocessing=False
                                      )
 
     def test_download_LRS3_sample_from_yt(self):
-        self.data_set.downloadLRS3SampleFromYoutube(path=os.path.join(self.test_data_root, self.video_folder_path))
-        self.assertTrue(os.path.exists(os.path.join(self.test_data_root, self.video_file_path)))
+        self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
+            self.test_data_root, self.video_folder_path))
+        self.assertTrue(os.path.exists(os.path.join(self.test_data_root,
+                                                    self.video_file_path)))
         os.remove(os.path.join(self.test_data_root, self.video_file_path))
 
     @unittest.expectedFailure
     def test_download_LRS3_from_yt_wrong_path(self):
-        self.assertRaises(dSet.WrongPathException, callable=self.data_set.downloadLRS3SampleFromYoutube(
+        self.assertRaises(dSet.WrongPathException,
+                          callable=self.data_set.download_lrs3_sample_from_youtube(
             path=os.path.join(self.test_data_root, "video/noVideoFolder")))
 
     def test_get_all_positive_samples(self):
@@ -49,26 +54,33 @@ class TestDataSet(unittest.TestCase):
         pass
 
     def test_get_txt_files(self):
-        for textfile in self.data_set.getTXTFiles(path=os.path.join(self.test_data_root, "getTXT")):
+        for textfile in self.data_set.get_txt_files(
+                path=os.path.join(self.test_data_root, "getTXT")):
             self.assertTrue(str(textfile).__contains__("myTXT.txt"))
 
     def test_fail_get_txt_files(self):
         self.assertRaises(dSet.WrongPathException,
-                          callable=self.data_set.getTXTFiles(path=os.path.join(self.test_data_root, "getNoTXTs")))
+                          callable=self.data_set.get_txt_files(path=os.path.join(
+                              self.test_data_root, "getNoTXTs")))
 
     # ToDo: check if same as test_get_all_positive_samples
-    #@unittest.expectedFailure
+    # @unittest.expectedFailure
     def test_get_positive_samples(self):
         # ToDo somehow wrong
 
         # data_set.downloadLRS3SampleFromYoutube(path=folder_path)
-        self.data_set.getPositiveSamples(path=os.path.join(self.test_data_root, self.video_folder_path), dryRun=False)
-        print(self.data_set.getPositiveSamples(path=os.path.join(self.test_data_root, self.video_folder_path),
-                                               dryRun=True))
-        for sample in dSet.DataSet.getPositiveSamples(os.path.join(self.test_data_root, self.video_folder_path), True):
+        self.data_set.get_positive_samples(path=os.path.join(self.test_data_root,
+                                                             self.video_folder_path))
+        print(self.data_set.get_positive_samples(path=os.path.join(
+            self.test_data_root, self.video_folder_path),
+                                                 dry_run=True))
+        for sample in dSet.DataSet.get_positive_samples(os.path.join(
+                self.test_data_root, self.video_folder_path),
+                                                        True):
             print("hey")
             yield sample
-        print("[getAllPSamples] Folder {} done".format(os.path.join(self.test_data_root, self.video_folder_path)))
+        print("[getAllPSamples] Folder {} done".format(os.path.join(
+            self.test_data_root, self.video_folder_path)))
 
     # ToDo: check if same as test_convert_all_fps
     def test_convert_fps(self):
@@ -84,21 +96,26 @@ class TestDataSet(unittest.TestCase):
         pass
 
     def test_get_frame_from_second(self):
-        self.assertEqual(self.data_set.getFrameFromSecond(second=15.5, fps=25), 387.5)
+        # default fps = 25
+        self.assertEqual(self.data_set.get_frame_from_second(second=15.5), 387.5)
 
     def test_get_second_from_frame(self):
-        self.assertEqual(self.data_set.getSecondFromFrame(frame=1500, fps=25), 60.0)
+        # default fps = 25
+        self.assertEqual(self.data_set.get_second_from_frame(frame=1500), 60.0)
 
     def test_get_pause_length(self):
         self.data_set.maxPauseLength = 0.5
         self.data_set.sampleLength = 25
-        print(self.data_set.getPauseLength(txtFile=os.path.join(self.test_data_root, "pause_example.txt")))
-        self.assertEqual(self.data_set.getPauseLength(txtFile=os.path.join(self.test_data_root, "pause_example.txt")),
+        print(self.data_set.get_pause_length(
+            txt_file=os.path.join(self.test_data_root, "pause_example.txt")))
+        self.assertEqual(self.data_set.get_pause_length(
+            txt_file=os.path.join(self.test_data_root, "pause_example.txt")),
                          [(26.14, 27.64), (17.04, 18.01), (11.29, 12.0), (3.55, 5.63)])
 
     def test_get_no_pause_length(self):
         self.assertEqual(
-            self.data_set.getPauseLength(txtFile=os.path.join(self.test_data_root, "no_pause_example.txt")), [])
+            self.data_set.get_pause_length(
+                txt_file=os.path.join(self.test_data_root, "no_pause_example.txt")), [])
 
     def test_get_sample_configs_for_positive_samples(self):
         pass
