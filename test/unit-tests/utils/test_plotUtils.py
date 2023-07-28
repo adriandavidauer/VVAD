@@ -1,11 +1,5 @@
 import unittest
 
-import cv2
-import imutils
-import vvadlrs3.utils.plotUtils as pltUtils
-import tempfile
-from pathlib import Path
-
 
 class TestPlotUtils(unittest.TestCase):
     """

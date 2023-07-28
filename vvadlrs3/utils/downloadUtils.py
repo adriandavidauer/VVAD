@@ -1,4 +1,4 @@
-''' Utils for downloads '''
+""" Utils for downloads """
 
 # System imports
 import urllib.request

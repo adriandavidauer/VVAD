@@ -1,13 +1,14 @@
+import os
+import pickle
+from collections import defaultdict
+
 import matplotlib.pyplot as plt
 import numpy as np
-import os
 from pymongo import MongoClient
-from collections import defaultdict
-import pickle
-from scipy.interpolate import make_interp_spline, BSpline
+from scipy.interpolate import make_interp_spline
 
 
-def visualizeHistory(history, path=None):
+def visualize_history(history, path=None):
     """
     visualizes the accuracy and loss for training and validation
 
@@ -32,20 +33,23 @@ def visualizeHistory(history, path=None):
     plt.plot(epochs, loss_values, 'bo', label='Loss training')
     plt.plot(epochs, val_loss_values, 'b', label='Loss validation')
     plt.hlines(min_val_loss, epochs[0], epochs[-1], colors='r', linestyles='dashed',
-               label='minum loss[{:.2f}] on epoch {}'.format(min_val_loss, min_val_loss_arg + 1))
+               label='minum loss[{:.2f}] on epoch {}'.format(min_val_loss,
+                                                             min_val_loss_arg + 1))
     plt.title('Values of the loss function for training and validation')
     plt.xlabel('Epochs')
     plt.ylabel('Value of the loss function')
     plt.legend()
     if path:
         plt.savefig(os.path.splitext(path)[
-                    0] + '_loss' + os.path.splitext(path)[1])
+                        0] + '_loss' + os.path.splitext(path)[1])
 
     plt.figure(2)
     plt.plot(epochs, acc, 'bo', label='Accuracy training')
     plt.plot(epochs, val_acc, 'b', label='Accuracy validation')
     plt.hlines(max_val_acc, epochs[0], epochs[-1], colors='r', linestyles='dashed',
-               label='maximum accuracy[{:.2f} %] on epoch {}'.format(max_val_acc * 100,  max_val_acc_arg + 1))
+               label='maximum accuracy[{:.2f} %] on epoch {}'.format(
+                   max_val_acc * 100,
+                   max_val_acc_arg + 1))
     plt.title('Accuracy for training and validation')
     plt.xlabel('Epochs')
     plt.ylabel('Accuracy')
@@ -53,49 +57,58 @@ def visualizeHistory(history, path=None):
 
     if path:
         plt.savefig(os.path.splitext(path)[
-                    0] + '_accuracy' + os.path.splitext(path)[1])
+                        0] + '_accuracy' + os.path.splitext(path)[1])
 
     plt.show()
 
 
-def calculateHumanAccuracy(mongoURL='mongodb://localhost:27017/', visualize=True, saveTo=None, consider='all'):
+def calculate_human_accuracy(mongo_url='mongodb://localhost:27017/', visualize=True,
+                             save_to=None, consider='all'):
     """
     calculates the average accuracy and standard deviation on every sample
 
-    :param mongoURL: the URL to the mongoDB holding the results
-    :type mongoURL: String 
+    :param mongo_url: the URL to the mongoDB holding the results
+    :type mongo_url: String
+    :param visualize: If visualize
+    :type visualize: bool
+    :param save_to: Save to file
+    :type save_to: String
+    :param consider: Consider which samples
+    :type consider: String
     """
-    assert consider == 'all' or consider == 'neg' or consider == 'pos', 'consider can only be "all", "pos" or "neg"'
+    assert consider == 'all' or consider == 'neg' or consider == 'pos',\
+        'consider can only be "all", "pos" or "neg"'
 
-    def calcError(classification, gt):
+    def calc_error(classification, gt):
         return int(classification == gt)
-    client = MongoClient(mongoURL)
+
+    client = MongoClient(mongo_url)
     data = list(client.humanAccuracy.classifications.find())
     print("I found {} classifications".format(len(data)))
     # Resorting
     samples = defaultdict(list)
-    all = []
+    all_samples = []
     for sample in data:
         if consider == 'all':
             color = 'blue'
             samples[sample['sample_num']].append(
-                calcError(sample['classification'], sample['ground_truth']))
-            all.append(
-                calcError(sample['classification'], sample['ground_truth']))
+                calc_error(sample['classification'], sample['ground_truth']))
+            all_samples.append(
+                calc_error(sample['classification'], sample['ground_truth']))
         elif consider == 'neg':
             color = 'red'
             if not sample['ground_truth']:
                 samples[sample['sample_num']].append(
-                    calcError(sample['classification'], sample['ground_truth']))
-                all.append(
-                    calcError(sample['classification'], sample['ground_truth']))
+                    calc_error(sample['classification'], sample['ground_truth']))
+                all_samples.append(
+                    calc_error(sample['classification'], sample['ground_truth']))
         else:
             color = 'green'
             if sample['ground_truth']:
                 samples[sample['sample_num']].append(
-                    calcError(sample['classification'], sample['ground_truth']))
-                all.append(
-                    calcError(sample['classification'], sample['ground_truth']))
+                    calc_error(sample['classification'], sample['ground_truth']))
+                all_samples.append(
+                    calc_error(sample['classification'], sample['ground_truth']))
     averages = []
     # stds = {}
     y = []
@@ -119,38 +132,41 @@ def calculateHumanAccuracy(mongoURL='mongodb://localhost:27017/', visualize=True
     plt.ylabel('Human Accuracy')
     plt.grid(True)
     plt.scatter(x, y, color=color, marker="_")
-    if saveTo:
-        plt.savefig(saveTo)
+    if save_to:
+        plt.savefig(save_to)
     plt.show()
     # return np.mean(all), np.std(all), averages, stds
-    return np.mean(all), averages
+    return np.mean(all_samples), averages
 
 
-def plotAccOverTimeSteps(histList, path=None, features=False):
+def plot_acc_over_time_steps(hist_list, path=None, features=False):
     """
-    plot the accuracy over different timeDistributed models with different numbers of timeSteps
+    plot the accuracy over different timeDistributed models with different numbers of
+    timeSteps
 
-    :param histList: a list of history files from the learninig process
-    :type histList: list of Strings
+    :param hist_list: a list of history files from the learninig process
+    :type hist_list: list of Strings
     :param path: if set it saves the visualizations to that path
     :type path: string
+    :param features: Features
+    :type features: Any
     """
     x = []  # x shows the timesteps/frames used
     y = []  # y shows the reached maximum accuracy
-    for histPath in histList:
+    for histPath in hist_list:
         # Extract numTimesteps
         shape = histPath.split('(')[1].split(')')[0]
         if len(shape.split(',')) == 3:  # that only counts for the images...
             if features:
-                numTimesteps = int(shape.split(',')[0])
+                num_timesteps = int(shape.split(',')[0])
             else:
-                numTimesteps = 1
+                num_timesteps = 1
         elif len(shape.split(',')) == 4:
-            numTimesteps = int(shape.split(',')[0])
+            num_timesteps = int(shape.split(',')[0])
         else:
             raise ValueError(
                 "Couldn't read shape of history file '{}'".format(histPath))
-        x.append(numTimesteps)
+        x.append(num_timesteps)
 
         # Extract corresponding accuracy
         with open(histPath, 'rb') as history:
@@ -162,8 +178,8 @@ def plotAccOverTimeSteps(histList, path=None, features=False):
     # 300 represents number of points to make between T.min and T.max
     x_new = np.linspace(min(x), max(x), 300)
 
-    #print("X.SHAPE: {}".format(x.shape))
-    spl = make_interp_spline(x, y, k=3)  # BSpline object
+    # print("X.SHAPE: {}".format(x.shape))
+    spl = make_interp_spline(x, y)  # BSpline object, default k=3
     y_smooth = spl(x_new)
 
     plt.title('Accuracy over the number of used frames')
@@ -176,18 +192,18 @@ def plotAccOverTimeSteps(histList, path=None, features=False):
     plt.show()
 
 
-def plotAccOverImagesize(histList, path=None):
+def plot_acc_over_imagesize(hist_list, path=None):
     """
     plot the accuracy over one timeDistributed models with different image sizes
 
-    :param histList: a list of history files from the learninig process
-    :type histList: list of Strings
+    :param hist_list: a list of history files from the learninig process
+    :type hist_list: list of Strings
     :param path: if set it saves the visualizations to that path
     :type path: string
     """
     x = []  # x shows the timesteps/frames used
     y = []  # y shows the reached maximum accuracy
-    for histPath in histList:
+    for histPath in hist_list:
         # Extract image size
         shape = histPath.split('(')[1].split(')')[0]
         if len(shape.split(',')) == 3:
@@ -209,7 +225,7 @@ def plotAccOverImagesize(histList, path=None):
     # 300 represents number of points to make between T.min and T.max
     x_new = np.linspace(min(x), max(x), 300)
 
-    spl = make_interp_spline(x, y, k=3)  # BSpline object
+    spl = make_interp_spline(x, y)  # BSpline object, default k=3
     y_smooth = spl(x_new)
 
     plt.title('Accuracy over the quadractic image size')
@@ -222,8 +238,7 @@ def plotAccOverImagesize(histList, path=None):
     plt.show()
 
 
-def plotVideoAnalysis(analysis, path=None, show=True):
-
+def plot_video_analysis(analysis, path=None, show=True):
     plt.title('Mean predictions')
     plt.xlabel('seconds')
     plt.ylabel('prediction')
