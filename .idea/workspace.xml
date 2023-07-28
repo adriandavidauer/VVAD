@@ -1,35 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Remove lint dependency from test (not necessary)">
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="ruff lint in verbose mode">
       <change beforePath="$PROJECT_DIR$/.github/workflows/python-testing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/python-testing.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/liveCam.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/liveCam.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/visualize_samples.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/visualize_samples.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiments/analyze_videos.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/analyze_videos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiments/calcAccuracy.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/calcAccuracy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_downloadUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/utils/test_downloadUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_imageUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/utils/test_imageUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_multiprocessingUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/utils/test_multiprocessingUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_plotUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/utils/test_plotUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/utils/test_sample.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_videoUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/utils/test_videoUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/convert_samples.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/convert_samples.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/dataSet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/dlibmodels.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/dlibmodels.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/onCluster.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/onCluster.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/pretrained_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/pretrained_models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/sample.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/downloadUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/downloadUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/imageUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/imageUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/kerasUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/kerasUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/multiprocessingUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/multiprocessingUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/plotUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/plotUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/timeUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/timeUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/videoUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/videoUtils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -478,7 +451,21 @@
       <option name="project" value="LOCAL" />
       <updated>1690358429088</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Fix errors according to ruff linting">
+      <created>1690533613770</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1690533613770</updated>
+    </task>
+    <task id="LOCAL-00045" summary="ruff lint in verbose mode">
+      <created>1690533973497</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1690533973497</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -493,8 +480,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add CI workflow (adjustments)" />
-    <MESSAGE value="change requirements.txt" />
     <MESSAGE value="adjust mkl-fft requirements.txt" />
     <MESSAGE value="adjust mkl-random requirements.txt" />
     <MESSAGE value="stick to 3.7 first" />
@@ -518,6 +503,8 @@
     <MESSAGE value="Fix failed test errors" />
     <MESSAGE value="Fixed wrong path and unexpected success" />
     <MESSAGE value="Remove lint dependency from test (not necessary)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove lint dependency from test (not necessary)" />
+    <MESSAGE value="Fix errors according to ruff linting" />
+    <MESSAGE value="ruff lint in verbose mode" />
+    <option name="LAST_COMMIT_MESSAGE" value="ruff lint in verbose mode" />
   </component>
 </project>

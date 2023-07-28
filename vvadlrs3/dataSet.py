@@ -1,6 +1,7 @@
 """
 This Module creates a dataset for the purpose of the visual speech detection system.
 """
+import pathlib
 # System imports
 import sys
 from importlib import import_module
