@@ -7,6 +7,10 @@ on:
     branches:
       - main
       - 02_establish-py-unit-tests
+  pull_request:
+    branches:
+      - main
+      - 02_establish-py-unit-tests
 
 jobs:
   build_and_test:
@@ -15,6 +19,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: ‘2’
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -34,6 +40,12 @@ jobs:
         run: |
           # run unittests for data and models
           python -m unittest discover -s test.unit-tests.data-and-models -v
+      - name: Generate Report
+        run: |
+          pip install coverage
+          coverage run -m unittest discover -s test.unit-tests.data-and-models -v
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v2
   lint:
     runs-on: ubuntu-latest
     steps:
