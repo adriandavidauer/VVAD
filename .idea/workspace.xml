@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="ruff lint in verbose mode">
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="import Pathlib got lost">
       <change beforePath="$PROJECT_DIR$/.github/workflows/python-testing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/python-testing.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -465,7 +466,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690533973497</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="import Pathlib got lost">
+      <created>1690534909929</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1690534909929</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -480,7 +488,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adjust mkl-fft requirements.txt" />
     <MESSAGE value="adjust mkl-random requirements.txt" />
     <MESSAGE value="stick to 3.7 first" />
     <MESSAGE value="exclude conda" />
@@ -505,6 +512,7 @@
     <MESSAGE value="Remove lint dependency from test (not necessary)" />
     <MESSAGE value="Fix errors according to ruff linting" />
     <MESSAGE value="ruff lint in verbose mode" />
-    <option name="LAST_COMMIT_MESSAGE" value="ruff lint in verbose mode" />
+    <MESSAGE value="import Pathlib got lost" />
+    <option name="LAST_COMMIT_MESSAGE" value="import Pathlib got lost" />
   </component>
 </project>
