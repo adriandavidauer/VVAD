@@ -1,4 +1,5 @@
 import os.path
+import pathlib
 import unittest
 import sys
 
@@ -15,12 +16,14 @@ from vvadlrs3 import dataSet as dSet
 class TestDataSet(unittest.TestCase):
 
     def setUp(self):
-        self.test_data_root = "test/unit-tests/data-and-models/testData"
+        self.test_data_root = "testData"  # "test/unit-tests/data-and-models/testData"
+        self.videos_path = "video"
         self.video_folder_path = "video/00j9bKdiOjk"
         self.video_file_path = "video/00j9bKdiOjk/00j9bKdiOjk.3gpp"
+        self.video_txt_file_path = "video/00j9bKdiOjk/00001.txt"
         self.data_set = dSet.DataSet(shape_model_path="",
                                      debug_flag=True,
-                                     sample_length=0,
+                                     sample_length=2.0,
                                      max_pause_length=1.5,
                                      init_shape=None,
                                      path=None,
@@ -35,23 +38,55 @@ class TestDataSet(unittest.TestCase):
                                                     self.video_file_path)))
         os.remove(os.path.join(self.test_data_root, self.video_file_path))
 
-    @unittest.expectedFailure
     def test_download_LRS3_from_yt_wrong_path(self):
         self.assertRaises(dSet.WrongPathException,
-                          callable=self.data_set.download_lrs3_sample_from_youtube(
-            path=os.path.join(self.test_data_root, "video/noVideoFolder")))
+                          lambda: self.data_set.download_lrs3_sample_from_youtube(
+                              path=os.path.join(self.test_data_root,
+                                                "video/noVideoFolder")))
 
     def test_get_all_positive_samples(self):
-        pass
+        print(os.path.join(self.test_data_root, self.videos_path))
+
+        self.data_set.get_all_p_samples(
+            os.path.join(self.test_data_root, self.videos_path))
+
+        video_path_1 = "video/0af00UcTOSc/0af00UcTOSc.gpp"
+        video_path_2 = "video/0akiEFwtkyA"
+        video_path_3 = "video/0Amg53UuRqE"
+        video_path_4 = "video/0Bhk65bYSI0"
+        video_path_5 = "video/00j9bKdiOjk"
+
+        print("Done")
+
+        self.assertTrue(os.path.exists(os.path.join(self.test_data_root,
+                                                    video_path_1)))
+        """
+        self.assertTrue(os.path.exists(os.path.join(self.test_data_root,
+                                                    video_path_2)))
+        self.assertTrue(os.path.exists(os.path.join(self.test_data_root,
+                                                    video_path_3)))
+        self.assertTrue(os.path.exists(os.path.join(self.test_data_root,
+                                                    video_path_4)))
+        self.assertTrue(os.path.exists(os.path.join(self.test_data_root,
+                                                    video_path_5)))
+                                                    """
 
     def test_get_all_samples(self):
-        pass
+        self.data_set.get_all_samples(
+            path=os.path.join(self.test_data_root, "video").replace("\\", "/"),
+            showStatus=True,
+            feature_type=None)
 
     def test_convert_all_fps(self):
-        pass
+
+        self.data_set.convert_all_fps(
+            os.path.join(self.test_data_root, "video").replace("\\", "/"))
+        self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
+            self.test_data_root, self.video_folder_path))
 
     def test_download_lrs3(self):
-        pass
+        self.data_set.download_lrs3(path=os.path.join(
+            self.test_data_root, self.video_folder_path))
 
     def test_get_txt_files(self):
         for textfile in self.data_set.get_txt_files(
@@ -60,7 +95,7 @@ class TestDataSet(unittest.TestCase):
 
     def test_fail_get_txt_files(self):
         self.assertRaises(dSet.WrongPathException,
-                          callable=self.data_set.get_txt_files(path=os.path.join(
+                          lambda: self.data_set.get_txt_files(path=os.path.join(
                               self.test_data_root, "getNoTXTs")))
 
     # ToDo: check if same as test_get_all_positive_samples
@@ -73,10 +108,10 @@ class TestDataSet(unittest.TestCase):
                                                              self.video_folder_path))
         print(self.data_set.get_positive_samples(path=os.path.join(
             self.test_data_root, self.video_folder_path),
-                                                 dry_run=True))
+            dry_run=True))
         for sample in dSet.DataSet.get_positive_samples(os.path.join(
                 self.test_data_root, self.video_folder_path),
-                                                        True):
+                True):
             print("hey")
             yield sample
         print("[getAllPSamples] Folder {} done".format(os.path.join(
@@ -86,14 +121,50 @@ class TestDataSet(unittest.TestCase):
     def test_convert_fps(self):
         pass
 
-    def test_get_video_path_from_video(self):
-        pass
+    def test_get_no_video_path_from_folder_index_error(self):
+        video_path = os.path.join(self.test_data_root, self.video_file_path). \
+            replace("\\", "/")
+        self.assertRaises(dSet.WrongPathException,
+                          lambda: self.data_set.get_video_path_from_folder(video_path))
+
+    def test_get_no_video_path_from_folder(self):
+        video_path = os.path.join(self.test_data_root, self.video_folder_path). \
+            replace("\\", "/")
+        self.assertRaises(FileNotFoundError,
+                          lambda: self.data_set.get_video_path_from_folder(video_path))
+
+    def test_get_video_path_from_folder(self):
+        video_path = os.path.join(self.test_data_root, "test_video_data"). \
+            replace("\\", "/")
+        self.assertEqual(self.data_set.get_video_path_from_folder(video_path),
+                         os.path.join(self.test_data_root,
+                                      pathlib.Path(
+                                          os.path.join(os.path.abspath(video_path),
+                                                       "test_video.3gpp"))))
 
     def test_analyze_negatives(self):
-        pass
+        pauses = self.data_set.analyze_negatives(
+            path=os.path.join(self.test_data_root, self.videos_path),
+            save_to=os.path.join(self.test_data_root, "createdFiles/analyze_negatives"))
+
+        self.assertEqual(len(pauses), 16)
+        self.assertTrue(os.path.exists(
+            os.path.join(self.test_data_root,
+                         "createdFiles/analyze_negatives.png")))
+        os.remove(os.path.join(self.test_data_root,
+                               "createdFiles/analyze_negatives.png"))
 
     def test_analyze_positives(self):
-        pass
+        positives, num_samples = self.data_set.analyze_positives(
+            path=os.path.join(self.test_data_root, self.videos_path),
+            save_to=os.path.join(self.test_data_root, "createdFiles/analyze_positives"))
+
+        self.assertEqual(num_samples, 3)
+        self.assertTrue(os.path.exists(
+            os.path.join(self.test_data_root,
+                         "createdFiles/analyze_positives.png")))
+        os.remove(os.path.join(self.test_data_root,
+                               "createdFiles/analyze_positives.png"))
 
     def test_get_frame_from_second(self):
         # default fps = 25
@@ -110,7 +181,7 @@ class TestDataSet(unittest.TestCase):
             txt_file=os.path.join(self.test_data_root, "pause_example.txt")))
         self.assertEqual(self.data_set.get_pause_length(
             txt_file=os.path.join(self.test_data_root, "pause_example.txt")),
-                         [(26.14, 27.64), (17.04, 18.01), (11.29, 12.0), (3.55, 5.63)])
+            [(26.14, 27.64), (17.04, 18.01), (11.29, 12.0), (3.55, 5.63)])
 
     def test_get_no_pause_length(self):
         self.assertEqual(
@@ -118,19 +189,45 @@ class TestDataSet(unittest.TestCase):
                 txt_file=os.path.join(self.test_data_root, "no_pause_example.txt")), [])
 
     def test_get_sample_configs_for_positive_samples(self):
-        pass
+        config = self.data_set.get_sample_configs_for_pos_samples(
+            txt_file=os.path.join(self.test_data_root, "pause_example.txt")
+        )
+
+        # [startFrame, endFrame , x, y, w, h] x,y,w,h are relative pixels
+        self.assertEqual(config[0][0], 2120, "startFrame matches")
+        self.assertEqual(config[0][1], 2209, "endFrame matches")
+        self.assertEqual(config[0][2], .456, "relative pixels in x according to expectation")
+        self.assertEqual(config[0][3], .108, "relative pixels in y according to expectation")
+        self.assertEqual(config[0][4], .103, "relative pixels in w according to expectation")
+        self.assertEqual(config[0][5], .271, "relative pixels in h according to expectation")
 
     def test_check_sample_length(self):
-        pass
+        self.assertTrue(self.data_set.check_sample_length(3.55, 5.63))
 
     def test_get_sample_configs(self):
-        pass
+        # [(label, [startFrame, endFrame , x, y, w, h]), ...] x,y,w,h are relative
+        # pixels of the bounding box in thh first frame
+
+        self.assertEqual(self.data_set.get_sample_configs(txt_file=os.path.join(
+            self.test_data_root, self.video_txt_file_path)),
+            [(True, [932, 981, 0.382, 0.138, 0.105, 0.277]),
+             (True, [982, 1031, 0.445, 0.14, 0.105, 0.267]),
+             (True, [1032, 1081, 0.437, 0.137, 0.106, 0.268]),
+             (True, [1082, 1131, 0.407, 0.135, 0.104, 0.28])])
 
     def test_get_samples(self):
-        pass
+        samples = self.data_set.get_samples(
+            path=os.path.join(self.test_data_root, self.video_folder_path),
+            feature_type="lip_feature",
+            samples_shape=(200, 200))
+
+        print(samples)
+        # self.data_set.get_samples(path=os.path.join(self.test_data_root, self.video_folder_path).replace("\\", "/"),
+        #                          feature_type=,
+        #                          samples_shape=)
 
     def test_analyze(self):
-        pass
+        self.data_set.analyze(path=os.path.join(self.test_data_root, self.videos_path))
 
     def test_grap_from_video(self):
         pass

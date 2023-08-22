@@ -27,7 +27,7 @@ __copyright__ = "Copyright (c)2017, Blackout Technologies"
 
 class WrongPathException(Exception):
     "Data folder is probably not mounted. Or you gave the wrong path."
-    print("Data folder is probably not mounted. Or you gave the wrong path.")
+    # print("Data folder is probably not mounted. Or you gave the wrong path.")
     pass
 
 
@@ -85,7 +85,7 @@ class DataSet:
         # open folder and get a list of files
         try:
             files = list(os.walk(current_folder, followlinks=True))[0][2]
-        except WrongPathException:
+        except:
             raise WrongPathException
         files = [pathlib.Path(os.path.join(current_folder, file))
                  for file in files]
@@ -154,17 +154,19 @@ class DataSet:
         files. (For Example the
         pretrain folder) :type path: String
         """
+        print("my path", path)
         folders = list(os.walk(path, followlinks=True))[0][1]
+        print("folders are: ", folders)
         folders.sort()
         for folder in folders:
             # Video file is the only not txt file
             currentFolder = os.path.abspath(os.path.join(path, folder))
-            for sample in self.get_positive_samples(currentFolder, **kwargs):
-                yield sample
+            for current_sample in self.get_positive_samples(currentFolder, **kwargs):
+                yield current_sample
             self.debug_print("[getAllPSamples] Folder {} done".format(folder))
 
-    # TODO add option if you want to use whats there or download if neccessary
-    def get_all_samples(self, feature_type, path=None, relative=True, dryRun=False,
+    # TODO add option if you want to use whats there or download if necessary
+    def get_all_samples(self, feature_type, path=None, relative=True, dry_run=False,
                         showStatus=False, **kwargs):
         """
         making all the samples from this folder.
@@ -195,8 +197,9 @@ class DataSet:
             current_folder = os.path.abspath(os.path.join(path, folder))
             for single_sample in self.get_samples(current_folder,
                                                   feature_type=feature_type,
-                                                  relative=relative,
-                                                  dry_run=dryRun):
+                                                  #relative=relative,
+                                                  samples_shape=(200, 200),
+                                                  dry_run=dry_run):
                 yield single_sample
             self.debug_print("[getAllPSamples] Folder {} done".format(folder))
             if showStatus:
@@ -383,7 +386,7 @@ class DataSet:
         video_path = None
         try:
             files = list(os.walk(current_folder, followlinks=True))[0][2]
-        except WrongPathException:
+        except IndexError:
             raise WrongPathException
         files = [pathlib.Path(os.path.join(current_folder, file))
                  for file in files]
@@ -397,7 +400,7 @@ class DataSet:
             self.debug_print(
                 "TOO MANY VIDEOS OR OTHER FILES IN {}".format(current_folder))
             for video in video_files:
-                if ".converted" in video.stem:  # if there are two videos, dont remove
+                if ".converted" in video.stem:  # if there are two videos, don't remove
                     # the original!
                     self.debug_print("Deleting {}".format(video))
                     os.remove(video)
@@ -440,7 +443,7 @@ class DataSet:
         hist_data = [x[1] - x[0]
                      for x in pauses if self.check_sample_length(x[0], x[1])]
         self.debug_print(
-            "Number of extracted positive samples:  {}".format(len(hist_data)))
+            "Number of extracted negative samples:  {}".format(len(hist_data)))
         # bins=15)#np.arange(1.0, 19.0))
         plt.hist(hist_data, np.arange(self.sampleLength, max(hist_data)))
         plt.ylabel('Num Negatives', size=30)
@@ -465,7 +468,7 @@ class DataSet:
         :param save_to: Save results to file dir
         :type save_to: String
         """
-        p_samples = self.get_all_p_samples(path, dryRun=True)
+        p_samples = self.get_all_p_samples(path, dry_run=True)
         # TODO: norm to the number of analyzedSamples to see how many negative Samples
         #  can be constructed out of how many positive samples
 
@@ -481,7 +484,7 @@ class DataSet:
         else:
             plt.show()
         # return sorted(pauses, key = lambda x: x[0] - x[1])
-        return p_samples
+        return p_samples, len(hist_data)
 
     @staticmethod
     def get_frame_from_second(second, fps=25):
@@ -585,6 +588,7 @@ class DataSet:
                              float(first_frame_config[1]), float(
                                 first_frame_config[2]), float(first_frame_config[3]),
                              float(first_frame_config[4])])
+
                     elif not pause_end and pause_start:
                         # pauseStart is set so what I get is pauseEnd - just empty
                         # pauseStart and pop from pauses
@@ -638,7 +642,7 @@ class DataSet:
         returns a list of tuples holding the config of a sample consisting out of the
         following:
         [(label, [startFrame, endFrame , x, y, w, h]), ...] x,y,w,h are relative pixels
-        of the bounding box in teh first frame
+        of the bounding box in the first frame
 
         :param txt_file: Path to the txt file
         :type txt_file: String
@@ -672,7 +676,7 @@ class DataSet:
                 negative_frames = set(negative_frames)
                 assert list_len == len(
                     negative_frames), "There are doublets in the frameList of pauses " \
-                                      "that shouldnt happen"
+                                      "that should not happen"
             assert counter >= int(current_config[0])
             # check if this frame needs to be taken in consideration
             if counter == int(current_config[0]):
@@ -701,9 +705,9 @@ class DataSet:
                     config_list.append(sample_config)
                     counter += self.k
                 else:
-                    counter += 1  # its a mix of negative and positive frames -> just
+                    counter += 1  # it's a mix of negative and positive frames -> just
                     # take the next k frames
-        # check if last sample is valid (could reached out of video) counter is only
+        # check if last sample is valid (could reach out of video) counter is only
         # allowed to be 1 frames bigger than currentConfig[0]
         if counter - int(current_config[0]) > 1:
             config_list.pop()
@@ -771,7 +775,7 @@ class DataSet:
                 if sample_config_list:
                     success, image = vid_obj.read()
                     # TODO: Here is the issue that the list have been popped empty!!!!!
-                    #  BorderCase
+                    #  EdgeCase
                     if sample_config_list[0][1][0] <= count <= \
                             sample_config_list[0][1][1]:
                         frames.append(image)
