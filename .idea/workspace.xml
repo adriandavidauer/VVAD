@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Extend codecov display" />
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Used wrong testing path">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
+    </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +56,7 @@
       <recent name="C:\VVAD\test\unit-tests\utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze">
+  <component name="RunManager" selected="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze_positives">
     <configuration name="Unittests for test_dataSet.TestDataSet.test_analyze" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -65,6 +68,20 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_analyze&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test_dataSet.TestDataSet.test_analyze_positives" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="VVAD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_analyze_positives&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -96,20 +113,6 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_dataSet.TestDataSet.test_get_sample_configs_for_positive_samples" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="VVAD" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_get_sample_configs_for_positive_samples&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="Unittests for test_dataSet.TestDataSet.test_get_samples" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -125,19 +128,19 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze_positives" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_check_sample_length" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_sample_configs" />
-      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_sample_configs_for_positive_samples" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_samples" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze_positives" />
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze" />
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_samples" />
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_sample_configs" />
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_check_sample_length" />
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_sample_configs_for_positive_samples" />
       </list>
     </recent_temporary>
   </component>
@@ -149,13 +152,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Commit changes">
-      <created>1688912229677</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1688912229677</updated>
     </task>
     <task id="LOCAL-00002" summary="Utils framework, some tests integrated">
       <created>1689166959617</created>
@@ -493,7 +489,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692906142680</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Used wrong testing path">
+      <created>1692906421449</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1692906421449</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -508,7 +511,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="change requirement operator" />
     <MESSAGE value="fix ruff lint issues" />
     <MESSAGE value="use unittest instead of pytest" />
     <MESSAGE value="Add package unittests for runner" />
@@ -533,7 +535,8 @@
     <MESSAGE value="check codecov" />
     <MESSAGE value="Fix branches" />
     <MESSAGE value="Extend codecov display" />
-    <option name="LAST_COMMIT_MESSAGE" value="Extend codecov display" />
+    <MESSAGE value="Used wrong testing path" />
+    <option name="LAST_COMMIT_MESSAGE" value="Used wrong testing path" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

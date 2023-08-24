@@ -155,6 +155,9 @@ class TestDataSet(unittest.TestCase):
                                "createdFiles/analyze_negatives.png"))
 
     def test_analyze_positives(self):
+        self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
+            self.test_data_root, self.video_folder_path))
+
         positives, num_samples = self.data_set.analyze_positives(
             path=os.path.join(self.test_data_root, self.videos_path),
             save_to=os.path.join(self.test_data_root, "createdFiles/analyze_positives"))
@@ -165,6 +168,8 @@ class TestDataSet(unittest.TestCase):
                          "createdFiles/analyze_positives.png")))
         os.remove(os.path.join(self.test_data_root,
                                "createdFiles/analyze_positives.png"))
+        os.remove(os.path.join(self.test_data_root,
+                               self.video_file_path))
 
     def test_get_frame_from_second(self):
         # default fps = 25
@@ -266,7 +271,7 @@ class TestSaveBalancedDataset(unittest.TestCase):
 
 class TestTransformations(unittest.TestCase):
     def test_transform_to_hdf5(self):
-        rootDir = "testData"
+        rootDir = "test/unit-tests/data-and-models/testData"
         dSet.transform_to_hdf5(path=os.path.join(rootDir, "sample_pickles"),
                                hdf5_path="testData/sample_pickles", testing=True)
         self.assertTrue(os.path.exists(
