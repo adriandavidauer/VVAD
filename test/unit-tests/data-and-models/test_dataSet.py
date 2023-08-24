@@ -18,7 +18,7 @@ from vvadlrs3 import dataSet as dSet
 class TestDataSet(unittest.TestCase):
 
     def setUp(self):
-        self.test_data_root = "testData"  # "test/unit-tests/data-and-models/testData"
+        self.test_data_root = "test/unit-tests/data-and-models/testData"
         self.videos_path = "video"
         self.video_folder_path = "video/00j9bKdiOjk"
         self.video_file_path = "video/00j9bKdiOjk/00j9bKdiOjk.3gpp"
