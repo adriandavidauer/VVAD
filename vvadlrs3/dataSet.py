@@ -254,8 +254,10 @@ class DataSet:
         Get all the txt files with a generator from the path
         """
         current_folder = os.path.abspath(path)
+        print(current_folder)
         try:
             files = list(os.walk(current_folder, followlinks=True))[0][2]
+            print(files)
         except WrongPathException:
             raise WrongPathException
         files = [pathlib.Path(os.path.join(current_folder, file))
@@ -792,7 +794,9 @@ class DataSet:
         """
         num_positives = 0
         num_negatives = 0
-        for sampleConfig in self.get_all_samples("faceImage", path, dryRun=True):
+        for sampleConfig in self.get_all_samples(
+                "faceImage", path, dryRun=True, showStatus=True):
+            print("Sample Config is ", sampleConfig)
             if sampleConfig[0]:
                 num_positives += 1
             else:
@@ -900,7 +904,8 @@ def transform_to_hdf5(path, hdf5_path, validation_split=0.2, testing=False):
     """
     transform a pickled dataset to one big hdf5 file.
 
-    :param path: path to the folder containing the folders positiveSamples and
+    :param path: path to the folder containing the folders
+    positiveSamples and
         negativeSamples
     :type path: String
     :param hdf5_path: folder to where we want to save the hdf5 files
@@ -917,7 +922,7 @@ def transform_to_hdf5(path, hdf5_path, validation_split=0.2, testing=False):
     all_pickles = glob.glob(path + '/**/*.pickle', recursive=True)
     if not testing:
         assert len(all_pickles) == 22245 + \
-               44489, "You didnt get alle the samples - make sure the path is correct!"
+               44489, "You didn't get alle the samples - make sure the path is correct!"
 
     np.random.shuffle(all_pickles)
     validation_pickles = all_pickles[:int(len(all_pickles) * validation_split)]
@@ -977,7 +982,7 @@ def transform_points_to_numpy(points):
         array.append([point.x, point.y])
     return np.array(array)
 
-
+# ToDo function not used?? What is it used for?
 def transform_to_features(path, shape_model_path=None, shape=None):
     """
     get a Sample of type faceImage and transforms to lipImage, faceFeatures and

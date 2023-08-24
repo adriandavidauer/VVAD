@@ -65,4 +65,4 @@ jobs:
           # Exclude: F405: Undefined-local-with-import-star-usage
           # Exclude: F403: Undefined-local-with-import-star
           # Exclude: E402: Import-module-not-at-top-file
-          ruff --format=github --target-version=py37 --ignore=F405,F403,E402 -v .
+          ruff --format=github --target-version=py37 --ignore=F405,F403,E402,E722 -v .
