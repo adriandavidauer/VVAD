@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Used wrong testing path">
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="fix failed test cases">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/dataSet.py" afterDir="false" />
     </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,28 +37,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/VVAD/test/unit-tests/data-and-models&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/VVAD/test/unit-tests/data-and-models",
+    "run.code.analysis.last.selected.profile": "aDefault",
+    "settings.editor.selected.configurable": "preferences.sourceCode"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\VVAD\test\unit-tests\data-and-models" />
+      <recent name="C:\VVAD\vvadlrs3" />
+      <recent name="C:\VVAD\vvadlrs3\utils" />
       <recent name="C:\VVAD\test\unit-tests\dat-and-models\testData" />
       <recent name="C:\VVAD\test\unit-tests" />
-      <recent name="C:\VVAD\test\unit-tests\dat-and-models" />
-      <recent name="C:\VVAD\testing\unit-tests\data-and-models\testData" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\VVAD\test\unit-tests\utils" />
     </key>
   </component>
   <component name="RunManager" selected="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze_positives">
+    <configuration name="Unittests for test_dataSet.TestDataSet" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="VVAD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Unittests for test_dataSet.TestDataSet.test_analyze" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -85,7 +101,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_dataSet.TestDataSet.test_check_sample_length" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_dataSet.TestDataSet.test_convert_all_fps" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -95,11 +111,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_check_sample_length&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_convert_all_fps&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_dataSet.TestDataSet.test_get_sample_configs" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_dataSet.TestTransformations.test_transform_to_hdf5" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -109,38 +125,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_get_sample_configs&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Unittests for test_dataSet.TestDataSet.test_get_samples" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="VVAD" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_get_samples&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestTransformations.test_transform_to_hdf5&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet" />
+      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_convert_all_fps" />
+      <item itemvalue="Python tests.Unittests for test_dataSet.TestTransformations.test_transform_to_hdf5" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze_positives" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze" />
-      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_check_sample_length" />
-      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_sample_configs" />
-      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_samples" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze_positives" />
+        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet" />
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze" />
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_samples" />
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_sample_configs" />
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_check_sample_length" />
+        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_convert_all_fps" />
+        <item itemvalue="Python tests.Unittests for test_dataSet.TestTransformations.test_transform_to_hdf5" />
       </list>
     </recent_temporary>
   </component>
@@ -152,13 +154,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Utils framework, some tests integrated">
-      <created>1689166959617</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1689166959617</updated>
     </task>
     <task id="LOCAL-00003" summary="Frames for dataSet tests">
       <created>1689170693745</created>
@@ -496,7 +491,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692906421449</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="fix failed test cases">
+      <created>1692907651785</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1692907651785</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -511,7 +513,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix ruff lint issues" />
     <MESSAGE value="use unittest instead of pytest" />
     <MESSAGE value="Add package unittests for runner" />
     <MESSAGE value="Small adjustments in file access" />
@@ -536,7 +537,8 @@
     <MESSAGE value="Fix branches" />
     <MESSAGE value="Extend codecov display" />
     <MESSAGE value="Used wrong testing path" />
-    <option name="LAST_COMMIT_MESSAGE" value="Used wrong testing path" />
+    <MESSAGE value="fix failed test cases" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix failed test cases" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

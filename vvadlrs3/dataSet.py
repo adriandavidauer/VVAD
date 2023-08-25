@@ -1,6 +1,7 @@
 """
 This Module creates a dataset for the purpose of the visual speech detection system.
 """
+import os
 import pathlib
 # System imports
 import sys
@@ -10,7 +11,8 @@ from pathlib import Path, PurePath
 
 import h5py
 import yaml
-from ffmpy import FFmpeg
+#from ffmpy import FFmpeg
+import ffmpeg
 from file_read_backwards import FileReadBackwards
 # 3rd party imports
 from pytube import YouTube
@@ -197,7 +199,7 @@ class DataSet:
             current_folder = os.path.abspath(os.path.join(path, folder))
             for single_sample in self.get_samples(current_folder,
                                                   feature_type=feature_type,
-                                                  #relative=relative,
+                                                  # relative=relative,
                                                   samples_shape=(200, 200),
                                                   dry_run=dry_run):
                 yield single_sample
@@ -359,6 +361,8 @@ class DataSet:
         """
         video_path = self.get_video_path_from_folder(path)
 
+        print("videoPath is ", video_path)
+
         vid_obj = cv2.VideoCapture(str(video_path))
         vid_fps = vid_obj.get(cv2.CAP_PROP_FPS)
         if vid_fps != fps:
@@ -367,13 +371,18 @@ class DataSet:
             old_video_path = video_path
             video_path = pathlib.Path(os.path.join(
                 old_video_path.parents[0], old_video_path.stem + ".converted" +
-                old_video_path.suffix))
-            change_fps = FFmpeg(
-                inputs={str(old_video_path): "-y"}, outputs={str(video_path): '-r 25'})
+                                           old_video_path.suffix))
+
+            command = f"ffmpeg -i {old_video_path} -filter:v fps:{fps} {video_path}"
+
+            print(command)
+            os.system(command)
+
             # print(changeFps.cmd)
-            stdout, stderr = change_fps.run()
+            # stdout, stderr = change_fps.run()
             # Remove the old!
-            os.remove(old_video_path)
+            #ToDo Remove old video path
+            #os.remove(old_video_path)
             self.debug_print("Changed FPS of {} to {}".format(video_path, fps))
         else:
             self.debug_print("{} has already the correct fps".format(video_path))
@@ -811,8 +820,8 @@ class DataSet:
         ax1.text(0, 0,
                  'Configuration\nsampleLength : {}s\nmaxPauseLength  : {}s\ntotal '
                  'number of samples : {}'.format(
-                    self.sampleLength, self.maxPauseLength,
-                    num_positives + num_negatives),
+                     self.sampleLength, self.maxPauseLength,
+                     num_positives + num_negatives),
                  style='italic',
                  bbox={'facecolor': 'white', 'alpha': 0.5, 'pad': 10})
         ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
@@ -981,6 +990,7 @@ def transform_points_to_numpy(points):
     for point in points:
         array.append([point.x, point.y])
     return np.array(array)
+
 
 # ToDo function not used?? What is it used for?
 def transform_to_features(path, shape_model_path=None, shape=None):

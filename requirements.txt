@@ -13,6 +13,7 @@ decorator~=4.4.0
 defusedxml~=0.6.0
 dlib~=19.16.0
 entrypoints~=0.3
+ffmpeg-python~=0.2.0
 ffmpy~=0.2.2
 file-read-backwards~=2.0.0
 gast~=0.2.2
