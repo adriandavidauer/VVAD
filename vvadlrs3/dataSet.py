@@ -11,8 +11,6 @@ from pathlib import Path, PurePath
 
 import h5py
 import yaml
-#from ffmpy import FFmpeg
-import ffmpeg
 from file_read_backwards import FileReadBackwards
 # 3rd party imports
 from pytube import YouTube
