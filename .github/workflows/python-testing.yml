@@ -46,6 +46,7 @@ jobs:
           coverage run -m unittest discover -s test.unit-tests.data-and-models -v
           coverage xml -i --omit="test/*"
       - name: Get Cover
+        if: github.eventname == 'pull_request'
         uses: orgoro/coverage@v3.1
         with:
           coverageFile: ./coverage.xml
