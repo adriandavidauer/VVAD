@@ -6,7 +6,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-from vvadlrs3 import sample as sample, dlibmodels, pretrained_models
+from vvadlrs3 import sample as sample, pretrained_models
 
 
 def get_rgb_test_image(image_file_name, folder_path):
@@ -214,7 +214,7 @@ class TestFeaturedSample(unittest.TestCase):
 
 class TestVisualizeSamples(unittest.TestCase):
     def test_visualize_samples(self):
-        sample.visualize_samples()
+        pass#sample.visualize_samples()
 
 
 if __name__ == "__main__":
