@@ -140,7 +140,7 @@ class TestFaceFeatureGenerator(unittest.TestCase):
 
 class TestFeaturedSample(unittest.TestCase):
     def setUp(self):
-        self.test_data_root = "testData"  # "test/unit-tests/data-and-models/testData"
+        self.test_data_root = "test/unit-tests/data-and-models/testData"
         self.images_path = "images"
         self.sample_pickles = "sample_pickles"
 
@@ -193,23 +193,26 @@ class TestFeaturedSample(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmpdirname:
             temp_dir = Path(tmpdirname)
             data_dir = temp_dir.joinpath(self, "test.pickle")
-            sample.FeatureizedSample.save(data_dir)
+            test_sample = sample.FeatureizedSample()
+            test_sample.save(data_dir)
 
             self.assertEqual(data_dir.exists(), True)
             # ToDo check if file is empty
 
     def test_load_existing_pickle(self):
         # ToDo: Check exception type
-        sample_path = "./testData/testSample.pickle"
+        sample_path = os.path.join(self.test_data_root, self.sample_pickles, "testPositiveSample.pickle")
         try:
-            sample.FeatureizedSample.load(sample_path)
+            test_sample = sample.FeatureizedSample()
+            test_sample.load(sample_path)
         except ValueError:
             self.fail("ValueError raised unexpectedly!")
 
     def test_load_non_existing_pickle(self):
         # ToDo: Check exception type
-        sample_path = "./testData/noTestSample.pickle"
-        self.assertRaises(ValueError, sample.FeatureizedSample.load(sample_path))
+        sample_path = os.path.join(self.test_data_root, self.sample_pickles, "testPositiveSample.pickle")
+        test_sample = sample.FeatureizedSample()
+        self.assertRaises(ValueError, test_sample.load(sample_path))
 
 
 class TestVisualizeSamples(unittest.TestCase):
