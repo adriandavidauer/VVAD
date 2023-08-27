@@ -7,9 +7,12 @@ on:
     branches:
       - main
       - 02_establish-py-unit-tests
+      - develop_phase1
   pull_request:
     branches:
       - main
+      - develop
+      - develop_phase1
       - 02_establish-py-unit-tests
 
 jobs:
