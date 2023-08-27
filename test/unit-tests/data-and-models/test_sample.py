@@ -2,10 +2,9 @@ import os.path
 import tempfile
 import unittest
 from pathlib import Path
-import cv2
 
+import cv2
 import numpy as np
-import matplotlib.pyplot as plt
 
 from vvadlrs3 import sample as sample, dlibmodels, pretrained_models
 
