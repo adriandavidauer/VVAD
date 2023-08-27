@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="used existing shape predictor">
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="ignore warnings">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/python-testing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/python-testing.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" afterDir="false" />
     </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
@@ -153,20 +153,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00012" summary="stick to 3.7 first">
-      <created>1689781616097</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1689781616097</updated>
-    </task>
-    <task id="LOCAL-00013" summary="exclude conda">
-      <created>1689781830300</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1689781830300</updated>
     </task>
     <task id="LOCAL-00014" summary="change requirement operator">
       <created>1689782174768</created>
@@ -497,7 +483,21 @@
       <option name="project" value="LOCAL" />
       <updated>1693150615144</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="replace tensorflow-gpu with tensorflow">
+      <created>1693159932095</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1693159932095</updated>
+    </task>
+    <task id="LOCAL-00062" summary="ignore warnings">
+      <created>1693160443638</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1693160443638</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -512,8 +512,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="set working dir for unit tests" />
-    <MESSAGE value="chekc this syntax" />
     <MESSAGE value="checkout repo in runner" />
     <MESSAGE value="add unit test work directory" />
     <MESSAGE value="import directory into testDataSet" />
@@ -537,7 +535,9 @@
     <MESSAGE value="include develop branches in pipeline" />
     <MESSAGE value="tqdm was not found, added?!" />
     <MESSAGE value="used existing shape predictor" />
-    <option name="LAST_COMMIT_MESSAGE" value="used existing shape predictor" />
+    <MESSAGE value="replace tensorflow-gpu with tensorflow" />
+    <MESSAGE value="ignore warnings" />
+    <option name="LAST_COMMIT_MESSAGE" value="ignore warnings" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>
