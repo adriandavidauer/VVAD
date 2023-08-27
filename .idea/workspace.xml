@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="exclude failures for unfailed run">
-      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/sample_pickles/testSample.pickle" afterDir="false" />
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="First SAMPLE test cases in test_sample.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/sample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" afterDir="false" />
     </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,35 +57,7 @@
       <recent name="C:\VVAD\test\unit-tests\utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_sample.TestFeaturedSample.test_get_label">
-    <configuration name="Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_face_features" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="VVAD" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_sample.TestFaceFeatureGenerator.test_get_features_face_features&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_lip_features" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="VVAD" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_sample.TestFaceFeatureGenerator.test_get_features_lip_features&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python tests.Unittests in test_sample.py">
     <configuration name="Unittests for test_sample.TestFaceFeatureGenerator.test_unsupported_feature" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -130,20 +100,48 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Unittests in test_dataSet.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="VVAD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests in test_sample.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="VVAD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_face_features" />
-      <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_lip_features" />
       <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_unsupported_feature" />
       <item itemvalue="Python tests.Unittests for test_sample.TestFeaturedSample.test_get_label" />
       <item itemvalue="Python tests.Unittests for test_sample.TestFeaturedSample.test_normalize" />
+      <item itemvalue="Python tests.Unittests in test_dataSet.py" />
+      <item itemvalue="Python tests.Unittests in test_sample.py" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Unittests in test_sample.py" />
+        <item itemvalue="Python tests.Unittests in test_dataSet.py" />
         <item itemvalue="Python tests.Unittests for test_sample.TestFeaturedSample.test_get_label" />
         <item itemvalue="Python tests.Unittests for test_sample.TestFeaturedSample.test_normalize" />
         <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_unsupported_feature" />
-        <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_lip_features" />
-        <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_face_features" />
       </list>
     </recent_temporary>
   </component>
@@ -155,20 +153,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Add CI workflow">
-      <created>1689775353224</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1689775353224</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Add CI workflow (adjustments)">
-      <created>1689775592542</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1689775592542</updated>
     </task>
     <task id="LOCAL-00008" summary="change requirements.txt">
       <created>1689775864227</created>
@@ -499,7 +483,21 @@
       <option name="project" value="LOCAL" />
       <updated>1693087789805</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="First SAMPLE test cases in test_sample.py">
+      <created>1693148293386</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1693148293387</updated>
+    </task>
+    <task id="LOCAL-00056" summary="First SAMPLE test cases in test_sample.py">
+      <created>1693148361643</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1693148361643</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -514,7 +512,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Small adjustments in file access" />
     <MESSAGE value="updated requirements" />
     <MESSAGE value="update requirements.txt" />
     <MESSAGE value="use old requirements.txt" />
@@ -539,7 +536,8 @@
     <MESSAGE value="fix failed test cases" />
     <MESSAGE value="first finish of dataset test cases" />
     <MESSAGE value="exclude failures for unfailed run" />
-    <option name="LAST_COMMIT_MESSAGE" value="exclude failures for unfailed run" />
+    <MESSAGE value="First SAMPLE test cases in test_sample.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="First SAMPLE test cases in test_sample.py" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

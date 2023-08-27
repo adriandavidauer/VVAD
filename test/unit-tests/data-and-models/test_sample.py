@@ -39,7 +39,7 @@ class TestFaceTracker(unittest.TestCase):
     def test_get_next_face_fail(self):
         image_file = "Two_human_faces.jpg"
         images_path = os.path.join(self.test_data_root, self.images_path)
-        RBGimg = get_rgb_test_image(image_file_name=image_file, folder_path=images_path)
+        RGBimg = get_rgb_test_image(image_file_name=image_file, folder_path=images_path)
 
         _, box = self.face_tracker.get_next_face(RGBimg)
 
