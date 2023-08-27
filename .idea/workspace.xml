@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="include develop branches in pipeline">
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" afterDir="false" />
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="tqdm was not found, added?!">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
@@ -152,13 +152,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00010" summary="adjust mkl-fft requirements.txt">
-      <created>1689776158350</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1689776158350</updated>
     </task>
     <task id="LOCAL-00011" summary="adjust mkl-random requirements.txt">
       <created>1689781420220</created>
@@ -496,7 +489,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693148614057</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="tqdm was not found, added?!">
+      <created>1693149472867</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1693149472867</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -511,7 +511,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="use old requirements.txt" />
     <MESSAGE value="New Env and updated requirements" />
     <MESSAGE value="set working dir for unit tests" />
     <MESSAGE value="chekc this syntax" />
@@ -536,7 +535,8 @@
     <MESSAGE value="First SAMPLE test cases in test_sample.py" />
     <MESSAGE value="fixed lint issue" />
     <MESSAGE value="include develop branches in pipeline" />
-    <option name="LAST_COMMIT_MESSAGE" value="include develop branches in pipeline" />
+    <MESSAGE value="tqdm was not found, added?!" />
+    <option name="LAST_COMMIT_MESSAGE" value="tqdm was not found, added?!" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

@@ -55,7 +55,7 @@ class TestFaceFeatureGenerator(unittest.TestCase):
         input_shape = model.layers[0].input_shape[2:]
         generator = sample.FaceFeatureGenerator(
             feature_type="faceImage",
-            shape_model_path=str(dlibmodels.SHAPE_PREDICTOR_68_FACE_LANDMARKS()),
+            shape_model_path="models/shape_predictor_68_face_landmarks.dat",
             shape=(input_shape[1],
                    input_shape[0])
         )
@@ -73,7 +73,7 @@ class TestFaceFeatureGenerator(unittest.TestCase):
         input_shape = model.layers[0].input_shape[2:]
         generator = sample.FaceFeatureGenerator(
             feature_type="lipImage",
-            shape_model_path=str(dlibmodels.SHAPE_PREDICTOR_68_FACE_LANDMARKS()),
+            shape_model_path="models/shape_predictor_68_face_landmarks.dat",
             shape=(input_shape[1],
                    input_shape[0])
         )
@@ -90,7 +90,7 @@ class TestFaceFeatureGenerator(unittest.TestCase):
         input_shape = model.layers[0].input_shape[2:]
         generator = sample.FaceFeatureGenerator(
             feature_type="faceFeatures",
-            shape_model_path=str(dlibmodels.SHAPE_PREDICTOR_68_FACE_LANDMARKS()),
+            shape_model_path="../../../models/shape_predictor_68_face_landmarks.dat",
             shape=(input_shape[1],
                    input_shape[0])
         )
@@ -109,7 +109,7 @@ class TestFaceFeatureGenerator(unittest.TestCase):
         input_shape = model.layers[0].input_shape[2:]
         generator = sample.FaceFeatureGenerator(
             feature_type="lipFeatures",
-            shape_model_path=str(dlibmodels.SHAPE_PREDICTOR_68_FACE_LANDMARKS()),
+            shape_model_path="../../../models/shape_predictor_68_face_landmarks.dat",
             shape=(input_shape[1],
                    input_shape[0])
         )
