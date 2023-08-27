@@ -219,4 +219,4 @@ class TestVisualizeSamples(unittest.TestCase):
 
 if __name__ == "__main__":
     print("name", __name__)
-    unittest.main()
+    unittest.main(warnings='ignore')
