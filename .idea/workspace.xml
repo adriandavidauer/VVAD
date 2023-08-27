@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="exclude failures for unfailed run">
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/sample_pickles/testSample.pickle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/sample.py" afterDir="false" />
     </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="02_establish-py-unit-tests" />
+        <entry key="$PROJECT_DIR$" value="develop_phase1" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -34,29 +37,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/VVAD/test/unit-tests/data-and-models&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/VVAD/test/unit-tests/data-and-models/testData/sample_pickles",
+    "run.code.analysis.last.selected.profile": "aDefault",
+    "settings.editor.selected.configurable": "preferences.sourceCode"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\VVAD\test\unit-tests\data-and-models\testData\sample_pickles" />
       <recent name="C:\VVAD\test\unit-tests\data-and-models" />
       <recent name="C:\VVAD\vvadlrs3" />
       <recent name="C:\VVAD\vvadlrs3\utils" />
       <recent name="C:\VVAD\test\unit-tests\dat-and-models\testData" />
-      <recent name="C:\VVAD\test\unit-tests" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\VVAD\test\unit-tests\data-and-models" />
       <recent name="C:\VVAD\test\unit-tests\utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_dataSet.TestDataSet">
-    <configuration name="Unittests for test_dataSet.TestDataSet" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Unittests for test_sample.TestFeaturedSample.test_get_label">
+    <configuration name="Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_face_features" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -66,11 +70,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet&quot;" />
+      <option name="_new_target" value="&quot;test_sample.TestFaceFeatureGenerator.test_get_features_face_features&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_dataSet.TestDataSet.test_analyze" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_lip_features" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -80,11 +84,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_analyze&quot;" />
+      <option name="_new_target" value="&quot;test_sample.TestFaceFeatureGenerator.test_get_features_lip_features&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_dataSet.TestDataSet.test_analyze_positives" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_sample.TestFaceFeatureGenerator.test_unsupported_feature" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -94,11 +98,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_analyze_positives&quot;" />
+      <option name="_new_target" value="&quot;test_sample.TestFaceFeatureGenerator.test_unsupported_feature&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_dataSet.TestDataSet.test_convert_all_fps" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_sample.TestFeaturedSample.test_get_label" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -108,11 +112,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_convert_all_fps&quot;" />
+      <option name="_new_target" value="&quot;test_sample.TestFeaturedSample.test_get_label&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_dataSet.TestTransformations.test_transform_to_hdf5" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_sample.TestFeaturedSample.test_normalize" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -122,24 +126,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestTransformations.test_transform_to_hdf5&quot;" />
+      <option name="_new_target" value="&quot;test_sample.TestFeaturedSample.test_normalize&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet" />
-      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_convert_all_fps" />
-      <item itemvalue="Python tests.Unittests for test_dataSet.TestTransformations.test_transform_to_hdf5" />
-      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze_positives" />
-      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze" />
+      <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_face_features" />
+      <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_lip_features" />
+      <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_unsupported_feature" />
+      <item itemvalue="Python tests.Unittests for test_sample.TestFeaturedSample.test_get_label" />
+      <item itemvalue="Python tests.Unittests for test_sample.TestFeaturedSample.test_normalize" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet" />
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze_positives" />
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze" />
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_convert_all_fps" />
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestTransformations.test_transform_to_hdf5" />
+        <item itemvalue="Python tests.Unittests for test_sample.TestFeaturedSample.test_get_label" />
+        <item itemvalue="Python tests.Unittests for test_sample.TestFeaturedSample.test_normalize" />
+        <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_unsupported_feature" />
+        <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_lip_features" />
+        <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_face_features" />
       </list>
     </recent_temporary>
   </component>

@@ -7,6 +7,7 @@ import os
 import pickle
 # from collections import deque
 import random
+import time
 
 # 3rd party imports
 import matplotlib.pyplot as plt
@@ -76,14 +77,17 @@ class FaceTracker:
                 y = self.init_pos[1]
                 w = self.init_pos[2]
                 h = self.init_pos[3]
+
         x_start = x * (1 - self.internal_rect_oversize)
         y_start = y * (1 - self.internal_rect_oversize)
         x_end = (x + w) * 1.2
         y_end = (y + h) * 1.2
         roi_rect = dlib.drectangle(x_start, y_start, x_end, y_end)
         roi = crop_img(image, roi_rect)
+
         detector = dlib.get_frontal_face_detector()
         dets = detector(roi, 1)
+        print("Detected faces:", dets)
         # TODO: error if more than one face! - invalid
         if len(dets) != 1:
             # self.valid = False
@@ -140,7 +144,7 @@ class FaceFeatureGenerator:
         """
         if self.featureType == "faceImage":
             return resize_and_zero_padding(image, self.shape)
-        elif self.featureType == "face_features":
+        elif self.featureType == "faceFeatures":
             shape = self.predictor(image, dlib.rectangle(
                 0, 0, image.shape[1], image.shape[0]))
             return shape.parts()
@@ -244,7 +248,7 @@ class FeatureizedSample:
     def get_data(self, image_size=None, num_steps=None, grayscale=False,
                  normalize=False):
         """
-        returns tha feature map as a numpyarray
+        returns the feature map as a numpy array
 
         :param image_size: size of the sample's images
         :type image_size: tuple of ints
