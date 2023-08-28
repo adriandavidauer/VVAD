@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="downgrade tf">
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="fix some sample test cases">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/pretrained_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/pretrained_models.py" afterDir="false" />
     </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,15 +36,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/VVAD/test/unit-tests/data-and-models/testData/sample_pickles",
-    "run.code.analysis.last.selected.profile": "aDefault",
-    "settings.editor.selected.configurable": "preferences.sourceCode"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/VVAD/test/unit-tests/data-and-models/testData/sample_pickles&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\VVAD\test\unit-tests\data-and-models\testData\sample_pickles" />
@@ -153,13 +154,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00015" summary="fix ruff lint issues">
-      <created>1689786109404</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1689786109404</updated>
     </task>
     <task id="LOCAL-00016" summary="use unittest instead of pytest">
       <created>1689847222889</created>
@@ -497,7 +491,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693161037426</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="fix some sample test cases">
+      <created>1693162158272</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1693162158272</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -512,7 +513,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add unit test work directory" />
     <MESSAGE value="import directory into testDataSet" />
     <MESSAGE value="clean up and try discovery from global" />
     <MESSAGE value="Put test into build" />
@@ -537,7 +537,8 @@
     <MESSAGE value="replace tensorflow-gpu with tensorflow" />
     <MESSAGE value="ignore warnings" />
     <MESSAGE value="downgrade tf" />
-    <option name="LAST_COMMIT_MESSAGE" value="downgrade tf" />
+    <MESSAGE value="fix some sample test cases" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix some sample test cases" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

@@ -192,7 +192,7 @@ class TestFeaturedSample(unittest.TestCase):
     def test_save_data_as_pickle(self):
         with tempfile.TemporaryDirectory() as tmpdirname:
             temp_dir = Path(tmpdirname)
-            data_dir = temp_dir.joinpath(self, "test.pickle")
+            data_dir = temp_dir.joinpath("test.pickle")
             test_sample = sample.FeatureizedSample()
             test_sample.save(data_dir)
 
