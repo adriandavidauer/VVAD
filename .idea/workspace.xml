@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Unsupported operand type fixed">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Try again">
       <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" afterDir="false" />
     </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
@@ -153,13 +152,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Small adjustments in file access">
-      <created>1690126845981</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1690126845981</updated>
     </task>
     <task id="LOCAL-00019" summary="updated requirements">
       <created>1690127284894</created>
@@ -497,7 +489,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693340100052</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Try again">
+      <created>1693341395249</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1693341395249</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -512,7 +511,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Put test into build" />
     <MESSAGE value="Fix failed test errors" />
     <MESSAGE value="Fixed wrong path and unexpected success" />
     <MESSAGE value="Remove lint dependency from test (not necessary)" />
@@ -537,7 +535,8 @@
     <MESSAGE value="fix some sample test cases" />
     <MESSAGE value="Fix TypeError: Required Group, str or dict" />
     <MESSAGE value="Unsupported operand type fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Unsupported operand type fixed" />
+    <MESSAGE value="Try again" />
+    <option name="LAST_COMMIT_MESSAGE" value="Try again" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

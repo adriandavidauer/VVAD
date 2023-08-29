@@ -23,7 +23,6 @@ class TestFaceTracker(unittest.TestCase):
             init_pos=(0, 0, 1, 1)
         )
 
-    @unittest.expectedFailure
     def test_get_next_face(self):
         image_file = "One_human_face.jpg"
         images_path = os.path.join(self.test_data_root, self.images_path)
@@ -33,8 +32,6 @@ class TestFaceTracker(unittest.TestCase):
 
         self.assertTrue(box)
 
-    # ToDo somehow does not detect faces in image
-    @unittest.expectedFailure
     def test_get_next_face_fail(self):
         image_file = "Two_human_faces.jpg"
         images_path = os.path.join(self.test_data_root, self.images_path)
