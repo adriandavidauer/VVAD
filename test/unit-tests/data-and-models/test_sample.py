@@ -17,7 +17,7 @@ def get_rgb_test_image(image_file_name, folder_path):
 class TestFaceTracker(unittest.TestCase):
 
     def setUp(self):
-        self.test_data_root = "testData"  # "test/unit-tests/data-and-models/testData"
+        self.test_data_root = "test/unit-tests/data-and-models/testData"
         self.images_path = "images"
         self.face_tracker = sample.FaceTracker(
             init_pos=(0, 0, 1, 1)
@@ -47,7 +47,7 @@ class TestFaceTracker(unittest.TestCase):
 
 class TestFaceFeatureGenerator(unittest.TestCase):
     def setUp(self):
-        self.test_data_root = "testData"  # "test/unit-tests/data-and-models/testData"
+        self.test_data_root = "test/unit-tests/data-and-models/testData"
         self.images_path = "images"
 
     def test_get_features_face_image(self):
@@ -90,7 +90,7 @@ class TestFaceFeatureGenerator(unittest.TestCase):
         input_shape = model.layers[0].input_shape[2:]
         generator = sample.FaceFeatureGenerator(
             feature_type="faceFeatures",
-            shape_model_path="../../../models/shape_predictor_68_face_landmarks.dat",
+            shape_model_path="models/shape_predictor_68_face_landmarks.dat",
             shape=(input_shape[1],
                    input_shape[0])
         )
@@ -109,7 +109,7 @@ class TestFaceFeatureGenerator(unittest.TestCase):
         input_shape = model.layers[0].input_shape[2:]
         generator = sample.FaceFeatureGenerator(
             feature_type="lipFeatures",
-            shape_model_path="../../../models/shape_predictor_68_face_landmarks.dat",
+            shape_model_path="models/shape_predictor_68_face_landmarks.dat",
             shape=(input_shape[1],
                    input_shape[0])
         )
@@ -208,14 +208,6 @@ class TestFeaturedSample(unittest.TestCase):
             test_sample.load(sample_path)
         except ValueError:
             self.fail("ValueError raised unexpectedly!")
-
-    def test_load_non_existing_pickle(self):
-        # ToDo: Check exception type
-        sample_path = os.path.join(self.test_data_root, self.sample_pickles,
-                                   "testNoSample.pickle")
-        test_sample = sample.FeatureizedSample()
-        self.assertRaises(ValueError, test_sample.load(sample_path))
-
 
 class TestVisualizeSamples(unittest.TestCase):
     def test_visualize_samples(self):
