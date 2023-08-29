@@ -5,15 +5,11 @@ name: Test Python Project
 on:
   push:
     branches:
-      - main
       - 02_establish-py-unit-tests
-      - develop_phase1
   pull_request:
     branches:
       - main
-      - develop
       - develop_phase1
-      - 02_establish-py-unit-tests
 
 jobs:
   build_and_test:
@@ -49,7 +45,6 @@ jobs:
           coverage run -m unittest discover -s test.unit-tests.data-and-models -v
           coverage xml -i --omit="test/*"
       - name: Get Cover
-        if: github.eventname == 'pull_request'
         uses: orgoro/coverage@v3.1
         with:
           coverageFile: ./coverage.xml

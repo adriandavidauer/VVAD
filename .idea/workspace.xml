@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Try again">
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" afterDir="false" />
-    </list>
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Had unexpected successes. So remove the expected failure" />
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,13 +150,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00019" summary="updated requirements">
-      <created>1690127284894</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1690127284894</updated>
     </task>
     <task id="LOCAL-00020" summary="updated requirements">
       <created>1690191797786</created>
@@ -496,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693341395249</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Had unexpected successes. So remove the expected failure">
+      <created>1693342076113</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1693342076113</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -511,7 +509,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fix failed test errors" />
     <MESSAGE value="Fixed wrong path and unexpected success" />
     <MESSAGE value="Remove lint dependency from test (not necessary)" />
     <MESSAGE value="Fix errors according to ruff linting" />
@@ -536,7 +533,8 @@
     <MESSAGE value="Fix TypeError: Required Group, str or dict" />
     <MESSAGE value="Unsupported operand type fixed" />
     <MESSAGE value="Try again" />
-    <option name="LAST_COMMIT_MESSAGE" value="Try again" />
+    <MESSAGE value="Had unexpected successes. So remove the expected failure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Had unexpected successes. So remove the expected failure" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>
