@@ -201,7 +201,8 @@ class TestFeaturedSample(unittest.TestCase):
 
     def test_load_existing_pickle(self):
         # ToDo: Check exception type
-        sample_path = os.path.join(self.test_data_root, self.sample_pickles, "testPositiveSample.pickle")
+        sample_path = os.path.join(self.test_data_root, self.sample_pickles,
+                                   "testPositiveSample.pickle")
         try:
             test_sample = sample.FeatureizedSample()
             test_sample.load(sample_path)
@@ -210,7 +211,8 @@ class TestFeaturedSample(unittest.TestCase):
 
     def test_load_non_existing_pickle(self):
         # ToDo: Check exception type
-        sample_path = os.path.join(self.test_data_root, self.sample_pickles, "testPositiveSample.pickle")
+        sample_path = os.path.join(self.test_data_root, self.sample_pickles,
+                                   "testNoSample.pickle")
         test_sample = sample.FeatureizedSample()
         self.assertRaises(ValueError, test_sample.load(sample_path))
 

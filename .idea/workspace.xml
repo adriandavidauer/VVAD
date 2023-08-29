@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="fix some sample test cases">
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Fix TypeError: Required Group, str or dict">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vvadlrs3/pretrained_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/pretrained_models.py" afterDir="false" />
@@ -154,13 +154,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00016" summary="use unittest instead of pytest">
-      <created>1689847222889</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1689847222889</updated>
     </task>
     <task id="LOCAL-00017" summary="Add package unittests for runner">
       <created>1690126157633</created>
@@ -498,7 +491,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693162158272</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Fix TypeError: Required Group, str or dict">
+      <created>1693198802439</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1693198802439</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -513,7 +513,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="import directory into testDataSet" />
     <MESSAGE value="clean up and try discovery from global" />
     <MESSAGE value="Put test into build" />
     <MESSAGE value="Fix failed test errors" />
@@ -538,7 +537,8 @@
     <MESSAGE value="ignore warnings" />
     <MESSAGE value="downgrade tf" />
     <MESSAGE value="fix some sample test cases" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix some sample test cases" />
+    <MESSAGE value="Fix TypeError: Required Group, str or dict" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix TypeError: Required Group, str or dict" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>
