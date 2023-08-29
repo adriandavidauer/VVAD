@@ -326,7 +326,7 @@ class FeatureizedSample:
     @staticmethod
     def _normalize(self, arr):
         """
-        Normalizes the features of the the array to [-1, 1]. 
+        Normalizes the features of the array to [-1, 1].
         """
         arr_max = np.max(arr)
         arr_min = np.min(arr)

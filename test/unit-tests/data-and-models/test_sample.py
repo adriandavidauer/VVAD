@@ -158,8 +158,15 @@ class TestFeaturedSample(unittest.TestCase):
         pass
 
     def test_normalize(self):
-        # used in get_data, implemented later
-        pass
+        test_sample = sample.FeatureizedSample()
+
+        array = np.arange(4).reshape((2, 2))
+        normalized_array = test_sample._normalize(self, arr=array)
+        self.assertEqual(np.max(normalized_array), 1)
+
+        for row in normalized_array:
+            for item in row:
+                self.assertLessEqual(item, 1)
 
     def test_get_label(self):
         s = sample.FeatureizedSample()
