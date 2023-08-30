@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Get Cover did not run through">
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Init commit">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/python-testing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/python-testing.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/sample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/config.yaml" afterDir="false" />
     </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
@@ -154,27 +154,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00021" summary="update requirements.txt">
-      <created>1690191960115</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1690191960115</updated>
-    </task>
-    <task id="LOCAL-00022" summary="update requirements.txt">
-      <created>1690192172216</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1690192172216</updated>
-    </task>
-    <task id="LOCAL-00023" summary="update requirements.txt">
-      <created>1690192404212</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1690192404212</updated>
     </task>
     <task id="LOCAL-00024" summary="update requirements.txt">
       <created>1690192609048</created>
@@ -498,7 +477,28 @@
       <option name="project" value="LOCAL" />
       <updated>1693343903667</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Save env file for anaconda">
+      <created>1693426571710</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1693426571710</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Init commit">
+      <created>1693426905820</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1693426905820</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Init commit">
+      <created>1693426933987</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1693426933987</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -506,15 +506,25 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/maintenance/01_remove-unused-code" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Remove lint dependency from test (not necessary)" />
-    <MESSAGE value="Fix errors according to ruff linting" />
     <MESSAGE value="ruff lint in verbose mode" />
     <MESSAGE value="import Pathlib got lost" />
     <MESSAGE value="check codecov" />
@@ -538,7 +548,9 @@
     <MESSAGE value="Try again" />
     <MESSAGE value="Had unexpected successes. So remove the expected failure" />
     <MESSAGE value="Get Cover did not run through" />
-    <option name="LAST_COMMIT_MESSAGE" value="Get Cover did not run through" />
+    <MESSAGE value="Save env file for anaconda" />
+    <MESSAGE value="Init commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Init commit" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

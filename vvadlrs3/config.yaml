@@ -10,7 +10,7 @@ fps : 25              # fps of the dataSet - is needed for translations between 
 maxPauseLength : 1.0      # defines when to break a positive sample in seconds / maximal length for interSpeech pause
 sampleLength : 1.5     # defines the minimum length of a sample in seconds
 k : 25                    # defines the temporal sliding window in frames #DEPRECATED: can be calculated from fps and sampleLngth
-randomSeed : 42           # defines the randomSeed to make experiments reproducable
+randomSeed : 42           # defines the randomSeed to make experiments reproducible
 dataAugmentation : True   # defines if dataAugmentation is used or not
 shape : [200, 200]      # defines the size to which face or lip images will be resized - this is the input size of the net
 maxOverlapPercentage: 0.2 # defines how much different samples can overlap

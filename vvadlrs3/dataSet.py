@@ -293,24 +293,6 @@ class DataSet:
         # for every txt file
         for textFile in self.get_txt_files(folder):
             frame_list.extend(self.get_sample_configs_for_pos_samples(textFile))
-            # firstFrameLine = ""
-            # lastFrameLine = ""
-            # textFile = open(textFile)
-            # for line in textFile.readlines()[5:]:
-            #     line = line.rstrip()
-            #     if not firstFrameLine:# only the first line of frames will be saved
-            #         firstFrameLine = line
-            #     # if line is empty - last line of the frames
-            #     if not line:
-            #         break
-            #     lastFrameLine = line
-            # firstFrame = firstFrameLine.split()
-            # lastFrame = lastFrameLine.split()
-            #
-            # configList = [int(firstFrame[0]), int(lastFrame[0]), float(firstFrame[1]),
-            #   float(firstFrame[2]),
-            #   float(firstFrame[3]), float(firstFrame[4])]
-            # frameList.append(configList)
 
         frame_list.sort(key=lambda x: x[0])
 
@@ -320,8 +302,7 @@ class DataSet:
             vid_obj = cv2.VideoCapture(str(video_path))
             vid_fps = vid_obj.get(cv2.CAP_PROP_FPS)
         count = 0
-        # sampleList = []
-        print("framelist: ", frame_list)
+
         for sampleConfig in frame_list:
             if not self.check_sample_length(
                     self.get_second_from_frame(sampleConfig[0]),
@@ -369,18 +350,16 @@ class DataSet:
             old_video_path = video_path
             video_path = pathlib.Path(os.path.join(
                 old_video_path.parents[0], old_video_path.stem + ".converted" +
-                                           old_video_path.suffix))
+                old_video_path.suffix))
 
             command = f"ffmpeg -i {old_video_path} -filter:v fps:{fps} {video_path}"
 
             print(command)
             os.system(command)
 
-            # print(changeFps.cmd)
-            # stdout, stderr = change_fps.run()
             # Remove the old!
-            #ToDo Remove old video path
-            #os.remove(old_video_path)
+            # ToDo Remove old video path
+            # os.remove(old_video_path)
             self.debug_print("Changed FPS of {} to {}".format(video_path, fps))
         else:
             self.debug_print("{} has already the correct fps".format(video_path))
