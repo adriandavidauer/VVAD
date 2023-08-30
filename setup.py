@@ -1,6 +1,6 @@
-'''
+"""
 Installer for the vvad-lrs3-lib
-'''
+"""
 
 # System imports
 import os
@@ -32,8 +32,12 @@ setup(
     author="Adrian Lubitz",
     author_email="adrianlubitz@gmail.com",
     description=(
-        "Library to provide models trained on the VVAD-LRS3 Dataset. The library also contains preprocessing pipelines."),
-    license="LGPLv2. Note that the license for the iBUG 300-W dataset which was used for face and lip features excludes commercial use.",
+        "Library to provide models trained on the VVAD-LRS3 Dataset. The library also "
+        "contains preprocessing "
+        "pipelines."),
+    license="LGPLv2. Note that the license for the iBUG 300-W dataset which was used "
+            "for face and lip features "
+            "excludes commercial use.",
     keywords="VVAD LRS3 AI Social robotics",
     url="https://github.com/adrianlubitz/VVAD",
     packages=find_packages(),
@@ -58,7 +62,8 @@ setup(
         'tqdm',
         'pymongo',
         'keras_vggface',
-        # Keras-Applications is only needed because VGGFace is using it and not installing it correctly
+        # Keras-Applications is only needed because VGGFace is using it and not
+        # installing it correctly
         'Keras-Applications',
         'pytube',
         'ffmpy',
