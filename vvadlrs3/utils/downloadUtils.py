@@ -1,12 +1,7 @@
-''' Utils for downloads '''
+""" Utils for downloads """
 
 # System imports
-from pathlib import Path
 import urllib.request
-import bz2
-import errno
-import os
-
 
 # 3rd Party imports
 from tqdm import tqdm
