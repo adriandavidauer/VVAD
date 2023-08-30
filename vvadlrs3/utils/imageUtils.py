@@ -75,9 +75,6 @@ def resize_and_zero_padding(image, shape):
     # cant be exactly the same ratio because resize can only resize to full pixels -
     # take big images(LAW of big numbers
     # will take care)
-    # print("Ratio disortion: {}".format(abs(float(image.shape[1]) /
-    #   image.shape[0] - float(w) / h)))
-    # print("new shape: {}".format(image.shape))
     width_delta = abs(image.shape[1] - shape[0])
     height_delta = abs(image.shape[0] - shape[1])
     image = cv2.copyMakeBorder(image, 0, height_delta, 0, width_delta,
@@ -115,6 +112,5 @@ def convert_sample_to_video(data, path, fps=25, codec='MP4V'):
     out.open(path, cv2.VideoWriter_fourcc(*codec), fps, size, True)
     for img in data:
         # convert to BGR
-        # img = cv2.cvtColor(img,cv2.COLOR_RGB2BGR) - seems to be not the Problem here
         out.write(img)
     out.release()

@@ -38,11 +38,11 @@ jobs:
       - name: perform unit tests
         run: |
           # run unittests for data and models
-          python -m unittest discover -s test.unit-tests.data-and-models -v
+          python -m unittest discover -s test.unit-tests -v
       - name: Generate Report
         run: |
           pip install coverage
-          coverage run -m unittest discover -s test.unit-tests.data-and-models -v
+          coverage run -m unittest discover -s test.unit-tests -v
           coverage xml -i --omit="test/*"
       - name: Get Cover
         uses: orgoro/coverage@v3.1
