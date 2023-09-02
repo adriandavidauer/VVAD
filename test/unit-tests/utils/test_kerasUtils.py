@@ -3,6 +3,7 @@ import unittest
 from vvadlrs3.utils.kerasUtils import (Hdf5DataGenerator, DataGenerator,
                                        DataGeneratorRAM, Models)
 
+
 class TestKerasUtils(unittest.TestCase):
     """"""
 
@@ -39,7 +40,7 @@ class TestKerasUtils(unittest.TestCase):
     def test_build_time_distributed(self):
         pass
 
-    def test_build_timedistributed_functional(self):
+    def test_build_time_distributed_functional(self):
         pass
 
     def test_build_baseline_model(self):
@@ -51,10 +52,23 @@ class TestKerasUtils(unittest.TestCase):
     def test_save_history(self):
         pass
 
-    train_model_general
-    gen_data_general
-    gen_data_internal_general
-    hdf5_samples_to_memory
-    get_model_memory_usage
-    check_data_gen
-    test_model
+    def train_model_general(self):
+        pass
+
+    def gen_data_general(self):
+        pass
+
+    def gen_data_internal_general(self):
+        pass
+
+    def hdf5_samples_to_memory(self):
+        pass
+
+    def get_model_memory_usage(self):
+        pass
+
+    def check_data_gen(self):
+        pass
+
+    def test_model(self):
+        pass
