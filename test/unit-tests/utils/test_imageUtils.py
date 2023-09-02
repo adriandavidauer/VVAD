@@ -1,6 +1,7 @@
 import unittest
 
 import cv2
+import dlib
 import imutils
 
 import vvadlrs3.utils.imageUtils as imgUtils
@@ -10,6 +11,10 @@ class TestImageUtils(unittest.TestCase):
     """
         Test the detection of faces in an image
     """
+
+    def setUp(self):
+        self.test_data_root = "test/unit-tests/utils/testData"
+
     # Returns the bounding box for the first found face in an image, positive test case
     def test_detect_face(self):
         test_img_path = "test/unit-tests/utils/testData/imgUtils_image_example.jpg"
@@ -29,7 +34,17 @@ class TestImageUtils(unittest.TestCase):
     """
 
     def test_crop_image(self):
-        pass
+        img = cv2.imread(self.test_data_root + "/imgUtils_image_example.jpg")
+        x_start = 0.,
+        y_start = 0.,
+        x_end = 100.,
+        y_end = 100.,
+        roi_rect = dlib.drectangle(x_start, y_start, x_end, y_end)
+        roi = imgUtils.crop_img(img, roi_rect)
+        print(roi)
+        print("ROI shape: {}".format(roi.shape))
+        self.assertEqual(100, roi.shape[0])
+        self.assertEqual(99, roi.shape[1])
 
     """
     """
@@ -45,13 +60,6 @@ class TestImageUtils(unittest.TestCase):
     """
         Check if sample example is converted to video and exists in temp directory
     """
-
-    def test_convert_sample_to_video(self):
-        pass
-
-    def test_convert_sample_to_video_fail(self):
-        pass
-
 
 def load_local_img(path_to_local_img):
     # load the input image from disk, resize it, and convert it from
