@@ -11,6 +11,10 @@ trainingHistories/visualizations
 humanAccuracyTest/mongo-db/*
 humanAccuracyTest/assets/*
 
+htmlcov/*
+.pycrunch-config.yaml
+coverage.xml
+
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
