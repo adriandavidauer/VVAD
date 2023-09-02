@@ -48,7 +48,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: code-coverage-report
-          path: output/test/code-coverage.html
+          path: ./htmlcov/index.html
       - name: Get Cover
         uses: orgoro/coverage@v3.1
         if: github.event_name == 'pull_request'
