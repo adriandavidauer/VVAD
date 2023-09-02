@@ -1,7 +1,7 @@
 """
 Utils for multiprocessing
 """
-# ToDo: Are there even used??
+# ToDo: Are they even used??
 
 # from collections import deque
 import multiprocessing
@@ -21,6 +21,7 @@ pool = multiprocessing.Pool()
 
 # positivesQueue, negativesQueue, getSamplesParams, dataset, semaphore
 def producer(dataset, get_samples_params):
+    # get samples params: path, feature_type, samples_shape, dry_run=False
     dataset.debug_print("started Producer for {}".format(get_samples_params))
     for sample in dataset.get_samples(*get_samples_params):
         # Put Samples
@@ -29,17 +30,17 @@ def producer(dataset, get_samples_params):
                 # TODO:raises full Exception https://docs.python.org/2/library/
                 #  queue.html#Queue.Queue.put
                 positivesQueue.put(sample)
-                print("[Producer] puting a positive sample")
+                print("[Producer] putting a positive sample")
             else:
-                print("positivesQueue is full. Not puting this positive sample")
+                print("positivesQueue is full. Not putting this positive sample")
         else:
             if not negativesQueue.full():
                 # TODO:raises full Exception https://docs.python.org/2/library/
                 #  queue.html#Queue.Queue.put
                 negativesQueue.put(sample)
-                print("[Producer] puting a negative sample")
+                print("[Producer] putting a negative sample")
             else:
-                print("negativesQueue is full. Not puting this negative sample")
+                print("negativesQueue is full. Not putting this negative sample")
         if not positivesQueue.empty() and not negativesQueue.empty():
             sem.release()
         # consumer can consume

@@ -19,6 +19,8 @@ __copyright__ = 'Copyright (c)2017, Blackout Technologies'
 
 
 def convert_samples(input_path, output_path='generatedImages', num=20):
+    # ToDo it happens that same file is picked (from random selection), so number has
+    #   no real value
     """
     Takes a path to a folder of samples and converts a given number of randomly picked
     samples(pickle files)
@@ -35,22 +37,22 @@ def convert_samples(input_path, output_path='generatedImages', num=20):
         os.makedirs(output_path)
 
     # TODO for sample in input_path - convert and safe to output_path
-    for filepath in random.choices(glob.glob(os.path.join(input_path, "*.pickle")),
-                                   k=num):
+    random_samples_from_list = random.choices(glob.glob(os.path.join(input_path,
+                                                                     "*.pickle")),
+                                              k=num)
+    for filepath in random_samples_from_list:
         with open(filepath, 'rb') as pickle_file:
             sample = pickle.load(pickle_file)
             data = sample['data'][0]
-            print(data.shape)
+            # print(data.shape)
             img = Image.fromarray(data, 'RGB')
             b, g, r = img.split()
             img = Image.merge("RGB", (r, g, b))
             out_file_name = os.path.join(output_path,
                                          os.path.basename(filepath).strip('.pickle') +
                                          '.png')
-            print(out_file_name)
+            print("Generated image file is: ", out_file_name)
             img.save(out_file_name)
-            # img.show()
-            # print(sample)
 
 
 if __name__ == "__main__":

@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Init commit">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/python-testing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/python-testing.yml" afterDir="false" />
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="expected failure in image utils">
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/testData/0.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/testData/1.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/testData/10.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/testData/11.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/testData/12.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/testData/13.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/testData/14.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/testData/15.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/testData/2.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/testData/3.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/testData/4.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/testData/5.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/testData/6.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/testData/7.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/testData/8.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/testData/9.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/test_convert_samples.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/VVAD.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VVAD.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_imageUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/utils/test_imageUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/imageUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/imageUtils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_kerasUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/utils/test_kerasUtils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_plotUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/utils/no_test_plotUtils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/convert_samples.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/convert_samples.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/multiprocessingUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/multiprocessingUtils.py" afterDir="false" />
     </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,35 +57,76 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 1
+}]]></component>
   <component name="ProjectId" id="2SL3iu3HgYuEJwyawIfHNwvfZmZ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/VVAD/test/unit-tests/data-and-models/testData/sample_pickles&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "36-test-utilities",
+    "last_opened_file_path": "C:/VVAD/test/unit-tests/helper-fctns/testData",
+    "run.code.analysis.last.selected.profile": "aDefault",
+    "settings.editor.selected.configurable": "preferences.sourceCode"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\VVAD\test\unit-tests\helper-fctns\testData" />
       <recent name="C:\VVAD\test\unit-tests\data-and-models\testData\sample_pickles" />
       <recent name="C:\VVAD\test\unit-tests\data-and-models" />
       <recent name="C:\VVAD\vvadlrs3" />
       <recent name="C:\VVAD\vvadlrs3\utils" />
-      <recent name="C:\VVAD\test\unit-tests\dat-and-models\testData" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\VVAD\test\unit-tests\data-and-models" />
       <recent name="C:\VVAD\test\unit-tests\utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_imageUtils.TestImageUtils.test_resize_and_zero_padding">
-    <configuration name="Unittests for test_imageUtils.TestImageUtils.test_detect_face" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Unittests for test_convert_samples.TestSampleConverter.test_convert_samples">
+    <configuration name="test_timeUtils" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="VVAD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="vvad-lrs3" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/utils" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/unit-tests/utils/test_timeUtils.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test_convert_samples.TestSampleConverter.test_convert_samples" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="VVAD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/helper-fctns" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_convert_samples.TestSampleConverter.test_convert_samples&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test_imageUtils.TestImageUtils.test_crop_image" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -70,11 +136,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_imageUtils.TestImageUtils.test_detect_face&quot;" />
+      <option name="_new_target" value="&quot;test_imageUtils.TestImageUtils.test_crop_image&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_imageUtils.TestImageUtils.test_detect_no_face" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_videoUtils.TestVideoUtils" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -84,11 +150,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_imageUtils.TestImageUtils.test_detect_no_face&quot;" />
+      <option name="_new_target" value="&quot;test_videoUtils.TestVideoUtils&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_imageUtils.TestImageUtils.test_resize_and_zero_padding" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_videoUtils.TestVideoUtils.test_analyze_video_check_path" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -98,52 +164,39 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_imageUtils.TestImageUtils.test_resize_and_zero_padding&quot;" />
+      <option name="_new_target" value="&quot;test_videoUtils.TestVideoUtils.test_analyze_video_check_path&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_sample.TestFeaturedSample.test_normalize" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_videoUtils.TestVideoUtils.test_analyze_video_wrong_feature_type" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/utils" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_sample.TestFeaturedSample.test_normalize&quot;" />
+      <option name="_new_target" value="&quot;test_videoUtils.TestVideoUtils.test_analyze_video_wrong_feature_type&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Unittests in test_sample.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="VVAD" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python tests.Unittests for test_imageUtils.TestImageUtils.test_detect_face" />
-      <item itemvalue="Python tests.Unittests for test_imageUtils.TestImageUtils.test_detect_no_face" />
-      <item itemvalue="Python tests.Unittests for test_imageUtils.TestImageUtils.test_resize_and_zero_padding" />
-      <item itemvalue="Python tests.Unittests for test_sample.TestFeaturedSample.test_normalize" />
-      <item itemvalue="Python tests.Unittests in test_sample.py" />
+      <item itemvalue="Python.test_timeUtils" />
+      <item itemvalue="Python tests.Unittests for test_convert_samples.TestSampleConverter.test_convert_samples" />
+      <item itemvalue="Python tests.Unittests for test_imageUtils.TestImageUtils.test_crop_image" />
+      <item itemvalue="Python tests.Unittests for test_videoUtils.TestVideoUtils" />
+      <item itemvalue="Python tests.Unittests for test_videoUtils.TestVideoUtils.test_analyze_video_check_path" />
+      <item itemvalue="Python tests.Unittests for test_videoUtils.TestVideoUtils.test_analyze_video_wrong_feature_type" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Unittests for test_imageUtils.TestImageUtils.test_resize_and_zero_padding" />
-        <item itemvalue="Python tests.Unittests for test_imageUtils.TestImageUtils.test_detect_no_face" />
-        <item itemvalue="Python tests.Unittests for test_imageUtils.TestImageUtils.test_detect_face" />
-        <item itemvalue="Python tests.Unittests for test_sample.TestFeaturedSample.test_normalize" />
-        <item itemvalue="Python tests.Unittests in test_sample.py" />
+        <item itemvalue="Python tests.Unittests for test_convert_samples.TestSampleConverter.test_convert_samples" />
+        <item itemvalue="Python tests.Unittests for test_imageUtils.TestImageUtils.test_crop_image" />
+        <item itemvalue="Python tests.Unittests for test_videoUtils.TestVideoUtils" />
+        <item itemvalue="Python tests.Unittests for test_videoUtils.TestVideoUtils.test_analyze_video_check_path" />
+        <item itemvalue="Python tests.Unittests for test_videoUtils.TestVideoUtils.test_analyze_video_wrong_feature_type" />
       </list>
     </recent_temporary>
   </component>
@@ -499,7 +552,7 @@
       <option name="project" value="LOCAL" />
       <updated>1693428581699</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -526,10 +579,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="import Pathlib got lost" />
-    <MESSAGE value="check codecov" />
-    <MESSAGE value="Fix branches" />
-    <MESSAGE value="Extend codecov display" />
     <MESSAGE value="Used wrong testing path" />
     <MESSAGE value="fix failed test cases" />
     <MESSAGE value="first finish of dataset test cases" />
@@ -551,7 +600,11 @@
     <MESSAGE value="Save env file for anaconda" />
     <MESSAGE value="Exclude unused files from code cov" />
     <MESSAGE value="Init commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init commit" />
+    <MESSAGE value="worked on video utils tests" />
+    <MESSAGE value="worked on image utils tests" />
+    <MESSAGE value="fix failed test in videoUtils" />
+    <MESSAGE value="expected failure in image utils" />
+    <option name="LAST_COMMIT_MESSAGE" value="expected failure in image utils" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

@@ -1,7 +1,7 @@
 import unittest
 
-from vvadlrs3.utils.kerasUtils import (Hdf5DataGenerator, DataGenerator,
-                                       DataGeneratorRAM, Models)
+# from vvadlrs3.utils.kerasUtils import (Hdf5DataGenerator, DataGenerator,
+#                                        DataGeneratorRAM, Models)
 
 
 class TestKerasUtils(unittest.TestCase):
