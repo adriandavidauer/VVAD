@@ -19,8 +19,6 @@ __copyright__ = 'Copyright (c)2017, Blackout Technologies'
 
 
 def convert_samples(input_path, output_path='generatedImages', num=20):
-    # ToDo it happens that same file is picked (from random selection), so number has
-    #   no real value
     """
     Takes a path to a folder of samples and converts a given number of randomly picked
     samples(pickle files)
@@ -36,7 +34,6 @@ def convert_samples(input_path, output_path='generatedImages', num=20):
     if not os.path.exists(output_path):
         os.makedirs(output_path)
 
-    # TODO for sample in input_path - convert and safe to output_path
     random_samples_from_list = random.choices(glob.glob(os.path.join(input_path,
                                                                      "*.pickle")),
                                               k=num)
