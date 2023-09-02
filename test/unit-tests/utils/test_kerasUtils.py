@@ -8,10 +8,11 @@ class TestKerasUtils(unittest.TestCase):
     """"""
 
     def setup(self):
-        hdf5gen = Hdf5DataGenerator()
-        datagen = DataGenerator()
-        ramgen = DataGeneratorRAM()
-        models = Models()
+        # hdf5gen = Hdf5DataGenerator()
+        # datagen = DataGenerator()
+        # ramgen = DataGeneratorRAM()
+        # models = Models()
+        print("Setup of kerasUtils")
 
     def test_split_dataset(self):
         pass
