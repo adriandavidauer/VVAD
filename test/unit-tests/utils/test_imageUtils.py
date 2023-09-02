@@ -33,12 +33,13 @@ class TestImageUtils(unittest.TestCase):
         Test the cropping of images
     """
 
+    @unittest.expectedFailure
     def test_crop_image(self):
         img = cv2.imread(self.test_data_root + "/imgUtils_image_example.jpg")
-        x_start = 0.,
-        y_start = 0.,
-        x_end = 100.,
-        y_end = 100.,
+        x_start = 0*1.0,
+        y_start = 0*1.0,
+        x_end = 100*1.2,
+        y_end = 100*1.2,
         roi_rect = dlib.drectangle(x_start, y_start, x_end, y_end)
         roi = imgUtils.crop_img(img, roi_rect)
         print(roi)

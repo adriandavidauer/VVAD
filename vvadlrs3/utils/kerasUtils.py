@@ -194,7 +194,7 @@ class DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
         """
         Initialization
 
-        :param data: List of pathes to pickled samples
+        :param data: List of paths to pickled samples
         :type data: list
         :param image_size: size of the sample's images
         :type image_size: tuple of ints
