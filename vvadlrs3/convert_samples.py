@@ -37,6 +37,8 @@ def convert_samples(input_path, output_path='generatedImages', num=20):
     random_samples_from_list = random.sample(glob.glob(os.path.join(input_path,
                                                                      "*.pickle")),
                                               k=num)
+    print("samples from list are: ", random_samples_from_list)
+    
     for filepath in random_samples_from_list:
         with open(filepath, 'rb') as pickle_file:
             sample = pickle.load(pickle_file)
