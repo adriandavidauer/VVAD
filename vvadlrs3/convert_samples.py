@@ -34,7 +34,7 @@ def convert_samples(input_path, output_path='generatedImages', num=20):
     if not os.path.exists(output_path):
         os.makedirs(output_path)
 
-    random_samples_from_list = random.choices(glob.glob(os.path.join(input_path,
+    random_samples_from_list = random.sample(glob.glob(os.path.join(input_path,
                                                                      "*.pickle")),
                                               k=num)
     for filepath in random_samples_from_list:
