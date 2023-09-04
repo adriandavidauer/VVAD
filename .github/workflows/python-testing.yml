@@ -39,12 +39,15 @@ jobs:
         run: |
           pip install coverage
           coverage run -m unittest discover -s test.unit-tests -v
+          echo "Create HTML coverage report for artifacts"
           coverage html -i --omit="test/*"
+          echo "Create XML coverage report for issue comment"
+          coverage xml -i --omit="test/*"
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
         with:
           name: code-coverage-report
-          path: ./htmlcov/index.html
+          path: ./htmlcov/*
       - name: Get Cover
         uses: orgoro/coverage@v3.1
         if: github.event_name == 'pull_request'
