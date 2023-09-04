@@ -5,6 +5,7 @@ import glob
 import os
 import pickle
 import random
+import sys
 
 from PIL import Image
 
@@ -35,10 +36,10 @@ def convert_samples(input_path, output_path='generatedImages', num=20):
         os.makedirs(output_path)
 
     random_samples_from_list = random.sample(glob.glob(os.path.join(input_path,
-                                                                     "*.pickle")),
-                                              k=num)
+                                                                    "*.pickle")),
+                                             k=num)
     print("samples from list are: ", random_samples_from_list)
-    
+
     for filepath in random_samples_from_list:
         with open(filepath, 'rb') as pickle_file:
             sample = pickle.load(pickle_file)
@@ -54,13 +55,26 @@ def convert_samples(input_path, output_path='generatedImages', num=20):
             img.save(out_file_name)
 
 
+def parse_args(args):
+    fct_parser = argparse.ArgumentParser()
+    fct_parser.add_argument("input_path", help='Path to the samples', type=str)
+    fct_parser.add_argument("-o", "--output_path",
+                            help="path where you want to save the "
+                                 "generated images.", type=str)
+    fct_parser.add_argument("-n", "--num", help="number of samples to convert",
+                            type=int)
+    return fct_parser.parse_args(args)
+
+
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("input_path", help='Path to the samples', type=str)
-    parser.add_argument("-o", "--output_path", help="path where you want to save the "
-                                                    "generated images.", type=str)
-    parser.add_argument("-n", "--num", help="number of samples to convert", type=int)
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument("input_path", help='Path to the samples', type=str)
+    # parser.add_argument("-o", "--output_path", help="path where you want to save the "
+    #                                                "generated images.", type=str)
+    # parser.add_argument("-n", "--num", help="number of samples to convert", type=int)
 
-    args = parser.parse_args()
+    # args = parser.parse_args()
 
-    convert_samples(args.input_path, args.output_path, args.num)
+    parser = parse_args(sys.argv[1:])
+
+    convert_samples(parser.input_path, parser.output_path, parser.num)

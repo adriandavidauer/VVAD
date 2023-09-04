@@ -3,6 +3,7 @@ import unittest
 import shutil
 
 from vvadlrs3.convert_samples import convert_samples as sample_conv
+from vvadlrs3.convert_samples import parse_args
 
 
 class TestSampleConverter(unittest.TestCase):
@@ -26,6 +27,15 @@ class TestSampleConverter(unittest.TestCase):
 
         self.assertTrue(os.path.exists(output_path))
         shutil.rmtree(output_path)
+
+    def test_parser(self):
+        parser = parse_args(['input_path', '-o' './output/generatedImage.png', '-n' '15'])
+        print(parser)
+
+        self.assertEqual(parser.input_path, "input_path")
+        self.assertEqual(parser.output_path, "./output/generatedImage.png")
+        self.assertEqual(parser.num, 15)
+
 
 
 if __name__ == '__main__':
