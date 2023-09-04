@@ -54,9 +54,9 @@ jobs:
         with:
           coverageFile: ./coverage.xml
           token: ${{ secrets.GITHUB_TOKEN }}
-          thresholdAll: 0.1
-          thresholdNew: 0.1
-          thresholdModified: 0.1
+          thresholdAll: 0.5
+          thresholdNew: 0.5
+          thresholdModified: 0.5
           passIcon: 🟢
           failIcon: 🔴
 
