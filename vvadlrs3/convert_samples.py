@@ -67,13 +67,6 @@ def parse_args(args):
 
 
 if __name__ == "__main__":
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument("input_path", help='Path to the samples', type=str)
-    # parser.add_argument("-o", "--output_path", help="path where you want to save the "
-    #                                                "generated images.", type=str)
-    # parser.add_argument("-n", "--num", help="number of samples to convert", type=int)
-
-    # args = parser.parse_args()
 
     parser = parse_args(sys.argv[1:])
 
