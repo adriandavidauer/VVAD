@@ -30,7 +30,6 @@ class TestSampleConverter(unittest.TestCase):
 
     def test_parser(self):
         parser = parse_args(['input_path', '-o' './output/generatedImage.png', '-n' '15'])
-        print(parser)
 
         self.assertEqual(parser.input_path, "input_path")
         self.assertEqual(parser.output_path, "./output/generatedImage.png")
