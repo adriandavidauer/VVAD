@@ -87,8 +87,7 @@ class FaceTracker:
 
         detector = dlib.get_frontal_face_detector()
         dets = detector(roi, 1)
-        print("Detected faces:", dets)
-        # TODO: error if more than one face! - invalid
+        # print("Detected faces:", dets)
         if len(dets) != 1:
             # self.valid = False
             print("Invalid Sample because there are {} faces".format(len(dets)))

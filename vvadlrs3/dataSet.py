@@ -1,10 +1,8 @@
 """
 This Module creates a dataset for the purpose of the visual speech detection system.
 """
-import os
 import pathlib
 # System imports
-import sys
 from importlib import import_module
 # from collections import deque
 from pathlib import Path, PurePath
@@ -60,10 +58,6 @@ class DataSet:
         if init_multiprocessing:
             self.multiprocessing = True
             self.importedModule = import_module('vvadlrs3.utils.multiprocessingUtils')
-
-            # ---
-            if 'vvadlrs3.utils.multiprocessingUtils' in sys.modules:
-                print("hurray")
 
     def debug_print(self, debug_msg):
         """
@@ -210,7 +204,7 @@ class DataSet:
 
     def convert_all_fps(self, path):
         """
-        convertting all the fps from this folder.
+        converting all the fps from this folder.
 
         :param path: Path to the DataSet folder containing folders, which contain txt
             files. (For Example the
@@ -367,11 +361,16 @@ class DataSet:
             # change the frameRate to 25, because the data set is expecting that!
             # ffmpeg -y -r 30 -i seeing_noaudio.mp4 -r 24 seeing.mp4
             old_video_path = video_path
+
+            suffix = ".3gp" if old_video_path.suffix == ".3gpp" else \
+                old_video_path.suffix
+
             video_path = pathlib.Path(os.path.join(
                 old_video_path.parents[0], old_video_path.stem + ".converted" +
-                                           old_video_path.suffix))
+                suffix))
 
-            command = f"ffmpeg -i {old_video_path} -filter:v fps:{fps} {video_path}"
+            command = f"ffmpeg -i {old_video_path}  -ar 8000 -ab 12.2k " \
+                      f"-filter:v fps={fps} {video_path}"
 
             print(command)
             os.system(command)
@@ -379,8 +378,8 @@ class DataSet:
             # print(changeFps.cmd)
             # stdout, stderr = change_fps.run()
             # Remove the old!
-            #ToDo Remove old video path
-            #os.remove(old_video_path)
+            # ToDo Remove old video path
+            # os.remove(old_video_path)
             self.debug_print("Changed FPS of {} to {}".format(video_path, fps))
         else:
             self.debug_print("{} has already the correct fps".format(video_path))
@@ -903,7 +902,7 @@ def save_balanced_dataset(dataset, save_to, feature_type, data_shape, path=None,
         p.terminate()
 
     self.debug_print(
-        "[saveBalancedDataset] Saved balanced dataset! {} samples were droped.".format(
+        "[saveBalancedDataset] Saved balanced dataset! {} samples were dropped.".format(
             dataset.dropouts))
 
 

@@ -48,15 +48,25 @@ def producer(dataset, get_samples_params):
 
 # There will be only one consumer, therefore it is thread safe enough
 def consumer(positives_folder, negatives_folder, ratio_positives, ratio_negatives):
-    print("started consumer")
     positive_counter = 0
     negative_counter = 0
     saved_positives = 0
     save_negatives = 0
+
+    sem_released = False
+
     while True:
         print("[CONSUMER] in loop")
         # check ratio and save Samples
-        sem.acquire()
+
+        # in case the producer did not find any positive or negative sample
+        if positivesQueue.empty() or negativesQueue.empty():
+            sem.release()
+            sem_released = True
+        else:
+            sem_released = True
+        if sem_released:
+            sem.acquire()
         if positive_counter < ratio_positives and not positivesQueue.empty():
             fname = str(saved_positives) + ".pickle"
             positivesQueue.get().save(os.path.join(positives_folder, fname))
@@ -71,10 +81,12 @@ def consumer(positives_folder, negatives_folder, ratio_positives, ratio_negative
                 os.path.join(negatives_folder, fname)))
             save_negatives += 1
             negative_counter += 1
-        if negative_counter == ratio_negatives and positive_counter == ratio_positives:
-            print("[CONSUMER] reseting counters")
+        if (negative_counter == ratio_negatives and
+                positive_counter == ratio_positives):
+            print("[CONSUMER] resetting counters")
             negative_counter = 0
             positive_counter = 0
+            return
 
 
 if __name__ == "__main__":
