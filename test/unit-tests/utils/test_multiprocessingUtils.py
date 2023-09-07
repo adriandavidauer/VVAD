@@ -33,8 +33,6 @@ class TestMultiprocessingUtils(unittest.TestCase):
             os.makedirs(self.positives_folder)
         if not os.path.exists(self.negatives_folder):
             os.makedirs(self.negatives_folder)
-        self.ratio_positives = 2
-        self.ratio_negatives = 0
 
     """"""
 
@@ -46,6 +44,9 @@ class TestMultiprocessingUtils(unittest.TestCase):
         multiprocessingUtils.producer(self.data_set,
                                       [current_folder, feature_type,
                                        data_shape])
+
+        self.ratio_positives = multiprocessingUtils.positivesQueue.qsize()
+        self.ratio_negatives = multiprocessingUtils.negativesQueue.qsize()
 
         multiprocessingUtils.consumer(self.positives_folder, self.negatives_folder,
                                       self.ratio_positives, self.ratio_negatives)
