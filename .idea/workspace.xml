@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="test_multiprocessingUtils.py adjust evaluation to be dynamical">
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="test_multiprocessingUtils.py last fix.... assert leads to issues in pipeline">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_multiprocessingUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/utils/test_multiprocessingUtils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/dataSet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/sample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/imageUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/imageUtils.py" afterDir="false" />
     </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
@@ -176,13 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00031" summary="set working dir for unit tests">
-      <created>1690203985576</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1690203985576</updated>
     </task>
     <task id="LOCAL-00032" summary="chekc this syntax">
       <created>1690204210174</created>
@@ -520,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694111346955</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="test_multiprocessingUtils.py last fix.... assert leads to issues in pipeline">
+      <created>1694112307269</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1694112307269</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -548,7 +550,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="First SAMPLE test cases in test_sample.py" />
     <MESSAGE value="fixed lint issue" />
     <MESSAGE value="include develop branches in pipeline" />
     <MESSAGE value="tqdm was not found, added?!" />
@@ -573,7 +574,8 @@
     <MESSAGE value="test_multiprocessingUtils.py fix wrong path" />
     <MESSAGE value="test_multiprocessingUtils.py fix ratios" />
     <MESSAGE value="test_multiprocessingUtils.py adjust evaluation to be dynamical" />
-    <option name="LAST_COMMIT_MESSAGE" value="test_multiprocessingUtils.py adjust evaluation to be dynamical" />
+    <MESSAGE value="test_multiprocessingUtils.py last fix.... assert leads to issues in pipeline" />
+    <option name="LAST_COMMIT_MESSAGE" value="test_multiprocessingUtils.py last fix.... assert leads to issues in pipeline" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

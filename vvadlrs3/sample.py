@@ -367,7 +367,7 @@ class FeatureizedSample:
         # use a ringbuffer here
         # empty buffer if one frame is invalid(no face)
 
-    def visualize(self, fps=25, save_to=None, supplier="pyplot"):
+    def visualize(self, fps=25, save_to=None, supplier="pyplot"):   # pragma: no cover
         """
         visualize the sample depending on the featureType
         """
@@ -470,7 +470,7 @@ class FeatureizedSample:
             self.__dict__.update(pickle.load(file))
 
 
-def visualize_samples(folder):
+def visualize_samples(folder):   # pragma: no cover
     """
     visualize positive and negative samples from a folder.
     """

@@ -89,7 +89,7 @@ def consumer(positives_folder, negatives_folder, ratio_positives, ratio_negative
             return
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":   # pragma: no cover
     # TEST
     if not positivesQueue.empty():
         print("positivesQueue not empty???")

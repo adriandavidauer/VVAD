@@ -857,10 +857,10 @@ class DataSet:
             samples.append(s)
         return samples
 
-
+# unittest for producer and consumer shows proof of concept
 def save_balanced_dataset(dataset, save_to, feature_type, data_shape, path=None,
                           ratio_positives=2, ratio_negatives=1,
-                          show_status=False, **kwargs):
+                          show_status=False, **kwargs):   # pragma: no cover
     """
     saves a balanced dataset to disk
     """
@@ -1107,7 +1107,7 @@ def make_test_set(path, names_path):
         #         s.visualize()
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":   # pragma: no cover
     parser = argparse.ArgumentParser()
     parser.add_argument("config", help='path to the config file', type=str)
     parser.add_argument("option", help="what you want to do.", type=str, choices=[

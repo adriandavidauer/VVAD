@@ -66,7 +66,7 @@ def parse_args(args):
     return fct_parser.parse_args(args)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":   # pragma: no cover
 
     parser = parse_args(sys.argv[1:])
 

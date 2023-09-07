@@ -94,7 +94,7 @@ def resize_and_zero_padding(image, shape):
     return image
 
 
-def convert_sample_to_video(data, path, fps=25, codec='MP4V'):
+def convert_sample_to_video(data, path, fps=25, codec='MP4V'):  # pragma: no cover
     """
     converts a sample(data) to a video stream.
 
