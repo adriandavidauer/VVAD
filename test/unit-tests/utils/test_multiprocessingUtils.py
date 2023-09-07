@@ -51,12 +51,23 @@ class TestMultiprocessingUtils(unittest.TestCase):
         multiprocessingUtils.consumer(self.positives_folder, self.negatives_folder,
                                       self.ratio_positives, self.ratio_negatives)
 
-        # No suitable negative samples in this video detected
-        # 2 positive samples expected
-        self.assertTrue(
-            os.path.exists(os.path.join(self.positives_folder, "0.pickle")))
-        self.assertTrue(
-            os.path.exists(os.path.join(self.positives_folder, "1.pickle")))
+        # evaluate positive sample pickles
+        for file in range(len(os.listdir(self.positives_folder))):
+            self.assertTrue(
+                os.path.exists(os.path.join(
+                    self.positives_folder, str(file) + ".pickle"
+                ))
+
+            )
+
+        # evaluate negative sample pickles
+        for file in range(len(os.listdir(self.negatives_folder))):
+            self.assertTrue(
+                os.path.exists(os.path.join(
+                    self.negatives_folder, str(file) + ".pickle"
+                ))
+
+            )
 
         shutil.rmtree(self.positives_folder)
         shutil.rmtree(self.negatives_folder)

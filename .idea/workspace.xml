@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="test_multiprocessingUtils.py fix wrong path" />
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="test_multiprocessingUtils.py fix ratios">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_multiprocessingUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/utils/test_multiprocessingUtils.py" afterDir="false" />
+    </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,13 +176,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00029" summary="New Env and updated requirements">
-      <created>1690200572437</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1690200572437</updated>
     </task>
     <task id="LOCAL-00030" summary="set working dir for unit tests">
       <created>1690202341480</created>
@@ -517,7 +513,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694108574467</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="test_multiprocessingUtils.py fix ratios">
+      <created>1694109857903</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1694109857903</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -545,7 +548,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="first finish of dataset test cases" />
     <MESSAGE value="exclude failures for unfailed run" />
     <MESSAGE value="First SAMPLE test cases in test_sample.py" />
     <MESSAGE value="fixed lint issue" />
@@ -570,7 +572,8 @@
     <MESSAGE value="expected failure in image utils" />
     <MESSAGE value="test_multiprocessingUtils.py" />
     <MESSAGE value="test_multiprocessingUtils.py fix wrong path" />
-    <option name="LAST_COMMIT_MESSAGE" value="test_multiprocessingUtils.py fix wrong path" />
+    <MESSAGE value="test_multiprocessingUtils.py fix ratios" />
+    <option name="LAST_COMMIT_MESSAGE" value="test_multiprocessingUtils.py fix ratios" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>
