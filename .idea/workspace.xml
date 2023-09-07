@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="test_multiprocessingUtils.py fix ratios">
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="test_multiprocessingUtils.py adjust evaluation to be dynamical">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_multiprocessingUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/utils/test_multiprocessingUtils.py" afterDir="false" />
     </list>
@@ -176,13 +176,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00030" summary="set working dir for unit tests">
-      <created>1690202341480</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1690202341480</updated>
     </task>
     <task id="LOCAL-00031" summary="set working dir for unit tests">
       <created>1690203985576</created>
@@ -520,7 +513,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694109857903</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="test_multiprocessingUtils.py adjust evaluation to be dynamical">
+      <created>1694111346955</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1694111346955</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -548,7 +548,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="exclude failures for unfailed run" />
     <MESSAGE value="First SAMPLE test cases in test_sample.py" />
     <MESSAGE value="fixed lint issue" />
     <MESSAGE value="include develop branches in pipeline" />
@@ -573,7 +572,8 @@
     <MESSAGE value="test_multiprocessingUtils.py" />
     <MESSAGE value="test_multiprocessingUtils.py fix wrong path" />
     <MESSAGE value="test_multiprocessingUtils.py fix ratios" />
-    <option name="LAST_COMMIT_MESSAGE" value="test_multiprocessingUtils.py fix ratios" />
+    <MESSAGE value="test_multiprocessingUtils.py adjust evaluation to be dynamical" />
+    <option name="LAST_COMMIT_MESSAGE" value="test_multiprocessingUtils.py adjust evaluation to be dynamical" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

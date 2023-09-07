@@ -71,4 +71,3 @@ class TestMultiprocessingUtils(unittest.TestCase):
 
         shutil.rmtree(self.positives_folder)
         shutil.rmtree(self.negatives_folder)
-        os.remove(os.path.join(current_folder, "0af00UcTO-c.converted.3gp"))
