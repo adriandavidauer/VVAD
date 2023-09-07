@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="expected failure in image utils">
-      <change beforePath="$PROJECT_DIR$/.idea/VVAD.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VVAD.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="test_multiprocessingUtils.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/unit-tests/helper-fctns/test_convert_samples.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/test_convert_samples.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_multiprocessingUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/utils/test_multiprocessingUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/dataSet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/sample.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/multiprocessingUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/multiprocessingUtils.py" afterDir="false" />
     </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +58,7 @@
       <recent name="C:\VVAD\test\unit-tests\utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_multiprocessingUtils.TestMultiprocessingUtils.test_producer_consumer">
+  <component name="RunManager" selected="Python tests.Unittests for test_multiprocessingUtils.TestMultiprocessingUtils">
     <configuration name="test_timeUtils" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -115,7 +108,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_imageUtils.TestImageUtils.test_crop_image" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_multiprocessingUtils.TestMultiprocessingUtils" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -125,7 +118,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_imageUtils.TestImageUtils.test_crop_image&quot;" />
+      <option name="_new_target" value="&quot;test_multiprocessingUtils.TestMultiprocessingUtils&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -160,18 +153,18 @@
     <list>
       <item itemvalue="Python.test_timeUtils" />
       <item itemvalue="Python tests.Unittests for test_convert_samples.TestSampleConverter.test_convert_samples" />
-      <item itemvalue="Python tests.Unittests for test_imageUtils.TestImageUtils.test_crop_image" />
       <item itemvalue="Python tests.Unittests for test_convert_samples.TestSampleConverter" />
       <item itemvalue="Python tests.Unittests for test_multiprocessingUtils.TestMultiprocessingUtils.test_producer" />
       <item itemvalue="Python tests.Unittests for test_multiprocessingUtils.TestMultiprocessingUtils.test_producer_consumer" />
+      <item itemvalue="Python tests.Unittests for test_multiprocessingUtils.TestMultiprocessingUtils" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Unittests for test_multiprocessingUtils.TestMultiprocessingUtils" />
+        <item itemvalue="Python tests.Unittests for test_convert_samples.TestSampleConverter" />
         <item itemvalue="Python tests.Unittests for test_multiprocessingUtils.TestMultiprocessingUtils.test_producer_consumer" />
         <item itemvalue="Python tests.Unittests for test_multiprocessingUtils.TestMultiprocessingUtils.test_producer" />
-        <item itemvalue="Python tests.Unittests for test_convert_samples.TestSampleConverter" />
         <item itemvalue="Python tests.Unittests for test_convert_samples.TestSampleConverter.test_convert_samples" />
-        <item itemvalue="Python tests.Unittests for test_imageUtils.TestImageUtils.test_crop_image" />
       </list>
     </recent_temporary>
   </component>
@@ -183,13 +176,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00027" summary="use old requirements.txt">
-      <created>1690193188309</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1690193188309</updated>
     </task>
     <task id="LOCAL-00028" summary="New Env and updated requirements">
       <created>1690197711230</created>
@@ -527,7 +513,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693428581699</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="test_multiprocessingUtils.py">
+      <created>1694107538998</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1694107538998</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -555,7 +548,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Used wrong testing path" />
     <MESSAGE value="fix failed test cases" />
     <MESSAGE value="first finish of dataset test cases" />
     <MESSAGE value="exclude failures for unfailed run" />
@@ -580,7 +572,8 @@
     <MESSAGE value="worked on image utils tests" />
     <MESSAGE value="fix failed test in videoUtils" />
     <MESSAGE value="expected failure in image utils" />
-    <option name="LAST_COMMIT_MESSAGE" value="expected failure in image utils" />
+    <MESSAGE value="test_multiprocessingUtils.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="test_multiprocessingUtils.py" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

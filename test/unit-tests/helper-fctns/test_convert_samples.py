@@ -12,7 +12,7 @@ class TestSampleConverter(unittest.TestCase):
     """
 
     def setUp(self):
-        self.test_data_root = "testData" # "test/unit-tests/helper-fctns/testData"
+        self.test_data_root = "test/unit-tests/helper-fctns/testData"
 
     def test_convert_samples(self):
         input_path = self.test_data_root

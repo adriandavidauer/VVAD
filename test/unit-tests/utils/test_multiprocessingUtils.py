@@ -11,7 +11,7 @@ from vvadlrs3.utils import multiprocessingUtils
 class TestMultiprocessingUtils(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.test_data_root = "test/unit-tests/data-and-models/testData"
+        self.test_data_root = "test/unit-tests/utils/testData"
         self.data_set = dSet.DataSet(
             debug_flag=False,
             sample_length=1.0,
