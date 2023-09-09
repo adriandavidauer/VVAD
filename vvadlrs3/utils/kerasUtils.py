@@ -44,7 +44,7 @@ from vvadlrs3.utils.timeUtils import *
 # local imports
 
 
-def split_dataset(data_path, ratio_test, random_seed=42):
+def split_dataset(data_path, ratio_test, random_seed=42):   # pragma: no cover
     """
     Helper function that returns two lists of pathes to samples - one for training and
     one for testing.
@@ -93,7 +93,7 @@ def split_dataset(data_path, ratio_test, random_seed=42):
     return training_data, test_data
 
 
-class Hdf5DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
+class Hdf5DataGenerator(keras.utils.Sequence):     # pragma: no cover
     """Generates data for Keras"""
 
     def __init__(self, hdf5_path, image_size=None, num_steps=None, grayscale=False,
@@ -184,7 +184,7 @@ class Hdf5DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
     #         np.random.shuffle(self.data)
 
 
-class DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
+class DataGenerator(keras.utils.Sequence):     # pragma: no cover
     """Generates data for Keras"""
 
     def __init__(self, data, image_size=None, num_steps=None, grayscale=False,
@@ -276,7 +276,7 @@ class DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
             return x, y
 
 
-class DataGeneratorRAM(keras.utils.Sequence):  # keras.utils.Sequence
+class DataGeneratorRAM(keras.utils.Sequence):     # pragma: no cover
     """Generates data for Keras"""
 
     def __init__(self, data, image_size=None, num_steps=None, grayscale=False,
@@ -370,7 +370,7 @@ class DataGeneratorRAM(keras.utils.Sequence):  # keras.utils.Sequence
             return x
 
 
-class Models:
+class Models:   # pragma: no cover
     @staticmethod
     def build_feature_lstm(input_shape, num_lstm_layers=1, lstm_dims=32,
                            num_dense_layers=1, dense_dims=512, **kwargs):
@@ -662,7 +662,8 @@ class Models:
 
 
 # TODO:every model will be trained sligthly different because of different samples
-def train_model(model, train, test, epochs, batch_size, init_lr=0.01):
+def train_model(model, train, test,
+                epochs, batch_size, init_lr=0.01):   # pragma: no cover
     """
     trains the given model with the given params and data
     """
@@ -692,7 +693,7 @@ def train_model(model, train, test, epochs, batch_size, init_lr=0.01):
 
 
 def gen_data(train, test, train_samples=None, valid_samples=None, print_freq=None,
-             **kwargs):
+             **kwargs):   # pragma: no cover
     """
     Put the whole data or just some batches.
     """
@@ -787,7 +788,7 @@ def gen_data(train, test, train_samples=None, valid_samples=None, print_freq=Non
 
 
 def gen_data_internal(train, test, train_samples=None, valid_samples=None,
-                      print_freq=None, **kwargs):
+                      print_freq=None, **kwargs):   # pragma: no cover
     """
     Put the whole data or just some batches. - train, test are tuoples of numpyArrays
     in this case
@@ -871,7 +872,7 @@ def gen_data_internal(train, test, train_samples=None, valid_samples=None,
 
 @timeit
 def hdf5_samples_to_memory(train_path, val_path, train_samples=None,
-                           valid_samples=None, **kwargs):
+                           valid_samples=None, **kwargs):   # pragma: no cover
     kwargs_batch_size_1 = dict(kwargs)
     kwargs_batch_size_1['batch_size'] = 1
     t = Hdf5DataGenerator(train_path, **kwargs_batch_size_1)
@@ -921,7 +922,7 @@ def hdf5_samples_to_memory(train_path, val_path, train_samples=None,
 
 # https://stackoverflow.com/questions/43137288/
 #   how-to-determine-needed-memory-of-keras-model
-def get_model_memory_usage(batch_size, model):
+def get_model_memory_usage(batch_size, model):   # pragma: no cover
     import numpy as np
     from keras import backend as k
 
@@ -952,12 +953,12 @@ def get_model_memory_usage(batch_size, model):
 
 
 @timeit
-def check_data_gen(data_gen, var):
+def check_data_gen(data_gen, var):   # pragma: no cover
     var = data_gen[0]
     print("check data gen: ", var)
 
 
-def test_model(model_path, test_set_path, save_to=None):
+def test_model(model_path, test_set_path, save_to=None):   # pragma: no cover
     """
     Test a specific model with the corresponding test set.
     Maybe even plots every sample - numbers will probably don't correspond to numbers in
@@ -1053,7 +1054,7 @@ def test_model(model_path, test_set_path, save_to=None):
     return ((i + 1) - len(errors)) / (i + 1), (mae, mae_std), (mse, mse_std), errors
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":   # pragma: no cover
     print('############################START###########################')
     models = glob.glob('*model-*.h5')
     print('[MODELS]: {}'.format(models))

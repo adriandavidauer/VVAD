@@ -1,5 +1,6 @@
 import os.path
 import pathlib
+import shutil
 import unittest
 import sys
 
@@ -151,6 +152,24 @@ class TestDataSet(unittest.TestCase):
                                           os.path.join(os.path.abspath(video_path),
                                                        "test_video.3gpp"))))
 
+    def test_too_many_videos_in_folder(self):
+        src_dir = os.path.join(self.test_data_root, "test_video_data",
+                               "test_video.3gpp"). \
+            replace("\\", "/")
+        dst_dir = os.path.join(self.test_data_root, "test_video_data",
+                               "test_video.converted.3gpp"). \
+            replace("\\", "/")
+        shutil.copy(src_dir, dst_dir)
+
+        self.assertTrue(os.path.exists(dst_dir))
+
+        video_path = os.path.join(self.test_data_root, "test_video_data"). \
+            replace("\\", "/")
+
+        self.data_set.get_video_path_from_folder(pathlib.Path(video_path))
+
+        self.assertFalse(os.path.exists(dst_dir))
+
     # ToDo not running through in pipeline
     @unittest.expectedFailure
     def test_analyze_negatives(self):
@@ -251,7 +270,7 @@ class TestDataSet(unittest.TestCase):
         #                          samples_shape=)
 
     # ToDo fails with "cannot convert float NaN to integer" - sample error
-    #@unittest.expectedFailure unexpected success in pipeline online?
+    # @unittest.expectedFailure unexpected success in pipeline online?
     def test_analyze(self):
         # Windows needs ffmpeg.exe as executable. Might not be needed for Linux
         self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
@@ -331,7 +350,7 @@ class TestTransformations(unittest.TestCase):
                          pointsNamespace[2].y), "Array's content is not correct!"
 
     # ToDo funtion itself is not used, clarify before writing test
-    def test_transform_to_features(self):
+    def test_transform_to_features(self):  # pragma: no cover
         pass
 
 

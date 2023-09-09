@@ -97,7 +97,6 @@ class TestFaceFeatureGenerator(unittest.TestCase):
         RBGimg = get_rgb_test_image(image_file_name=image_file, folder_path=images_path)
 
         features = generator.get_features(image=RBGimg)
-        print(features)
 
         self.assertIsNotNone(features)
 
@@ -116,9 +115,50 @@ class TestFaceFeatureGenerator(unittest.TestCase):
         RBGimg = get_rgb_test_image(image_file_name=image_file, folder_path=images_path)
 
         features = generator.get_features(image=RBGimg)
-        print(features)
 
         self.assertIsNotNone(features)
+
+    def test_get_features_all(self):
+        model = pretrained_models.get_lip_feature_model()  # model for predictions
+        input_shape = model.layers[0].input_shape[2:]
+        generator = sample.FaceFeatureGenerator(
+            feature_type="all",
+            shape_model_path= "models/shape_predictor_68_face_landmarks.dat",
+            shape=(input_shape[1],
+                   input_shape[0])
+        )
+
+        image_file = "One_human_face.jpg"
+        images_path = os.path.join(self.test_data_root, self.images_path)
+        RBGimg = get_rgb_test_image(image_file_name=image_file, folder_path=images_path)
+
+        feature_face_img, feature_lip_img, feature_face_feat, feature_lip_feat = \
+            generator.get_features(image=RBGimg)
+
+        self.assertIsNotNone(feature_face_img)
+        self.assertIsNotNone(feature_face_feat)
+        self.assertIsNotNone(feature_lip_img)
+        self.assertIsNotNone(feature_lip_feat)
+
+    def test_get_features_all_without_face_feat(self):
+        model = pretrained_models.get_lip_feature_model()  # model for predictions
+        input_shape = model.layers[0].input_shape[2:]
+        generator = sample.FaceFeatureGenerator(
+            feature_type="allwfaceImage",
+            shape_model_path="models/shape_predictor_68_face_landmarks.dat",
+            shape=(input_shape[1],
+                   input_shape[0])
+        )
+
+        image_file = "One_human_face.jpg"
+        images_path = os.path.join(self.test_data_root, self.images_path)
+        RBGimg = get_rgb_test_image(image_file_name=image_file, folder_path=images_path)
+
+        lip_image, face_features, lip_features = generator.get_features(image=RBGimg)
+
+        self.assertIsNotNone(lip_features)
+        self.assertIsNotNone(face_features)
+        self.assertIsNotNone(lip_image)
 
     # ToDo check why fails
     @unittest.expectedFailure
@@ -213,9 +253,10 @@ class TestFeaturedSample(unittest.TestCase):
         except ValueError:
             self.fail("ValueError raised unexpectedly!")
 
+
 class TestVisualizeSamples(unittest.TestCase):
     def test_visualize_samples(self):
-        pass#sample.visualize_samples()
+        pass  # sample.visualize_samples()
 
 
 if __name__ == "__main__":

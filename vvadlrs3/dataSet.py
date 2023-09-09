@@ -121,11 +121,10 @@ class DataSet:
                 os.rename(self.tempPath, str(
                     video_file_without_extension) + self.tempPath.resolve().suffix)
 
-            if self.multiprocessing:
+            if self.multiprocessing:   # pragma: no cover
                 p = Process(target=timeoutable_download,
                             args=(video_url, current_folder))
 
-                print("name is: ", __name__)
                 if __name__ == '__main__':
                     multiprocessing.freeze_support()
                     print("in if")
@@ -315,7 +314,6 @@ class DataSet:
             vid_fps = vid_obj.get(cv2.CAP_PROP_FPS)
         count = 0
         # sampleList = []
-        print("framelist: ", frame_list)
         for sampleConfig in frame_list:
             if not self.check_sample_length(
                     self.get_second_from_frame(sampleConfig[0]),
@@ -990,7 +988,8 @@ def transform_points_to_numpy(points):
 
 
 # ToDo function not used?? What is it used for?
-def transform_to_features(path, shape_model_path=None, shape=None):
+# ToDo Must be re-evaluated , TBC
+def transform_to_features(path, shape_model_path=None, shape=None):  # pragme: no cover
     """
     get a Sample of type faceImage and transforms to lipImage, faceFeatures and
     lipFeatures
@@ -1070,6 +1069,7 @@ def transform_to_features(path, shape_model_path=None, shape=None):
     # TODO:call this in a multiproccessing way.
 
 
+# ToDo check what is meant here?
 def make_test_set(path, names_path):
     """
     takes the names belonging to the testset from the dataset in path

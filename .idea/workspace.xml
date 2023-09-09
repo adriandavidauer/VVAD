@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="test_multiprocessingUtils.py last fix.... assert leads to issues in pipeline">
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Test pragma &quot;no cover&quot; for __main__ functions and visualizations">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vvadlrs3/dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/dataSet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/sample.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/imageUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/imageUtils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/kerasUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/kerasUtils.py" afterDir="false" />
     </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,23 +45,23 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test/unit-tests/utils/testData/data" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/test_too_many_video_data" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\VVAD\test\unit-tests\data-and-models\testData\test_too_many_video_data" />
+      <recent name="C:\VVAD\test\unit-tests\data-and-models\testData" />
       <recent name="C:\VVAD\test\unit-tests\utils\testData\data" />
       <recent name="C:\VVAD\test\unit-tests\utils\testData" />
       <recent name="C:\VVAD\test\unit-tests\helper-fctns\testData" />
-      <recent name="C:\VVAD\test\unit-tests\data-and-models\testData\sample_pickles" />
-      <recent name="C:\VVAD\test\unit-tests\data-and-models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\VVAD\test\unit-tests\data-and-models" />
       <recent name="C:\VVAD\test\unit-tests\utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_multiprocessingUtils.TestMultiprocessingUtils">
+  <component name="RunManager" selected="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_all_without_face_feat">
     <configuration name="test_timeUtils" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -82,91 +83,91 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_convert_samples.TestSampleConverter" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_dataSet.TestDataSet.test_get_samples" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/helper-fctns" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_convert_samples.TestSampleConverter&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_get_samples&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_convert_samples.TestSampleConverter.test_convert_samples" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_dataSet.TestTransformations.test_transform_to_features" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/helper-fctns" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_convert_samples.TestSampleConverter.test_convert_samples&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestTransformations.test_transform_to_features&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_multiprocessingUtils.TestMultiprocessingUtils" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_all" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/utils" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_multiprocessingUtils.TestMultiprocessingUtils&quot;" />
+      <option name="_new_target" value="&quot;test_sample.TestFaceFeatureGenerator.test_get_features_all&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_multiprocessingUtils.TestMultiprocessingUtils.test_producer" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_all_without_face_feat" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/utils" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_multiprocessingUtils.TestMultiprocessingUtils.test_producer&quot;" />
+      <option name="_new_target" value="&quot;test_sample.TestFaceFeatureGenerator.test_get_features_all_without_face_feat&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_multiprocessingUtils.TestMultiprocessingUtils.test_producer_consumer" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_lip_features" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/utils" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_multiprocessingUtils.TestMultiprocessingUtils.test_producer_consumer&quot;" />
+      <option name="_new_target" value="&quot;test_sample.TestFaceFeatureGenerator.test_get_features_lip_features&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.test_timeUtils" />
-      <item itemvalue="Python tests.Unittests for test_convert_samples.TestSampleConverter.test_convert_samples" />
-      <item itemvalue="Python tests.Unittests for test_convert_samples.TestSampleConverter" />
-      <item itemvalue="Python tests.Unittests for test_multiprocessingUtils.TestMultiprocessingUtils.test_producer" />
-      <item itemvalue="Python tests.Unittests for test_multiprocessingUtils.TestMultiprocessingUtils.test_producer_consumer" />
-      <item itemvalue="Python tests.Unittests for test_multiprocessingUtils.TestMultiprocessingUtils" />
+      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_samples" />
+      <item itemvalue="Python tests.Unittests for test_dataSet.TestTransformations.test_transform_to_features" />
+      <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_all" />
+      <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_lip_features" />
+      <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_all_without_face_feat" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Unittests for test_multiprocessingUtils.TestMultiprocessingUtils" />
-        <item itemvalue="Python tests.Unittests for test_convert_samples.TestSampleConverter" />
-        <item itemvalue="Python tests.Unittests for test_multiprocessingUtils.TestMultiprocessingUtils.test_producer_consumer" />
-        <item itemvalue="Python tests.Unittests for test_multiprocessingUtils.TestMultiprocessingUtils.test_producer" />
-        <item itemvalue="Python tests.Unittests for test_convert_samples.TestSampleConverter.test_convert_samples" />
+        <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_all_without_face_feat" />
+        <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_all" />
+        <item itemvalue="Python tests.Unittests for test_sample.TestFaceFeatureGenerator.test_get_features_lip_features" />
+        <item itemvalue="Python tests.Unittests for test_dataSet.TestTransformations.test_transform_to_features" />
+        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_samples" />
       </list>
     </recent_temporary>
   </component>
@@ -178,13 +179,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00032" summary="chekc this syntax">
-      <created>1690204210174</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1690204210174</updated>
     </task>
     <task id="LOCAL-00033" summary="checkout repo in runner">
       <created>1690205232005</created>
@@ -522,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694112307269</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="Test pragma &quot;no cover&quot; for __main__ functions and visualizations">
+      <created>1694113959120</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1694113959120</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -550,7 +551,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed lint issue" />
     <MESSAGE value="include develop branches in pipeline" />
     <MESSAGE value="tqdm was not found, added?!" />
     <MESSAGE value="used existing shape predictor" />
@@ -575,7 +575,8 @@
     <MESSAGE value="test_multiprocessingUtils.py fix ratios" />
     <MESSAGE value="test_multiprocessingUtils.py adjust evaluation to be dynamical" />
     <MESSAGE value="test_multiprocessingUtils.py last fix.... assert leads to issues in pipeline" />
-    <option name="LAST_COMMIT_MESSAGE" value="test_multiprocessingUtils.py last fix.... assert leads to issues in pipeline" />
+    <MESSAGE value="Test pragma &quot;no cover&quot; for __main__ functions and visualizations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test pragma &quot;no cover&quot; for __main__ functions and visualizations" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>
