@@ -102,13 +102,6 @@ def analyze_video(video_path, feature_type='faceImage', save_as_json=None):
             rb.append(features)
             if rb.is_full:
                 y = model.predict(np.array([rb]))
-                ###TEST###REMOVE###
-                # s = sample.FeatureizedSample()
-                # s.label = bool(y > 0.5)
-                # s.data = np.array(rb)
-                # s.featureType = featureType
-                # s.visualize()
-                ####END OF TEST####
                 for x in range(i - (k-1), i):  # append to all involved frames
                     # cast to float64 to make it json serializable
                     frame_scores[x].append(np.float64(y[0, 0]))

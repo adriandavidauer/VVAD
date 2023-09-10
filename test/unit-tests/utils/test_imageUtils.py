@@ -73,4 +73,4 @@ def load_local_img(path_to_local_img):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(warnings='ignore')

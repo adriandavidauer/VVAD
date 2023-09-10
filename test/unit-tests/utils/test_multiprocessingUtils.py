@@ -24,7 +24,6 @@ class TestMultiprocessingUtils(unittest.TestCase):
                              "/shape_predictor_5_face_landmarks.dat "
         )
 
-        print("Set up folders")
         self.positives_folder = os.path.join(self.test_data_root,
                                              "data/positiveSamples")
         self.negatives_folder = os.path.join(self.test_data_root,
@@ -71,3 +70,7 @@ class TestMultiprocessingUtils(unittest.TestCase):
 
         shutil.rmtree(self.positives_folder)
         shutil.rmtree(self.negatives_folder)
+
+
+if __name__ == '__main__':
+    unittest.main(warnings='ignore')

@@ -4,6 +4,7 @@ import shutil
 import unittest
 import sys
 
+import cv2
 import numpy
 
 sys.path.append('../../../vvadlrs3')
@@ -19,7 +20,7 @@ from vvadlrs3 import dataSet as dSet
 class TestDataSet(unittest.TestCase):
 
     def setUp(self):
-        self.test_data_root = "test/unit-tests/data-and-models/testData"
+        self.test_data_root = "testData"  # test/unit-tests/data-and-models/testData"
         self.videos_path = "video"
         self.video_folder_path = "video/00j9bKdiOjk"
         self.video_folder_path_2 = "video/0Bhk65bYSI0"
@@ -82,25 +83,53 @@ class TestDataSet(unittest.TestCase):
                                                     video_path_5)))
                                                     """
 
-    # ToDo Assert missing
     def test_get_all_samples(self):
         self.data_set.get_all_samples(
             path=os.path.join(self.test_data_root, "video").replace("\\", "/"),
             showStatus=True,
             feature_type=None)
 
-    # ToDo Assert missing
     def test_convert_all_fps(self):
         # Windows needs ffmpeg.exe as executable. Might not be needed for Linux
+        self.data_set.download_lrs3(path=os.path.join(
+            self.test_data_root, self.videos_path))
         self.data_set.convert_all_fps(
-            os.path.join(self.test_data_root, "video").replace("\\", "/"))
-        self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
-            self.test_data_root, self.video_folder_path))
+            os.path.join(self.test_data_root, self.videos_path).replace("\\", "/"))
 
-    # ToDo Assert missing
+        example_vid_obj = cv2.VideoCapture(
+            str(self.test_data_root) + "/" + str(self.video_folder_path) +
+            "/00j9bKdiOjK.converted.3gp")
+        example_vid_obj_2 = cv2.VideoCapture(
+            str(self.test_data_root) + "/" + str(self.video_folder_path_3) +
+            "/0Amg53UuRqE.converted.3gp")
+
+        self.assertEqual(
+            25.0,
+            example_vid_obj.get(cv2.CAP_PROP_FPS)
+        )
+
+        self.assertEqual(
+            25.0,
+            example_vid_obj_2.get(cv2.CAP_PROP_FPS)
+        )
+
     def test_download_lrs3(self):
         self.data_set.download_lrs3(path=os.path.join(
-            self.test_data_root, self.video_folder_path))
+            self.test_data_root, self.videos_path))
+
+        self.assertTrue(
+            os.path.exists(
+                os.path.join(self.test_data_root, self.video_folder_path,
+                             "00j9bKdiOjk.3gpp")
+            )
+        )
+
+        self.assertTrue(
+            os.path.exists(
+                os.path.join(self.test_data_root, self.video_folder_path_3,
+                             "0Amg53UuRqE.3gpp")
+            )
+        )
 
     def test_get_txt_files(self):
         for textfile in self.data_set.get_txt_files(
@@ -109,26 +138,27 @@ class TestDataSet(unittest.TestCase):
 
     # ToDo: check if same as test_get_all_positive_samples
     # @unittest.expectedFailure
-    def test_get_positive_samples(self):
-        # ToDo somehow wrong
-
-        # data_set.downloadLRS3SampleFromYoutube(path=folder_path)
-        self.data_set.get_positive_samples(path=os.path.join(self.test_data_root,
-                                                             self.video_folder_path))
+    def test_get_positive_samples_dry(self):
         print(self.data_set.get_positive_samples(path=os.path.join(
             self.test_data_root, self.video_folder_path),
             dry_run=True))
         for sample in dSet.DataSet.get_positive_samples(os.path.join(
                 self.test_data_root, self.video_folder_path),
                 True):
-            print("hey")
             yield sample
         print("[getAllPSamples] Folder {} done".format(os.path.join(
             self.test_data_root, self.video_folder_path)))
 
-    # ToDo: check if same as test_convert_all_fps
-    def test_convert_fps(self):
-        pass
+    def test_get_positive_samples(self):
+        print(self.data_set.get_positive_samples(path=os.path.join(
+            self.test_data_root, self.video_folder_path),
+            dry_run=False))
+        for sample in dSet.DataSet.get_positive_samples(os.path.join(
+                self.test_data_root, self.video_folder_path),
+                False):
+            yield sample
+        print("[getAllPSamples] Folder {} done".format(os.path.join(
+            self.test_data_root, self.video_folder_path)))
 
     def test_get_no_video_path_from_folder_index_error(self):
         video_path = os.path.join(self.test_data_root, self.video_file_path). \
@@ -349,7 +379,7 @@ class TestTransformations(unittest.TestCase):
         self.assertEqual(dSet.transform_points_to_numpy(pointsNamespace)[2][1],
                          pointsNamespace[2].y), "Array's content is not correct!"
 
-    # ToDo funtion itself is not used, clarify before writing test
+    # ToDo function itself is not used, clarify before writing test
     def test_transform_to_features(self):  # pragma: no cover
         pass
 

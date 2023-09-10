@@ -32,6 +32,16 @@ class TestFaceTracker(unittest.TestCase):
 
         self.assertTrue(box)
 
+    def test_get_next_face_relative(self):
+        self.face_tracker.relative = True
+        image_file = "One_human_face.jpg"
+        images_path = os.path.join(self.test_data_root, self.images_path)
+        RGBimg = get_rgb_test_image(image_file_name=image_file, folder_path=images_path)
+
+        _, box = self.face_tracker.get_next_face(RGBimg)
+
+        self.assertTrue(box)
+
     def test_get_next_face_fail(self):
         image_file = "Two_human_faces.jpg"
         images_path = os.path.join(self.test_data_root, self.images_path)
@@ -190,6 +200,8 @@ class TestFeaturedSample(unittest.TestCase):
         test_sample.k = 2
         self.assertFalse(test_sample.is_valid())
 
+# ToDo: Write missing test cases
+
     def test_get_data(self):
         pass
 
@@ -230,9 +242,6 @@ class TestFeaturedSample(unittest.TestCase):
     def test_generate_sample_from_buffer(self):
         pass
 
-    def test_visualize(self):
-        pass
-
     def test_save_data_as_pickle(self):
         with tempfile.TemporaryDirectory() as tmpdirname:
             temp_dir = Path(tmpdirname)
@@ -252,11 +261,6 @@ class TestFeaturedSample(unittest.TestCase):
             test_sample.load(sample_path)
         except ValueError:
             self.fail("ValueError raised unexpectedly!")
-
-
-class TestVisualizeSamples(unittest.TestCase):
-    def test_visualize_samples(self):
-        pass  # sample.visualize_samples()
 
 
 if __name__ == "__main__":

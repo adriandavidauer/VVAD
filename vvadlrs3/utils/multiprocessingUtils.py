@@ -22,8 +22,11 @@ pool = multiprocessing.Pool()
 # positivesQueue, negativesQueue, getSamplesParams, dataset, semaphore
 def producer(dataset, get_samples_params):
     # get samples params: path, feature_type, samples_shape, dry_run=False
+    print("[PRODUCER] started")
     dataset.debug_print("started Producer for {}".format(get_samples_params))
     for sample in dataset.get_samples(*get_samples_params):
+        print(f"Sample is {sample}")
+        print(f"Sample label is: {sample.label}")
         # Put Samples
         if sample.label:
             if not positivesQueue.full():

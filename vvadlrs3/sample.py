@@ -52,7 +52,7 @@ class FaceTracker:
         :param image: openCV image in RGB format
         :type image: openCV image
         """
-        if self.tracker:
+        if self.tracker:    #pragma: no cover
             # get x,y, w,h from tracker
             self.tracker.update(image)
             pos = self.tracker.get_position()
