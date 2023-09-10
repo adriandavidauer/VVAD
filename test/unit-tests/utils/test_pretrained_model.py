@@ -1,10 +1,8 @@
 import os.path
-import tempfile
 import unittest
 from pathlib import Path
 
 import cv2
-import numpy as np
 
 from vvadlrs3 import pretrained_models
 
@@ -18,25 +16,29 @@ class TestPretrainedModelPath(unittest.TestCase):
 
     def test_get_face_img_model_path(self):
         self.assertEqual(
-            str(Path(__file__).absolute().parent) + "/bestFaceEndToEnd.h5",
+            str(Path(__file__).absolute().parent.parent.parent.parent) +
+            "\\vvadlrs3/bestFaceEndToEnd.h5",
             pretrained_models.get_face_img_model_path()
         )
 
     def test_get_lip_img_model_path(self):
         self.assertEqual(
-            str(Path(__file__).absolute().parent) + "/bestLipEndToEnd.h5",
+            str(Path(__file__).absolute().parent.parent.parent.parent) +
+            "\\vvadlrs3/bestLipEndToEnd.h5",
             pretrained_models.get_lip_img_model_path()
         )
 
     def test_get_face_feature_model_path(self):
         self.assertEqual(
-            str(Path(__file__).absolute().parent) + "/faceFeatureModel.h5",
+            str(Path(__file__).absolute().parent.parent.parent.parent) +
+            "\\vvadlrs3/faceFeatureModel.h5",
             pretrained_models.get_face_feature_model_path()
         )
 
     def test_get_lip_feature_model_path(self):
         self.assertEqual(
-            str(Path(__file__).absolute().parent) + "/lipFeatureModel.h5",
+            str(Path(__file__).absolute().parent.parent.parent.parent) +
+            "\\vvadlrs3/lipFeatureModel.h5",
             pretrained_models.get_lip_feature_model_path()
         )
 
