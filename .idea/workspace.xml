@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Fixing on missing test cases (according to coverage report)">
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Fix model_path_errors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_pretrained_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/utils/test_pretrained_model.py" afterDir="false" />
     </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
@@ -58,7 +59,28 @@
       <recent name="C:\VVAD\test\unit-tests\utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_pretrained_model.TestPretrainedModelPath.test_get_face_img_model_path">
+  <component name="RunManager" selected="Python tests.Unittests for test_dataSet.TestDataSet.test_convert_all_fps">
+    <configuration name="test_dataSet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="VVAD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test_timeUtils" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -94,7 +116,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_dataSet.TestDataSet.test_download_lrs3" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_dataSet.TestDataSet.test_get_no_video_path_from_folder" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -104,11 +126,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_download_lrs3&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_get_no_video_path_from_folder&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_dataSet.TestDataSet.test_get_positive_samples" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_dataSet.TestDataSet.test_get_no_video_path_from_folder_index_error" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -118,11 +140,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_get_positive_samples&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_get_no_video_path_from_folder_index_error&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_pretrained_model.TestPretrainedModelPath.test_get_face_img_model_path" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_pretrained_model.TestPretrainedModelPath" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -132,39 +154,25 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_pretrained_model.TestPretrainedModelPath.test_get_face_img_model_path&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Unittests for test_sample.TestFaceTracker.test_get_next_face_relative" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="VVAD" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_sample.TestFaceTracker.test_get_next_face_relative&quot;" />
+      <option name="_new_target" value="&quot;test_pretrained_model.TestPretrainedModelPath&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.test_timeUtils" />
-      <item itemvalue="Python tests.Unittests for test_pretrained_model.TestPretrainedModelPath.test_get_face_img_model_path" />
-      <item itemvalue="Python tests.Unittests for test_sample.TestFaceTracker.test_get_next_face_relative" />
+      <item itemvalue="Python tests.Unittests for test_pretrained_model.TestPretrainedModelPath" />
+      <item itemvalue="Python.test_dataSet" />
+      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_no_video_path_from_folder_index_error" />
+      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_no_video_path_from_folder" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_convert_all_fps" />
-      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_download_lrs3" />
-      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_positive_samples" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Unittests for test_pretrained_model.TestPretrainedModelPath.test_get_face_img_model_path" />
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_positive_samples" />
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_download_lrs3" />
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_convert_all_fps" />
-        <item itemvalue="Python tests.Unittests for test_sample.TestFaceTracker.test_get_next_face_relative" />
+        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_no_video_path_from_folder_index_error" />
+        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_no_video_path_from_folder" />
+        <item itemvalue="Python.test_dataSet" />
+        <item itemvalue="Python tests.Unittests for test_pretrained_model.TestPretrainedModelPath" />
       </list>
     </recent_temporary>
   </component>
@@ -176,13 +184,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00035" summary="import directory into testDataSet">
-      <created>1690307390377</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1690307390377</updated>
     </task>
     <task id="LOCAL-00036" summary="clean up and try discovery from global">
       <created>1690308738476</created>
@@ -520,7 +521,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694371900735</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="Fix model_path_errors">
+      <created>1694375729790</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1694375729790</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -534,7 +542,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/maintenance/01_remove-unused-code" />
+                        <option value="36-test-utilities" />
                       </list>
                     </value>
                   </entry>
@@ -548,7 +556,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="used existing shape predictor" />
     <MESSAGE value="replace tensorflow-gpu with tensorflow" />
     <MESSAGE value="ignore warnings" />
     <MESSAGE value="downgrade tf" />
@@ -573,7 +580,8 @@
     <MESSAGE value="Test pragma &quot;no cover&quot; for __main__ functions and visualizations" />
     <MESSAGE value="Improve code coverage in dataSet.py, sample.py, and multiprocessing." />
     <MESSAGE value="Fixing on missing test cases (according to coverage report)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing on missing test cases (according to coverage report)" />
+    <MESSAGE value="Fix model_path_errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix model_path_errors" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

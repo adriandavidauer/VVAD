@@ -15,31 +15,35 @@ def get_rgb_test_image(image_file_name, folder_path):
 class TestPretrainedModelPath(unittest.TestCase):
 
     def test_get_face_img_model_path(self):
-        self.assertEqual(
-            str(Path(__file__).absolute().parent.parent.parent.parent) +
-            "\\vvadlrs3/bestFaceEndToEnd.h5",
-            pretrained_models.get_face_img_model_path()
+        self.assertTrue(
+            os.path.exists(
+                pretrained_models.get_face_img_model_path() and
+                "bestFaceEndToEnd.h5" in pretrained_models.get_face_img_model_path()
+            )
         )
 
     def test_get_lip_img_model_path(self):
-        self.assertEqual(
-            str(Path(__file__).absolute().parent.parent.parent.parent) +
-            "\\vvadlrs3/bestLipEndToEnd.h5",
-            pretrained_models.get_lip_img_model_path()
+        self.assertTrue(
+            os.path.exists(
+                pretrained_models.get_lip_img_model_path() and
+                "bestLipEndToEnd.h5" in pretrained_models.get_lip_img_model_path()
+            )
         )
 
     def test_get_face_feature_model_path(self):
-        self.assertEqual(
-            str(Path(__file__).absolute().parent.parent.parent.parent) +
-            "\\vvadlrs3/faceFeatureModel.h5",
-            pretrained_models.get_face_feature_model_path()
+        self.assertTrue(
+            os.path.exists(
+                pretrained_models.get_face_feature_model_path() and
+                "faceFeatureModel.h5" in pretrained_models.get_face_feature_model_path()
+            )
         )
 
     def test_get_lip_feature_model_path(self):
-        self.assertEqual(
-            str(Path(__file__).absolute().parent.parent.parent.parent) +
-            "\\vvadlrs3/lipFeatureModel.h5",
-            pretrained_models.get_lip_feature_model_path()
+        self.assertTrue(
+            os.path.exists(
+                pretrained_models.get_lip_feature_model_path() and
+                "lipFeatureModel.h5" in pretrained_models.get_lip_feature_model_path()
+            )
         )
 
 

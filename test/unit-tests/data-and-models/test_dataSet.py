@@ -103,6 +103,11 @@ class TestDataSet(unittest.TestCase):
             str(self.test_data_root) + "/" + str(self.video_folder_path_3) +
             "/0Amg53UuRqE.converted.3gp")
 
+        print("Test video path is: " + str(self.test_data_root) + "/" + str(self.video_folder_path) +
+              "/00j9bKdiOjK.converted.3gp")
+        print("Test video path is: " + str(self.test_data_root) + "/" + str(self.video_folder_path_3) +
+              "/0Amg53UuRqE.converted.3gp")
+
         self.assertEqual(
             25.0,
             example_vid_obj.get(cv2.CAP_PROP_FPS)
@@ -161,13 +166,13 @@ class TestDataSet(unittest.TestCase):
             self.test_data_root, self.video_folder_path)))
 
     def test_get_no_video_path_from_folder_index_error(self):
-        video_path = os.path.join(self.test_data_root, self.video_file_path). \
+        video_path = os.path.join(self.test_data_root, "noVideoData"). \
             replace("\\", "/")
         self.assertRaises(dSet.WrongPathException,
                           lambda: self.data_set.get_video_path_from_folder(video_path))
 
     def test_get_no_video_path_from_folder(self):
-        video_path = os.path.join(self.test_data_root, self.video_folder_path). \
+        video_path = os.path.join(self.test_data_root, "getTXT"). \
             replace("\\", "/")
         self.assertRaises(FileNotFoundError,
                           lambda: self.data_set.get_video_path_from_folder(video_path))
