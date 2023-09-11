@@ -25,10 +25,8 @@ def producer(dataset, get_samples_params):
     print("[PRODUCER] started")
     dataset.debug_print("started Producer for {}".format(get_samples_params))
     for sample in dataset.get_samples(*get_samples_params):
-        print(f"Sample is {sample}")
-        print(f"Sample label is: {sample.label}")
         # Put Samples
-        if sample.label:
+        if sample.label:    # pragma: no cover
             if not positivesQueue.full():
                 # TODO:raises full Exception https://docs.python.org/2/library/
                 #  queue.html#Queue.Queue.put
@@ -36,7 +34,7 @@ def producer(dataset, get_samples_params):
                 print("[Producer] putting a positive sample")
             else:
                 print("positivesQueue is full. Not putting this positive sample")
-        else:
+        else:    # pragma: no cover
             if not negativesQueue.full():
                 # TODO:raises full Exception https://docs.python.org/2/library/
                 #  queue.html#Queue.Queue.put

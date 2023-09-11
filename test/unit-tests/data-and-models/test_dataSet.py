@@ -1,10 +1,9 @@
 import os.path
 import pathlib
 import shutil
-import unittest
 import sys
+import unittest
 
-import cv2
 import numpy
 
 sys.path.append('../../../vvadlrs3')
@@ -124,9 +123,6 @@ class TestDataSet(unittest.TestCase):
     # ToDo: check if same as test_get_all_positive_samples
     # @unittest.expectedFailure
     def test_get_positive_samples_dry(self):
-        print(self.data_set.get_positive_samples(path=os.path.join(
-            self.test_data_root, self.video_folder_path),
-            dry_run=True))
         for sample in dSet.DataSet.get_positive_samples(os.path.join(
                 self.test_data_root, self.video_folder_path),
                 True):
@@ -135,9 +131,6 @@ class TestDataSet(unittest.TestCase):
             self.test_data_root, self.video_folder_path)))
 
     def test_get_positive_samples(self):
-        print(self.data_set.get_positive_samples(path=os.path.join(
-            self.test_data_root, self.video_folder_path),
-            dry_run=False))
         for sample in dSet.DataSet.get_positive_samples(os.path.join(
                 self.test_data_root, self.video_folder_path),
                 False):

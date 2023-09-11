@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Try fix test_dataSet.py">
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Try fix test_dataSet.py target fps">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/dataSet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/multiprocessingUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/multiprocessingUtils.py" afterDir="false" />
     </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,28 +60,7 @@
       <recent name="C:\VVAD\test\unit-tests\utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_dataSet.TestDataSet.test_convert_all_fps">
-    <configuration name="test_dataSet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="VVAD" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python tests.Unittests for test_dataSet.TestDataSet.test_get_positive_samples_dry">
     <configuration name="test_timeUtils" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -142,35 +124,49 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_pretrained_model.TestPretrainedModelPath" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_dataSet.TestDataSet.test_get_positive_samples" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/utils" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_pretrained_model.TestPretrainedModelPath&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_get_positive_samples&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test_dataSet.TestDataSet.test_get_positive_samples_dry" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="VVAD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_get_positive_samples_dry&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.test_timeUtils" />
-      <item itemvalue="Python tests.Unittests for test_pretrained_model.TestPretrainedModelPath" />
-      <item itemvalue="Python.test_dataSet" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_no_video_path_from_folder_index_error" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_no_video_path_from_folder" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_convert_all_fps" />
+      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_positive_samples" />
+      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_positive_samples_dry" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_positive_samples_dry" />
+        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_positive_samples" />
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_convert_all_fps" />
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_no_video_path_from_folder_index_error" />
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_no_video_path_from_folder" />
-        <item itemvalue="Python.test_dataSet" />
-        <item itemvalue="Python tests.Unittests for test_pretrained_model.TestPretrainedModelPath" />
       </list>
     </recent_temporary>
   </component>
@@ -182,13 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Fix failed test errors">
-      <created>1690314812744</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1690314812744</updated>
     </task>
     <task id="LOCAL-00041" summary="Fix failed test errors">
       <created>1690315609918</created>
@@ -526,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694426907473</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="Try fix test_dataSet.py target fps">
+      <created>1694429388884</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1694429388884</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -554,7 +550,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix some sample test cases" />
     <MESSAGE value="Fix TypeError: Required Group, str or dict" />
     <MESSAGE value="Unsupported operand type fixed" />
     <MESSAGE value="Try again" />
@@ -579,7 +574,8 @@
     <MESSAGE value="Fix test_dataSet.py and test_pretrained_model.py test cases" />
     <MESSAGE value="Fix test_dataSet.py test cases (convert fps)" />
     <MESSAGE value="Try fix test_dataSet.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Try fix test_dataSet.py" />
+    <MESSAGE value="Try fix test_dataSet.py target fps" />
+    <option name="LAST_COMMIT_MESSAGE" value="Try fix test_dataSet.py target fps" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

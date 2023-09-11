@@ -206,8 +206,8 @@ class TestFeaturedSample(unittest.TestCase):
         pass
 
     def test_get_dist(self):
-        # used in get_data, implemented later
-        pass
+        test_sample = sample.FeatureizedSample()
+
 
     def test_normalize(self):
         test_sample = sample.FeatureizedSample()

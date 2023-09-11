@@ -989,7 +989,7 @@ def transform_points_to_numpy(points):
 
 # ToDo function not used?? What is it used for?
 # ToDo Must be re-evaluated , TBC
-def transform_to_features(path, shape_model_path=None, shape=None):  # pragme: no cover
+def transform_to_features(path, shape_model_path=None, shape=None):  # pragma: no cover
     """
     get a Sample of type faceImage and transforms to lipImage, faceFeatures and
     lipFeatures
