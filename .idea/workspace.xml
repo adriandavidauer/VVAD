@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Fix test_dataSet.py and test_pretrained_model.py test cases">
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Fix test_dataSet.py test cases (convert fps)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_pretrained_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/utils/test_pretrained_model.py" afterDir="false" />
     </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
@@ -183,13 +183,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00037" summary="clean up and try discovery from global">
-      <created>1690308973368</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1690308973368</updated>
     </task>
     <task id="LOCAL-00038" summary="Put test into build">
       <created>1690313175688</created>
@@ -527,7 +520,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694412254342</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Fix test_dataSet.py test cases (convert fps)">
+      <created>1694419237128</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1694419237128</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -555,7 +555,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ignore warnings" />
     <MESSAGE value="downgrade tf" />
     <MESSAGE value="fix some sample test cases" />
     <MESSAGE value="Fix TypeError: Required Group, str or dict" />
@@ -580,7 +579,8 @@
     <MESSAGE value="Fixing on missing test cases (according to coverage report)" />
     <MESSAGE value="Fix model_path_errors" />
     <MESSAGE value="Fix test_dataSet.py and test_pretrained_model.py test cases" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix test_dataSet.py and test_pretrained_model.py test cases" />
+    <MESSAGE value="Fix test_dataSet.py test cases (convert fps)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix test_dataSet.py test cases (convert fps)" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

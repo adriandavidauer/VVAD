@@ -97,10 +97,10 @@ class TestDataSet(unittest.TestCase):
             os.path.join(self.test_data_root, self.videos_path).replace("\\", "/"))
 
         example_vid_obj = cv2.VideoCapture(
-            str(self.test_data_root) + "/" + str(self.video_folder_path) +
+            str(os.getcwd()) + str(self.test_data_root) + "/" + str(self.video_folder_path) +
             "/00j9bKdiOjK.converted.3gp")
         example_vid_obj_2 = cv2.VideoCapture(
-            str(self.test_data_root) + "/" + str(self.video_folder_path_3) +
+            str(os.getcwd()) + str(self.test_data_root) + "/" + str(self.video_folder_path_3) +
             "/0Amg53UuRqE.converted.3gp")
 
         print("Test video path is: " + str(self.test_data_root) + "/" + str(
@@ -109,12 +109,13 @@ class TestDataSet(unittest.TestCase):
         print("Test video path is: " + str(self.test_data_root) + "/" + str(
             self.video_folder_path_3) +
               "/0Amg53UuRqE.converted.3gp")
+        print(os.getcwd())
         print("0Amg53UuRqE exists: ",
-              os.path.exists(str(self.test_data_root) + "/" + str(
+              os.path.exists(str(os.getcwd()) + str(self.test_data_root) + "/" + str(
                   self.video_folder_path_3) +
                              "/0Amg53UuRqE.converted.3gp"))
         print("00j9bKdiOjK exists: ",
-              os.path.exists(str(self.test_data_root) + "/" + str(
+              os.path.exists(str(os.getcwd()) + str(self.test_data_root) + "/" + str(
                   self.video_folder_path_3) +
                              "/00j9bKdiOjK.converted.3gp"))
 

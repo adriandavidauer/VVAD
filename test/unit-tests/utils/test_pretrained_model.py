@@ -1,7 +1,5 @@
 import os.path
 import unittest
-from pathlib import Path
-
 import cv2
 
 from vvadlrs3 import pretrained_models
