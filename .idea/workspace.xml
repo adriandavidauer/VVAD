@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Fix model_path_errors">
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Fix test_dataSet.py and test_pretrained_model.py test cases">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_pretrained_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/utils/test_pretrained_model.py" afterDir="false" />
     </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
@@ -184,13 +183,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00036" summary="clean up and try discovery from global">
-      <created>1690308738476</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1690308738476</updated>
     </task>
     <task id="LOCAL-00037" summary="clean up and try discovery from global">
       <created>1690308973368</created>
@@ -528,7 +520,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694375729790</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="Fix test_dataSet.py and test_pretrained_model.py test cases">
+      <created>1694412254341</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1694412254342</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -556,7 +555,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="replace tensorflow-gpu with tensorflow" />
     <MESSAGE value="ignore warnings" />
     <MESSAGE value="downgrade tf" />
     <MESSAGE value="fix some sample test cases" />
@@ -581,7 +579,8 @@
     <MESSAGE value="Improve code coverage in dataSet.py, sample.py, and multiprocessing." />
     <MESSAGE value="Fixing on missing test cases (according to coverage report)" />
     <MESSAGE value="Fix model_path_errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix model_path_errors" />
+    <MESSAGE value="Fix test_dataSet.py and test_pretrained_model.py test cases" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix test_dataSet.py and test_pretrained_model.py test cases" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>
