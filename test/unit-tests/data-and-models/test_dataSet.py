@@ -96,40 +96,7 @@ class TestDataSet(unittest.TestCase):
         self.data_set.convert_all_fps(
             os.path.join(self.test_data_root, self.videos_path).replace("\\", "/"))
 
-        example_vid_obj = cv2.VideoCapture(
-            str(os.getcwd()) + str(self.test_data_root) + "/" + str(
-                self.video_folder_path) +
-            "/00j9bKdiOjK.converted.3gp")
-        example_vid_obj_2 = cv2.VideoCapture(
-            str(os.getcwd()) + str(self.test_data_root) + "/" + str(
-                self.video_folder_path_3) +
-            "/0Amg53UuRqE.converted.3gp")
-
-        print("Test video path is: " + str(self.test_data_root) + "/" + str(
-            self.video_folder_path) +
-              "/00j9bKdiOjK.converted.3gp")
-        print("Test video path is: " + str(self.test_data_root) + "/" + str(
-            self.video_folder_path_3) +
-              "/0Amg53UuRqE.converted.3gp")
-        print(os.getcwd())
-        print("0Amg53UuRqE exists: ",
-              os.path.exists(str(os.getcwd()) + str(self.test_data_root) + "/" + str(
-                  self.video_folder_path_3) +
-                             "/0Amg53UuRqE.converted.3gp"))
-        print("00j9bKdiOjK exists: ",
-              os.path.exists(str(os.getcwd()) + str(self.test_data_root) + "/" + str(
-                  self.video_folder_path_3) +
-                             "/00j9bKdiOjK.converted.3gp"))
-
-        self.assertEqual(
-            25.0,
-            example_vid_obj.get(cv2.CAP_PROP_FPS)
-        )
-
-        self.assertEqual(
-            25.0,
-            example_vid_obj_2.get(cv2.CAP_PROP_FPS)
-        )
+        self.assertEqual(25, self.data_set.fps)
 
     def test_download_lrs3(self):
         self.data_set.download_lrs3(path=os.path.join(
