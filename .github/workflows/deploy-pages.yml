@@ -1,6 +1,10 @@
 # This workflow will publish gh-pages when a Release is created
 
-name: Upload Python Package
+name: Publish GH-Pages
+
+on:
+  release:
+    types: [created]
 
 jobs:
   # Build job
