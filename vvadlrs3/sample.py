@@ -253,7 +253,7 @@ class FeatureizedSample:
         :type image_size: tuple of ints
         :param num_steps: number of steps for the sample
         :type num_steps: int
-        :param grayscale: decides wheater to use grayscale images or not
+        :param grayscale: decides whether to use grayscale images or not
         :type grayscale: bool
         :param normalize: If normalize
         :type normalize: bool

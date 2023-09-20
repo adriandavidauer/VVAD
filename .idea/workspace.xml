@@ -7,8 +7,9 @@
     <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Try fix test_dataSet.py target fps">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vvadlrs3/dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/dataSet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/multiprocessingUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/multiprocessingUtils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/sample.py" afterDir="false" />
     </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop_phase1" />
+        <entry key="$PROJECT_DIR$" value="maintenance/01_remove-unused-code" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -60,7 +61,7 @@
       <recent name="C:\VVAD\test\unit-tests\utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_dataSet.TestDataSet.test_get_positive_samples_dry">
+  <component name="RunManager" selected="Python tests.Unittests for test_sample.TestFeaturedSample.test_get_dist">
     <configuration name="test_timeUtils" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -96,34 +97,6 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_dataSet.TestDataSet.test_get_no_video_path_from_folder" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="VVAD" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_get_no_video_path_from_folder&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Unittests for test_dataSet.TestDataSet.test_get_no_video_path_from_folder_index_error" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="VVAD" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_get_no_video_path_from_folder_index_error&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="Unittests for test_dataSet.TestDataSet.test_get_positive_samples" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -152,21 +125,49 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Unittests for test_sample.TestFeaturedSample.test_get_data" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="VVAD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_sample.TestFeaturedSample.test_get_data&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test_sample.TestFeaturedSample.test_get_dist" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="VVAD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_sample.TestFeaturedSample.test_get_dist&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.test_timeUtils" />
-      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_no_video_path_from_folder_index_error" />
-      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_no_video_path_from_folder" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_convert_all_fps" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_positive_samples" />
       <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_positive_samples_dry" />
+      <item itemvalue="Python tests.Unittests for test_sample.TestFeaturedSample.test_get_data" />
+      <item itemvalue="Python tests.Unittests for test_sample.TestFeaturedSample.test_get_dist" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Unittests for test_sample.TestFeaturedSample.test_get_dist" />
+        <item itemvalue="Python tests.Unittests for test_sample.TestFeaturedSample.test_get_data" />
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_positive_samples_dry" />
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_positive_samples" />
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_convert_all_fps" />
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_no_video_path_from_folder_index_error" />
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_no_video_path_from_folder" />
       </list>
     </recent_temporary>
   </component>

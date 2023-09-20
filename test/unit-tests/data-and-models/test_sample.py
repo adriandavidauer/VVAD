@@ -1,3 +1,4 @@
+import glob
 import os.path
 import tempfile
 import unittest
@@ -7,6 +8,7 @@ import cv2
 import numpy as np
 
 from vvadlrs3 import sample as sample, pretrained_models
+from vvadlrs3 import dataSet
 
 
 def get_rgb_test_image(image_file_name, folder_path):
@@ -133,7 +135,7 @@ class TestFaceFeatureGenerator(unittest.TestCase):
         input_shape = model.layers[0].input_shape[2:]
         generator = sample.FaceFeatureGenerator(
             feature_type="all",
-            shape_model_path= "models/shape_predictor_68_face_landmarks.dat",
+            shape_model_path="models/shape_predictor_68_face_landmarks.dat",
             shape=(input_shape[1],
                    input_shape[0])
         )
@@ -200,13 +202,29 @@ class TestFeaturedSample(unittest.TestCase):
         test_sample.k = 2
         self.assertFalse(test_sample.is_valid())
 
-# ToDo: Write missing test cases
-
+    @unittest.expectedFailure
     def test_get_data(self):
-        pass
+        test_sample = sample.FeatureizedSample()
+        all_pickles = glob.glob(self.test_data_root + "/sample_pickles/positiveSamples"
+                                + '/**/*.pickle', recursive=True)
+        print("Sample data: ", all_pickles[0])
+
+        # transform feature
+        dataSet.transform_to_features(
+            path=all_pickles[0],
+            shape_model_path="../../../models/shape_predictor_5_face_landmarks.dat ",
+            shape=(200, 200))
+
+        test_sample.load(all_pickles[0])
+        print(test_sample.get_data(image_size=(200, 200), num_steps=2, grayscale=True,
+                                   normalize=True))
 
     def test_get_dist(self):
         test_sample = sample.FeatureizedSample()
+        all_pickles = glob.glob(self.test_data_root + "/sample_pickles/positiveSamples"
+                                + '/**/*.pickle', recursive=True)
+        test_sample.load(all_pickles[0])
+        print(test_sample._get_dist())
 
 
     def test_normalize(self):

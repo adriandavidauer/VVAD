@@ -1,6 +1,8 @@
 """
 This Module creates a dataset for the purpose of the visual speech detection system.
 """
+import argparse
+import multiprocessing
 import pathlib
 # System imports
 from importlib import import_module
@@ -16,6 +18,7 @@ from pytube import YouTube
 # local imports
 # from vvadlrs3.utils.multiprocessingUtils import *
 from vvadlrs3.sample import *
+from vvadlrs3.utils.multiprocessingUtils import pool, producer, consumer
 from vvadlrs3.utils.timeUtils import *
 
 # end file header
@@ -270,6 +273,7 @@ class DataSet:
             of the positive samples
         :type dry_run: boolean :returns: generator
         """
+        print("Enter function get positive samples")
         try:
             print("videoPath: ", self.get_video_path_from_folder(path))
             video_path = self.get_video_path_from_folder(path)
@@ -926,7 +930,7 @@ def transform_to_hdf5(path, hdf5_path, validation_split=0.2, testing=False):
     all_pickles = glob.glob(path + '/**/*.pickle', recursive=True)
     if not testing:
         assert len(all_pickles) == 22245 + \
-               44489, "You didn't get alle the samples - make sure the path is correct!"
+               44489, "You didn't get all the samples - make sure the path is correct!"
 
     np.random.shuffle(all_pickles)
     validation_pickles = all_pickles[:int(len(all_pickles) * validation_split)]
@@ -987,8 +991,6 @@ def transform_points_to_numpy(points):
     return np.array(array)
 
 
-# ToDo function not used?? What is it used for?
-# ToDo Must be re-evaluated , TBC
 def transform_to_features(path, shape_model_path=None, shape=None):  # pragma: no cover
     """
     get a Sample of type faceImage and transforms to lipImage, faceFeatures and
@@ -1066,10 +1068,9 @@ def transform_to_features(path, shape_model_path=None, shape=None):  # pragma: n
     face_features_sample.save(os.path.join(face_features_folder, file_name))
     lip_features_sample.save(os.path.join(lip_features_folder, file_name))
 
-    # TODO:call this in a multiproccessing way.
+    # TODO:call this in a multiprocessing way.
 
 
-# ToDo check what is meant here?
 def make_test_set(path, names_path):
     """
     takes the names belonging to the testset from the dataset in path

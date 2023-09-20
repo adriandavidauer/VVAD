@@ -123,18 +123,19 @@ class TestDataSet(unittest.TestCase):
     # ToDo: check if same as test_get_all_positive_samples
     # @unittest.expectedFailure
     def test_get_positive_samples_dry(self):
-        for sample in dSet.DataSet.get_positive_samples(os.path.join(
+        for sample in self.data_set.get_positive_samples(os.path.join(
                 self.test_data_root, self.video_folder_path),
                 True):
-            yield sample
+            self.assertIsNotNone(sample)
         print("[getAllPSamples] Folder {} done".format(os.path.join(
             self.test_data_root, self.video_folder_path)))
 
+    @unittest.expectedFailure
     def test_get_positive_samples(self):
-        for sample in dSet.DataSet.get_positive_samples(os.path.join(
+        for sample in self.data_set.get_positive_samples(os.path.join(
                 self.test_data_root, self.video_folder_path),
                 False):
-            yield sample
+            print(sample)
         print("[getAllPSamples] Folder {} done".format(os.path.join(
             self.test_data_root, self.video_folder_path)))
 
@@ -356,10 +357,6 @@ class TestTransformations(unittest.TestCase):
                          numpy.ndarray), 'Argument of wrong type!'
         self.assertEqual(dSet.transform_points_to_numpy(pointsNamespace)[2][1],
                          pointsNamespace[2].y), "Array's content is not correct!"
-
-    # ToDo function itself is not used, clarify before writing test
-    def test_transform_to_features(self):  # pragma: no cover
-        pass
 
 
 class TestMakeTestSet(unittest.TestCase):
