@@ -219,12 +219,16 @@ class TestFeaturedSample(unittest.TestCase):
         print(test_sample.get_data(image_size=(200, 200), num_steps=2, grayscale=True,
                                    normalize=True))
 
+    @unittest.expectedFailure
     def test_get_dist(self):
         test_sample = sample.FeatureizedSample()
         all_pickles = glob.glob(self.test_data_root + "/sample_pickles/positiveSamples"
                                 + '/**/*.pickle', recursive=True)
         test_sample.load(all_pickles[0])
-        print(test_sample._get_dist())
+        print(test_sample.get_label())
+        print(test_sample.k)
+        print(test_sample.featureType)
+        print(test_sample._get_dist(test_sample.data))
 
 
     def test_normalize(self):

@@ -310,8 +310,8 @@ class FeatureizedSample:
         """
         out_sample = np.empty(sample.shape)  # this sets the dtype to np.float64
         base = sample[0][0]
-        # print('SAMPLESHAPE: {}  -  should be (38, 68, 2)'.format(sample.shape))
-        # print("BASE for sample: {}".format(base))
+        print('SAMPLESHAPE: {}  -  should be (38, 68, 2)'.format(sample.shape))
+        print("BASE for sample: {}".format(base))
         for frame_num, frame in enumerate(sample):
             new_frame = np.empty(frame.shape)
             for pos_num, pos in enumerate(frame):
