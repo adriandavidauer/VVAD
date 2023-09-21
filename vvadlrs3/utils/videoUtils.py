@@ -38,9 +38,9 @@ def analyzeVideo(video_path, feature_type='faceImage', save_as_json=None):
     """ returns an analysis of the video in the following format:
 
     analysis = {
-        video_path: path to the video
-        fps: the fps associated with the video
-        feature_type: One out of ["faceImage", "lipImage", "faceFeatures", "lipFeatures"]
+        video_path: path to the video,
+        fps: the fps associated with the video,
+        feature_type: One out of ["faceImage", "lipImage", "faceFeatures", "lipFeatures"],
         frame_scores: dict of lists with the prediction of every frame. (A frame has k predictions if it is not in the beginning or end of the video because a sample has k frames and the samples overlap.)
 
     }

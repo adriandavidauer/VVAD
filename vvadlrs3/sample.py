@@ -3,6 +3,7 @@ This Module handles everything related to a sample.
 """
 import glob
 # System imports
+import os
 import pickle
 # from collections import deque
 import random

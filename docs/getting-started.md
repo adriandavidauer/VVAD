@@ -1,3 +1,5 @@
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 # VVAD-LRS3
 Library to provide models trained on the VVAD-LRS3 Dataset. The library also contains preprocessing pipelines.
 Applications are Speaker detection in scenarios, where multiple people are in the robot's field of view 

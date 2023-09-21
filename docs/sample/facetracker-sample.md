@@ -1,3 +1,3 @@
-# Welcome to MkDocs
+# Face Tracker
 
 ::: vvadlrs3.sample.FaceTracker

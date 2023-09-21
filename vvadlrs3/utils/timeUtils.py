@@ -1,6 +1,3 @@
-"""
-This Module creates a dataset for the purpose of the visual speech detection system.
-"""
 # System imports
 import time
 

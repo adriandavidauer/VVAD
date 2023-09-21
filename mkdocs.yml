@@ -4,15 +4,22 @@ repo_url: https://github.com/adrianlubitz/VVAD
 repo_name: adrianlubitz/VVAD
 
 nav:
-  - Index: index.md
   - Home: getting-started.md
   - Test: test.md
-  - Getting Started: getting-started.md
   - Human Accuracy: human-accuracy.md
   - VVAD LRS3:
-      - vvadlrs3/index.md
-      - Utils: vvad-lrs3-utils.md
-      - Samples: vvad-lrs3-samples.md
+      - Utils:
+        - Download Utils: 'utils/download-utils.md'
+        - Image Utils: 'utils/image-utils.md'
+        - Keras Utils: 'utils/keras-utils.md'
+        - Multiprocessing Utils: 'utils/multiprocessing-utils.md'
+        - Plot Utils: 'utils/plot-utils.md'
+        - Time Utils: 'utils/time-utils.md'
+        - Video Utils: 'utils/video-utils.md'
+      - Samples:
+          - FaceTracker: 'sample/facetracker-sample.md'
+          - FaceFeatures: 'sample/facefeature-sample.md'
+          - Sample: 'sample/featured-sample.md'
       - Dataset: vvad-lrs3-dataset.md
       - Cluster: vvad-lrs3-cluster.md
       - Models: vvad-lrs3-models.md
@@ -30,8 +37,10 @@ theme:
   features:
     - navigation.tabs
     - navigation.sections
-    - toc.integrate
+    - navigation.path
+    # - toc.integrate
     - navigation.top
+    - toc.follow
     - search.suggest
     - search.highlight
     - content.tabs.link

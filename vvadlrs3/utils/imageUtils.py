@@ -1,5 +1,3 @@
-"""utils for images"""
-
 # System imports
 
 # 3rd party imports
@@ -7,7 +5,6 @@ import cv2
 import dlib
 import numpy as np
 
-#ToDo: more detailed descriptions missing
 
 # local imports
 
@@ -27,7 +24,7 @@ def getRandomFaceFromImage(image):
 
 
 def cropImage(image, drect):
-    """ crop the image with a drect
+    """ Crop the provided image with a drect
 
     Args:
         image (image): Image file as....
@@ -55,7 +52,8 @@ def toImageSpace(ROIrect, rect):
         Rectangle in coordinate space of the image
 
     """
-    return dlib.drectangle(ROIrect.left() + rect.left(), ROIrect.top() + rect.top(), ROIrect.left() + rect.right(),
+    return dlib.drectangle(ROIrect.left() + rect.left(), ROIrect.top() + rect.top(),
+                           ROIrect.left() + rect.right(),
                            ROIrect.top() + rect.bottom())
 
 
@@ -83,12 +81,15 @@ def resizeAndZeroPadding(image, shape):
 
     widthDelta = abs(image.shape[1] - shape[0])
     heightDelta = abs(image.shape[0] - shape[1])
-    image = cv2.copyMakeBorder(image, 0, heightDelta, 0, widthDelta, cv2.BORDER_CONSTANT, value=[0, 0, 0])
+    image = cv2.copyMakeBorder(image, 0, heightDelta, 0, widthDelta,
+                               cv2.BORDER_CONSTANT, value=[0, 0, 0])
     assert min([heightDelta,
                 widthDelta]) == 0, "Padding must only be aplied on one side. widthDelta: {}, heightDelta: {}".format(
         widthDelta, heightDelta)
-    assert image.shape[0] == shape[1], "Desired height was {} transformed to {}".format(shape[1], image.shape[0])
-    assert image.shape[1] == shape[0], "Desired width was {} transformed to {}".format(shape[0], image.shape[1])
+    assert image.shape[0] == shape[1], "Desired height was {} transformed to {}".format(
+        shape[1], image.shape[0])
+    assert image.shape[1] == shape[0], "Desired width was {} transformed to {}".format(
+        shape[0], image.shape[1])
 
     return image
 
