@@ -24,11 +24,11 @@ jobs:
         run: |
           mkdocs build
       - name: Upload artifacts
-      - uses: actions/upload-artifact@v2
-          with:
-            name: pages
-            path: site
-            if-no-files-found: error
+        uses: actions/upload-artifact@v2
+        with:
+          name: pages
+          path: site
+          if-no-files-found: error
 
   # Deploy job
   deploy:
@@ -49,13 +49,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - uses: actions/download-artifact@v2
-            with:
-              name: pages
-              path: .
+          with:
+            name: pages
+            path: .
         - uses: actions/configure-pages@v1
         - uses: actions/upload-pages-artifact@v2
-            with:
-              path: .
+          with:
+            path: .
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2 # or the latest "vX.X.X" version tag for this action
