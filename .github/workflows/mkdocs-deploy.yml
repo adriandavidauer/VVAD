@@ -48,14 +48,14 @@ jobs:
     # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:
-        - uses: actions/download-artifact@v2
-          with:
-            name: pages
-            path: .
-        - uses: actions/configure-pages@v1
-        - uses: actions/upload-pages-artifact@v2
-          with:
-            path: .
+      - uses: actions/download-artifact@v2
+        with:
+          name: pages
+          path: .
+      - uses: actions/configure-pages@v1
+      - uses: actions/upload-pages-artifact@v2
+        with:
+          path: .
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2 # or the latest "vX.X.X" version tag for this action
