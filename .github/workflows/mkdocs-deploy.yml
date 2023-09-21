@@ -14,7 +14,13 @@ jobs:
       - uses: actions/checkout@v3
 
       # TODO:use mkdocs here to create the static site files
-      - name: mkdocs
+      - name: mkdocs package install
+        run: |
+          pip install mkdocs mkdocs-autorefs mkdocs-git-authors-plugin
+          pip install mkdocs-git-comitters-plugin mkdocs-material
+          pip install mkdocs-material-extension
+          pip install mkdocstrings mkdocstrings-python
+      - name: mkdocs build
         run: |
           mkdocs build
       - name: Upload Pages artifact
