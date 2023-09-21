@@ -12,7 +12,6 @@ on:
   push:
     branches:
     - main
-    - maintenance/01_remove-unused-code
 
   pull_request:
     branches:
@@ -49,7 +48,7 @@ jobs:
           elif [[ ${{ github.event_name }} == 'pull_request' ]]; then
             echo "BASE=${{ github.event.pull_request.base.sha }}" >> $GITHUB_ENV
             echo "HEAD=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
-          
+
           else
             echo "Unexpected event trigger"
             exit 1
