@@ -3,6 +3,7 @@ This Module creates a dataset for the purpose of the visual speech detection sys
 """
 # System imports
 # from collections import deque
+import pathlib
 from pathlib import Path, PurePath
 
 import dlib
@@ -295,11 +296,13 @@ class Sample():
 class DataSet:
     """
     This class handles everything involved with the datasets.
-    From creation and downloading over cleaning and balancing to converting and displaying.
+    From creation and downloading over cleaning and balancing to converting and
+    displaying.
     """
 
     # TODO: add path to Parameters
-    def __init__(self, shapeModelPath, debug, sampleLength, maxPauseLength, shape, path, fps):
+    def __init__(self, shapeModelPath, debug, sampleLength, maxPauseLength, shape,
+                 path, fps):
         """
         Just initializing an empty dataset
         """
@@ -323,10 +326,10 @@ class DataSet:
 
     def downloadLRS3SampleFromYoutube(self, path):
         """
-        downloading corrosponding video data for the LRS3 dataset from youtube
+        downloading corresponding video data for the LRS3 dataset from youtube
 
-        :param path: Path to a folder containing the txt files
-        :type path: String
+        Args:
+            path (string): Path to a folder containing the txt files
         """
 
         currentFolder = os.path.abspath(path)
@@ -387,13 +390,14 @@ class DataSet:
                 p.terminate()
                 p.join()
 
-    # TODO add option if you want to use whats there or download if neccessary
+    # TODO add option if you want to use whats there or download if necessary
     def getAllPSamples(self, path, **kwargs):
         """
         making all the samples from this folder.
 
-        :param path: Path to the DataSet folder containing folders, which contain txt files. (For Example the pretrain folder)
-        :type videoPath: String
+        Args:
+            path (string): Path to the DataSet folder containing folders, which
+            contain txt files. (For Example the pretrain folder)
         """
         folders = list(os.walk(path, followlinks=True))[0][1]
         folders.sort()
@@ -405,12 +409,14 @@ class DataSet:
             self.debugPrint("[getAllPSamples] Folder {} done".format(folder))
 
     # TODO add option if you want to use whats there or download if neccessary
-    def getAllSamples(self, featureType, path=None, relative=True, dryRun=False, showStatus=False, **kwargs):
+    def getAllSamples(self, featureType, path=None, relative=True, dryRun=False,
+                      showStatus=False, **kwargs):
         """
         making all the samples from this folder.
 
-        :param path: Path to the DataSet folder containing folders, which contain txt files. (For Example the pretrain folder)
-        :type videoPath: String
+        Args:
+            path (string): Path to the DataSet folder containing folders, which contain
+            txt files. (For Example the pretrain folder)
         """
         if showStatus:
             ts = time.perf_counter()
@@ -433,10 +439,11 @@ class DataSet:
 
     def convertAllFPS(self, path):
         """
-        convertting all the fps from this folder.
+        converting all the fps from this folder.
 
-        :param path: Path to the DataSet folder containing folders, which contain txt files. (For Example the pretrain folder)
-        :type videoPath: String
+        Args:
+        path (string): Path to the DataSet folder containing folders, which contain txt
+        files. (For Example the pretrain folder)
         """
         folders = list(os.walk(path, followlinks=True))[0][1]
         folders.sort()
@@ -450,10 +457,12 @@ class DataSet:
 
     def downloadLRS3(self, path):
         """
-        downloading corrosponding video data for the LRS3 dataset from youtube and saving the faceFrames in the corrosponding folder
+        downloading corresponding video data for the LRS3 dataset from youtube and
+        saving the faceFrames in the corrosponding folder
 
-        :param path: Path to the DataSet folder containing folders, which contain txt files. (For Example the pretrain folder)
-        :type path: String
+        Args
+            path (string): Path to the DataSet folder containing folders, which contain
+            txt files. (For Example the pretrain folder)
         """
 
         # for folder in path call cutTedVideo - need to extract the Video File first
@@ -467,6 +476,9 @@ class DataSet:
     def getTXTFiles(self, path):
         """
         Get all the txt files with a generator from the path
+
+        Args:
+            path (string): Path to txt files from a video
         """
         currentFolder = os.path.abspath(path)
         try:
@@ -484,11 +496,13 @@ class DataSet:
         """
         Returning all positive samples from a Video with a generator
 
-        :param path: Path to a folder containing the txt files
-        :type path: String
-        :param dryRun: With a dry run you will not really return samples, just a list of tuples with start and end time of the positive samples
-        :type dryRun: boolean
-        :returns: generator
+        Args:
+            path (string): Path to a folder containing the txt files
+            dryRun (boolean): With a dry run you will not really return samples, just a
+            list of tuples with start and end time of the positive samples
+
+        Returns:
+            generator
         """
         try:
             videoPath = self.getVideoPathFromFolder(path)
@@ -552,16 +566,16 @@ class DataSet:
                         break
                 yield Sample(data, label, config, self.shapeModelPath)
             else:
-                yield (self.getSecondFromFrame(sampleConfig[0]), self.getSecondFromFrame(sampleConfig[1]))
+                yield (self.getSecondFromFrame(sampleConfig[0]),
+                       self.getSecondFromFrame(sampleConfig[1]))
 
     def convertFPS(self, path, fps=25):
         """
         converting video in path to fps
 
-        :param path: Path to a folder containing the txt files
-        :type videoPath: String
-        :param fps: frames per second
-        :type fps: float
+        Args:
+            path (string): Path to a folder containing the txt files
+            fps (float): frames per second
         """
         videoPath = self.getVideoPathFromFolder(path)
         folder = os.path.dirname(videoPath)
@@ -587,7 +601,11 @@ class DataSet:
 
     def getVideoPathFromFolder(self, path):
         """
-        Get the path to the only video in folder raises Exception if there is none and removes all invalid files.
+        Get the path to the only video in folder raises Exception if there is none and
+        removes all invalid files.
+
+        Args:
+            path (string): path to video folder
         """
         currentFolder = os.path.abspath(path)
         videoPath = None
@@ -621,8 +639,9 @@ class DataSet:
         """
         Showing/Saving statistics over the data set.
 
-        :param path: Path to the DataSet folder containing folders, which contain txt files. (For Example the pretrain folder)
-        :type path: String
+        Args:
+            path (string): Path to the DataSet folder containing folders, which contain
+            txt files. (For Example the pretrain folder)
         """
         if not path:
             path = self.path
@@ -664,8 +683,9 @@ class DataSet:
         """
         Showing/Saving statistics over the data set.
 
-        :param path: Path to the DataSet folder containing folders, which contain txt files. (For Example the pretrain folder)
-        :type path: String
+        Args:
+            path (string): Path to the DataSet folder containing folders, which contain
+            txt files. (For Example the pretrain folder)
         """
         pSamples = self.getAllPSamples(path, dryRun=True)
         # TODO: norm to the number of analyzedSamples to see how many negative Samples can be constructed out of how many positive samples
@@ -688,11 +708,12 @@ class DataSet:
         """
         calculates the frame in a video from a given second. (rounded off)
 
-        :param second: second in the video
-        :type second: float
-        :param fps: framerate of video
-        :type fps: float
-        :returns: frame in video as float -> rounding needs to be made explicit
+        Args:
+            second (float): second in the video
+            fps (float): frame rate of video in frames per second
+
+        Returns:
+            frame (float): frame in video as float, rounding needs to be made explicit
         """
         return float(second * fps)
 
@@ -700,11 +721,12 @@ class DataSet:
         """
         calculates the second in a video from a given frame.
 
-        :param frame: frame in the video
-        :type frame: float
-        :param fps: framerate of video
-        :type fps: float
-        :returns: frame in video
+        Args:
+            frame (float): frame in the video
+            fps (float): framerate of video
+
+        Returns:
+            time (float): Time of frame in video (seconds)
         """
         return float(frame) / fps
 
@@ -712,9 +734,11 @@ class DataSet:
         """
         returns the length auf pauses and corrosponding start and end frame.
 
-        :param txtFile: Path to the txt file
-        :type txtFile: String
-        :returns: List of pauses
+        Args:
+            txtFile (string): Path to the txt file
+
+        Returns:
+            pauses (list): List of pauses in the txt meta data of a video
         """
         lastStart = None
         pauses = []  # list of pauses defined by a tuple (startTime, endTime)
@@ -740,9 +764,11 @@ class DataSet:
         returns a list of Frame configs for positive samples
         [startFrame, endFrame , x, y, w, h] x,y,w,h are relative pixels
 
-        :param txtFile: Path to the txt file
-        :type txtFile: String
-        :returns: list of Frame configs
+        Args:
+            txtFile (string): Path to the txt file
+
+        Returns:
+            Frame configs (list): positive samples [startFrame, endFrame , x, y, w, h]
         """
 
         # check for Pauses
@@ -751,7 +777,8 @@ class DataSet:
         pauses = sorted([(int(np.ceil(self.getFrameFromSecond(x[0]))), int(
             self.getFrameFromSecond(x[1]))) for x in pauses], key=lambda x: x[0])
 
-        # for all frames make a sample from start to pause0_start and from pause0_end to pause1_start ... pauseN_end to end
+        # for all frames make a sample from start to pause0_start and from pause0_end
+        # to pause1_start ... pauseN_end to end
         firstFrameConfig = []
         lastFrameConfig = []
         pauseStart = []
@@ -760,9 +787,11 @@ class DataSet:
         configList = []
         for line in textFile.readlines()[5:]:
             currentConfig = line.rstrip().split()
-            if not firstFrameConfig:  # only the first line of the frames will be saved here
+            if not firstFrameConfig:  # only the first line of the frames will be saved
+                # here
                 firstFrameConfig = currentConfig
-                # add first frame num of the sample to all values of the pauses, because pauses are relative to start
+                # add first frame num of the sample to all values of the pauses, because
+                # pauses are relative to start
                 pauses = [(x[0] + int(firstFrameConfig[0]), x[1] +
                            int(firstFrameConfig[0])) for x in pauses]
             # check if the currentFrame is a pauseStart or pauseEnd frame
@@ -809,11 +838,12 @@ class DataSet:
         """
         returns True if end - start is bigger than self.sampleLength
 
-        :param start: start of the sample in seconds
-        :type start: float
-        :param end: end of the sample in seconds
-        :type end: float
-        :returns: boolean
+        Args:
+            start (float): start of the sample in seconds
+            end (float): end of the sample in seconds
+
+        Returns:
+            valid (boolean): If sample is long enough for data set
         """
         return (end - start) > self.sampleLength
 
@@ -822,9 +852,11 @@ class DataSet:
         returns a list of tuples holding the config of a sample consisting out of the following:
         [(label, [startFrame, endFrame , x, y, w, h]), ...] x,y,w,h are relative pixels of the bounding box in teh first frame
 
-        :param txtFile: Path to the txt file
-        :type txtFile: String
-        :returns: list of tuples holding the frame config and corrosponding label
+        Args:
+            txtFile (string): Path to the txt file
+
+        Returns:
+            configList (list of tuples): holding the frame config and corresponding label
         """
         pauses = self.getPauseLength(txtFile)
         # translate to Frames
@@ -882,11 +914,12 @@ class DataSet:
         """
         Returning all samples from a Video with a generator
 
-        :param path: Path to a folder containing the txt files
-        :type path: String
-        :param dryRun: With a dry run you will not really return samples, just a list of sampleConfigs
-        :type dryRun: boolean
-        :returns: generator
+        Args:
+            path (string): Path to a folder containing the txt files
+            dryRun (boolean): With a dry run you will not really return samples, just a list of sampleConfigs
+
+        Returns:
+            generator
         """
         self.shape = shape
         try:
@@ -939,7 +972,12 @@ class DataSet:
 
     def analyze(self, path=None, saveTo=None):
         """
-        Shows statistics over the samples(values from the config, sum samples, negative samples, positive samples, ...)
+        Shows statistics over the samples(values from the config, sum samples,
+        negative samples, positive samples, ...)
+
+        Args:
+            path (string): Path to samples folder
+            saveTo (string): Path to save the analysis results' figure to
         """
         numPositives = 0
         numNegatives = 0
@@ -972,6 +1010,13 @@ class DataSet:
     def grapFromVideo(self, path=None, numSamples=100, **kwargs):
         """
         only to compare the time needed to grap samples from videos to the time needed to load samples from disk.
+
+        Args:
+            path (string): Path to samples folder
+            numSamples (int): max. number of samples to grab
+
+        Returns:
+            samples (list): List of grabbed samples from path
         """
         samples = []
         for sample in self.getAllSamples("faceImage", path, relative=True, **kwargs):
@@ -984,6 +1029,12 @@ class DataSet:
     def grapFromDisk(self, sampleFolder, **kwargs):
         """
         only to compare the time needed to grap samples from videos to the time needed to load samples from disk.
+
+        Args:
+            sampleFolder (string): Path to samples folder
+
+        Returns:
+            samples (list): List of grabbed samples from path
         """
         samples = []
         files = glob.glob(os.path.join(sampleFolder, "*.pickle"))
@@ -994,10 +1045,21 @@ class DataSet:
         return samples
 
 
-def saveBalancedDataset(dataset, saveTo, featureType, shape, path=None, ratioPositives=2, ratioNegatives=1,
+def saveBalancedDataset(dataset, saveTo, featureType, shape, path=None,
+                        ratioPositives=2, ratioNegatives=1,
                         showStatus=False, **kwargs):
     """
     saves a balanced dataset to disk
+
+    Args:
+        dataset (): complete dataset to process
+        saveTo (string): option for additional subfolder path
+        featureType (string): feature type to apply on samples
+        shape (tuple): shape of samples' images
+        path (string): path to store the dataset to
+        ratioPositives (int): amount of positive samples to store
+        ratioNegatives (int): amount of negative samples to store
+        showStatus (boolean): Print current status of operation
     """
     positivesFolder = os.path.join(saveTo, "positiveSamples")
     negativesFolder = os.path.join(saveTo, "negativeSamples")
@@ -1040,10 +1102,12 @@ def transformToHDF5(path, hdf5_path, validation_split=0.2, testing=False):
     """
     transform a pickled dataset to one big hdf5 file.
 
-    :param path: path to the folder containing the folders positiveSamples and negativeSamples
-    :type path: String
-    :param hdf5_path: folder to where we want to save the hdf5 files
-    :type hdf5_path: String
+    Args:
+        path (string): path to the folder containing the folders positiveSamples and
+            negativeSamples
+        hdf5_path (string): folder to where we want to save the hdf5 files
+        validation_split (float): Split ratio for validation set
+        testing (boolean): Validate amount of samples (against fixed amount)
     """
     if not os.path.exists(hdf5_path):
         print('[INFO]: path does not exist - create it')
@@ -1104,7 +1168,17 @@ def transformToHDF5(path, hdf5_path, validation_split=0.2, testing=False):
 
 
 def transformPointsToNumpy(points):
-    # TODO: this could be faster if we are not using a list at all. array size is known -> just fill an array
+    """
+    Transforms given points with x, y coordinates into a numpy array
+
+    Args:
+        points (array of dict):  Points to process
+
+    Returns:
+        points (numpy array): Given points in one numpy array
+    """
+    # TODO: this could be faster if we are not using a list at all.
+    #  array size is known -> just fill an array
     array = []
     for point in points:
         array.append([point.x, point.y])
@@ -1113,7 +1187,13 @@ def transformPointsToNumpy(points):
 
 def transformToFeatures(path, shapeModelPath=None, shape=None):
     """
-    get a Sample of type faceImage and transforms to lipImage, faceFeatures and lipFeatures
+    get a Sample of type faceImage and transforms to lipImage, faceFeatures and
+    lipFeatures. Saves them in path.
+
+    Args:
+        path (string): path to sample
+        shapeModelPath (string): path to shape model used by FaceFeatureGenerator
+        shape (tuple): shape of images
     """
     ffg = FaceFeatureGenerator(
         "allowfaceImage", shapeModelPath=shapeModelPath, shape=shape)
@@ -1182,12 +1262,13 @@ def transformToFeatures(path, shapeModelPath=None, shape=None):
 
 def makeTestSet(path, namesPath):
     """
-    takes the names belonging to the testset from the dataset in path
+    takes the names belonging to the test set from the dataset in path
 
-    :param path: Path to the dataset with positiveSamples and negativeSamples folder
-    :type path: String
-    :param namesPath: pickleFile with a list of all the fileNames belonging to the testset
-    :type namesPath: String
+    Args:
+        path (string): Path to the dataset with positiveSamples and negativeSamples
+            folder
+        namesPath (string): pickleFile with a list of all the fileNames belonging to
+            the testset
     """
     testSetPath = os.path.join(path, 'testSet')
     testPos = os.path.join(testSetPath, 'positiveSamples')

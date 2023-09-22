@@ -1,11 +1,11 @@
 # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
 site_name: VVAD-LRS3 documentation
-repo_url: https://github.com/adrianlubitz/VVAD
-repo_name: adrianlubitz/VVAD
+repo_url: https://github.com/adriandavidauer/VVAD
+repo_name: adriandavidauer/VVAD
 
 nav:
   - Home: getting-started.md
-  - Test: test.md
+  # - Test: test.md
   - Human Accuracy: human-accuracy.md
   - VVAD LRS3:
       - Utils:
@@ -20,12 +20,14 @@ nav:
           - FaceTracker: 'sample/facetracker-sample.md'
           - FaceFeatures: 'sample/facefeature-sample.md'
           - Sample: 'sample/featured-sample.md'
-      - Dataset: vvad-lrs3-dataset.md
+      - Dataset:
+          - Dataset: 'dataset/dataset.md'
+          - Additional functions: 'dataset/additional-functions-dataset.md'
       - Cluster: vvad-lrs3-cluster.md
       - Models: vvad-lrs3-models.md
   - WildVVAD:
       - Models: wildvvad-models.md
-      - Dataset: wildvvad-dataset.md
+      - Dataset: dataset.md
   - Release Notes: release-notes.md
   - About: about.md
   - Licenses: licenses.md
@@ -61,6 +63,9 @@ theme:
       primary: teal
       accent: red
 
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
@@ -74,6 +79,7 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.mark
   - attr_list
+  - mdx_math
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
@@ -92,5 +98,5 @@ plugins:
   - mkdocstrings
   - git-authors
   - git-committers:
-      repository: adrianlubitz/VVAD
+      repository: adriandavidauer/VVAD
       branch: maintenance/01_remove-unused-code
