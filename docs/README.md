@@ -1,9 +1,13 @@
 # VVAD-LRS3
 Library to provide models trained on the VVAD-LRS3 Dataset. The library also contains preprocessing pipelines.
 Applications are Speaker detection in scenarios, where multiple people are in the robot's field of view 
-and stare detection for proactive approaches. 
+and stare detection for proactive approaches.
 
-<!-- Add link to the Paper when published -->
+# Important Links
+|Topic      |Content        |
+|-----------|---------------|
+|[**Docs**](https://adriandavidauer.github.io/VVAD/)|Code and Feature documentation|
+|[**Paper**](https://doi.org/10.48550/arXiv.2109.13789)|Scientific publication|
 
 # Prerequisites
 vvadlrs3 depends on dlib which needs build tools to be installed over pip.

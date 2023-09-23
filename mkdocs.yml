@@ -4,7 +4,7 @@ repo_url: https://github.com/adriandavidauer/VVAD
 repo_name: adriandavidauer/VVAD
 
 nav:
-  - Home: getting-started.md
+  - Home: README.md
   - VVAD LRS3:
       - Utils: 404.md
       - Samples: 404.md
