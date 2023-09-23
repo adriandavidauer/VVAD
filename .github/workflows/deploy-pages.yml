@@ -1,10 +1,8 @@
 # This workflow will publish gh-pages when a Release is created
 
-name: Publish GH-Pages
+name: Upload Python Package
 
-on:
-  release:
-    types: [created]
+on: push
 
 jobs:
   # Build job
@@ -15,13 +13,21 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # TODO:use mkdocs here to create the static site files
-      - name: mkdocs
+      - name: mkdocs package install
         run: |
-          echo use mkdocs here
-          echo and configure upload-pages-artifact
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v2
+          pip install mkdocs mkdocs-autorefs mkdocs-git-authors-plugin
+          pip install mkdocs-git-committers-plugin mkdocs-material
+          pip install mkdocs-material-extensions
+          pip install mkdocstrings mkdocstrings-python
+      - name: mkdocs build
+        run: |
+          mkdocs build
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: pages
+          path: site
+          if-no-files-found: error
 
   # Deploy job
   deploy:
@@ -41,7 +47,14 @@ jobs:
     # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:
-      ### TODO: Maybe you need to download artifacts first with actions/download-artifact
+      - uses: actions/download-artifact@v2
+        with:
+          name: pages
+          path: .
+      - uses: actions/configure-pages@v1
+      - uses: actions/upload-pages-artifact@v2
+        with:
+          path: .
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2 # or the latest "vX.X.X" version tag for this action
