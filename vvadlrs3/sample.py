@@ -141,6 +141,7 @@ class FaceFeatureGenerator:
         """
         generates a feature map of the type given in the constructor
         """
+        print(f"in sample is feature type {self.featureType}")
         if self.featureType == "faceImage":
             return resize_and_zero_padding(image, self.shape)
         elif self.featureType == "faceFeatures":
@@ -192,8 +193,13 @@ class FaceFeatureGenerator:
         elif self.featureType == "allwfaceImage":
             shape = self.predictor(image, dlib.rectangle(
                 0, 0, image.shape[1], image.shape[0]))
+
             face_features = shape.parts()
+
+            print(face_features)
+
             lip_shape = dlib.points()
+
             for i, point in enumerate(shape.parts()):
                 if 47 < i < 68:
                     lip_shape.append(point)

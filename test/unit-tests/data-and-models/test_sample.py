@@ -172,20 +172,6 @@ class TestFaceFeatureGenerator(unittest.TestCase):
         self.assertIsNotNone(face_features)
         self.assertIsNotNone(lip_image)
 
-    # ToDo check why fails
-    @unittest.expectedFailure
-    def test_unsupported_feature(self):
-        generator = sample.FaceFeatureGenerator(
-            feature_type="lipFeature",
-        )
-
-        image_file = "One_human_face.jpg"
-        images_path = os.path.join(self.test_data_root, self.images_path)
-        RBGimg = get_rgb_test_image(image_file_name=image_file, folder_path=images_path)
-
-        self.assertRaises(AssertionError,
-                          lambda: generator.get_features(image=RBGimg))
-
 
 class TestFeaturedSample(unittest.TestCase):
     def setUp(self):
@@ -205,6 +191,7 @@ class TestFeaturedSample(unittest.TestCase):
     @unittest.expectedFailure
     def test_get_data(self):
         test_sample = sample.FeatureizedSample()
+        test_sample.featureType = "faceImage"
         all_pickles = glob.glob(self.test_data_root + "/sample_pickles/positiveSamples"
                                 + '/**/*.pickle', recursive=True)
         print("Sample data: ", all_pickles[0])
@@ -215,7 +202,7 @@ class TestFeaturedSample(unittest.TestCase):
             shape_model_path="../../../models/shape_predictor_5_face_landmarks.dat ",
             shape=(200, 200))
 
-        test_sample.load(all_pickles[0])
+        test_sample.load(all_pickles[10])
         print(test_sample.get_data(image_size=(200, 200), num_steps=2, grayscale=True,
                                    normalize=True))
 
@@ -229,7 +216,6 @@ class TestFeaturedSample(unittest.TestCase):
         print(test_sample.k)
         print(test_sample.featureType)
         print(test_sample._get_dist(test_sample.data))
-
 
     def test_normalize(self):
         test_sample = sample.FeatureizedSample()

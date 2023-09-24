@@ -150,9 +150,7 @@ class DataSet:
         files. (For Example the
         pretrain folder) :type path: String
         """
-        print("my path", path)
         folders = list(os.walk(path, followlinks=True))[0][1]
-        print("folders are: ", folders)
         folders.sort()
         for folder in folders:
             # Video file is the only not txt file
@@ -273,7 +271,6 @@ class DataSet:
             of the positive samples
         :type dry_run: boolean :returns: generator
         """
-        print("Enter function get positive samples")
         try:
             print("videoPath: ", self.get_video_path_from_folder(path))
             video_path = self.get_video_path_from_folder(path)
@@ -286,7 +283,6 @@ class DataSet:
         folder = os.path.dirname(video_path)
         # list of configs [startFrame, endFrame , x, y, w, h] x,y,w,h are rel. pixels
         frame_list = []
-        print("framelist: ", frame_list)
         # for every txt file
         for textFile in self.get_txt_files(folder):
             frame_list.extend(self.get_sample_configs_for_pos_samples(textFile))
@@ -339,7 +335,12 @@ class DataSet:
                     count += 1
                     if count > sampleConfig[1]:
                         break
-                yield Sample(data, label, config, self.shapeModelPath)
+
+                # ToDo discuss changes
+                current_sample = FeatureizedSample()
+                current_sample.data = data
+                current_sample.label = label
+                yield current_sample
             else:
                 yield self.get_second_from_frame(sampleConfig[0]), \
                       self.get_second_from_frame(sampleConfig[1])
@@ -1000,6 +1001,9 @@ def transform_to_features(path, shape_model_path=None, shape=None):  # pragma: n
         "allwfaceImage", shape_model_path=shape_model_path, shape=shape)
     input_sample = FeatureizedSample()
     input_sample.load(path)
+
+    print(f"{input_sample.featureType}")
+    print(f"{input_sample.get_label()}")
     # # get all settings
     # numSteps = input_sample.getData().shape[0]
     # origImageSize = input_sample.getData().shape[1:]
