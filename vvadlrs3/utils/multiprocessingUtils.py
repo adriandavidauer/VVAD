@@ -19,11 +19,13 @@ pool = multiprocessing.Pool()
 
 # positivesQueue, negativesQueue, getSamplesParams, dataset, semaphore
 def producer(dataset, getSamplesParams):
-    # ToDo: Add description
     """
+    The producer extracts positive and negative samples from a given video sample
+    and adds the extracted samples to the positive and negative samples queues.
+
     Args:
-        dataset ():??
-        getSamplesParams ():??
+        dataset (dataSet): Instance of dataset class
+        getSamplesParams (**args): Parameters from a given sample
 
     """
 
@@ -34,14 +36,14 @@ def producer(dataset, getSamplesParams):
             if not positivesQueue.full():
                 # TODO:raises full Exception https://docs.python.org/2/library/queue.html#Queue.Queue.put
                 positivesQueue.put(sample)
-                print("[Producer] puting a positive sample")
+                print("[Producer] putting a positive sample")
             else:
                 print("positivesQueue is full. Not puting this positive sample")
         else:
             if not negativesQueue.full():
                 # TODO:raises full Exception https://docs.python.org/2/library/queue.html#Queue.Queue.put
                 negativesQueue.put(sample)
-                print("[Producer] puting a negative sample")
+                print("[Producer] putting a negative sample")
             else:
                 print("negativesQueue is full. Not puting this negative sample")
         if not positivesQueue.empty() and not negativesQueue.empty():
@@ -51,17 +53,22 @@ def producer(dataset, getSamplesParams):
 
 # There will be only one consumer, therefore it is thread safe enough
 def consumer(positivesFolder, negativesFolder, ratioPositives, ratioNegatives):
-    # ToDo: Add else case?
     """
+    The consumer consumes all available samples from the positive and negative
+    samples queue considering the defined ratio of each sample type.
+    Subsequently, these are saved as pickle files on the drive.
 
     Args:
-        positivesFolder (): ??
-        negativesFolder (): ??
-        ratioPositives (): ??
-        ratioNegatives ():??
+        positivesFolder (str): path to save positively labeled samples as pickle
+            files
+        negativesFolder (str): path to save negatively labeled samples as pickle
+            files
+        ratioPositives (int): amount of positive samples to store
+        ratioNegatives (int): amount of negative samples to store
 
     """
     print("started consumer")
+
     positiveCounter = 0
     negativeCounter = 0
     savedPositives = 0
@@ -91,7 +98,6 @@ def consumer(positivesFolder, negativesFolder, ratioPositives, ratioNegatives):
 
 
 if __name__ == "__main__":
-    # ToDo: What is this test for?
     # TEST
     if not positivesQueue.empty():
         print("positivesQueue not empty???")

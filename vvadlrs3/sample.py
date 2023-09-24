@@ -29,7 +29,7 @@ class FaceTracker:
         Args:
             init_pos (list of floats): A bounding box for the initial face. Relative or absolute pixel values in format (x, y, w, h)
             internal_rect_oversize (float): the percentage of which the initial
-            relative (boolean): relative or absolute pixel values
+            relative (bool): relative or absolute pixel values
 
         Returns:
             Nothing
@@ -86,7 +86,6 @@ class FaceTracker:
         ROI = cropImage(image, ROIrect)
         detector = dlib.get_frontal_face_detector()
         dets = detector(ROI, 1)
-        # TODO: error if more than one face! - invalid
         if len(dets) != 1:
             print("Invalid Sample because there are {} faces".format(len(dets)))
             return False, False  # Means Error
@@ -110,7 +109,7 @@ class FaceFeatureGenerator:
 
         Args:
             featureType (String ["faceImage", "lipImage", "faceFeatures", "lipFeatures"]): type of the feature map that should be returned by getFeatures()
-            shapeModelPath (String): path to the model for the shape_predictor
+            shapeModelPath (str): path to the model for the shape_predictor
 
         Returns:
             Nothing
@@ -222,7 +221,7 @@ class FeaturedSample:
 
             k (int): defines the temporal sliding window in frames
             data (List of numpy arrays): A list of featureVectors for this sample
-            label (boolean): positive or negative Label
+            label (bool): positive or negative Label
             type (String out of ["faceImages", "mouthImages", "faceFeatures", "mouthFeatures"]): the type of this sample
             for the specific approach
             shape (Tuple of ints): the shape to which an Image should be scaled and zeroPadded
@@ -238,13 +237,13 @@ class FeaturedSample:
 
     # @timeit
     def getData(self, imageSize=None, num_steps=None, grayscale=False, normalize=False):
-        # TODO: Add description
-        """ DESCRIPTION MISSING
+        """
+        Get image data as numpy arrays from loaded sample
 
         Args:
             imageSize (Tuple of ints): size of the sample's images
             num_steps (int): number of steps for the sample
-            grayscale (boolean): decides wheater to use grayscale images or not
+            grayscale (bool): decides whether to use grayscale images or not
 
         Returns:
             feature_map (numpy array): Return the feature map as a numpy array
@@ -332,18 +331,18 @@ class FeaturedSample:
 
     def generateSampleFromFixedFrames(self, k, frames, init_pos, label, featureType, shape, shapeModelPath=None,
                                       relative=True):
-        #ToDo add description
-        """ Generates Sample from fixed frames without return value
+        """
+        Generates Sample from fixed frames without return value
 
         Args:
             k (int): defines the temporal sliding window in frames
             frames ():
             init_pos ():
-            label (boolean): positive or negative Label
-            featureType (String): type of the feature map that should be returned by getFeatures()
+            label (bool): positive or negative Label
+            featureType (str): type of the feature map that should be returned by getFeatures()
             shape (Tuple of ints): the shape to which an Image should be scaled and zeroPadded
-            shapeModelPath (String): path to the model for the shape_predictor
-            relative (boolean): ??
+            shapeModelPath (str): path to the model for the shape_predictor
+            relative (bool): ??
         """
         # assert len frames to k
         # track face from init_pos
@@ -370,7 +369,8 @@ class FeaturedSample:
             k (int): defines the temporal sliding window in frames
 
         Returns:
-            sample (any): returns False if sampleLength is smaller k otherwise returns a sample of length k
+            sample (any): returns False if sampleLength is smaller k otherwise returns
+                a sample of length k
 
         """
         pass
@@ -383,8 +383,8 @@ class FeaturedSample:
 
         Args:
             fps (int): Frames per second
-            saveTo (String): Path to save the visualization to (Default: None)
-            supplier (String): Selection between "pyplot" and "opencv"
+            saveTo (str): Path to save the visualization to (Default: None)
+            supplier (str): Selection between "pyplot" and "opencv"
 
         """
         if "Image" in self.featureType:
@@ -457,7 +457,7 @@ class FeaturedSample:
         """ saves the sample to a pickle file - data is converted to a numpyArray first
 
         Args:
-            path (String): Path to save the file to
+            path (str): Path to save the file to
         """
         self.data = np.array(self.data)
         with open(path, 'wb') as file:
@@ -467,7 +467,7 @@ class FeaturedSample:
         """ loads from a pickle file
 
         Args:
-            path (String): Path to load the pickle file from
+            path (str): Path to load the pickle file from
         """
         with open(path, 'rb') as file:
             self.__dict__.clear()
@@ -479,7 +479,7 @@ def visualizeSamples(folder):
     """ visualize positive and negative samples from a folder.
 
     Args:
-        folder (String): Path to folder where negative and positive samples are saved (positiveSamples/negativeSamples)
+        folder (str): Path to folder where negative and positive samples are saved (positiveSamples/negativeSamples)
     """
     positiveFolder = os.path.join(folder, "positiveSamples")
     negativeFolder = os.path.join(folder, "negativeSamples")

@@ -300,7 +300,6 @@ class DataSet:
     displaying.
     """
 
-    # TODO: add path to Parameters
     def __init__(self, shapeModelPath, debug, sampleLength, maxPauseLength, shape,
                  path, fps):
         """
@@ -329,7 +328,7 @@ class DataSet:
         downloading corresponding video data for the LRS3 dataset from youtube
 
         Args:
-            path (string): Path to a folder containing the txt files
+            path (str): Path to a folder containing the txt files
         """
 
         currentFolder = os.path.abspath(path)
@@ -396,7 +395,7 @@ class DataSet:
         making all the samples from this folder.
 
         Args:
-            path (string): Path to the DataSet folder containing folders, which
+            path (str): Path to the DataSet folder containing folders, which
             contain txt files. (For Example the pretrain folder)
         """
         folders = list(os.walk(path, followlinks=True))[0][1]
@@ -415,7 +414,7 @@ class DataSet:
         making all the samples from this folder.
 
         Args:
-            path (string): Path to the DataSet folder containing folders, which contain
+            path (str): Path to the DataSet folder containing folders, which contain
             txt files. (For Example the pretrain folder)
         """
         if showStatus:
@@ -442,7 +441,7 @@ class DataSet:
         converting all the fps from this folder.
 
         Args:
-        path (string): Path to the DataSet folder containing folders, which contain txt
+        path (str): Path to the DataSet folder containing folders, which contain txt
         files. (For Example the pretrain folder)
         """
         folders = list(os.walk(path, followlinks=True))[0][1]
@@ -461,7 +460,7 @@ class DataSet:
         saving the faceFrames in the corrosponding folder
 
         Args
-            path (string): Path to the DataSet folder containing folders, which contain
+            path (str): Path to the DataSet folder containing folders, which contain
             txt files. (For Example the pretrain folder)
         """
 
@@ -478,7 +477,7 @@ class DataSet:
         Get all the txt files with a generator from the path
 
         Args:
-            path (string): Path to txt files from a video
+            path (str): Path to txt files from a video
         """
         currentFolder = os.path.abspath(path)
         try:
@@ -497,8 +496,8 @@ class DataSet:
         Returning all positive samples from a Video with a generator
 
         Args:
-            path (string): Path to a folder containing the txt files
-            dryRun (boolean): With a dry run you will not really return samples, just a
+            path (str): Path to a folder containing the txt files
+            dryRun (bool): With a dry run you will not really return samples, just a
             list of tuples with start and end time of the positive samples
 
         Returns:
@@ -574,7 +573,7 @@ class DataSet:
         converting video in path to fps
 
         Args:
-            path (string): Path to a folder containing the txt files
+            path (str): Path to a folder containing the txt files
             fps (float): frames per second
         """
         videoPath = self.getVideoPathFromFolder(path)
@@ -605,7 +604,7 @@ class DataSet:
         removes all invalid files.
 
         Args:
-            path (string): path to video folder
+            path (str): path to video folder
         """
         currentFolder = os.path.abspath(path)
         videoPath = None
@@ -640,7 +639,7 @@ class DataSet:
         Showing/Saving statistics over the data set.
 
         Args:
-            path (string): Path to the DataSet folder containing folders, which contain
+            path (str): Path to the DataSet folder containing folders, which contain
             txt files. (For Example the pretrain folder)
         """
         if not path:
@@ -684,7 +683,7 @@ class DataSet:
         Showing/Saving statistics over the data set.
 
         Args:
-            path (string): Path to the DataSet folder containing folders, which contain
+            path (str): Path to the DataSet folder containing folders, which contain
             txt files. (For Example the pretrain folder)
         """
         pSamples = self.getAllPSamples(path, dryRun=True)
@@ -735,7 +734,7 @@ class DataSet:
         returns the length auf pauses and corrosponding start and end frame.
 
         Args:
-            txtFile (string): Path to the txt file
+            txtFile (str): Path to the txt file
 
         Returns:
             pauses (list): List of pauses in the txt meta data of a video
@@ -765,7 +764,7 @@ class DataSet:
         [startFrame, endFrame , x, y, w, h] x,y,w,h are relative pixels
 
         Args:
-            txtFile (string): Path to the txt file
+            txtFile (str): Path to the txt file
 
         Returns:
             Frame configs (list): positive samples [startFrame, endFrame , x, y, w, h]
@@ -843,7 +842,7 @@ class DataSet:
             end (float): end of the sample in seconds
 
         Returns:
-            valid (boolean): If sample is long enough for data set
+            valid (bool): If sample is long enough for data set
         """
         return (end - start) > self.sampleLength
 
@@ -853,7 +852,7 @@ class DataSet:
         [(label, [startFrame, endFrame , x, y, w, h]), ...] x,y,w,h are relative pixels of the bounding box in teh first frame
 
         Args:
-            txtFile (string): Path to the txt file
+            txtFile (str): Path to the txt file
 
         Returns:
             configList (list of tuples): holding the frame config and corresponding label
@@ -915,8 +914,8 @@ class DataSet:
         Returning all samples from a Video with a generator
 
         Args:
-            path (string): Path to a folder containing the txt files
-            dryRun (boolean): With a dry run you will not really return samples, just a list of sampleConfigs
+            path (str): Path to a folder containing the txt files
+            dryRun (bool): With a dry run you will not really return samples, just a list of sampleConfigs
 
         Returns:
             generator
@@ -976,8 +975,8 @@ class DataSet:
         negative samples, positive samples, ...)
 
         Args:
-            path (string): Path to samples folder
-            saveTo (string): Path to save the analysis results' figure to
+            path (str): Path to samples folder
+            saveTo (str): Path to save the analysis results' figure to
         """
         numPositives = 0
         numNegatives = 0
@@ -1012,7 +1011,7 @@ class DataSet:
         only to compare the time needed to grap samples from videos to the time needed to load samples from disk.
 
         Args:
-            path (string): Path to samples folder
+            path (str): Path to samples folder
             numSamples (int): max. number of samples to grab
 
         Returns:
@@ -1031,7 +1030,7 @@ class DataSet:
         only to compare the time needed to grap samples from videos to the time needed to load samples from disk.
 
         Args:
-            sampleFolder (string): Path to samples folder
+            sampleFolder (str): Path to samples folder
 
         Returns:
             samples (list): List of grabbed samples from path
@@ -1053,13 +1052,13 @@ def saveBalancedDataset(dataset, saveTo, featureType, shape, path=None,
 
     Args:
         dataset (): complete dataset to process
-        saveTo (string): option for additional subfolder path
-        featureType (string): feature type to apply on samples
+        saveTo (str): option for additional subfolder path
+        featureType (str): feature type to apply on samples
         shape (tuple): shape of samples' images
-        path (string): path to store the dataset to
+        path (str): path to store the dataset to
         ratioPositives (int): amount of positive samples to store
         ratioNegatives (int): amount of negative samples to store
-        showStatus (boolean): Print current status of operation
+        showStatus (bool): Print current status of operation
     """
     positivesFolder = os.path.join(saveTo, "positiveSamples")
     negativesFolder = os.path.join(saveTo, "negativeSamples")
@@ -1103,11 +1102,11 @@ def transformToHDF5(path, hdf5_path, validation_split=0.2, testing=False):
     transform a pickled dataset to one big hdf5 file.
 
     Args:
-        path (string): path to the folder containing the folders positiveSamples and
+        path (str): path to the folder containing the folders positiveSamples and
             negativeSamples
-        hdf5_path (string): folder to where we want to save the hdf5 files
+        hdf5_path (str): folder to where we want to save the hdf5 files
         validation_split (float): Split ratio for validation set
-        testing (boolean): Validate amount of samples (against fixed amount)
+        testing (bool): Validate amount of samples (against fixed amount)
     """
     if not os.path.exists(hdf5_path):
         print('[INFO]: path does not exist - create it')
@@ -1191,8 +1190,8 @@ def transformToFeatures(path, shapeModelPath=None, shape=None):
     lipFeatures. Saves them in path.
 
     Args:
-        path (string): path to sample
-        shapeModelPath (string): path to shape model used by FaceFeatureGenerator
+        path (str): path to sample
+        shapeModelPath (str): path to shape model used by FaceFeatureGenerator
         shape (tuple): shape of images
     """
     ffg = FaceFeatureGenerator(
@@ -1265,9 +1264,9 @@ def makeTestSet(path, namesPath):
     takes the names belonging to the test set from the dataset in path
 
     Args:
-        path (string): Path to the dataset with positiveSamples and negativeSamples
+        path (str): Path to the dataset with positiveSamples and negativeSamples
             folder
-        namesPath (string): pickleFile with a list of all the fileNames belonging to
+        namesPath (str): pickleFile with a list of all the fileNames belonging to
             the testset
     """
     testSetPath = os.path.join(path, 'testSet')

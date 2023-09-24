@@ -23,7 +23,7 @@ def getFramesfromVideo(video_path):
     """ yields the frames from a video
 
     Args:
-        video_path (String): Path to the video file
+        video_path (str): Path to the video file
     """
     success = True
     vidObj = cv2.VideoCapture(str(video_path))
@@ -46,9 +46,9 @@ def analyzeVideo(video_path, feature_type='faceImage', save_as_json=None):
     }
 
     Args:
-        video_path (String): path to the video file to analyze
-        feature_type (String): type of the features that should be used when creating samples. ["faceImage", "lipImage", "faceFeatures", "lipFeatures"]
-        save_as_json (String): Path where to save the analysis as json file
+        video_path (str): path to the video file to analyze
+        feature_type (str): type of the features that should be used when creating samples. ["faceImage", "lipImage", "faceFeatures", "lipFeatures"]
+        save_as_json (str): Path where to save the analysis as json file
 
     Returns:
         analysis (dict):

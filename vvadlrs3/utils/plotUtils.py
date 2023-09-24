@@ -12,7 +12,7 @@ def visualizeHistory(history, path=None):
 
     Args:
         history (dict): a history from the learning process
-        path (String): if set it saves the visualizations to that path
+        path (str): if set it saves the visualizations to that path
     """
     loss_values = history['loss']
     val_loss_values = history['val_loss']
@@ -56,17 +56,19 @@ def visualizeHistory(history, path=None):
     plt.show()
 
 
-def calculateHumanAccuracy(mongoURL='mongodb://localhost:27017/', saveTo=None, consider='all'):
+def calculateHumanAccuracy(mongoURL='mongodb://localhost:27017/', saveTo=None,
+                           consider='all'):
     # ToDo: complete implementation
-    """ calculates the average accuracy and standard deviation on every sample. Will fail if samples to consider
-    are not correct
+    """ calculates the average accuracy and standard deviation on every sample.
+    Will fail if samples to consider are not correct
 
     Args:
-        mongoURL (String): the URL to the mongoDB holding the results
-        saveTo (String): default = None
-        consider (String): Selection of "pos", "neg", and "all", default = "all"
+        mongoURL (str): the URL to the mongoDB holding the results
+        saveTo (str): default = None
+        consider (str): Selection of "pos", "neg", and "all", default = "all"
     """
-    assert consider == 'all' or consider == 'neg' or consider == 'pos', 'consider can only be "all", "pos" or "neg"'
+    assert consider == 'all' or consider == 'neg' or consider == 'pos', \
+        'consider can only be "all", "pos" or "neg"'
 
     def calcError(classification, gt):
         return int(classification == gt)
@@ -129,12 +131,13 @@ def calculateHumanAccuracy(mongoURL='mongodb://localhost:27017/', saveTo=None, c
 
 def plotAccOverTimeSteps(histList, path=None, features=False):
     # ToDo: Check description FEATURES
-    """ plot the accuracy over different timeDistributed models with different numbers of timeSteps
+    """ plot the accuracy over different timeDistributed models with different numbers
+    of timeSteps
 
     Args:
         histList (list of Strings): a list of history files from the learning process
-        path (String): if set it saves the visualizations to that path
-        features (boolean): ?
+        path (str): if set it saves the visualizations to that path
+        features (bool): ?
 
     """
     x = []  # x shows the timesteps/frames used
@@ -183,7 +186,7 @@ def plotAccOverImagesize(histList, path=None):
 
     Args:
         histList (list of String): a list of history files from the learning process
-        path (String): if set, it saves the visualizations to that provided path
+        path (str): if set, it saves the visualizations to that provided path
 
     """
     x = []  # x shows the timesteps/frames used

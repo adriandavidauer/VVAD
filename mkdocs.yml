@@ -4,11 +4,12 @@ repo_url: https://github.com/adriandavidauer/VVAD
 repo_name: adriandavidauer/VVAD
 
 nav:
-  - Home: getting-started.md
+  - Home: README.md
   # - Test: test.md
   - Human Accuracy: human-accuracy.md
   - VVAD LRS3:
-      - Utils:
+      - Utily functions:
+        - Overview: 'utils/overview.md'
         - Download Utils: 'utils/download-utils.md'
         - Image Utils: 'utils/image-utils.md'
         - Keras Utils: 'utils/keras-utils.md'
@@ -16,11 +17,13 @@ nav:
         - Plot Utils: 'utils/plot-utils.md'
         - Time Utils: 'utils/time-utils.md'
         - Video Utils: 'utils/video-utils.md'
-      - Samples:
+      - Sample functions:
+          - Overview: 'sample/overview.md'
           - FaceTracker: 'sample/facetracker-sample.md'
           - FaceFeatures: 'sample/facefeature-sample.md'
           - Sample: 'sample/featured-sample.md'
-      - Dataset:
+      - Dataset functions:
+          - Overview: 'dataset/overview.md'
           - Dataset: 'dataset/dataset.md'
           - Additional functions: 'dataset/additional-functions-dataset.md'
       - Cluster: vvad-lrs3-cluster.md

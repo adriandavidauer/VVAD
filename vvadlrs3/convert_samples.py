@@ -32,7 +32,6 @@ def convert_samples_to_images(input_path, output_path='generatedImages', num=20)
     if not os.path.exists(output_path):
         os.makedirs(output_path)
 
-    # TODO for sample in input_path - convert and safe to output_path
     for filepath in random.choices(glob.glob(os.path.join(input_path, "*.pickle")), k=num):
         with open(filepath, 'rb') as pickle_file:
             sample = pickle.load(pickle_file)

@@ -41,12 +41,11 @@ def cropImage(image, drect):
 
 
 def toImageSpace(ROIrect, rect):
-    # ToDo check data type of rect
     """ returns a rectangle in the coordinate space of the whole image
 
     Args:
         ROIrect (dlib.drectangle): rectangle in Image Space which contains the rect.
-        rect (dlib.drectangle ?): rectangle in ROI Space
+        rect (dlib.drectangle): rectangle in ROI Space
 
     Returns:
         Rectangle in coordinate space of the image
@@ -99,16 +98,13 @@ def convertSampleToVideo(data, path, fps=25, codec='MP4V'):
 
     Args:
         data (numpy array): numpy array of shape (timesteps, *img.shape)
-        path (String): Path to save the video to
+        path (str): Path to save the video to
         fps (int): Frames per second of data (default: 25)
-        codec (String): Video-codec of data (default: 'MP4V')
+        codec (str): Video-codec of data (default: 'MP4V')
     """
     size = (data.shape[1], data.shape[2])
     out = cv2.VideoWriter()
     out.open(path, cv2.VideoWriter_fourcc(*codec), fps, size, True)
     for img in data:
-        # convert to BGR
-        # Todo check
-        # img = cv2.cvtColor(img,cv2.COLOR_RGB2BGR) - seems to be not the Problem here
         out.write(img)
     out.release()

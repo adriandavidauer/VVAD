@@ -13,7 +13,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # TODO:use mkdocs here to create the static site files
       - name: mkdocs package install
         run: |
           pip install mkdocs mkdocs-autorefs mkdocs-git-authors-plugin

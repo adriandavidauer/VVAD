@@ -16,17 +16,15 @@ __copyright__ = "Copyright (c)2017, Blackout Technologies"
 def timeit(method):
     """  track the execution time for each method where the decorator is used
 
+    Args:
+            kw (any): log_time and log_name are optional. Make use of them accordingly
+                when needed.
+
     Returns:
-        timed (time. ??): # ToDo: check result
+        logtime_date (): Returns data from time measurement for later evaluation
     """
     def timed(*args, **kw):
         """ Calculates and output the time difference of executed method
-
-        Args:
-            kw (any): log_time and log_name are optional. Make use of them accordingly when needed.
-
-        Returns:
-            # ToDo: check result
         """
         ts = time.perf_counter()
         result = method(*args, **kw)

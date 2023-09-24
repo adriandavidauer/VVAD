@@ -13,7 +13,8 @@ from keras.applications.densenet import DenseNet201, DenseNet121
 from keras.applications.mobilenet import MobileNet
 from keras.applications.mobilenet_v2 import MobileNetV2
 from keras.engine import Model
-from keras.layers import Dense, Input, Flatten, Dropout, Activation, GlobalAveragePooling2D
+from keras.layers import Dense, Input, Flatten, Dropout, Activation, \
+    GlobalAveragePooling2D
 from keras.layers.convolutional import Conv2D
 from keras.layers.convolutional import MaxPooling2D
 from keras.layers.convolutional_recurrent import ConvLSTM2D
@@ -33,7 +34,7 @@ def splitDataSet(dataPath, ratioTest, randomSeed=42):
     """ Helper function that returns two lists of pathes to samples - one for training an one for testing.
 
     Args:
-        dataPath (String): Path to the folder containing two folders - one for negative and one for positive samples
+        dataPath (str): Path to the folder containing two folders - one for negative and one for positive samples
         ratioTest (float): The ratio which should be reserved for the test set (between 0 and 1)
         randomSeed (int): random seed for reproducible results (default: 42)
 
@@ -78,27 +79,31 @@ def splitDataSet(dataPath, ratioTest, randomSeed=42):
 class hdf5DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
     """Generates data for Keras"""
 
-    def __init__(self, hdf5_path, imageSize=None, num_steps=None, grayscale=False, batch_size=32, randomSeed=42,
-                 dataAugmentation=False, shuffle=True, one_hot=False, normalize=False, debug=False):
+    def __init__(self, hdf5_path, image_size=None, num_steps=None, grayscale=False,
+                 batch_size=32, random_seed=42, data_augmentation=False, shuffle=True,
+                 one_hot=False, normalize=False, debug=False):
         # todo: check path vs file usage (first parameter)
-        # Todo: add remaining args
         """ Initialization
 
         Args:
-            hdf5_path (String): path to hdf5_file (containing all the data)
-            imageSize (tuple of ints): size of the sample's images, default: None
-            num_steps (int): number of steps for the sample, default: None
-            grayscale (boolean): decides whether to use grayscale images or not, default: False
-            batch_size (int) number of samples for the batch, default: 32
-            randomSeed (int): random seed for reproducibility, default: 42
-            dataAugmentation (boolean): decides whether to use data augmentation or not, default: False
-            shuffle (boolean): decides whether to shuffle the dataset after each epoch, default: True
+            hdf5_path (str): path to hdf5_file (containing all the data)
+            image_size (tuple of ints): size of the sample's images
+            num_steps (int): number of steps for the sample
+            grayscale (bool): decides whether to use grayscale images or not
+            batch_size (int) number of samples for the batch
+            random_seed (int): random seed for reproducibility
+            data_augmentation (bool): decides whether to use data augmentation or not
+            shuffle (bool): decides whether to shuffle the dataset after each epoch
+            one_hot (bool): if one hot encoding should be applied when categorical
+                values are expected
+            normalize (bool): if given data should be normalized
+            debug (bool): Enable additional debug prints to stdOut
         """
         self.debug = debug
-        self.imageSize = imageSize
+        self.imageSize = image_size
         self.num_steps = num_steps
         self.batch_size = batch_size
-        self.dataAugmentation = dataAugmentation
+        self.dataAugmentation = data_augmentation
         self.shuffle = shuffle
         self.grayscale = grayscale
         self.one_hot = one_hot
@@ -107,7 +112,7 @@ class hdf5DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
         self.X = hdf5_file['X']
         self.Y = hdf5_file['Y']
 
-        np.random.seed(randomSeed)
+        np.random.seed(random_seed)
         # self.on_epoch_end()
 
     def __len__(self):
@@ -134,7 +139,8 @@ class hdf5DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
         y_dtype = _Y.dtype
         # Initialization
         X = np.empty((self.batch_size, *s.getData(imageSize=self.imageSize,
-                                                  num_steps=self.num_steps, grayscale=self.grayscale).shape),
+                                                  num_steps=self.num_steps,
+                                                  grayscale=self.grayscale).shape),
                      dtype=x_dtype)
         y = np.empty((self.batch_size), dtype=y_dtype)
 
@@ -160,35 +166,39 @@ class hdf5DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
 class DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
     """Generates data for Keras"""
 
-    def __init__(self, data, imageSize=None, num_steps=None, grayscale=False, batch_size=32, randomSeed=42,
-                 dataAugmentation=False, shuffle=True, one_hot=False, normalize=False, debug=False):
-        # ToDo add other inputs as well
+    def __init__(self, data, image_size=None, num_steps=None, grayscale=False,
+                 batch_size=32, random_seed=42, data_augmentation=False, shuffle=True,
+                 one_hot=False, normalize=False, debug=False):
         """ Initialization
 
         Args:
             data (list): List of paths to pickled samples
-            imageSize (tuple of ints): size of the sample's images, default = None
-            num_steps (int): number of steps for the sample, default = None
-            grayscale (boolean): decides whether to use grayscale images or not, default = False
-            batch_size (int): number of samples for the batch, default = 32
-            randomSeed (int): random seed for reproducibility, default = 42
-            dataAugmentation (boolean): decides whether to use data augmentation or not, default = False
-            shuffle (boolean): decides whether to shuffle the data set after each epoch, default = True
+            image_size (tuple of ints): size of the sample's images
+            num_steps (int): number of steps for the sample
+            grayscale (bool): decides whether to use grayscale images or not
+            batch_size (int): number of samples for the batch
+            random_seed (int): random seed for reproducibility
+            data_augmentation (bool): decides whether to use data augmentation or not
+            shuffle (bool): decides whether to shuffle the data set after each epoch
+            one_hot (bool): if one hot encoding should be applied when categorical
+                values are expected
+            normalize (bool): if given data should be normalized
+            debug (bool): Enable additional debug prints to stdOut
 
         """
 
         self.debug = debug
-        self.imageSize = imageSize
+        self.imageSize = image_size
         self.num_steps = num_steps
         self.data = data
         self.batch_size = batch_size
-        self.dataAugmentation = dataAugmentation
+        self.dataAugmentation = data_augmentation
         self.shuffle = shuffle
         self.grayscale = grayscale
         self.one_hot = one_hot
         self.normalize = normalize
 
-        np.random.seed(randomSeed)
+        np.random.seed(random_seed)
         self.on_epoch_end()
 
     def __len__(self):
@@ -220,7 +230,6 @@ class DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
         pass
 
     def __data_generation(self, batch):
-        # ToDo check batch data type
         """Generates data containing batch_size samples
 
         Args:
@@ -241,8 +250,8 @@ class DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
             s = FeaturedSample()
             s.load(path)
             # Store sample
-            X[i,] = s.getData(imageSize=self.imageSize, num_steps=self.num_steps,
-                              grayscale=self.grayscale, normalize=self.normalize)
+            X[i, ] = s.getData(imageSize=self.imageSize, num_steps=self.num_steps,
+                               grayscale=self.grayscale, normalize=self.normalize)
 
             # Store class
             y[i] = s.getLabel()
@@ -255,38 +264,43 @@ class DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
 class DataGeneratorRAM(keras.utils.Sequence):  # keras.utils.Sequence
     """Generates data for Keras"""
 
-    def __init__(self, data, imageSize=None, num_steps=None, grayscale=False, batch_size=32, randomSeed=42,
-                 dataAugmentation=False, shuffle=True, one_hot=False, normalize=False, debug=False):
-        # ToDo add other inputs as well
+    def __init__(self, data, image_size=None, num_steps=None, grayscale=False,
+                 batch_size=32, random_seed=42,
+                 data_augmentation=False, shuffle=True, one_hot=False, normalize=False,
+                 debug=False):
         """ Initialization
 
         Args:
             data (Tuple of numpy array): Tuple of numpy arrays in RAM (x, y)
-            imageSize (tuple of ints): size of the sample's images
+            image_size (tuple of ints): size of the sample's images
             num_steps (int): number of steps for the sample
-            grayscale (boolean): decides whether to use grayscale images or not
+            grayscale (bool): decides whether to use grayscale images or not
             batch_size (int): number of samples for the batch
-            randomSeed (int): random seed for reproducibility
-            dataAugmentation (boolean): decides whether to use data augmentation or not
-            shuffle (boolean): decides whether to shuffle the data set after each epoch
-
+            random_seed (int): random seed for reproducibility
+            data_augmentation (bool): decides whether to use data augmentation or not
+            shuffle (bool): decides whether to shuffle the data set after each epoch
+            one_hot (bool): if one hot encoding should be applied when categorical
+                values are expected
+            normalize (bool): if given data should be normalized
+            debug (bool): Enable additional debug prints to stdOut
         """
 
         self.debug = debug
-        self.imageSize = imageSize
+        self.imageSize = image_size
         self.num_steps = num_steps
         self.x = data[0]
         self.y = data[1]
-        assert len(self.x) == len(self.y), "X and Y have to be the same size!\nX:{} != Y:{}".format(
+        assert len(self.x) == len(
+            self.y), "X and Y have to be the same size!\nX:{} != Y:{}".format(
             len(self.x), len(self.y))
         self.batch_size = batch_size
-        self.dataAugmentation = dataAugmentation
+        self.dataAugmentation = data_augmentation
         self.shuffle = shuffle
         self.grayscale = grayscale
         self.one_hot = one_hot
         self.normalize = normalize
 
-        np.random.seed(randomSeed)
+        np.random.seed(random_seed)
         self.on_epoch_end()
 
     def __len__(self):
@@ -294,8 +308,11 @@ class DataGeneratorRAM(keras.utils.Sequence):  # keras.utils.Sequence
         return int(np.floor(len(self.x) / self.batch_size))
 
     def __getitem__(self, index):
-        # ToDo: Check on getItem code and description
-        """Generate one batch of data"""
+        """Generate one batch of data
+
+        Args:
+            index (int): index at processed batch
+        """
         # Generate indexes of the batch
         Xbatch = self.x[index * self.batch_size:(index + 1) * self.batch_size]
         y = self.y[index * self.batch_size:(index + 1) * self.batch_size]
@@ -317,11 +334,13 @@ class DataGeneratorRAM(keras.utils.Sequence):  # keras.utils.Sequence
 
     def __data_generation(self, batch):
         # X : (n_samples, *dim, n_channels)
-        # ToDo check batch data size and description.
         """Generates data containing batch_size samples
 
         Args:
-            batch (??): ??
+            batch (numpy array): batch to use for data generation
+
+        Returns:
+            data (numpy array): Returns resized image samples
 
         """
         #
@@ -332,35 +351,35 @@ class DataGeneratorRAM(keras.utils.Sequence):  # keras.utils.Sequence
                 x = np.empty((self.num_steps, *self.imageSize, 3),
                              dtype=np.uint8)
                 for ii, image in enumerate(origSample):
-                    x[ii,] = cv2.resize(image, self.imageSize)
+                    x[ii, ] = cv2.resize(image, self.imageSize)
                 # Store sample
-                X[i,] = x
+                X[i, ] = x
             return X
         else:
             # TODO: get this to work with one frame and one_hot
             X = np.empty((self.batch_size, *self.imageSize, 3), dtype=np.uint8)
             for i, origSample in enumerate(batch):
                 # Store sample
-                X[i,] = cv2.resize(origSample, self.imageSize)
+                X[i, ] = cv2.resize(origSample, self.imageSize)
             return X
 
 
 class Models:
     @staticmethod
-    def buildFeatureLSTM(input_shape, num_lstm_layers=1, lstm_dims=32, num_dense_layers=1, dense_dims=512):
-        # ToDo: add proper description and data types)
+    def buildFeatureLSTM(input_shape, num_lstm_layers=1, lstm_dims=32,
+                         num_dense_layers=1, dense_dims=512):
         """ Building the LSTM model for the features
 
         Args:
-            input_shape (data type): description
-            num_lstm_layers (int): number of layers for the lstm model, default = 1
-            lstm_dims (int): number of dimensions for the lstm model, default = 32
-            num_dense_layers (int): number of dense layers for the lstm model, default = 1
-            dense_dims (int): number of dense dimensions for the lstm model, default = 512
+            input_shape (tuple of int): desired input shape of all sample images
+            num_lstm_layers (int): number of layers for the lstm model
+            lstm_dims (int): number of dimensions for the lstm model
+            num_dense_layers (int): number of dense layers for the lstm model
+            dense_dims (int): number of dense dimensions for the lstm model
 
         Returns:
             localModel (Sequential()): Returns created LSTM model
-            modelName (String): Model name with all layer and dimension information
+            modelName (str): Model name with all layer and dimension information
         """
 
         localModel = Sequential()
@@ -394,18 +413,19 @@ class Models:
                            optimizer='sgd',
                            metrics=["accuracy"])
 
-        modelName = 'FeatureLSTM{}_'.format(input_shape) + str(num_lstm_layers) + '_' + str(
+        modelName = 'FeatureLSTM{}_'.format(input_shape) + str(
+            num_lstm_layers) + '_' + str(
             lstm_dims) + '_' + str(num_dense_layers) + '_' + str(dense_dims)
         return localModel, modelName
 
     @staticmethod
-    def buildConvLSTM2D(input_shape, kernel_size=(3, 3), filters=40, num_layers=10, hidden_dense_layers=1,
+    def buildConvLSTM2D(input_shape, kernel_size=(3, 3), filters=40, num_layers=10,
+                        hidden_dense_layers=1,
                         hidden_dense_dim=512, **kwargs):
-        # TodO: add all data types and descriptions
         """ Build Conv LSTM 2D model
 
         Args:
-            input_shape (datatype): description
+            input_shape (tuple of int): desired input shape of all sample images
             kernel_size (Tuple of ints): size of the kernel for the model, default (3, 3)
             filters (int): amount of used filters, default = 40
             num_layers (int): number of layers in the model, default = 10
@@ -414,7 +434,7 @@ class Models:
 
         Returns:
             localModel (Sequential()): Returns created model
-            modelName (String): Model name with all layer and kernel information
+            modelName (str): Model name with all layer and kernel information
         """
 
         chanDim = -1
@@ -431,14 +451,16 @@ class Models:
         if num_layers > 1:
             for i in range(num_layers - 1):
                 localModel.add(ConvLSTM2D(return_sequences=True, filters=filters,
-                                          kernel_size=kernel_size, input_shape=input_shape, **kwargs))  # True
+                                          kernel_size=kernel_size,
+                                          input_shape=input_shape, **kwargs))  # True
                 localModel.add(BatchNormalization())
             localModel.add(ConvLSTM2D(return_sequences=False, filters=filters,
                                       kernel_size=kernel_size, **kwargs))  # True
             localModel.add(BatchNormalization())
         else:
             localModel.add(ConvLSTM2D(return_sequences=False, filters=filters,
-                                      kernel_size=kernel_size, input_shape=input_shape, **kwargs))  # True
+                                      kernel_size=kernel_size, input_shape=input_shape,
+                                      **kwargs))  # True
             localModel.add(BatchNormalization())
 
         # TODO: add AveragePooling, applied?
@@ -456,7 +478,8 @@ class Models:
         return localModel, modelName
 
     @staticmethod
-    def build0(input_shape, num_classes):  # TODO: rename to which model it is - remove num_classes
+    def build0(input_shape,
+               num_classes):  # TODO: rename to which model it is - remove num_classes
         # ToDo: Check code and usage
         """ build
 
@@ -477,7 +500,6 @@ class Models:
         hidden_dim1 = 512
         hidden_dim2 = 128
         # TODO: use the vggFace here(maybe even in resnet structure) https://github.com/rcmalli/keras-vggface#finetuning
-
         vgg_model = VGGFace(include_top=False, input_shape=input_shape[1:])
 
         for layer in vgg_model.layers:
@@ -514,23 +536,24 @@ class Models:
         return localModel
 
     @staticmethod
-    def buildTimedistributed(base_model_name, num_lstm_layers=1, lstm_dims=32, num_dense_layers=1, dense_dims=512,
+    def buildTimedistributed(base_model_name, num_lstm_layers=1, lstm_dims=32,
+                             num_dense_layers=1, dense_dims=512,
                              base_model_weights=None, **kwargs):
-        # ToDo: Insert else case
-        # ToDo: complete description
         """
+        Build Timedistributed Algorithm
 
         Args:
-            base_model_name (String): Model to use as base
-            num_lstm_layers (int): Number of layers in LSTM, default = 1
-            lstm_dims (int): Number of dimensions in LSTM, default = 32
-            num_dense_layers (int): Number of dense layers, default = 1
-            dense_dims (int): Number of dense dimensions, default = 512
-            base_model_weights (datatype): ??
+            base_model_name (str): Model to use as base from (MOBILENET, DENSENET,
+                MOBILENETV2, VGGFACE)
+            num_lstm_layers (int): Number of layers in LSTM
+            lstm_dims (int): Number of dimensions in LSTM
+            num_dense_layers (int): Number of dense layers
+            dense_dims (int): Number of dense dimensions
+            base_model_weights (tuple): loading weights into selected model
 
         Returns:
             localModel (model): Created model
-            modelName (String): Information about created model
+            modelName (str): Information about created model
         """
         localModel = Sequential()
         if base_model_name.upper() == "MOBILENET":
@@ -580,14 +603,15 @@ class Models:
                            metrics=["accuracy"])
 
         localModel.summary()
-        modelName = 'TimeDistributed{}_'.format(base_model_name) + str(num_lstm_layers) + '_' + str(
+        modelName = 'TimeDistributed{}_'.format(base_model_name) + str(
+            num_lstm_layers) + '_' + str(
             lstm_dims) + '_' + str(num_dense_layers) + '_' + str(dense_dims)
         return localModel, modelName
 
     @staticmethod
-    def buildTimedistributedFunctional(base_model_name, num_lstm_layers=1, lstm_dims=32, num_dense_layers=1,
+    def buildTimedistributedFunctional(base_model_name, num_lstm_layers=1, lstm_dims=32,
+                                       num_dense_layers=1,
                                        dense_dims=512, **kwargs):
-        # ToDo: Insert else case
         # ToDo: What is difference between Timedistributed and TimeditributedFunctional?
         """ Description
 
@@ -600,7 +624,7 @@ class Models:
 
         Returns:
             localModel (model): Created model
-            modelName (String): Information about created model
+            modelName (str): Information about created model
 
         """
         if base_model_name.upper() == "MOBILENET":
@@ -639,15 +663,14 @@ class Models:
 
     @staticmethod
     def buildBaselineModel(base_model_name, **kwargs):
-        # ToDo: Insert else case
         """ Build model for baseline without additional parametrization
 
         Args:
-            base_model_name (String): Name of the model for the baseline
+            base_model_name (str): Name of the model for the baseline
 
         Returns:
             localModel (model): Created baseline model
-            modelName (String): Information about created model
+            modelName (str): Information about created model
         """
         if base_model_name.upper() == "MOBILENET":
             localModel = MobileNetV2(**kwargs)
@@ -671,7 +694,8 @@ class Models:
         return localModel, modelName
 
     @staticmethod
-    def trainBaselineModel(baseline_model, train, test, epochs=75, batch_size=32, num_steps=1, one_hot=False,
+    def trainBaselineModel(baseline_model, train, test, epochs=75, batch_size=32,
+                           num_steps=1, one_hot=False,
                            imageSize=None):
         # ToDo Check data types
         """ Function to train the provided baseline model
@@ -690,9 +714,11 @@ class Models:
              history (??): Check whats provided
         """
         training_generator = DataGenerator(
-            train, num_steps=num_steps, batch_size=batch_size, one_hot=one_hot, imageSize=imageSize)
+            train, num_steps=num_steps, batch_size=batch_size, one_hot=one_hot,
+            image_size=imageSize)
         validation_generator = DataGenerator(
-            test, num_steps=num_steps, batch_size=batch_size, one_hot=one_hot, imageSize=imageSize)
+            test, num_steps=num_steps, batch_size=batch_size, one_hot=one_hot,
+            image_size=imageSize)
 
         history = baseline_model.fit_generator(generator=training_generator,
                                                validation_data=validation_generator,
@@ -717,7 +743,7 @@ def trainModel(provided_model, train, test, epochs, initLR=0.01):
         train (numpy array): train data to train the model with
         test (numpy array): test data to test the trained model with
         epochs (int): epochs in training
-        initLR (float): #ToDo add description
+        initLR (float): Learning rate of the provided model
     """
 
     # initialize the model and optimizer (you'll want to use
@@ -737,20 +763,24 @@ def trainModel(provided_model, train, test, epochs, initLR=0.01):
                                  workers=5,
                                  max_queue_size=5)
 
-    # should end up in appr. 5MB * 32(batch_size) * 5(workers) * 5(max_queue_size) = 4GB on RAM
+    # should end up in appr. 5MB * 32(batch_size) * 5(workers) * 5(max_queue_size)
+    #   = 4GB on RAM
 
 
-def genData(train, test, train_samples=None, valid_samples=None, print_freq=None, **kwargs):
-    # ToDo check implementation and add description
+def genData(train, test, train_samples=None, valid_samples=None, print_freq=None,
+            **kwargs):
     """ Put the whole data or just some batches.
 
     Args:
-        train (numpy array):
-        test(numpy array):
-        train_samples ():
-        valid_samples ():
-        print_freq ():
+        train (numpy array): Training data
+        test(numpy array): Testing data
+        train_samples (int): amount of training samples to get from function
+        valid_samples (int): amount of validation samples to get from function
+        print_freq (float): determine print frequency for updates on process
 
+    Retuns:
+        train data (tuple of numpy array): training data as (train_x, train_y)
+        validation data (tuple of numpy array): validation data as (vali_x, vali_y)
     """
 
     # Put batch_size to 1
@@ -779,7 +809,8 @@ def genData(train, test, train_samples=None, valid_samples=None, print_freq=None
 
     # calculate needed memory:
     memory_bytes = (dtype.itemsize) * (np.prod(train_x_shape) +
-                                       np.prod(train_y_shape) + np.prod(valid_x_shape) + np.prod(valid_y_shape))
+                                       np.prod(train_y_shape) + np.prod(
+                valid_x_shape) + np.prod(valid_y_shape))
 
     print("train_x_shape: {}".format(train_x_shape))
     print("train_y_shape: {}".format(train_y_shape))
@@ -841,10 +872,22 @@ def genData(train, test, train_samples=None, valid_samples=None, print_freq=None
     return (train_x, train_y), (vali_x, vali_y)
 
 
-def genDataInternal(train, test, train_samples=None, valid_samples=None, print_freq=None, **kwargs):
-    # ToDo check implementation and add description
+def genDataInternal(train, test, train_samples=None, valid_samples=None,
+                    print_freq=None, **kwargs):
     """
-    Put the whole data or just some batches. - train, test are tuples of numpyArrays in this case
+    Put the whole data or just some batches. - train, test are tuples of numpyArrays in
+    this case
+
+    Args:
+        train (numpy array): Training data
+        test(numpy array): Testing data
+        train_samples (int): amount of training samples to get from function
+        valid_samples (int): amount of validation samples to get from function
+        print_freq (float): determine print frequency for updates on process
+
+    Retuns:
+        train data (tuple of numpy array): training data as (train_x, train_y)
+        validation data (tuple of numpy array): validation data as (vali_x, vali_y)
     """
 
     # Put batch_size to 1
@@ -924,15 +967,20 @@ def genDataInternal(train, test, train_samples=None, valid_samples=None, print_f
 
 
 @timeit
-def hdf5SamplesToMemory(train_path, val_path, train_samples=None, valid_samples=None, **kwargs):
-    # ToDo check implementation and add description
+def hdf5SamplesToMemory(train_path, val_path, train_samples=None, valid_samples=None,
+                        **kwargs):
     """
+    Return train and validation samples from saved datasets on memory
 
     Args:
-        train_path ():
-        val_path ():
-        train_samples ():
-        valid_samples ():
+        train_path (str): Path to training data
+        val_path (str): Path to validation/testing data
+        train_samples (int): amount of training samples to get from function
+        valid_samples (int): amount of validation samples to get from function
+        
+    Retuns:
+        train data (tuple of numpy array): training data as (train_x, train_y)
+        validation data (tuple of numpy array): validation data as (vali_x, vali_y)
 
     """
     kwargs_batch_size_1 = dict(kwargs)
@@ -984,12 +1032,12 @@ def hdf5SamplesToMemory(train_path, val_path, train_samples=None, valid_samples=
 
 # https://stackoverflow.com/questions/43137288/how-to-determine-needed-memory-of-keras-model
 def get_model_memory_usage(batch_size, model):
-    # ToDo check implementation and add description
-    """ Get the memory usage from the provided model
+    """
+    Get the memory usage from the provided model according to suggested solution
 
     Args:
-        batch_size ():
-        model ():
+        batch_size (float): size of the batch which is used by the model
+        model (keras model): model to use
     """
     import numpy as np
     from keras import backend as K
@@ -1015,31 +1063,33 @@ def get_model_memory_usage(batch_size, model):
         number_size = 8.0
 
     total_memory = number_size * \
-        (batch_size * shapes_mem_count + trainable_count + non_trainable_count)
+                   (
+                           batch_size * shapes_mem_count + trainable_count +
+                           non_trainable_count)
     gbytes = np.round(total_memory / (1024.0 ** 3), 3)
     return gbytes
 
 
 @timeit
 def checkDataGen(dataGen, var):
-    #ToDo: Discuss, function does nothing?
+    # ToDo: Discuss, function does nothing?
     var = dataGen[0]
 
 
 def testModel(model_path, test_set_path, saveTo=None):
-    # ToDo: finalize description and check functionality
     """ Test a specific model with the corresponding test set.
-    Maybe even plots every sample - numbers will probably don't correspond to numbers in humAccTest
+    Maybe even plots every sample - numbers will probably don't correspond to numbers
+    in human Accuracy Test
 
     Args:
-        model_path (String): path to the model to test
-        test_set_path (String): path to the corresponding test set
-        saveTo (String): , default = None
+        model_path (str): path to the model to test
+        test_set_path (str): path to the corresponding test set
+        saveTo (str): path to save the plot to
 
     Returns:
         acc (float): Accuracy of the model
-        MAE std (tuple of floats): ??? Error with standard deviation
-        MSE std (tuple of floats): ??? Error with standard deviation
+        MAE std (tuple of floats): Mean Absolute Error with standard deviation
+        MSE std (tuple of floats): Mean Squared Error with standard deviation
         wrong_labels (list of String): list of samples that were wrong classifies by the model
     """
 
@@ -1074,7 +1124,8 @@ def testModel(model_path, test_set_path, saveTo=None):
     uplims = []
     y_percents = []
     xList = []
-    for i, samplePath in enumerate(glob.glob(os.path.join(os.path.join(test_set_path, '**'), '*.pickle'))):
+    for i, samplePath in enumerate(
+            glob.glob(os.path.join(os.path.join(test_set_path, '**'), '*.pickle'))):
         sample = FeaturedSample()
         sample.load(samplePath)
         data = sample.getData(normalize=normalize,
@@ -1120,7 +1171,9 @@ def testModel(model_path, test_set_path, saveTo=None):
     maeStd = np.std(eList)
     mse = np.mean(np.square(eList))
     mseStd = np.std(np.square(eList))
-    return (((i + 1) - len(wrongClassifications)) / (i + 1), (mae, maeStd), (mse, mseStd), wrongClassifications)
+    return (
+        ((i + 1) - len(wrongClassifications)) / (i + 1), (mae, maeStd), (mse, mseStd),
+        wrongClassifications)
 
 
 if __name__ == "__main__":

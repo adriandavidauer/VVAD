@@ -6,7 +6,6 @@ fps : 25              # fps of the dataSet - is needed for translations between 
 
 
 # Parameters that probably need tuning in the end
-# TODO: if possible define in seconds - more general and from a psychological view
 maxPauseLength : 1.0      # defines when to break a positive sample in seconds / maximal length for interSpeech pause
 sampleLength : 1.5     # defines the minimum length of a sample in seconds
 k : 25                    # defines the temporal sliding window in frames #ToDo: DEPRECATED: can be calculated from fps and sampleLength
