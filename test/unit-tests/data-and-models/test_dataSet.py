@@ -143,12 +143,25 @@ class TestDataSet(unittest.TestCase):
             self.test_data_root, self.video_folder_path)))
 
     def test_get_positive_samples(self):
+        self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
+            self.test_data_root, self.video_folder_path))
+        self.assertTrue(os.path.exists(os.path.join(self.test_data_root,
+                                                    self.video_file_path)))
+
         for sample in self.data_set.get_positive_samples(os.path.join(
                 self.test_data_root, self.video_folder_path),
                 False):
             print(sample)
         print("[getAllPSamples] Folder {} done".format(os.path.join(
             self.test_data_root, self.video_folder_path)))
+
+        # Clean
+        os.remove(os.path.join(self.test_data_root, self.video_file_path))
+        files = os.listdir(os.path.join(self.test_data_root, self.video_folder_path))
+        for item in files:
+            print(item)
+            if item.endswith(".3gpp") or item.endswith(".3gp"):
+                os.remove(os.path.join(self.test_data_root, self.video_folder_path, item))
 
     def test_get_no_video_path_from_folder_index_error(self):
         video_path = os.path.join(self.test_data_root, "noVideoData"). \
@@ -210,7 +223,7 @@ class TestDataSet(unittest.TestCase):
             path=os.path.join(self.test_data_root, self.videos_path),
             save_to=os.path.join(self.test_data_root, "analyze_positives"))
 
-        self.assertEqual(num_samples, 3)
+        self.assertEqual(num_samples, 120)
         self.assertTrue(os.path.exists(
             os.path.join(self.test_data_root,
                          "analyze_positives.png")))
