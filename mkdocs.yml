@@ -1,0 +1,87 @@
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+site_name: VVAD-LRS3 documentation
+repo_url: https://github.com/adriandavidauer/VVAD
+repo_name: adriandavidauer/VVAD
+
+nav:
+  - Home: README.md
+  - VVAD LRS3:
+      - Utils: 404.md
+      - Samples: 404.md
+      - Dataset: 404.md
+      - Cluster: 404.md
+      - Models: 404.md
+  - WildVVAD:
+      - Models: 404.md
+      - Dataset: 404.md
+  - Release Notes: release-notes.md
+  - About: about.md
+  - Licenses: licenses.md
+
+theme:
+  name: material
+  icon:
+    repo: material/robot-happy
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.path
+    # - toc.integrate
+    - navigation.top
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: en
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: teal
+      accent: purple
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+      primary: teal
+      accent: red
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/K-Zanaty
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/karim-zanaty/
+
+copyright: |
+  &copy; 2023 <a href="https://github.com/K-Zanaty" target="_blank" rel="noopener">Karim Zanaty</a>
+
+plugins:
+  - mkdocstrings
+  - git-authors
+  - git-committers:
+      repository: adriandavidauer/VVAD
+      branch: main
