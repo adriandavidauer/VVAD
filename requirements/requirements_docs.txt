@@ -1,0 +1,8 @@
+mkdocs
+mkdocs-autorefs
+mkdocs-git-authors-plugin
+mkdocs-git-committers-plugin
+mkdocs-material
+mkdocs-material-extensions
+mkdocstrings 
+mkdocstrings-python
