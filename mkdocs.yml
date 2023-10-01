@@ -88,9 +88,9 @@ markdown_extensions:
 extra:
   social:
     - icon: fontawesome/brands/github-alt
-      link: https://github.com/K-Zanaty
+      link: https://github.com/adriandavidauer
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/karim-zanaty/
+      link: https://www.linkedin.com/in/adrian-lubitz/
 
 copyright: |
   &copy; 2023 <a href="https://github.com/K-Zanaty" target="_blank" rel="noopener">Karim Zanaty</a>
@@ -100,4 +100,4 @@ plugins:
   - git-authors
   - git-committers:
       repository: adriandavidauer/VVAD
-      branch: maintenance/01_remove-unused-code
+      branch: main

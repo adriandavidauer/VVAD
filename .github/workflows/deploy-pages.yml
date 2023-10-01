@@ -1,0 +1,62 @@
+# This workflow will publish gh-pages when a Release is created
+
+name: Upload Python Package
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  # Build job
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: mkdocs package install
+        run: |
+          pip install mkdocs mkdocs-autorefs mkdocs-git-authors-plugin
+          pip install mkdocs-git-committers-plugin mkdocs-material
+          pip install mkdocs-material-extensions
+          pip install mkdocstrings mkdocstrings-python
+      - name: mkdocs build
+        run: |
+          mkdocs build
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: pages
+          path: site
+          if-no-files-found: error
+
+  # Deploy job
+  deploy:
+    # Add a dependency to the build job
+    needs: build
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: pages
+          path: .
+      - uses: actions/configure-pages@v1
+      - uses: actions/upload-pages-artifact@v2
+        with:
+          path: .
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2 # or the latest "vX.X.X" version tag for this action
