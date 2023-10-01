@@ -1,3 +1,5 @@
+"""utils for images"""
+
 # System imports
 
 # 3rd party imports
@@ -23,24 +25,21 @@ def getRandomFaceFromImage(image):
         return False
 
 
-def cropImage(image, drect):
+def crop_img(image, drect):
     """ Crop the provided image with a drect
 
     Args:
         image (image): Image file as....
-        drect (?): ??
+        drect (drect): ??
     """
-    # make rect from drect
     rect = dlib.rectangle(drect)
-    # print("ROI shape: {}\nlipRect: {}".format(image.shape, rect))
-    # crop with max(width, heigh) and min(0)
-    maxX = image.shape[1] - 1
-    maxY = image.shape[0] - 1
-    return image[np.clip(rect.top(), 0, maxY):np.clip(rect.bottom(), 0, maxY),
-           np.clip(rect.left(), 0, maxX):np.clip(rect.right(), 0, maxX)]
+    max_x = image.shape[1] - 1
+    max_y = image.shape[0] - 1
+    return image[np.clip(rect.top(), 0, max_y):np.clip(rect.bottom(), 0, max_y),
+                 np.clip(rect.left(), 0, max_x):np.clip(rect.right(), 0, max_x)]
 
 
-def toImageSpace(ROIrect, rect):
+def to_img_space(roi_rect, rect):
     """ returns a rectangle in the coordinate space of the whole image
 
     Args:
@@ -49,17 +48,19 @@ def toImageSpace(ROIrect, rect):
 
     Returns:
         Rectangle in coordinate space of the image
-
     """
-    return dlib.drectangle(ROIrect.left() + rect.left(), ROIrect.top() + rect.top(),
-                           ROIrect.left() + rect.right(),
-                           ROIrect.top() + rect.bottom())
+    return dlib.drectangle(roi_rect.left() + rect.left(), roi_rect.top() + rect.top(),
+                           roi_rect.left() + rect.right(),
+                           roi_rect.top() + rect.bottom())
 
 
-def resizeAndZeroPadding(image, shape):
-    """ Resizes a given image to the desired shape without changing the (width to height)ratio.
-    (On pixel base it is not suitable to resize to the exact same ratio - closest with rounding is applied)
-    Applies zeroPadding to ensure the desired size.
+def resize_and_zero_padding(image, shape):
+    """
+    Resizes a given image to the disered shape without changing the
+    (width to height)ratio.
+    (On pixel base its not suitable to resize to the exact same ratio - closest with
+    rounding is applied)
+
 
     Args:
         image (numpy array from openCV): The image for resizing
@@ -93,7 +94,7 @@ def resizeAndZeroPadding(image, shape):
     return image
 
 
-def convertSampleToVideo(data, path, fps=25, codec='MP4V'):
+def convert_sample_to_video(data, path, fps=25, codec='MP4V'):
     """ converts a sample(data) to a video stream.
 
     Args:

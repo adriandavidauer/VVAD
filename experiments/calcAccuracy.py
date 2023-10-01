@@ -1,4 +1,4 @@
-"""Script to calculate the Accuracy for a given set of samples(test set)"""
+'''Script to calculate the Accuracy for a given set of samples(test set)'''
 # System imports
 import argparse
 
@@ -20,11 +20,17 @@ if __name__ == "__main__":
         "path", help="path to a folder holding pickle files", type=str)
 
     action = parser.add_mutually_exclusive_group(required=True)
-    action.add_argument("-f", "--feature_type", help="Type for usage of a pretrained model.",
-                        choices=["faceImage", "lipImage", "faceFeatures", "lipFeatures"], type=str)
+    action.add_argument("-f", "--feature_type", help="Type for usage of a pretrained "
+                                                     "model.",
+                        choices=["faceImage", "lipImage", "faceFeatures",
+                                 "lipFeatures"], type=str)
 
     action.add_argument("-m", "--model_path",
                         help="Path to a model.", type=str)
+
+    # parser.add_argument(
+    #     "-r", "--recursive", help="traverse folders recursive for pickle files",
+    #     action='store_true')
 
     args = parser.parse_args()
 
@@ -32,15 +38,15 @@ if __name__ == "__main__":
         model_path = args.model_path
     elif args.feature_type:
         if args.feature_type == "faceImage":
-            model_path = pretrained_models.getFaceImageModelPath()
+            model_path = pretrained_models.get_face_img_model_path()
         elif args.feature_type == "lipImage":
-            model_path = pretrained_models.getLipImageModelPath()
+            model_path = pretrained_models.get_lip_img_model_path()
         elif args.feature_type == "faceFeatures":
-            model_path = pretrained_models.getFaceFeatureModelPath()
+            model_path = pretrained_models.get_face_feature_model_path()
         elif args.feature_type == "lipFeatures":
-            model_path = pretrained_models.getLipFeatureModelPath()
+            model_path = pretrained_models.get_lip_feature_model_path()
 
-    acc, (mae, maeStd), (mse, mseStd),  errors = kerasUtils.testModel(
+    acc, (mae, maeStd), (mse, mseStd),  errors = kerasUtils.test_model(
         model_path, args.path)
     print("Accuracy for {} is {}".format(model_path, acc))
     print("MAE for {} is {} with std {}".format(

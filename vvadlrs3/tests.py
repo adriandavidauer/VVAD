@@ -1,7 +1,6 @@
-# ToDo: Is this of any use?
-
-# system imports
-# from imutils import paths
+"""
+#system imports
+#from imutils import paths
 
 # 3rd party imports
 # import cv2
@@ -35,14 +34,24 @@ if __name__ == "__main__":
 #
 #     parser = argparse.ArgumentParser()
 #     parser.add_argument("config", help='path to the config file' , type=str)
-#     parser.add_argument("option", help="what you want to do.", type=str, choices=["tests", "analyze","convertAll", "pSamples","pSamplesAll", "samples", "download"])#TODO: remove unused
+#     parser.add_argument("option", help="what you want to do.", type=str, choices=
+        ["tests", "analyze","convertAll",
+        "pSamples","pSamplesAll", "samples", "download"])#TODO: remove unused
 #     parser.add_argument("-d","--dataPath", help="the path to the dataset" , type=str)
-#     parser.add_argument("-m", "--shapeModelPath",help="the path of folder containing the models" , type=str)
-#     parser.add_argument("--debug",help="debug messages will be displayed", action='store_true')
-#     parser.add_argument("-p", "--maxPauseLength",help="defines when to break a positive sample in seconds" , type=float)
-#     parser.add_argument("-l", "--sampleLength",help="defines the minimum length of a sample in seconds", type=float)
-#     parser.add_argument("-f", "--fps",help="the frames per second on the videos", type=int)
-#     parser.add_argument("-s", "--shape",help="[x,y] defines the size to which face or lip images will be resized - this is the input size of the net", type=list)
+#     parser.add_argument("-m", "--shapeModelPath",help="the path of folder containing
+        the models" , type=str)
+#     parser.add_argument("--debug",help="debug messages will be displayed",
+        action='store_true')
+#     parser.add_argument("-p", "--maxPauseLength",help="defines when to break a
+        positive sample in seconds" ,
+        type=float)
+#     parser.add_argument("-l", "--sampleLength",help="defines the minimum length of a
+        sample in seconds", type=float)
+#     parser.add_argument("-f", "--fps",help="the frames per second on the videos",
+        type=int)
+#     parser.add_argument("-s", "--shape",help="[x,y] defines the size to which face or
+        lip images will be resized -
+        this is the input size of the net", type=list)
 #
 #     args = parser.parse_args()
 #
@@ -50,16 +59,20 @@ if __name__ == "__main__":
 #     config = yaml.load(open(args.config))
 #     ### Config Values ###
 #     dataPath = args.dataPath if args.dataPath else config["dataPath"]
-#     shapeModelPath = args.shapeModelPath if args.shapeModelPath else config["shapeModelPath"]
+#     shapeModelPath = args.shapeModelPath if args.shapeModelPath else
+        config["shapeModelPath"]
 #     debug = args.debug if args.debug else config["debug"]
-#     maxPauseLength = args.maxPauseLength if args.maxPauseLength else config["maxPauseLength"]
+#     maxPauseLength = args.maxPauseLength if args.maxPauseLength else
+        config["maxPauseLength"]
 #     sampleLength = args.sampleLength if args.sampleLength else config["sampleLength"]
 #     shape = args.shape if args.shape else config["shape"]
 #     fps = args.fps if args.fps else config["fps"]
 #
 #
 #
-#     ds = DataSet(shapeModelPath, debug=debug, sampleLength = sampleLength, maxPauseLength=maxPauseLength, shape=shape, path=dataPath, fps = fps)
+#     ds = DataSet(shapeModelPath, debug=debug, sampleLength = sampleLength,
+        maxPauseLength=maxPauseLength, shape=shape,
+        path=dataPath, fps = fps)
 #     with open("Test.pickle", 'wb') as file:
 #         pickle.dump(ds, file)
 #
@@ -90,7 +103,8 @@ if __name__ == "__main__":
 #
 #
 # # #TESTVIDEO
-# # ffg = FaceFeatureGenerator(args.featureType, modelPath = args.modelPath, shape = (200,200))
+# # ffg = FaceFeatureGenerator(args.featureType, modelPath = args.modelPath,
+    shape = (200,200))
 # # firstImage = True
 # # for success, image in getFramesfromVideo(args.videoPath):
 # #     if success:
@@ -130,3 +144,4 @@ if __name__ == "__main__":
 # #     image = resizeAndZeroPadding(image, (200, 200))
 # #     # cv2.imshow("", image)
 # #     # cv2.waitKey(0)
+"""

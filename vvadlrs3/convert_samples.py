@@ -1,10 +1,12 @@
-'''A Script to convert samples into images'''
+"""A Script to convert samples into images"""
 # System imports
 import glob
 import os
 import argparse
-import random
+import glob
 import pickle
+import random
+
 from PIL import Image
 
 # 3rd Party imports
@@ -32,21 +34,24 @@ def convert_samples_to_images(input_path, output_path='generatedImages', num=20)
     if not os.path.exists(output_path):
         os.makedirs(output_path)
 
-    for filepath in random.choices(glob.glob(os.path.join(input_path, "*.pickle")), k=num):
+    for filepath in random.choices(glob.glob(os.path.join(input_path, "*.pickle")),
+                                   k=num):
         with open(filepath, 'rb') as pickle_file:
             sample = pickle.load(pickle_file)
             data = sample['data'][0]
             img = Image.fromarray(data, 'RGB')
             b, g, r = img.split()
             img = Image.merge("RGB", (r, g, b))
-            out_file_name = os.path.join(output_path, os.path.basename(filepath).strip('.pickle') + '.png')
+            out_file_name = os.path.join(output_path,                      '.png')
+            print(out_file_name)
             img.save(out_file_name)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("input_path", help='Path to the samples', type=str)
-    parser.add_argument("-o", "--output_path", help="path where you want to save the generated images.", type=str)
+    parser.add_argument("-o", "--output_path", help="path where you want to save the "
+                                                    "generated images.", type=str)
     parser.add_argument("-n", "--num", help="number of samples to convert", type=int)
 
     args = parser.parse_args()

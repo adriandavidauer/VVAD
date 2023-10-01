@@ -1,3 +1,5 @@
+''' Utils for downloads '''
+
 # System imports
 from pathlib import Path
 import urllib.request
