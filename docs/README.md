@@ -9,7 +9,7 @@ and stare detection for proactive approaches.
 vvadlrs3 depends on dlib which needs build tools to be installed over pip.
 [Here](https://www.pyimagesearch.com/2018/01/22/install-dlib-easy-complete-guide/) is described what is needed.
 
-For Ubuntu you just need to install the following:
+On Ubuntu, you need to install the following:
 
 ```bash
 sudo apt-get install build-essential cmake libopenblas-dev liblapack-dev libx11-dev libgtk-3-dev
