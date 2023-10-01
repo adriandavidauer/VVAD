@@ -32,9 +32,6 @@ class FaceTracker:
             init_pos (list of floats): A bounding box for the initial face. Relative or absolute pixel values in format (x, y, w, h)
             internal_rect_oversize (float): the percentage of which the initial
             relative (bool): relative or absolute pixel values
-
-        Returns:
-            Nothing
         """
         if type(init_pos) == dlib.rectangle or type(init_pos) == dlib.drectangle:
             self.init_pos = (init_pos.tl_corner().x, init_pos.tl_corner(
@@ -521,6 +518,6 @@ def visualize_samples(folder):
     # put whole path
     random.shuffle(sample_files)
     for sampleFile in sample_files:
-        sample = FeatureizedSample()
+        sample = FeaturedSample()
         sample.load(sampleFile)
         sample.visualize()

@@ -45,7 +45,6 @@ from vvadlrs3.utils.timeUtils import *
 
 
 def split_dataset(data_path, ratio_test, random_seed=42):
-def splitDataSet(dataPath, ratioTest, randomSeed=42):
     """ Helper function that returns two lists of pathes to samples - one for training an one for testing.
 
     Args:
@@ -672,7 +671,7 @@ class Models:
 
     @staticmethod
     def build_baseline_model(base_model_name, **kwargs):
-
+        """
         Args:
             base_model_name (str): Name of the model for the baseline
 
@@ -704,7 +703,7 @@ class Models:
     @staticmethod
     def train_baseline_model(model, train, test, epochs=75, batch_size=32, num_steps=1,
                              one_hot=False, image_size=None):
-
+        """"
         Args:
             baseline_model (model): Baseline model from function "buildBaselineModel"
             train (numpy array?): Training data set for baseline model
@@ -1073,7 +1072,6 @@ def check_data_gen(data_gen, var):
 
 
 def test_model(model_path, test_set_path, save_to=None):
-def testModel(model_path, test_set_path, saveTo=None):
     """ Test a specific model with the corresponding test set.
     Maybe even plots every sample - numbers will probably don't correspond to numbers
     in human Accuracy Test
@@ -1128,7 +1126,7 @@ def testModel(model_path, test_set_path, saveTo=None):
         sample.load(samplePath)
         data = sample.get_data(normalize=normalize,
                                image_size=image_size, num_steps=num_steps)
-        # v = FeatureizedSample()
+        # v = FeaturedSample()
         # v.data = data
         # v.featureType = "faceImage"
         # v.visualize(saveTo=str(i) + '.gif')   #This seems to be okay.

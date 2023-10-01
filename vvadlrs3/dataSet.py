@@ -757,7 +757,7 @@ class DataSet:
                 # sampleConfigList[1][1][0], sampleConfigList[1][1][1]))
                 # print("Counter: {}".format(count))
                 if len(frames) == self.k:
-                    sample = FeatureizedSample()
+                    sample = FeaturedSample()
                     sample.generate_sample_from_fixed_frames(
                         self.k, frames, sample_config_list[0][1][2:],
                         sample_config_list[0][0],
@@ -949,7 +949,7 @@ def transform_to_hdf5(path, hdf5_path, validation_split=0.2, testing=False):
     validation_pickles = all_pickles[:int(len(all_pickles) * validation_split)]
 
     train_pickles = all_pickles[int(len(all_pickles) * validation_split):]
-    s = FeatureizedSample()
+    s = FeaturedSample()
     s.load(all_pickles[0])
     train_x_shape = (len(train_pickles), *s.get_data().shape)
     train_y_shape = (len(train_pickles),)
@@ -994,7 +994,7 @@ def transform_to_hdf5(path, hdf5_path, validation_split=0.2, testing=False):
         print()
 
 
-def transformPointsToNumpy(points):
+def transform_points_to_numpy(points):
     # TODO: this could be faster if we are not using a list at all.
     #  array size is known -> just fill an array
     """
@@ -1027,7 +1027,7 @@ def transform_to_features(path, shape_model_path=None, shape=None):
     """
     ffg = FaceFeatureGenerator(
         "allwfaceImage", shape_model_path=shape_model_path, shape=shape)
-    input_sample = FeatureizedSample()
+    input_sample = FeaturedSample()
     input_sample.load(path)
     # # get all settings
 
@@ -1044,19 +1044,19 @@ def transform_to_features(path, shape_model_path=None, shape=None):
         face_features_list.append(face_features)
         lip_features_list.append(lip_features)
 
-    lip_image_sample = FeatureizedSample()
+    lip_image_sample = FeaturedSample()
     lip_image_sample.data = np.array(lip_images)
     lip_image_sample.k = len(lip_images)
     lip_image_sample.label = input_sample.get_label()
     lip_image_sample.featureType = "lipImage"
 
-    face_features_sample = FeatureizedSample()
+    face_features_sample = FeaturedSample()
     face_features_sample.data = np.array(face_features_list)
     face_features_sample.k = len(face_features_list)
     face_features_sample.label = input_sample.get_label()
     face_features_sample.featureType = "faceFeatures"
 
-    lip_features_sample = FeatureizedSample()
+    lip_features_sample = FeaturedSample()
     lip_features_sample.data = np.array(lip_features_list)
     lip_features_sample.k = len(lip_features_list)
     lip_features_sample.label = input_sample.get_label()
@@ -1121,7 +1121,7 @@ def make_test_set(path, names_path):
             print('NAMEPATH not existing: {}'.format(name_path))
         # if len(namePath) == 2:
         #     for sample in namePath:
-        #         s = FeatureizedSample()
+        #         s = FeaturedSample()
         #         s.load(sample)
         #         print("FEATURETYPE: {}".format(s.featureType))
         #         print("DTYPE: {}".format(s.getData().dtype))

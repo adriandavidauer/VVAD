@@ -95,7 +95,7 @@ if __name__ == "__main__":
 #     # parser.add_argument("featureType", help='type of the features' , type=str)
 #     #
 #     # args = parser.parse_args()
-# # Test FeatureizedSample
+# # Test FeaturedSample
 #
 #
 #

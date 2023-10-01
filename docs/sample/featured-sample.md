@@ -6,4 +6,4 @@
 
 ---
 
-::: vvadlrs3.sample.visualizeSamples
+::: vvadlrs3.sample.visualize_samples

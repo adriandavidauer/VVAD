@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Get Cover did not run through">
+    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Resolve merge conflicts (&gt; develop_phase1)">
+      <change beforePath="$PROJECT_DIR$/.idea/VVAD.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VVAD.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/dataset/additional-functions-dataset.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/dataset/additional-functions-dataset.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/release-notes.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/release-notes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sample/featured-sample.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sample/featured-sample.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/wildvvad-models.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/wildvvad-models.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/liveDemo/anotateVideo.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/liveDemo/anotateVideo.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/liveDemo/liveCam.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/liveDemo/liveCam.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mkdocs.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mkdocs.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/Experiments .ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/Experiments .ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/Experiments with MNIST and dataGenerators.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/Experiments with MNIST and dataGenerators.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/VisualizeHumanAccuracy.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/VisualizeHumanAccuracy.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/VisualizeSamples.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/VisualizeSamples.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/dataSet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vvadlrs3/sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/sample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/kerasUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/kerasUtils.py" afterDir="false" />
     </list>
     <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,19 +48,11 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2SL3iu3HgYuEJwyawIfHNwvfZmZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/VVAD/test/unit-tests/data-and-models/testData/sample_pickles&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;
-  }
-}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\VVAD\test\unit-tests\data-and-models\testData\sample_pickles" />
@@ -154,13 +162,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688912166066</updated>
-    </task>
-    <task id="LOCAL-00021" summary="update requirements.txt">
-      <created>1690191960115</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1690191960115</updated>
     </task>
     <task id="LOCAL-00022" summary="update requirements.txt">
       <created>1690192172216</created>
@@ -498,7 +499,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693343903667</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Resolve merge conflicts (&gt; develop_phase1)">
+      <created>1696190414605</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1696190414606</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -511,9 +519,9 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Remove lint dependency from test (not necessary)" />
     <MESSAGE value="Fix errors according to ruff linting" />
     <MESSAGE value="ruff lint in verbose mode" />
     <MESSAGE value="import Pathlib got lost" />
@@ -538,7 +546,8 @@
     <MESSAGE value="Try again" />
     <MESSAGE value="Had unexpected successes. So remove the expected failure" />
     <MESSAGE value="Get Cover did not run through" />
-    <option name="LAST_COMMIT_MESSAGE" value="Get Cover did not run through" />
+    <MESSAGE value="Resolve merge conflicts (&gt; develop_phase1)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Resolve merge conflicts (&gt; develop_phase1)" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>
