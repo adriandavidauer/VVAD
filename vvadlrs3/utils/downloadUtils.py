@@ -1,12 +1,7 @@
 ''' Utils for downloads '''
 
 # System imports
-from pathlib import Path
 import urllib.request
-import bz2
-import errno
-import os
-
 
 # 3rd Party imports
 from tqdm import tqdm
@@ -35,7 +30,8 @@ def download_url(url, output_path):
 
     Args:
         url (str): URL to video to download
-        output_path (str): Path to directory in which the downloaded file should be saved
+        output_path (str): Path to directory in which the downloaded file should be
+            saved
     """
     with DownloadProgressBar(unit='B', unit_scale=True,
                              miniters=1, desc=url.split('/')[-1]) as t:

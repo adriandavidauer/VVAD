@@ -3,13 +3,9 @@
 name: Test Python Project
 
 on:
-  push:
-    branches:
-      - 02_establish-py-unit-tests
   pull_request:
     branches:
       - main
-      - develop_phase1
 
 jobs:
   build_and_test:

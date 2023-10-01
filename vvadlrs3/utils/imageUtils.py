@@ -77,14 +77,16 @@ def resize_and_zero_padding(image, shape):
     multipliedSize = (int(round(w * faktor)), int(round(h * faktor)))
 
     image = cv2.resize(image, multipliedSize)
-    # cant be exactly the same ratio because resize can only resize to full pixels - take big images(LAW of big numbers will take care)
+    # cant be exactly the same ratio because resize can only resize to full pixels -
+    # take big images(LAW of big numbers will take care)
 
     widthDelta = abs(image.shape[1] - shape[0])
     heightDelta = abs(image.shape[0] - shape[1])
     image = cv2.copyMakeBorder(image, 0, heightDelta, 0, widthDelta,
                                cv2.BORDER_CONSTANT, value=[0, 0, 0])
     assert min([heightDelta,
-                widthDelta]) == 0, "Padding must only be aplied on one side. widthDelta: {}, heightDelta: {}".format(
+                widthDelta]) == 0, "Padding must only be aplied on one side. " \
+                                   "widthDelta: {}, heightDelta: {}".format(
         widthDelta, heightDelta)
     assert image.shape[0] == shape[1], "Desired height was {} transformed to {}".format(
         shape[1], image.shape[0])

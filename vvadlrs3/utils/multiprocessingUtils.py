@@ -29,7 +29,7 @@ def producer(dataset, get_samples_params):
 
     """
 
-    dataset.debugPrint("started Producer for {}".format(getSamplesParams))
+    dataset.debugPrint("started Producer for {}".format(get_samples_params))
     for sample in dataset.getSamples(*get_samples_params):
         # Put Samples
         if sample.label:

@@ -3,7 +3,6 @@ utils needed for keras.
 """
 # System imports
 import multiprocessing
-import os
 
 # 3rd party imports
 import h5py
@@ -45,12 +44,15 @@ from vvadlrs3.utils.timeUtils import *
 
 
 def split_dataset(data_path, ratio_test, random_seed=42):
-    """ Helper function that returns two lists of pathes to samples - one for training an one for testing.
+    """ Helper function that returns two lists of pathes to samples - one for training 
+    an one for testing.
 
     Args:
-        dataPath (str): Path to the folder containing two folders - one for negative and one for positive samples
-        ratioTest (float): The ratio which should be reserved for the test set (between 0 and 1)
-        randomSeed (int): random seed for reproducible results (default: 42)
+        data_path (str): Path to the folder containing two folders - one for negative 
+            and one for positive samples
+        ratio_test (float): The ratio which should be reserved for the test set 
+            (between 0 and 1)
+        random_seed (int): random seed for reproducible results (default: 42)
 
     Returns:
         trainingData (numpy array): array of data for training
@@ -391,13 +393,13 @@ class Models:
             dense_dims (int): number of dense dimensions for the lstm model
 
         Returns:
-            localModel (Sequential()): Returns created LSTM model
+            local_model (Sequential()): Returns created LSTM model
             modelName (str): Model name with all layer and dimension information
         """
 
-        localModel = Sequential()
+        local_model = Sequential()
         # TODO: handle input_shape
-        localModel.add(TimeDistributed(
+        local_model.add(TimeDistributed(
             Flatten(input_shape=(input_shape[-2], input_shape[-1]))))
         if num_lstm_layers > 1:
             for i in range(num_lstm_layers - 1):
@@ -406,22 +408,22 @@ class Models:
                 #     return_sequences=True))
                 #     model.add(BatchNormalization())
                 # else:
-                localModel.add(LSTM(lstm_dims, return_sequences=True))
-                localModel.add(BatchNormalization())
+                local_model.add(LSTM(lstm_dims, return_sequences=True))
+                local_model.add(BatchNormalization())
 
         # if model.layers:
-        localModel.add(LSTM(lstm_dims))
-        localModel.add(BatchNormalization())
+        local_model.add(LSTM(lstm_dims))
+        local_model.add(BatchNormalization())
         # else:
         #     model.add(LSTM(lstm_dims,input_shape=input_shape))
         #     model.add(BatchNormalization())
 
         # Add some more dense here
         for i in range(num_dense_layers):
-            localModel.add(Dense(dense_dims, activation='relu'))
+            local_model.add(Dense(dense_dims, activation='relu'))
 
-        localModel.add(Dense(1, activation="sigmoid"))
-        localModel.compile(loss="binary_crossentropy",
+        local_model.add(Dense(1, activation="sigmoid"))
+        local_model.compile(loss="binary_crossentropy",
                            optimizer='sgd',
                            metrics=["accuracy"])
 
@@ -446,27 +448,27 @@ class Models:
 
         # TODO:Maybe order filters like in VGGFace
 
-        localModel = Sequential()
+        local_model = Sequential()
         if num_layers > 1:
             for i in range(num_layers - 1):
-                localModel.add(ConvLSTM2D(return_sequences=True, filters=filters,
+                local_model.add(ConvLSTM2D(return_sequences=True, filters=filters,
                                           kernel_size=kernel_size,
                                           input_shape=input_shape, **kwargs))  # True
-                localModel.add(BatchNormalization())
-            localModel.add(ConvLSTM2D(return_sequences=False, filters=filters,
+                local_model.add(BatchNormalization())
+            local_model.add(ConvLSTM2D(return_sequences=False, filters=filters,
                                       kernel_size=kernel_size, **kwargs))  # True
-            localModel.add(BatchNormalization())
+            local_model.add(BatchNormalization())
         else:
-            localModel.add(ConvLSTM2D(return_sequences=False, filters=filters,
+            local_model.add(ConvLSTM2D(return_sequences=False, filters=filters,
                                       kernel_size=kernel_size, input_shape=input_shape,
                                       **kwargs))  # True
-            localModel.add(BatchNormalization())
+            local_model.add(BatchNormalization())
 
         # TODO: add AveragePooling, applied?
-        localModel.add(GlobalAveragePooling2D())
+        local_model.add(GlobalAveragePooling2D())
 
         for i in range(hidden_dense_layers):
-            localModel.add(Dense(hidden_dense_dim, activation='relu'))
+            local_model.add(Dense(hidden_dense_dim, activation='relu'))
 
         model.add(Dense(1, activation="sigmoid"))
         model.compile(loss="binary_crossentropy",
@@ -486,8 +488,8 @@ class Models:
             num_classes (): ??
         """
 
-        localModel = Sequential()
-        chanDim = -1
+        local_model = Sequential()
+        chan_dim = -1
         # if we are using "channels first", update the input shape
         # and channels dimension
         if k.image_data_format() == "channels_first":
@@ -542,7 +544,7 @@ class Models:
         model.add(lstm)
         model.add(output)
 
-        return localModel
+        return local_model
 
     @staticmethod
     def build_time_distributed(base_model_name, num_lstm_layers=1, lstm_dims=32,
@@ -561,10 +563,10 @@ class Models:
             base_model_weights (tuple): loading weights into selected model
 
         Returns:
-            localModel (model): Created model
+            local_model (model): Created model
             modelName (str): Information about created model
         """
-        localModel = Sequential()
+        local_model = Sequential()
         if base_model_name.upper() == "MOBILENET":
             _base_model = MobileNet(
                 weights=None, include_top=False, input_shape=kwargs['input_shape'][1:])
@@ -591,23 +593,23 @@ class Models:
             base_model_name = "VGGFace"
         flatten = Flatten()(_base_model.output)
         base_model = Model(_base_model.input, flatten)
-        localModel.add(TimeDistributed(
+        local_model.add(TimeDistributed(
             base_model, input_shape=kwargs['input_shape']))
 
         if num_lstm_layers > 1:
             for i in range(num_lstm_layers - 1):
-                localModel.add(LSTM(lstm_dims, return_sequences=True))
-                localModel.add(BatchNormalization())
+                local_model.add(LSTM(lstm_dims, return_sequences=True))
+                local_model.add(BatchNormalization())
 
-        localModel.add(LSTM(lstm_dims))
-        localModel.add(BatchNormalization())
+        local_model.add(LSTM(lstm_dims))
+        local_model.add(BatchNormalization())
 
         # Add some more dense here
         for i in range(num_dense_layers):
-            localModel.add(Dense(dense_dims, activation='relu'))
+            local_model.add(Dense(dense_dims, activation='relu'))
 
-        localModel.add(Dense(1, activation="sigmoid"))
-        localModel.compile(loss="binary_crossentropy",
+        local_model.add(Dense(1, activation="sigmoid"))
+        local_model.compile(loss="binary_crossentropy",
                            optimizer='sgd',
                            metrics=["accuracy"])
 
@@ -631,7 +633,7 @@ class Models:
             dense_dims (int): ??, default = 512
 
         Returns:
-            localModel (model): Created model
+            local_model (model): Created model
             modelName (str): Information about created model
 
         """
@@ -661,8 +663,8 @@ class Models:
 
         x = Dense(1, activation="sigmoid")(x)
 
-        localModel = Model(inputs=input_layer, outputs=x)
-        localModel.compile(loss="binary_crossentropy",
+        local_model = Model(inputs=input_layer, outputs=x)
+        local_model.compile(loss="binary_crossentropy",
                            optimizer='rmsprop',
                            metrics=["accuracy"])
         model_name = 'TimeDistributedMobileNet_' + str(num_lstm_layers) + '_' + str(
@@ -676,7 +678,7 @@ class Models:
             base_model_name (str): Name of the model for the baseline
 
         Returns:
-            localModel (model): Created baseline model
+            local_model (model): Created baseline model
             modelName (str): Information about created model
         """
         if base_model_name.upper() == "MOBILENET":
@@ -701,8 +703,8 @@ class Models:
         return model, model_name
 
     @staticmethod
-    def train_baseline_model(model, train, test, epochs=75, batch_size=32, num_steps=1,
-                             one_hot=False, image_size=None):
+    def train_baseline_model(baseline_model, train, test, epochs=75, batch_size=32,
+                             num_steps=1, one_hot=False, image_size=None):
         """"
         Args:
             baseline_model (model): Baseline model from function "buildBaselineModel"
@@ -712,7 +714,7 @@ class Models:
             batch_size (int): Amount of batches, default = 32
             num_steps (int): Number of steps, default = 1
             one_hot(??): Description, default = None
-            imageSize(??): Size of the images in the data set, default = None
+            image_size(??): Size of the images in the data set, default = None
 
         Returns:
              history (??): Check whats provided
@@ -981,8 +983,8 @@ def hdf5_samples_to_memory(train_path, val_path, train_samples=None,
     """
     kwargs_batch_size_1 = dict(kwargs)
     kwargs_batch_size_1['batch_size'] = 1
-    t = Hdf5DataGenerator(train_path, **kwargs_batch_size_1)
-    v = Hdf5DataGenerator(val_path, **kwargs_batch_size_1)
+    t = hdf5DataGenerator(train_path, **kwargs_batch_size_1)
+    v = hdf5DataGenerator(val_path, **kwargs_batch_size_1)
 
     if train_samples:
         train_sample_list = range(train_samples)
@@ -1079,24 +1081,25 @@ def test_model(model_path, test_set_path, save_to=None):
     Args:
         model_path (str): path to the model to test
         test_set_path (str): path to the corresponding test set
-        saveTo (str): path to save the plot to
+        save_to (str): path to save the plot to
 
     Returns:
         acc (float): Accuracy of the model
         MAE std (tuple of floats): Mean Absolute Error with standard deviation
         MSE std (tuple of floats): Mean Squared Error with standard deviation
-        wrong_labels (list of String): list of samples that were wrong classifies by the model
+        wrong_labels (list of String): list of samples that were wrong classifies by 
+            the model
     """
-    correctClassifications = []
-    wrongClassifications = []
+    # correct_classification = []
+    wrong_classification = []
     percentages = {}
-    localModel = load_model(model_path)
+    local_model = load_model(model_path)
 
     # negFolder = os.path.join(test_set_path, "negativeSamples")
     # posFolder = os.path.join(test_set_path, 'positiveSamples')
     normalize = False
-    imageSize = None
-    num_steps = localModel.input_shape[1]
+    image_size = None
+    num_steps = local_model.input_shape[1]
 
     if 'Features' in test_set_path:
         # FEATURES NEED TO BE NORMALIZED!!!
@@ -1106,9 +1109,9 @@ def test_model(model_path, test_set_path, save_to=None):
         if 'lip' in test_set_path:
             # ToDo: check that bug
             # Bug with non-quadratic image sizes :/
-            imageSize = None
+            image_size = None
         else:
-            imageSize = localModel.input_shape[-3:-1]
+            image_size = local_model.input_shape[-3:-1]
         # imageSize = (model.input_shape[-2], model.input_shape[-3])
 
     print('num_steps: {}'.format(num_steps))
@@ -1119,7 +1122,7 @@ def test_model(model_path, test_set_path, save_to=None):
     lolims = []
     uplims = []
     y_percents = []
-    xList = []
+    x_list = []
     for i, samplePath in enumerate(
             glob.glob(os.path.join(os.path.join(test_set_path, '**'), '*.pickle'))):
         sample = FeaturedSample()
@@ -1131,7 +1134,8 @@ def test_model(model_path, test_set_path, save_to=None):
         # v.featureType = "faceImage"
         # v.visualize(saveTo=str(i) + '.gif')   #This seems to be okay.
         # make it a list of samples with only that one sample...
-        # TODO: dont need to create a new array y_percent = model.predict([data])[0][0] should work as well
+        # TODO: don't need to create a new array y_percent = model.predict([data])[0][0]
+        #  should work as well
         # TODO: check on code
         x = np.empty((1, *data.shape))
         x[0] = data
@@ -1146,7 +1150,7 @@ def test_model(model_path, test_set_path, save_to=None):
         y = np.rint(y_percent)
         x_list.append(samplePath.split('/')[-1].split('.')[0])
         if y != label:
-            wrongClassifications.append(samplePath)
+            wrong_classification.append(samplePath)
 
     # print("Predictions: {}".format(y_percents))
     # plot the samples with the error between label and prediction

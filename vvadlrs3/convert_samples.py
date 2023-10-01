@@ -1,9 +1,8 @@
 """A Script to convert samples into images"""
-# System imports
-import glob
-import os
 import argparse
 import glob
+# System imports
+import os
 import pickle
 import random
 
@@ -21,7 +20,8 @@ __copyright__ = 'Copyright (c)2017, Blackout Technologies'
 
 def convert_samples_to_images(input_path, output_path='generatedImages', num=20):
     """
-    Takes a path to a folder of samples and converts a given number of randomly picked samples(pickle files)
+    Takes a path to a folder of samples and converts a given number of randomly picked
+    samples(pickle files)
     and converts them to png images and saves them in the given output path
 
     :param input_path: Path to the samples

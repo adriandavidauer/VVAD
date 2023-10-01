@@ -7,11 +7,8 @@ import os
 import pickle
 # from collections import deque
 import random
-import time
-
 
 # 3rd party imports
-import dlib
 import matplotlib.pyplot as plt
 from matplotlib import animation, rc
 
@@ -29,7 +26,8 @@ class FaceTracker:
         """ initialize the tracker with an initial position of the face in the Image
 
         Args:
-            init_pos (list of floats): A bounding box for the initial face. Relative or absolute pixel values in format (x, y, w, h)
+            init_pos (list of floats): A bounding box for the initial face. Relative or
+                absolute pixel values in format (x, y, w, h)
             internal_rect_oversize (float): the percentage of which the initial
             relative (bool): relative or absolute pixel values
         """
@@ -112,8 +110,10 @@ class FaceFeatureGenerator:
         init for the specific featureType
 
         Args:
-            featureType (String ["faceImage", "lipImage", "faceFeatures", "lipFeatures"]): type of the feature map that should be returned by getFeatures()
-            shapeModelPath (str): path to the model for the shape_predictor
+            feature_type (String ["faceImage", "lipImage", "faceFeatures",
+                "lipFeatures"]): type of the feature map that should be returned by
+                getFeatures()
+            shape_model_path (str): path to the model for the shape_predictor
 
         Returns:
             Nothing
@@ -122,15 +122,14 @@ class FaceFeatureGenerator:
             "faceImage", "lipImage", "faceFeatures", "lipFeatures", 'all',
             "allwfaceImage"]
         assert feature_type in self.supportedFeatureTypes, \
-            "unsupported featureType {}. Supported featureTypes are {}".\
+            "unsupported featureType {}. Supported featureTypes are {}". \
             format(feature_type, self.supportedFeatureTypes)
         if feature_type == "faceImage":
             assert shape, "For featureType {} a shape must be set".format(
                 feature_type)
         else:
             assert shape_model_path, "For featureType {} a shapeModelPath " \
-                                     "must be set".format(
-                feature_type)
+                                     "must be set".format(feature_type)
             if feature_type == "lipImage":
                 assert shape, "For featureType {} a shape must be set".format(
                     feature_type)
@@ -146,7 +145,8 @@ class FaceFeatureGenerator:
             image (image): openCV image in RGB format
 
         Returns:
-            feature (depends): Returns feature map depending on given feature Type (faceImage, lipImage, faceFeature, lipFeatures, all)
+            feature (depends): Returns feature map depending on given feature Type
+                (faceImage, lipImage, faceFeature, lipFeatures, all)
         """
         if self.featureType == "faceImage":
             return resize_and_zero_padding(image, self.shape)
@@ -232,9 +232,11 @@ class FeaturedSample:
             k (int): defines the temporal sliding window in frames
             data (List of numpy arrays): A list of featureVectors for this sample
             label (bool): positive or negative Label
-            type (String out of ["faceImages", "mouthImages", "faceFeatures", "mouthFeatures"]): the type of this sample
+            type (String out of ["faceImages", "mouthImages", "faceFeatures",
+                "mouthFeatures"]): the type of this sample
             for the specific approach
-            shape (Tuple of ints): the shape to which an Image should be scaled and zeroPadded
+            shape (Tuple of ints): the shape to which an Image should be scaled
+                and zeroPadded
         """
         self.data = []
         self.label = None
@@ -343,7 +345,9 @@ class FeaturedSample:
         """
         return int(self.label)
 
-    def generate_sample_from_fixed_frames(self, k, frames, init_pos, label,                                      relative=True):
+    def generate_sample_from_fixed_frames(self, k, frames, init_pos, label,
+                                          feature_type, shape, shape_model_path,
+                                          relative=True):
         """
         Generates Sample from fixed frames without return value
 
@@ -352,9 +356,12 @@ class FeaturedSample:
             frames ():
             init_pos ():
             label (bool): positive or negative Label
-            featureType (str): type of the feature map that should be returned by getFeatures()
-            shape (Tuple of ints): the shape to which an Image should be scaled and zeroPadded
-            shapeModelPath (str): path to the model for the shape_predictor
+
+            feature_type (str): type of the feature map that should be returned by
+                getFeatures()
+            shape (Tuple of ints): the shape to which an Image should be scaled and
+                zeroPadded
+            shape_model_path (str): path to the model for the shape_predictor
             relative (bool): ??
         """
         # assert len frames to k
@@ -504,7 +511,8 @@ def visualize_samples(folder):
     """ visualize positive and negative samples from a folder.
 
     Args:
-        folder (str): Path to folder where negative and positive samples are saved (positiveSamples/negativeSamples)
+        folder (str): Path to folder where negative and positive samples are saved
+            (positiveSamples/negativeSamples)
     """
     positive_folder = os.path.join(folder, "positiveSamples")
     negative_folder = os.path.join(folder, "negativeSamples")

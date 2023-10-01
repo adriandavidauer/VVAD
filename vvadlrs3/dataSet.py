@@ -1,25 +1,14 @@
 """
 This Module creates a dataset for the purpose of the visual speech detection system.
 """
-# System imports
-import os
-import pathlib
-# System imports
-import sys
-from importlib import import_module
 # from collections import deque
+import argparse
 import pathlib
+# System imports
+from importlib import import_module
+from multiprocessing import Process
 from pathlib import Path, PurePath
 
-import dlib
-import h5py
-import yaml
-from ffmpy import FFmpeg
-from file_read_backwards import FileReadBackwards
-# 3rd party imports
-from pytube import YouTube
-
-from vvadlrs3.sample import *
 import h5py
 import yaml
 from file_read_backwards import FileReadBackwards
@@ -27,10 +16,11 @@ from file_read_backwards import FileReadBackwards
 from pytube import YouTube
 
 # local imports
-# from vvadlrs3.utils.multiprocessingUtils import *
 from vvadlrs3.sample import *
 from vvadlrs3.utils.multiprocessingUtils import *
 from vvadlrs3.utils.timeUtils import *
+
+# 3rd party imports
 
 # end file header
 __author__ = "Adrian Lubitz"
@@ -38,8 +28,7 @@ __copyright__ = "Copyright (c)2017, Blackout Technologies"
 
 
 class WrongPathException(Exception):
-    "Data folder is probably not mounted. Or you gave the wrong path."
-    # print("Data folder is probably not mounted. Or you gave the wrong path.")
+    'Data folder is probably not mounted. Or you gave the wrong path.'
     pass
 
 
@@ -168,22 +157,27 @@ class DataSet:
         folders.sort()
         for folder in folders:
             # Video file is the only not txt file
-            currentFolder = os.path.abspath(os.path.join(path, folder))
-            for current_sample in self.get_positive_samples(currentFolder, **kwargs):
+            current_folder = os.path.abspath(os.path.join(path, folder))
+            for current_sample in self.get_positive_samples(current_folder, **kwargs):
                 yield current_sample
             self.debug_print("[getAllPSamples] Folder {} done".format(folder))
 
     # TODO add option if you want to use whats there or download if necessary
     def get_all_samples(self, feature_type, path=None, relative=True, dry_run=False,
-                        showStatus=False, **kwargs):
+                        show_status=False, **kwargs):
+        # ToDO add feature types
         """
         making all the samples from this folder.
 
         Args:
+            feature_type (str): MISSING
             path (str): Path to the DataSet folder containing folders, which contain
-            txt files. (For Example the pretrain folder)
+                txt files. (For Example the pretrain folder)
+            relative(bool): MISSING
+            dry_run(bool): MISSING
+            show_status(bool): MISSING
         """
-        if showStatus:
+        if show_status:
             ts = time.perf_counter()
             self.debug_print("[getAllPSamples] ###### Status:   0% done")
         if not path:
@@ -195,12 +189,12 @@ class DataSet:
             current_folder = os.path.abspath(os.path.join(path, folder))
             for single_sample in self.get_samples(current_folder,
                                                   feature_type=feature_type,
-                                                  # relative=relative,
+                                                  relative=relative,
                                                   samples_shape=(200, 200),
                                                   dry_run=dry_run):
                 yield single_sample
             self.debug_print("[getAllPSamples] Folder {} done".format(folder))
-            if showStatus:
+            if show_status:
                 self.debug_print("[getAllPSamples] ###### Status:   {}% done".format(
                     float(i) / len(folders) * 100))
                 self.debug_print("[getAllPSamples] ### Time elapsed: {} ms".format(
@@ -243,12 +237,12 @@ class DataSet:
             self.download_lrs3_sample_from_youtube(current_folder)
 
     @staticmethod
-    def get_txt_files(path):
+    def get_txt_files(current_folder):
         """
         Get all the txt files with a generator from the path
 
         Args:
-            path (str): Path to txt files from a video
+            current_folder (str): Path to txt files from a video
         """
         try:
             files = list(os.walk(current_folder, followlinks=True))[0][2]
@@ -266,14 +260,14 @@ class DataSet:
 
         Args:
             path (str): Path to a folder containing the txt files
-            dryRun (bool): With a dry run you will not really return samples, just a
+            dry_run (bool): With a dry run you will not really return samples, just a
             list of tuples with start and end time of the positive samples
 
         Returns:
             generator
         """
         try:
-            videoPath = self.getVideoPathFromFolder(path)
+            video_path = self.get_video_path_from_folder(path)
         except FileNotFoundError as e:
             self.debug_print(e)
             return []  # No Samples...sorry :/
@@ -285,8 +279,8 @@ class DataSet:
         frame_list = []
         print("framelist: ", frame_list)
         # for every txt file
-        for textFile in self.get_txt_files(folder):
-            frame_list.extend(self.get_sample_configs_for_pos_samples(textFile))
+        for text_file in self.get_txt_files(folder):
+            frame_list.extend(self.get_sample_configs_for_pos_samples(text_file))
             # firstFrameLine = ""
             # lastFrameLine = ""
             # textFile = open(textFile)
@@ -315,53 +309,54 @@ class DataSet:
             vid_fps = vid_obj.get(cv2.CAP_PROP_FPS)
         count = 0
         # sampleList = []
-        for sampleConfig in frame_list:
+        for sample_config in frame_list:
             if not self.check_sample_length(
-                    self.get_second_from_frame(sampleConfig[0]),
-                    self.get_second_from_frame(sampleConfig[1])):
+                    self.get_second_from_frame(sample_config[0]),
+                    self.get_second_from_frame(sample_config[1])):
                 continue
             if not dry_run:
                 data = []
                 label = True
-                config = {"x": sampleConfig[2], "y": sampleConfig[3],
-                          "w": sampleConfig[4], "h": sampleConfig[5], "fps": vid_fps}
+                configuration = {"x": sample_config[2], "y": sample_config[3],
+                                 "w": sample_config[4], "h": sample_config[5],
+                                 "fps": vid_fps}
                 # grap frames from start to endframe
                 while True:
                     success, image = vid_obj.read()
                     if not success:
                         raise Exception(
                             "Couldnt grap frame of file {}".format(video_path))
-                    if sampleConfig[0] <= count <= sampleConfig[1]:
+                    if sample_config[0] <= count <= sample_config[1]:
                         data.append(image)
                     count += 1
-                    if count > sampleConfig[1]:
+                    if count > sample_config[1]:
                         break
-                yield Sample(data, label, config, self.shapeModelPath)
+                yield Sample(data, label, configuration, self.shapeModelPath)
             else:
-                yield self.get_second_from_frame(sampleConfig[0]), \
-                      self.get_second_from_frame(sampleConfig[1])
+                yield self.get_second_from_frame(sample_config[0]), \
+                      self.get_second_from_frame(sample_config[1])
 
-    def convert_fps(self, path, fps=25):
+    def convert_fps(self, path, fps_in=25):
         """
         converting video in path to fps
 
         Args:
             path (str): Path to a folder containing the txt files
-            fps (float): frames per second
+            fps_in (float): frames per second
         """
         video_path = self.get_video_path_from_folder(path)
 
         vid_obj = cv2.VideoCapture(str(video_path))
         vid_fps = vid_obj.get(cv2.CAP_PROP_FPS)
-        if vid_fps != fps:
+        if vid_fps != fps_in:
             # change the frameRate to 25, because the data set is expecting that!
             # ffmpeg -y -r 30 -i seeing_noaudio.mp4 -r 24 seeing.mp4
             old_video_path = video_path
             video_path = pathlib.Path(os.path.join(
                 old_video_path.parents[0], old_video_path.stem + ".converted" +
-                                           old_video_path.suffix))
+                old_video_path.suffix))
 
-            command = f"ffmpeg -i {old_video_path} -filter:v fps:{fps} {video_path}"
+            command = f"ffmpeg -i {old_video_path} -filter:v fps:{fps_in} {video_path}"
 
             print(command)
             os.system(command)
@@ -369,8 +364,8 @@ class DataSet:
             # print(changeFps.cmd)
             # stdout, stderr = change_fps.run()
             # Remove the old!
-            #ToDo Remove old video path
-            #os.remove(old_video_path)
+            # ToDo Remove old video path
+            # os.remove(old_video_path)
             self.debug_print("Changed FPS of {} to {}".format(video_path, fps))
         else:
             self.debug_print("{} has already the correct fps".format(video_path))
@@ -418,14 +413,15 @@ class DataSet:
 
         Args:
             path (str): Path to the DataSet folder containing folders, which contain
-            txt files. (For Example the pretrain folder)
+                txt files. (For Example the pretrain folder)
+            save_to (str): Path to save the result's image to
         """
         if not path:
             path = self.path
         folders = list(os.walk(path, followlinks=True))[0][1]
         folders.sort()
         num_total_samples = 0
-        pauses = []
+        pause_list = []
         for folder in folders:
             current_folder = os.path.abspath(os.path.join(path, folder))
             # for every txt file
@@ -434,13 +430,13 @@ class DataSet:
                 video_pauses = self.get_pause_length(textFile)
                 # if videoPauses:#
                 #     print("VideoPauses: {}".format(videoPauses))
-                pauses.extend(video_pauses)
+                pause_list.extend(video_pauses)
             self.debug_print("[analyzeNegatives] Folder {} done".format(folder))
         # TODO: norm to the number of analyzedSamples to see how many negative Samples
         #  can be constructed out of how many positive samples
 
         hist_data = [x[1] - x[0]
-                     for x in pauses if self.check_sample_length(x[0], x[1])]
+                     for x in pause_list if self.check_sample_length(x[0], x[1])]
         self.debug_print(
             "Number of extracted negative samples:  {}".format(len(hist_data)))
         # bins=15)#np.arange(1.0, 19.0))
@@ -455,7 +451,7 @@ class DataSet:
         else:
             plt.show()
         # return sorted(pauses, key = lambda x: x[0] - x[1])
-        return pauses
+        return pause_list
 
     def analyze_positives(self, path, save_to=None):
         """
@@ -463,7 +459,8 @@ class DataSet:
 
         Args:
             path (str): Path to the DataSet folder containing folders, which contain
-            txt files. (For Example the pretrain folder)
+                txt files. (For Example the pretrain folder)
+            save_to (str): Path to save the result's image to
         """
         p_samples = self.get_all_p_samples(path, dry_run=True)
         # TODO: norm to the number of analyzedSamples to see how many negative Samples
@@ -484,18 +481,18 @@ class DataSet:
         return p_samples, len(hist_data)
 
     @staticmethod
-    def get_frame_from_second(second, fps=25):
+    def get_frame_from_second(second, fps_in=25):
         """
         calculates the frame in a video from a given second. (rounded off)
 
         Args:
             second (float): second in the video
-            fps (float): frame rate of video in frames per second
+            fps_in (float): frame rate of video in frames per second
 
         Returns:
             frame (float): frame in video as float, rounding needs to be made explicit
         """
-        return float(second * fps)
+        return float(second * fps_in)
 
     @staticmethod
     def get_second_from_frame(frame, input_fps=25):
@@ -504,7 +501,7 @@ class DataSet:
 
         Args:
             frame (float): frame in the video
-            fps (float): framerate of video
+            input_fps (float): framerate of video
 
         Returns:
             time (float): Time of frame in video (seconds)
@@ -516,7 +513,7 @@ class DataSet:
         returns the length auf pauses and corrosponding start and end frame.
 
         Args:
-            txtFile (str): Path to the txt file
+            txt_file (str): Path to the txt file
 
         Returns:
             pauses (list): List of pauses in the txt meta data of a video
@@ -549,17 +546,17 @@ class DataSet:
         [startFrame, endFrame , x, y, w, h] x,y,w,h are relative pixels
 
         Args:
-            txtFile (str): Path to the txt file
+            txt_file (str): Path to the txt file
 
         Returns:
             Frame configs (list): positive samples [startFrame, endFrame , x, y, w, h]
         """
 
         # check for Pauses
-        pauses = self.getPauseLength(txtFile)
+        pause_list = self.get_pause_length(txt_file)
         # translate to Frames
-        pauses = sorted([(int(np.ceil(self.getFrameFromSecond(x[0]))), int(
-            self.getFrameFromSecond(x[1]))) for x in pauses], key=lambda x: x[0])
+        pause_list = sorted([(int(np.ceil(self.get_frame_from_second(x[0]))), int(
+            self.get_frame_from_second(x[1]))) for x in pause_list], key=lambda x: x[0])
 
         # for all frames make a sample from start to pause0_start and from pause0_end
         # to pause1_start ... pauseN_end to end
@@ -575,13 +572,13 @@ class DataSet:
                 first_frame_config = current_config
                 # add first frame num of the sample to all values of the pauses,
                 # because pauses are relative to start
-                pauses = [(x[0] + int(first_frame_config[0]), x[1] +
-                           int(first_frame_config[0])) for x in pauses]
+                pause_list = [(x[0] + int(first_frame_config[0]), x[1] +
+                               int(first_frame_config[0])) for x in pause_list]
             # check if the currentFrame is a pauseStart or pauseEnd frame
-            if pauses:
+            if pause_list:
                 # self.debugPrint("currentConfig: {}\npauses: {}\nSample: {}".format(
                 # currentConfig, pauses, txtFile))
-                if int(current_config[0]) in pauses[0]:
+                if int(current_config[0]) in pause_list[0]:
                     if not pause_start and not pause_end:
                         # first sample
                         pause_start = current_config
@@ -596,7 +593,7 @@ class DataSet:
                         # pauseStart is set so what I get is pauseEnd - just empty
                         # pauseStart and pop from pauses
                         pause_start = []
-                        pauses.pop(0)
+                        pause_list.pop(0)
                     elif not pause_start and pause_end:
                         # pauseEnd is set so what I get is pauseStart - from pauseEnd
                         # to pauseStart and empty pauseEnd
@@ -611,15 +608,15 @@ class DataSet:
             if not line.rstrip():
                 # put last sample
                 # from pauseEnd to lastFrameConfig
-                if pauses:
+                if pause_list:
                     config_list.append([int(pause_end[0]), int(last_frame_config[0]),
                                         float(pause_end[1]), float(pause_end[2]),
                                         float(pause_end[3]), float(pause_end[4])])
                 break
             last_frame_config = current_config
 
-        assert len(
-            pauses) == 0, "pauses is not empty...should be!\npauses: {}".format(pauses)
+        assert len(pause_list) == 0, \
+            "pauses is not empty...should be!\npauses: {}".format(pause_list)
         if not config_list:  # there where no pauses in this sample
             config_list.append([int(first_frame_config[0]), int(last_frame_config[0]),
                                 float(first_frame_config[1]),
@@ -649,15 +646,16 @@ class DataSet:
         of the bounding box in the first frame
 
         Args:
-            txtFile (str): Path to the txt file
+            txt_file (str): Path to the txt file
 
         Returns:
-            configList (list of tuples): holding the frame config and corresponding label
+            configList (list of tuples): holding the frame config and corresponding
+                label
         """
-        pauses = self.get_pause_length(txt_file)
+        pause_list = self.get_pause_length(txt_file)
         # translate to Frames
-        pauses = sorted([(int(np.ceil(self.get_frame_from_second(x[0]))), int(
-            self.get_frame_from_second(x[1]))) for x in pauses], key=lambda x: x[0])
+        pause_list = sorted([(int(np.ceil(self.get_frame_from_second(x[0]))), int(
+            self.get_frame_from_second(x[1]))) for x in pause_list], key=lambda x: x[0])
         text_file = open(txt_file)
         config_list = []
         negative_frames = []
@@ -671,11 +669,11 @@ class DataSet:
                 counter = int(current_config[0])
                 # add first frame num of the sample to all values of the pauses, because
                 # pauses are relative to start
-                pauses = [(x[0] + int(current_config[0]), x[1] +
-                           int(current_config[0])) for x in pauses]
+                pause_list = [(x[0] + int(current_config[0]), x[1] +
+                               int(current_config[0])) for x in pause_list]
                 # transform to list of all framenums associated with a pause/negative
                 # sample
-                for pause in pauses:
+                for pause in pause_list:
                     negative_frames.extend(list(range(pause[0], pause[1] + 1)))
                 list_len = len(negative_frames)
                 # construct a set to check for the union
@@ -720,12 +718,16 @@ class DataSet:
         return config_list
 
     def get_samples(self, path, feature_type, samples_shape, dry_run=False):
+        # ToDo Add missing parameters
         """
         Returning all samples from a Video with a generator
 
         Args:
             path (str): Path to a folder containing the txt files
-            dryRun (bool): With a dry run you will not really return samples, just a list of sampleConfigs
+            dry_run (bool): With a dry run you will not really return samples, just a
+                list of sampleConfigs
+            feature_type (str): MISSING
+            samples_shape (tuple of ints) MISSING
 
         Returns:
             generator
@@ -757,14 +759,14 @@ class DataSet:
                 # sampleConfigList[1][1][0], sampleConfigList[1][1][1]))
                 # print("Counter: {}".format(count))
                 if len(frames) == self.k:
-                    sample = FeaturedSample()
-                    sample.generate_sample_from_fixed_frames(
+                    current_sample = FeaturedSample()
+                    current_sample.generate_sample_from_fixed_frames(
                         self.k, frames, sample_config_list[0][1][2:],
                         sample_config_list[0][0],
                         feature_type=feature_type,
                         shape=self.shape, shape_model_path=self.shapeModelPath)
-                    if sample.is_valid():
-                        yield sample
+                    if current_sample.is_valid():
+                        yield current_sample
                     else:
                         # TODO: keep track of the dropouts!
                         print("invalid sample")
@@ -784,8 +786,8 @@ class DataSet:
                         # print ("Added Frame. len(frames): {}".format(len(frames)))
                     count += 1
         else:
-            for sample in sample_config_list:
-                yield sample
+            for current_sample in sample_config_list:
+                yield current_sample
 
     def analyze(self, path=None, save_to=None):
         """
@@ -794,7 +796,7 @@ class DataSet:
 
         Args:
             path (str): Path to samples folder
-            saveTo (str): Path to save the analysis results' figure to
+            save_to (str): Path to save the analysis results' figure to
         """
         num_positives = 0
         num_negatives = 0
@@ -831,18 +833,19 @@ class DataSet:
     @timeit
     def grap_from_video(self, path=None, num_samples=100, **kwargs):
         """
-        only to compare the time needed to grap samples from videos to the time needed to load samples from disk.
+        only to compare the time needed to grap samples from videos to the time needed
+        to load samples from disk.
 
         Args:
             path (str): Path to samples folder
-            numSamples (int): max. number of samples to grab
+            num_samples (int): max. number of samples to grab
 
         Returns:
             samples (list): List of grabbed samples from path
         """
         samples = []
-        for sample in self.get_all_samples("faceImage", path, **kwargs):
-            samples.append(sample)
+        for current_sample in self.get_all_samples("faceImage", path, **kwargs):
+            samples.append(current_sample)
             if len(samples) == num_samples:
                 break
         return samples
@@ -850,10 +853,11 @@ class DataSet:
     @timeit
     def grap_from_disk(self, sample_folder, **kwargs):
         """
-        only to compare the time needed to grap samples from videos to the time needed to load samples from disk.
+        only to compare the time needed to grap samples from videos to the time needed
+        to load samples from disk.
 
         Args:
-            sampleFolder (str): Path to samples folder
+            sample_folder (str): Path to samples folder
 
         Returns:
             samples (list): List of grabbed samples from path
@@ -875,13 +879,13 @@ def save_balanced_dataset(dataset, save_to, feature_type, data_shape, path=None,
 
     Args:
         dataset (): complete dataset to process
-        saveTo (str): option for additional subfolder path
-        featureType (str): feature type to apply on samples
-        shape (tuple): shape of samples' images
+        save_to (str): option for additional subfolder path
+        feature_type (str): feature type to apply on samples
+        data_shape (tuple): shape of samples' images
         path (str): path to store the dataset to
-        ratioPositives (int): amount of positive samples to store
-        ratioNegatives (int): amount of negative samples to store
-        showStatus (bool): Print current status of operation
+        ratio_positives (int): amount of positive samples to store
+        ratio_negatives (int): amount of negative samples to store
+        show_status (bool): Print current status of operation
     """
     positives_folder = os.path.join(save_to, "positiveSamples")
     negatives_folder = os.path.join(save_to, "negativeSamples")
@@ -920,7 +924,7 @@ def save_balanced_dataset(dataset, save_to, feature_type, data_shape, path=None,
         # kill consumer
         p.terminate()
 
-    self.debug_print(
+    dataset.debug_print(
         "[saveBalancedDataset] Saved balanced dataset! {} samples were droped.".format(
             dataset.dropouts))
 
@@ -963,11 +967,11 @@ def transform_to_hdf5(path, hdf5_path, validation_split=0.2, testing=False):
         hdf5_file.create_dataset('X', shape=train_x_shape, dtype=x_dtype)
         hdf5_file.create_dataset('Y', shape=train_y_shape, dtype=y_dtype)
 
-        for i, sample in enumerate(train_pickles):
+        for i, current_sample in enumerate(train_pickles):
             pr = (i / len(train_pickles)) * 100
             print('\r', 'Writing training data: {:.2f}%\r'.format(pr), end='')
             s = FeaturedSample()
-            s.load(sample)
+            s.load(current_sample)
             x = s.get_data()
             y = s.get_label()
             hdf5_file['X'][i] = x
@@ -976,16 +980,17 @@ def transform_to_hdf5(path, hdf5_path, validation_split=0.2, testing=False):
         print()
 
     # validation
-    with h5py.File(os.path.join(hdf5_path, 'vvad_validation.hdf5'), mode='w') as hdf5_file:
+    with h5py.File(os.path.join(hdf5_path, 'vvad_validation.hdf5'), mode='w') as \
+            hdf5_file:
         hdf5_file.create_dataset('X', shape=valid_x_shape, dtype=x_dtype)
         hdf5_file.create_dataset('Y', shape=valid_y_shape, dtype=y_dtype)
 
-        for i, sample in enumerate(validation_pickles):
+        for i, current_sample in enumerate(validation_pickles):
             pr = (i / len(validation_pickles)) * 100
             print(
                 '\r', 'Writing validation data: {:.2f}%\r'.format(pr), end='')
             s = FeaturedSample()
-            s.load(sample)
+            s.load(current_sample)
             x = s.get_data()
             y = s.get_label()
             hdf5_file['X'][i] = x
@@ -1015,18 +1020,18 @@ def transform_points_to_numpy(points):
 
 
 # ToDo function not used?? What is it used for?
-def transform_to_features(path, shape_model_path=None, shape=None):
+def transform_to_features(path, shape_model_path=None, input_shape=None):
     """
     get a Sample of type faceImage and transforms to lipImage, faceFeatures and
     lipFeatures. Saves them in path.
 
     Args:
         path (str): path to sample
-        shapeModelPath (str): path to shape model used by FaceFeatureGenerator
-        shape (tuple): shape of images
+        shape_model_path (str): path to shape model used by FaceFeatureGenerator
+        input_shape (tuple): shape of images
     """
     ffg = FaceFeatureGenerator(
-        "allwfaceImage", shape_model_path=shape_model_path, shape=shape)
+        "allwfaceImage", shape_model_path=shape_model_path, shape=input_shape)
     input_sample = FeaturedSample()
     input_sample.load(path)
     # # get all settings
@@ -1098,7 +1103,7 @@ def make_test_set(path, names_path):
     Args:
         path (str): Path to the dataset with positiveSamples and negativeSamples
             folder
-        namesPath (str): pickleFile with a list of all the fileNames belonging to
+        names_path (str): pickleFile with a list of all the fileNames belonging to
             the testset
     """
     test_set_path = os.path.join(path, 'testSet')
@@ -1161,6 +1166,7 @@ if __name__ == "__main__":
 
     # get values from config
     config = yaml.load(open(args.config))
+
     ### Config Values ###
     dataPath = args.dataPath if args.dataPath else config["dataPath"]
     shapeModelPath = args.shapeModelPath if args.shapeModelPath else \
@@ -1174,7 +1180,7 @@ if __name__ == "__main__":
 
     ds = DataSet(shapeModelPath, debug_flag=debug, sample_length=sampleLength,
                  max_pause_length=maxPauseLength, init_shape=shape, path=dataPath,
-                 target_fps=fps)
+                 target_fps=fps, init_multiprocessing=True)
     if args.option == "download":
         ds.download_lrs3(dataPath)
     if args.option == "pSamples":
@@ -1208,11 +1214,12 @@ if __name__ == "__main__":
             if not os.path.exists(test_folder):
                 os.makedirs(test_folder)
             samples = ds.grap_from_video(log_time=logtime_data)
-            for c, sample in enumerate(samples):
-                sample.save(os.path.join(test_folder, str(c) + ".pickle"))
+            for c, current_sample in enumerate(samples):
+                current_sample.save(os.path.join(test_folder, str(c) + ".pickle"))
                 print("saved sample {}".format(c))
 
             samples = ds.grap_from_disk(test_folder, log_time=logtime_data)
+            print(f"Samples are {samples}")
 
             print(logtime_data)
         # testTime()

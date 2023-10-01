@@ -52,7 +52,8 @@ def analyze_video(video_path, feature_type='faceImage', save_as_json=None):
 
     Args:
         video_path (str): path to the video file to analyze
-        feature_type (str): type of the features that should be used when creating samples. ["faceImage", "lipImage", "faceFeatures", "lipFeatures"]
+        feature_type (str): type of the features that should be used when creating
+        samples. ["faceImage", "lipImage", "faceFeatures", "lipFeatures"]
         save_as_json (str): Path where to save the analysis as json file
 
     Returns:
