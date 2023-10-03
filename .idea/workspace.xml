@@ -1,44 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="Going through doc to dos">
+    <list default="true" id="2fce5029-60e4-4d25-83be-8f2c17ce1663" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/VVAD.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VVAD.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00001.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00002.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00003.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00004.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00005.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00006.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00007.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00008.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00009.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00010.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00012.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00013.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00014.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00015.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00016.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00017.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00018.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00001.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00002.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00003.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00004.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00005.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00006.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00007.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00008.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00009.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00010.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00011.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00012.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00013.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00014.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00015.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00016.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00017.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00018.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00019.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00020.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00021.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00022.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00023.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00024.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00025.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00027.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00028.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00029.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00030.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00031.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00032.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00033.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00034.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00035.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00036.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00037.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00038.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00039.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00040.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00041.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00042.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00043.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00044.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00045.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00046.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00047.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00048.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00049.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00050.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00051.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00052.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00053.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00054.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00055.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00056.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_sample.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_imageUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/utils/test_imageUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/dataSet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vvadlrs3/sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/sample.py" afterDir="false" />
     </list>
-    <list id="424ed4c6-cd1a-4f9a-a043-469be68430fd" name="Testing" comment="changes in test dataset" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="maintenance/01_remove-unused-code" />
+        <entry key="$PROJECT_DIR$" value="docs/41-authors-on-docu-should-mention-adrian" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="HARD" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectId" id="2SL3iu3HgYuEJwyawIfHNwvfZmZ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="2WGUCqhgld0HevKy4TS0DNhT5gf" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -46,24 +103,12 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/00j9bKdiOjk" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\VVAD\test\unit-tests\data-and-models\testData\video\00j9bKdiOjk" />
-      <recent name="C:\VVAD\test\unit-tests\utils\testData\data\0af00UcTOSc" />
-      <recent name="C:\VVAD\test\unit-tests\data-and-models\testData\test_too_many_video_data" />
-      <recent name="C:\VVAD\test\unit-tests\data-and-models\testData" />
-      <recent name="C:\VVAD\test\unit-tests\utils\testData\data" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\VVAD\test\unit-tests\data-and-models" />
-      <recent name="C:\VVAD\test\unit-tests\utils" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_imageUtils.TestImageUtils.test_crop_image">
-    <configuration name="test_timeUtils" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Python tests for test_dataSet.TestDataSet">
+    <configuration name="test_dataSet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -71,11 +116,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/utils" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/unit-tests/utils/test_timeUtils.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -84,7 +129,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_dataSet.TestDataSet.test_analyze_negatives" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_dataSet.TestDataSet" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -94,25 +139,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_analyze_negatives&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_dataSet.TestDataSet.test_analyze_positives" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="VVAD" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_analyze_positives&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Unittests for test_dataSet.TestDataSet.test_get_all_positive_samples" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_dataSet.TestDataSet.test_get_all_positive_samples" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -126,7 +157,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_dataSet.TestTransformations.test_transform_to_hdf5" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_dataSet.TestDataSet.test_get_positive_samples" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -136,395 +167,43 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestTransformations.test_transform_to_hdf5&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_get_positive_samples&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_imageUtils.TestImageUtils.test_crop_image" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_dataSet.TestDataSet.test_analyze_positives" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/utils" />
+      <option name="SDK_HOME" value="C:\Users\KarimZanaty\anaconda3\envs\vvad\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_imageUtils.TestImageUtils.test_crop_image&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_analyze_positives&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="Python.test_timeUtils" />
-      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_all_positive_samples" />
-      <item itemvalue="Python tests.Unittests for test_dataSet.TestTransformations.test_transform_to_hdf5" />
-      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze_positives" />
-      <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze_negatives" />
-      <item itemvalue="Python tests.Unittests for test_imageUtils.TestImageUtils.test_crop_image" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Unittests for test_imageUtils.TestImageUtils.test_crop_image" />
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze_negatives" />
+        <item itemvalue="Python tests.Python tests for test_dataSet.TestDataSet" />
+        <item itemvalue="Python tests.Python tests for test_dataSet.TestDataSet.test_get_positive_samples" />
+        <item itemvalue="Python.test_dataSet" />
+        <item itemvalue="Python tests.Python tests for test_dataSet.TestDataSet.test_get_all_positive_samples" />
         <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze_positives" />
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestTransformations.test_transform_to_hdf5" />
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_get_all_positive_samples" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5147bffd-a740-4d10-8590-66cc758f132d" name="Changes" comment="prepare docstring coverage actions" />
-      <created>1688912166066</created>
+      <changelist id="2fce5029-60e4-4d25-83be-8f2c17ce1663" name="Changes" comment="" />
+      <created>1696358286102</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1688912166066</updated>
+      <updated>1696358286102</updated>
     </task>
-    <task id="LOCAL-00041" summary="Fix failed test errors">
-      <created>1690315609918</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1690315609918</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Fixed wrong path and unexpected success">
-      <created>1690356408965</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1690356408965</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Remove lint dependency from test (not necessary)">
-      <created>1690358429088</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1690358429088</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Fix errors according to ruff linting">
-      <created>1690533613770</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1690533613770</updated>
-    </task>
-    <task id="LOCAL-00045" summary="ruff lint in verbose mode">
-      <created>1690533973497</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1690533973497</updated>
-    </task>
-    <task id="LOCAL-00046" summary="import Pathlib got lost">
-      <created>1690534909929</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1690534909929</updated>
-    </task>
-    <task id="LOCAL-00047" summary="check codecov">
-      <created>1690830246634</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1690830246634</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Fix branches">
-      <created>1692905380021</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1692905380021</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Extend codecov display">
-      <created>1692906142680</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1692906142680</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Used wrong testing path">
-      <created>1692906421449</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1692906421449</updated>
-    </task>
-    <task id="LOCAL-00051" summary="fix failed test cases">
-      <created>1692907651785</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1692907651785</updated>
-    </task>
-    <task id="LOCAL-00052" summary="first finish of dataset test cases">
-      <created>1692970544190</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1692970544190</updated>
-    </task>
-    <task id="LOCAL-00053" summary="first finish of dataset test cases">
-      <created>1692971691105</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1692971691106</updated>
-    </task>
-    <task id="LOCAL-00054" summary="exclude failures for unfailed run">
-      <created>1693087789805</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1693087789805</updated>
-    </task>
-    <task id="LOCAL-00055" summary="First SAMPLE test cases in test_sample.py">
-      <created>1693148293386</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1693148293387</updated>
-    </task>
-    <task id="LOCAL-00056" summary="First SAMPLE test cases in test_sample.py">
-      <created>1693148361643</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1693148361643</updated>
-    </task>
-    <task id="LOCAL-00057" summary="fixed lint issue">
-      <created>1693148542770</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1693148542770</updated>
-    </task>
-    <task id="LOCAL-00058" summary="include develop branches in pipeline">
-      <created>1693148614057</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1693148614057</updated>
-    </task>
-    <task id="LOCAL-00059" summary="tqdm was not found, added?!">
-      <created>1693149472867</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1693149472867</updated>
-    </task>
-    <task id="LOCAL-00060" summary="used existing shape predictor">
-      <created>1693150615144</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1693150615144</updated>
-    </task>
-    <task id="LOCAL-00061" summary="replace tensorflow-gpu with tensorflow">
-      <created>1693159932095</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1693159932095</updated>
-    </task>
-    <task id="LOCAL-00062" summary="ignore warnings">
-      <created>1693160443638</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1693160443638</updated>
-    </task>
-    <task id="LOCAL-00063" summary="downgrade tf">
-      <created>1693161037426</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1693161037426</updated>
-    </task>
-    <task id="LOCAL-00064" summary="fix some sample test cases">
-      <created>1693162158272</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1693162158272</updated>
-    </task>
-    <task id="LOCAL-00065" summary="Fix TypeError: Required Group, str or dict">
-      <created>1693198802439</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1693198802439</updated>
-    </task>
-    <task id="LOCAL-00066" summary="Unsupported operand type fixed">
-      <created>1693340100052</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1693340100052</updated>
-    </task>
-    <task id="LOCAL-00067" summary="Try again">
-      <created>1693341395249</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1693341395249</updated>
-    </task>
-    <task id="LOCAL-00068" summary="Had unexpected successes. So remove the expected failure">
-      <created>1693342076113</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1693342076113</updated>
-    </task>
-    <task id="LOCAL-00069" summary="Get Cover did not run through">
-      <created>1693343903667</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1693343903667</updated>
-    </task>
-    <task id="LOCAL-00070" summary="Save env file for anaconda">
-      <created>1693426571710</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1693426571710</updated>
-    </task>
-    <task id="LOCAL-00071" summary="Init commit">
-      <created>1693426905820</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1693426905820</updated>
-    </task>
-    <task id="LOCAL-00072" summary="Init commit">
-      <created>1693426933987</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1693426933987</updated>
-    </task>
-    <task id="LOCAL-00073" summary="Exclude unused files from code cov">
-      <created>1693428422949</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1693428422949</updated>
-    </task>
-    <task id="LOCAL-00074" summary="Init commit">
-      <created>1693428566062</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1693428566062</updated>
-    </task>
-    <task id="LOCAL-00075" summary="Init commit">
-      <created>1693428581699</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1693428581699</updated>
-    </task>
-    <task id="LOCAL-00082" summary="test_multiprocessingUtils.py">
-      <created>1694107538998</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1694107538998</updated>
-    </task>
-    <task id="LOCAL-00083" summary="test_multiprocessingUtils.py fix wrong path">
-      <created>1694108574467</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1694108574467</updated>
-    </task>
-    <task id="LOCAL-00084" summary="test_multiprocessingUtils.py fix ratios">
-      <created>1694109857903</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1694109857903</updated>
-    </task>
-    <task id="LOCAL-00085" summary="test_multiprocessingUtils.py adjust evaluation to be dynamical">
-      <created>1694111346955</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1694111346955</updated>
-    </task>
-    <task id="LOCAL-00086" summary="test_multiprocessingUtils.py last fix.... assert leads to issues in pipeline">
-      <created>1694112307269</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1694112307269</updated>
-    </task>
-    <task id="LOCAL-00087" summary="Test pragma &quot;no cover&quot; for __main__ functions and visualizations">
-      <created>1694113959120</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1694113959120</updated>
-    </task>
-    <task id="LOCAL-00088" summary="Improve code coverage in dataSet.py, sample.py, and multiprocessing.">
-      <created>1694298411050</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1694298411050</updated>
-    </task>
-    <task id="LOCAL-00089" summary="Fixing on missing test cases (according to coverage report)">
-      <created>1694371900735</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1694371900735</updated>
-    </task>
-    <task id="LOCAL-00090" summary="Fix model_path_errors">
-      <created>1694375729790</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1694375729790</updated>
-    </task>
-    <task id="LOCAL-00091" summary="Fix test_dataSet.py and test_pretrained_model.py test cases">
-      <created>1694412254341</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1694412254342</updated>
-    </task>
-    <task id="LOCAL-00092" summary="Fix test_dataSet.py test cases (convert fps)">
-      <created>1694419237128</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1694419237128</updated>
-    </task>
-    <task id="LOCAL-00093" summary="Try fix test_dataSet.py">
-      <created>1694426884187</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1694426884187</updated>
-    </task>
-    <task id="LOCAL-00094" summary="Try fix test_dataSet.py">
-      <created>1694426907473</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1694426907473</updated>
-    </task>
-    <task id="LOCAL-00095" summary="Try fix test_dataSet.py target fps">
-      <created>1694429388884</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1694429388884</updated>
-    </task>
-    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -532,53 +211,11 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="36-test-utilities" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fix TypeError: Required Group, str or dict" />
-    <MESSAGE value="Unsupported operand type fixed" />
-    <MESSAGE value="Try again" />
-    <MESSAGE value="Had unexpected successes. So remove the expected failure" />
-    <MESSAGE value="Get Cover did not run through" />
-    <MESSAGE value="Save env file for anaconda" />
-    <MESSAGE value="Exclude unused files from code cov" />
-    <MESSAGE value="Init commit" />
-    <MESSAGE value="worked on video utils tests" />
-    <MESSAGE value="worked on image utils tests" />
-    <MESSAGE value="fix failed test in videoUtils" />
-    <MESSAGE value="expected failure in image utils" />
-    <MESSAGE value="test_multiprocessingUtils.py" />
-    <MESSAGE value="test_multiprocessingUtils.py fix wrong path" />
-    <MESSAGE value="test_multiprocessingUtils.py fix ratios" />
-    <MESSAGE value="test_multiprocessingUtils.py adjust evaluation to be dynamical" />
-    <MESSAGE value="test_multiprocessingUtils.py last fix.... assert leads to issues in pipeline" />
-    <MESSAGE value="Test pragma &quot;no cover&quot; for __main__ functions and visualizations" />
-    <MESSAGE value="Improve code coverage in dataSet.py, sample.py, and multiprocessing." />
-    <MESSAGE value="Fixing on missing test cases (according to coverage report)" />
-    <MESSAGE value="Fix model_path_errors" />
-    <MESSAGE value="Fix test_dataSet.py and test_pretrained_model.py test cases" />
-    <MESSAGE value="Fix test_dataSet.py test cases (convert fps)" />
-    <MESSAGE value="Try fix test_dataSet.py" />
-    <MESSAGE value="Try fix test_dataSet.py target fps" />
-    <option name="LAST_COMMIT_MESSAGE" value="Try fix test_dataSet.py target fps" />
-    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

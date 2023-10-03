@@ -22,10 +22,8 @@ class TestDataSet(unittest.TestCase):
         self.test_data_root = "test/unit-tests/data-and-models/testData"
         self.videos_path = "video"
         self.video_folder_path = "video/00j9bKdiOjk"
-        self.video_folder_path_2 = "video/0Bhk65bYSI0"
-        self.video_folder_path_3 = "video/0Amg53UuRqE"
-        self.video_folder_path_4 = "video/0akiEFwtkyA"
-        self.video_folder_path_5 = "video/0af00UcTOSc"
+        self.video_folder_path_2 = "video/0Amg53UuRqE"
+        self.video_folder_path_3 = "video/0akiEFwtkyA"
         self.video_file_path = "video/00j9bKdiOjk/00j9bKdiOjk.3gpp"
         self.video_txt_file_path = "video/00j9bKdiOjk/00001.txt"
         self.data_set = dSet.DataSet(
@@ -59,12 +57,6 @@ class TestDataSet(unittest.TestCase):
             self.test_data_root, self.video_folder_path))
         self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
             self.test_data_root, self.video_folder_path_2))
-        self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
-            self.test_data_root, self.video_folder_path_3))
-        self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
-            self.test_data_root, self.video_folder_path_4))
-        self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
-            self.test_data_root, self.video_folder_path_5))
 
         path = os.path.join(self.test_data_root, self.videos_path)
 
@@ -72,17 +64,14 @@ class TestDataSet(unittest.TestCase):
         for sample in self.data_set.get_all_p_samples(path):
             self.assertIsNotNone(sample)
 
-        video_path_2 = "video/0akiEFwtkyA/0akiEFwtkyA.3gpp"
-        video_path_3 = "video/0Amg53UuRqE/0Amg53UuRqE.3gpp"
-        video_path_5 = "video/00j9bKdiOjk/00j9bKdiOjk.3gpp"
+        video_path_1 = "video/0Amg53UuRqE/0Amg53UuRqE.3gpp"
+        video_path_2 = "video/00j9bKdiOjk/00j9bKdiOjk.3gpp"
 
         # Evaluation
         self.assertTrue(os.path.exists(os.path.join(self.test_data_root,
+                                                    video_path_1)))
+        self.assertTrue(os.path.exists(os.path.join(self.test_data_root,
                                                     video_path_2)))
-        self.assertTrue(os.path.exists(os.path.join(self.test_data_root,
-                                                    video_path_3)))
-        self.assertTrue(os.path.exists(os.path.join(self.test_data_root,
-                                                    video_path_5)))
 
         # Clean
         folders = list(os.walk(path, followlinks=True))[0][1]
@@ -124,10 +113,15 @@ class TestDataSet(unittest.TestCase):
 
         self.assertTrue(
             os.path.exists(
-                os.path.join(self.test_data_root, self.video_folder_path_3,
+                os.path.join(self.test_data_root, self.video_folder_path_2,
                              "0Amg53UuRqE.3gpp")
             )
         )
+
+        os.remove(os.path.join(self.test_data_root, self.video_folder_path,
+                               "00j9bKdiOjk.3gpp"))
+        os.remove(os.path.join(self.test_data_root, self.video_folder_path_2,
+                               "0Amg53UuRqE.3gpp"))
 
     def test_get_txt_files(self):
         for textfile in self.data_set.get_txt_files(
@@ -161,7 +155,8 @@ class TestDataSet(unittest.TestCase):
         for item in files:
             print(item)
             if item.endswith(".3gpp") or item.endswith(".3gp"):
-                os.remove(os.path.join(self.test_data_root, self.video_folder_path, item))
+                os.remove(os.path.join(self.test_data_root, self.video_folder_path,
+                                       item))
 
     def test_get_no_video_path_from_folder_index_error(self):
         video_path = os.path.join(self.test_data_root, "noVideoData"). \
@@ -208,7 +203,7 @@ class TestDataSet(unittest.TestCase):
             path=os.path.join(self.test_data_root, self.videos_path),
             save_to=os.path.join(self.test_data_root, "analyze_negatives"))
 
-        self.assertEqual(len(pauses), 16)
+        self.assertEqual(len(pauses), 4)
         self.assertTrue(os.path.exists(
             os.path.join(self.test_data_root,
                          "analyze_negatives.png")))
@@ -223,7 +218,7 @@ class TestDataSet(unittest.TestCase):
             path=os.path.join(self.test_data_root, self.videos_path),
             save_to=os.path.join(self.test_data_root, "analyze_positives"))
 
-        self.assertEqual(num_samples, 120)
+        self.assertEqual(num_samples, 40)
         self.assertTrue(os.path.exists(
             os.path.join(self.test_data_root,
                          "analyze_positives.png")))
@@ -306,10 +301,6 @@ class TestDataSet(unittest.TestCase):
             self.test_data_root, self.video_folder_path_2))
         self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
             self.test_data_root, self.video_folder_path_3))
-        self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
-            self.test_data_root, self.video_folder_path_4))
-        self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
-            self.test_data_root, self.video_folder_path_5))
 
         self.data_set.analyze(path=os.path.join(self.test_data_root, self.videos_path))
 

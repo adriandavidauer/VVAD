@@ -141,7 +141,6 @@ class FaceFeatureGenerator:
         """
         generates a feature map of the type given in the constructor
         """
-        print(f"in sample is feature type {self.featureType}")
         if self.featureType == "faceImage":
             return resize_and_zero_padding(image, self.shape)
         elif self.featureType == "faceFeatures":
