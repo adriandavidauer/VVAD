@@ -12,11 +12,11 @@ import cv2
 
 def main():
     handler = Sample()
-    samples = handler.load_samples_from_disk("./videos")
+    sample = handler.load_sample_from_disk("./videos")
     mean_euclidean = []
 
-    for sample in samples:
-        preds = handler.get_face_landmark_from_sample(sample)[-1]
+    for image in sample:
+        preds = handler.get_face_landmark_from_sample(image)[-1]
         # calculate euclidean distance and normalize
         # outmost eye corner is landmark 36 (right eye) and landmark 45 (left eye)
         # get euclidean distance
@@ -26,6 +26,9 @@ def main():
         # normalize on euclidean distance
         for i in range(len(preds)):
             preds[i] = (1 / euclidean_distance) * preds[i]
+        print(f"Euclidean distance is: {np.linalg.norm(corner_left_eye - corner_right_eye)}")
+        handler.align_3d_face(preds)
+        break
 
 
 

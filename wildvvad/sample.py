@@ -2,16 +2,19 @@ import collections
 import os
 
 import cv2
+import numpy
 import numpy as np
 import face_alignment
 from matplotlib import pyplot as plt
+from utils import utils
+import vg
 
 
 class Sample:
     def __init__(self):
         pass
 
-    def load_samples_from_disk(self, path: str):
+    def load_sample_from_disk(self, path: str):
         """
         Loads all video samples from a specified folder.
 
@@ -68,7 +71,6 @@ class Sample:
 
         return fa.get_landmarks(image)
 
-
     def visualize_3d_landmarks(self, image):
         preds = self.get_face_landmark_from_sample(image)[-1]
         # 2D-Plot
@@ -118,6 +120,50 @@ class Sample:
         ax.set_xlim(ax.get_xlim()[::-1])
         plt.show()
 
+    def align_3d_face(self, landmarks_prediction):
+        # convert landmark (x, y, z) - coordinates to a NumPy array
+        # shape = utils.shape_to_np(landmarks_prediction)
+        # extract the left and right eye (x, y)-coordinates
+        (l_start, l_end) = utils.FACIAL_LANDMARKS["left_eye"]
+        (r_start, r_end) = utils.FACIAL_LANDMARKS["right_eye"]
 
-#https://pyimagesearch.com/2017/05/22/face-alignment-with-opencv-and-python/
-#https://stackoverflow.com/questions/47475976/face-alignment-in-video-using-python
+        left_eye_pts = landmarks_prediction[l_start:l_end]
+        right_eye_pts = landmarks_prediction[r_start:r_end]
+
+        print(left_eye_pts)
+
+        # compute center of mass for each eye column wise
+        left_eye_center = left_eye_pts.mean(axis=0).astype("float")
+        right_eye_center = right_eye_pts.mean(axis=0).astype("float")
+
+        print("Center", left_eye_center)
+
+        # compute the angle between the eye centroids
+        dX = right_eye_center[0] - left_eye_center[0]
+        dY = right_eye_center[1] - left_eye_center[1]
+        dZ = right_eye_center[2] - left_eye_center[2]
+        vector_angle = vg.angle(right_eye_center, left_eye_center)
+        print("Angle is", vector_angle)
+
+        # compute center (x, y, z)-coordinates (i.e., the median point)
+        # between the two eyes in the input image
+        eyes_center = ((left_eye_center[0] + right_eye_center[0]) // 2,
+                       (left_eye_center[1] + right_eye_center[1]) // 2,
+                       (left_eye_center[2] + right_eye_center[2]) // 2
+                       )
+        # grab the rotation matrix for rotating and scaling the face
+        M = cv2.getRotationMatrix2D(eyesCenter, angle, scale)
+
+
+def angle(v1, v2, acute):
+    # v1 is your first vector
+    # v2 is your second vector
+    calc_angle = np.arccos(np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2)))
+    if acute:
+        return calc_angle
+    else:
+        return 2 * np.pi - calc_angle
+
+# https://pyimagesearch.com/2017/05/22/face-alignment-with-opencv-and-python/
+# https://stackoverflow.com/questions/47475976/face-alignment-in-video-using-python
+# https://medium.com/@dsfellow/precise-face-alignment-with-opencv-dlib-e6c8acead262
