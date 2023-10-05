@@ -151,8 +151,48 @@ class Sample:
                        (left_eye_center[1] + right_eye_center[1]) // 2,
                        (left_eye_center[2] + right_eye_center[2]) // 2
                        )
+
+        # First, rotate in X-Z
+        angle_xz = np.degrees(np.arctan2(dZ, dX)) - 180
+
+        # compute the desired right eye x-coordinate based on the
+        # desired x-coordinate of the left eye
+        desiredRightEyeX = 1.0 - self.desiredLeftEye[0]
+        # determine the scale of the new resulting image by taking
+        # the ratio of the distance between eyes in the *current*
+        # image to the ratio of distance between eyes in the
+        # *desired* image
+        dist = np.sqrt((dX ** 2) + (dY ** 2))
+        desiredDist = (desiredRightEyeX - self.desiredLeftEye[0])
+        desiredDist *= self.desiredFaceWidth
+        scale = desiredDist / dist
+
+
+        eyes_center_xz = ((left_eye_center[0] + right_eye_center[0]) // 2,
+                          (left_eye_center[2] + right_eye_center[2]) // 2)
+
         # grab the rotation matrix for rotating and scaling the face
-        M = cv2.getRotationMatrix2D(eyesCenter, angle, scale)
+        M = cv2.getRotationMatrix2D(eyes_center_xz, angle_xz, 1.0)
+
+        # update the translation component of the matrix
+        tX = self.desiredFaceWidth * 0.5
+        tY = self.desiredFaceHeight * self.desiredLeftEye[1]
+        M[0, 2] += (tX - eyes_center_xz[0])
+        M[1, 2] += (tY - eyes_center_xz[1])
+
+        # apply the affine transformation
+        (w, h) = (self.desiredFaceWidth, self.desiredFaceHeight)
+        output = cv2.warpAffine(image, M, (w, h),
+                                flags=cv2.INTER_CUBIC)
+
+        # return the aligned face
+        return output
+
+        # Second, rotate in X-Y
+        """
+        angle_xy = np.degrees(np.arctan2(dY, dX)) - 180
+        ...
+        """
 
 
 def angle(v1, v2, acute):
