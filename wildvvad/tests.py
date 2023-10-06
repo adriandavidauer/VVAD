@@ -27,7 +27,9 @@ def main():
         for i in range(len(preds)):
             preds[i] = (1 / euclidean_distance) * preds[i]
         print(f"Euclidean distance is: {np.linalg.norm(corner_left_eye - corner_right_eye)}")
-        handler.align_3d_face(preds)
+        handler.visualize_3d_landmarks(image, None, False)
+        rotated_landmarks = handler.align_3d_face(preds)
+        handler.visualize_3d_landmarks(image, rotated_landmarks, True)
         break
 
 
