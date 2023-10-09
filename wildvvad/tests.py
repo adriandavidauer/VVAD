@@ -1,6 +1,8 @@
 import math
 
 import numpy as np
+import pandas as pd
+
 from matplotlib import pyplot as plt
 
 from sample import Sample
@@ -15,6 +17,9 @@ def main():
     sample = handler.load_sample_from_disk("./videos")
     mean_euclidean = []
 
+    video_sample = []
+    idx = 0
+    print(f"Data type of sample is {type(sample)}")
     for image in sample:
         preds = handler.get_face_landmark_from_sample(image)[-1]
         # calculate euclidean distance and normalize
@@ -26,23 +31,15 @@ def main():
         # normalize on euclidean distance
         for i in range(len(preds)):
             preds[i] = (1 / euclidean_distance) * preds[i]
-        print(f"Euclidean distance is: {np.linalg.norm(corner_left_eye - corner_right_eye)}")
+        # print(f"Euclidean distance is: {np.linalg.norm(corner_left_eye - corner_right_eye)}")
         handler.visualize_3d_landmarks(image, None, False)
         rotated_landmarks = handler.align_3d_face(preds)
         handler.visualize_3d_landmarks(image, rotated_landmarks, True)
-        break
 
-
-
-        #print(f"Euclidean distance is: {np.linalg.norm(p2 - p1)}")
-        #mean_euclidean.append(round(np.linalg.norm(p2 - p1), 2))
-
-        #if len(mean_euclidean) > 3:
-        #    print(f"Euclidean mean is {statistics.mean(mean_euclidean)}")
-        #    print(f"STD is {(sum([((x - statistics.mean(mean_euclidean)) ** 2) for x in mean_euclidean]) / len(mean_euclidean)) ** 0.5}")
-
-
-        # handler.visualize_3d_landmarks(sample)
+        video_sample.append(rotated_landmarks)
+        idx += 1
+        if idx > 5:
+            break
 
 if __name__ == "__main__":
     main()
