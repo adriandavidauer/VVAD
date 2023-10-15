@@ -5,7 +5,7 @@ name: Test Python Project
 on:
   pull_request:
     branches:
-      - main
+      - develop_phase1
   push:
     branches:
       - develop_phase1
