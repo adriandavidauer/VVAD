@@ -145,7 +145,7 @@ class Sample:
         print(f"Numpy convert is {np.asarray(pcd)}")
         print(type(pcd))
         print(type(np.asarray(pcd)))
-        # o3d.visualization.draw_geometries([pcd])
+        o3d.visualization.draw_geometries([pcd])
 
         # compute center of mass for each eye column wise
         left_eye_center = left_eye_pts.mean(axis=0).astype("float")
@@ -205,7 +205,7 @@ class Sample:
         center_y = (left_eye_center[1] + right_eye_center[1]) // 2
         center_z = (left_eye_center[2] + right_eye_center[2]) // 2
         pcd = pcd.rotate(R, center=(center_x, center_y, center_z))
-        # o3d.visualization.draw_geometries([pcd])
+        o3d.visualization.draw_geometries([pcd])
         o3d.geometry.Geometry
         o3d.utility.Matrix3dVector
 
