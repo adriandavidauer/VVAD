@@ -199,7 +199,7 @@ class TestFeaturedSample(unittest.TestCase):
         # transform feature
         dataSet.transform_to_features(
             path=all_pickles[0],
-            shape_model_path="../../../models/shape_predictor_5_face_landmarks.dat ",
+            shape_model_path="./models/shape_predictor_5_face_landmarks.dat ",
             shape=(200, 200))
 
         test_sample.load(all_pickles[10])

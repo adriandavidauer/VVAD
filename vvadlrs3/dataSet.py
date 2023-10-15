@@ -117,7 +117,9 @@ class DataSet:
             global timeoutable_download
 
             def timeoutable_download(url_video, folder_current):
-                self.tempPath = YouTube(url_video).streams.first().download(
+                self.tempPath = YouTube(url_video).streams.filter(
+                    progressive=True,
+                    file_extension="mp4").first().download(
                     folder_current)
                 self.tempPath = pathlib.Path(self.tempPath)
                 # if ready rename the file to the real name(will be the ref)
@@ -322,14 +324,14 @@ class DataSet:
             if not dry_run:
                 data = []
                 label = True
-                #config = {"x": sampleConfig[2], "y": sampleConfig[3],
+                # config = {"x": sampleConfig[2], "y": sampleConfig[3],
                 #          "w": sampleConfig[4], "h": sampleConfig[5], "fps": vid_fps}
                 # grap frames from start to endframe
                 while True:
                     success, image = vid_obj.read()
                     if not success:
                         raise Exception(
-                            "Couldnt grap frame of file {}".format(video_path))
+                            "Couldn't grab frame of file {}".format(video_path))
                     if sampleConfig[0] <= count <= sampleConfig[1]:
                         data.append(image)
                     count += 1
@@ -365,8 +367,10 @@ class DataSet:
             # ffmpeg -y -r 30 -i seeing_noaudio.mp4 -r 24 seeing.mp4
             old_video_path = video_path
 
-            suffix = ".3gp" if old_video_path.suffix == ".3gpp" else \
-                old_video_path.suffix
+            # ToDo resolve
+            # suffix = ".3gp" if old_video_path.suffix == ".3gpp" else \
+            #     old_video_path.suffix
+            suffix = old_video_path.suffix
 
             video_path = pathlib.Path(os.path.join(
                 old_video_path.parents[0], old_video_path.stem + ".converted" +

@@ -24,7 +24,8 @@ class TestDataSet(unittest.TestCase):
         self.video_folder_path = "video/00j9bKdiOjk"
         self.video_folder_path_2 = "video/0Amg53UuRqE"
         self.video_folder_path_3 = "video/0akiEFwtkyA"
-        self.video_file_path = "video/00j9bKdiOjk/00j9bKdiOjk.3gpp"
+        self.video_file_path = "video/00j9bKdiOjk/00j9bKdiOjk.mp4"
+        self.video_file_path_converted = "video/00j9bKdiOjk/00j9bKdiOjk.coverted.mp4"
         self.video_txt_file_path = "video/00j9bKdiOjk/00001.txt"
         self.data_set = dSet.DataSet(
             debug_flag=True,
@@ -218,7 +219,7 @@ class TestDataSet(unittest.TestCase):
             path=os.path.join(self.test_data_root, self.videos_path),
             save_to=os.path.join(self.test_data_root, "analyze_positives"))
 
-        self.assertEqual(num_samples, 40)
+        self.assertEqual(num_samples, 46)
         self.assertTrue(os.path.exists(
             os.path.join(self.test_data_root,
                          "analyze_positives.png")))
@@ -226,6 +227,8 @@ class TestDataSet(unittest.TestCase):
                                "analyze_positives.png"))
         os.remove(os.path.join(self.test_data_root,
                                self.video_file_path))
+        os.remove(os.path.join(self.test_data_root,
+                               self.video_file_path_converted))
 
     def test_get_frame_from_second(self):
         # default fps = 25
