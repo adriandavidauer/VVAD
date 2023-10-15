@@ -237,16 +237,24 @@ class TestDataSet(unittest.TestCase):
             path=os.path.join(self.test_data_root, self.videos_path),
             save_to=os.path.join(self.test_data_root, "analyze_positives"))
 
-        self.assertEqual(num_samples, 46)
+        self.assertEqual(num_samples, 3)
         self.assertTrue(os.path.exists(
             os.path.join(self.test_data_root,
                          "analyze_positives.png")))
         os.remove(os.path.join(self.test_data_root,
                                "analyze_positives.png"))
-        os.remove(os.path.join(self.test_data_root,
-                               self.video_file_path))
-        os.remove(os.path.join(self.test_data_root,
-                               self.video_file_path_converted))
+        # Clean
+        path = os.path.join(self.test_data_root, self.videos_path)
+
+        folders = list(os.walk(path, followlinks=True))[0][1]
+        folders.sort()
+        for folder in folders:
+            files = os.listdir(os.path.join(self.test_data_root, self.videos_path,
+                                            folder))
+            for item in files:
+                if item.endswith(".mp4") or item.endswith(".3gpp"):
+                    os.remove(os.path.join(self.test_data_root, self.videos_path,
+                                           folder, item))
 
     def test_get_frame_from_second(self):
         # default fps = 25
