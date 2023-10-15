@@ -20,7 +20,7 @@ class TestMultiprocessingUtils(unittest.TestCase):
             path=None,
             target_fps=25,
             init_multiprocessing=True,
-            shape_model_path="../../../models"
+            shape_model_path="./models"
                              "/shape_predictor_5_face_landmarks.dat "
         )
 

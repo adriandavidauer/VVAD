@@ -5,6 +5,7 @@ import argparse
 import multiprocessing
 import pathlib
 # System imports
+import unittest
 from importlib import import_module
 # from collections import deque
 from pathlib import Path, PurePath
@@ -162,7 +163,7 @@ class DataSet:
             self.debug_print("[getAllPSamples] Folder {} done".format(folder))
 
     # TODO add option if you want to use whats there or download if necessary
-    def get_all_samples(self, feature_type, path=None, relative=True, dry_run=False,
+    def get_all_samples(self, feature_type, path=None, dry_run=False,
                         showStatus=False, **kwargs):
         """
         making all the samples from this folder.
@@ -193,7 +194,6 @@ class DataSet:
             current_folder = os.path.abspath(os.path.join(path, folder))
             for single_sample in self.get_samples(current_folder,
                                                   feature_type=feature_type,
-                                                  # relative=relative,
                                                   samples_shape=(200, 200),
                                                   dry_run=dry_run):
                 yield single_sample

@@ -1,86 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2fce5029-60e4-4d25-83be-8f2c17ce1663" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/VVAD.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VVAD.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="2fce5029-60e4-4d25-83be-8f2c17ce1663" name="Changes" comment="feat: adapt yaml pipeline file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00001.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00002.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00003.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00004.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00005.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00006.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00007.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00008.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00009.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00010.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00012.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00013.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00014.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00015.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00016.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00017.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0Bhk65bYSI0/00018.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00001.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00002.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00003.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00004.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00005.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00006.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00007.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00008.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00009.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00010.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00011.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00012.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00013.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00014.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00015.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00016.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00017.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00018.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00019.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00020.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00021.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00022.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00023.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00024.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00025.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00027.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00028.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00029.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00030.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00031.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00032.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00033.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00034.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00035.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00036.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00037.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00038.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00039.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00040.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00041.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00042.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00043.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00044.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00045.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00046.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00047.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00048.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00049.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00050.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00051.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00052.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00053.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00054.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00055.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/video/0af00UcTOSc/00056.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/test_video_data/test_video.3gpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/test_video_data/test_video.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vvadlrs3/sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/sample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_multiprocessingUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/utils/test_multiprocessingUtils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/dataSet.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +22,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2WGUCqhgld0HevKy4TS0DNhT5gf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -107,29 +34,8 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_dataSet.TestDataSet">
-    <configuration name="test_dataSet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="VVAD" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_dataSet.TestDataSet" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Python tests for test_dataSet.TestTransformations.test_transform_points_to_numpy">
+    <configuration name="Python tests for test_dataSet.TestDataSet.test_grab_from_video" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -139,11 +45,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_grab_from_video&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_dataSet.TestDataSet.test_get_all_positive_samples" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_dataSet.TestDataSet.test_grap_from_disk" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -153,11 +59,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_get_all_positive_samples&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_grap_from_disk&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_dataSet.TestDataSet.test_get_positive_samples" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_dataSet.TestDataSet.test_grap_from_video" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -167,31 +73,52 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_get_positive_samples&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_grap_from_video&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_dataSet.TestDataSet.test_analyze_positives" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_dataSet.TestTransformations.test_transform_points_to_numpy" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="VVAD" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="C:\Users\KarimZanaty\anaconda3\envs\vvad\python.exe" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_dataSet.TestDataSet.test_analyze_positives&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestTransformations.test_transform_points_to_numpy&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for test_dataSet.TestTransformations.test_transform_to_hdf5" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="VVAD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/unit-tests/data-and-models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_dataSet.TestTransformations.test_transform_to_hdf5&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python tests.Python tests for test_dataSet.TestDataSet.test_grap_from_video" />
+      <item itemvalue="Python tests.Python tests for test_dataSet.TestDataSet.test_grab_from_video" />
+      <item itemvalue="Python tests.Python tests for test_dataSet.TestDataSet.test_grap_from_disk" />
+      <item itemvalue="Python tests.Python tests for test_dataSet.TestTransformations.test_transform_to_hdf5" />
+      <item itemvalue="Python tests.Python tests for test_dataSet.TestTransformations.test_transform_points_to_numpy" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test_dataSet.TestDataSet" />
-        <item itemvalue="Python tests.Python tests for test_dataSet.TestDataSet.test_get_positive_samples" />
-        <item itemvalue="Python.test_dataSet" />
-        <item itemvalue="Python tests.Python tests for test_dataSet.TestDataSet.test_get_all_positive_samples" />
-        <item itemvalue="Python tests.Unittests for test_dataSet.TestDataSet.test_analyze_positives" />
+        <item itemvalue="Python tests.Python tests for test_dataSet.TestTransformations.test_transform_points_to_numpy" />
+        <item itemvalue="Python tests.Python tests for test_dataSet.TestTransformations.test_transform_to_hdf5" />
+        <item itemvalue="Python tests.Python tests for test_dataSet.TestDataSet.test_grap_from_disk" />
+        <item itemvalue="Python tests.Python tests for test_dataSet.TestDataSet.test_grab_from_video" />
+        <item itemvalue="Python tests.Python tests for test_dataSet.TestDataSet.test_grap_from_video" />
       </list>
     </recent_temporary>
   </component>
@@ -204,6 +131,21 @@
       <option name="presentableId" value="Default" />
       <updated>1696358286102</updated>
     </task>
+    <task id="LOCAL-00001" summary="fix: use mp4 as video format">
+      <created>1697362754086</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1697362754086</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: adapt yaml pipeline file">
+      <created>1697362955840</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1697362955840</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -216,6 +158,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix: use mp4 as video format" />
+    <MESSAGE value="feat: adapt yaml pipeline file" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: adapt yaml pipeline file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
