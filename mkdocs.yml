@@ -87,15 +87,28 @@ markdown_extensions:
 
 extra:
   social:
-    - icon: fontawesome/brands/github-alt
+    - icon: fontawesome/brands/square-github
+      name: GitHub-Adrian
       link: https://github.com/adriandavidauer
     - icon: fontawesome/brands/linkedin
+      name: Linkedin-Adrian
       link: https://www.linkedin.com/in/adrian-lubitz/
+    - icon: fontawesome/brands/github
+      name: GitHub-Karim
+      link: https://github.com/K-Zanaty
+    - icon: fontawesome/brands/linkedin-in
+      name: Linkedin-Karim
+      link: https://www.linkedin.com/in/karim-zanaty/
+
+extra_css:
+  - stylesheets/extra.css
 
 copyright: |
-  &copy; 2023 <a href="https://github.com/K-Zanaty" target="_blank" rel="noopener">Karim Zanaty</a>
+  &copy; 2023 <a href="https://github.com/adriandavidauer" target="_blank" rel="noopener" style="color:#243ae5;">Adrian Auer, </a>
+  <a href="https://github.com/K-Zanaty" target="_blank" rel="noopener" style="color:#22c335;">Karim Zanaty</a>
 
 plugins:
+  - mike
   - mkdocstrings
   - git-authors
   - git-committers:

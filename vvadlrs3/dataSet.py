@@ -189,7 +189,7 @@ class DataSet:
             current_folder = os.path.abspath(os.path.join(path, folder))
             for single_sample in self.get_samples(current_folder,
                                                   feature_type=feature_type,
-                                                  relative=relative,
+                                                  # relative=relative,
                                                   samples_shape=(200, 200),
                                                   dry_run=dry_run):
                 yield single_sample
@@ -366,7 +366,7 @@ class DataSet:
             # Remove the old!
             # ToDo Remove old video path
             # os.remove(old_video_path)
-            self.debug_print("Changed FPS of {} to {}".format(video_path, fps))
+            self.debug_print("Changed FPS of {} to {}".format(video_path, fps_in))
         else:
             self.debug_print("{} has already the correct fps".format(video_path))
         return video_path
@@ -718,7 +718,6 @@ class DataSet:
         return config_list
 
     def get_samples(self, path, feature_type, samples_shape, dry_run=False):
-        # ToDo Add missing parameters
         """
         Returning all samples from a Video with a generator
 
@@ -726,8 +725,8 @@ class DataSet:
             path (str): Path to a folder containing the txt files
             dry_run (bool): With a dry run you will not really return samples, just a
                 list of sampleConfigs
-            feature_type (str): MISSING
-            samples_shape (tuple of ints) MISSING
+            feature_type (str): Selected feature type
+            samples_shape (tuple of ints): Shape of the samples (usually 200,200)
 
         Returns:
             generator
