@@ -16,10 +16,9 @@ from file_read_backwards import FileReadBackwards
 from pytube import YouTube
 
 # local imports
-# from vvadlrs3.utils.multiprocessingUtils import *
-from vvadlrs3.sample import *
-from vvadlrs3.utils.multiprocessingUtils import pool, producer, consumer
-from vvadlrs3.utils.timeUtils import *
+from sample import *
+from utils.multiprocessingUtils import pool, producer, consumer
+from utils.timeUtils import *
 
 # end file header
 __author__ = "Adrian Lubitz"
@@ -127,7 +126,7 @@ class DataSet:
                     video_file_without_extension) + self.tempPath.resolve().suffix)
 
             if self.multiprocessing:  # pragma: no cover
-                p = Process(target=timeoutable_download,
+                p = multiprocessing.Process(target=timeoutable_download,
                             args=(video_url, current_folder))
 
                 if __name__ == '__main__':
