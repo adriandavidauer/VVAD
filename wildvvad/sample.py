@@ -16,7 +16,8 @@ class Sample:
     def __init__(self):
         pass
 
-    def load_sample_from_disk(self, path: str):
+    @staticmethod
+    def load_sample_from_disk(path: str):
         """
         Loads all video samples from a specified folder.
 
@@ -67,7 +68,8 @@ class Sample:
 
                     yield image
 
-    def get_face_landmark_from_sample(self, image):
+    @staticmethod
+    def get_face_landmark_from_sample(image):
         fa = face_alignment.FaceAlignment(face_alignment.LandmarksType.THREE_D,
                                           flip_input=False, device='cpu')
 
@@ -211,29 +213,25 @@ class Sample:
 
         return np.asarray(pcd.points)
 
-        # transformed_point_cloud = rotation_matrix @ point_cloud_array + translation_vector
+        # transformed_point_cloud = rotation_matrix @ point_cloud_array +
+        # translation_vector
 
         # update the translation component of the matrix
-        #tX = self.desiredFaceWidth * 0.5
-        #tY = self.desiredFaceHeight * self.desiredLeftEye[1]
-        #M[0, 2] += (tX - eyes_center_xz[0])
-        #M[1, 2] += (tY - eyes_center_xz[1])
+        # tX = self.desiredFaceWidth * 0.5
+        # tY = self.desiredFaceHeight * self.desiredLeftEye[1]
+        # M[0, 2] += (tX - eyes_center_xz[0])
+        # M[1, 2] += (tY - eyes_center_xz[1])
 
         # apply the affine transformation
         (w, h) = (self.desiredFaceWidth, self.desiredFaceHeight)
         output = cv2.warpAffine(image, M, (w, h),
                                 flags=cv2.INTER_CUBIC)
 
-        # transformed_point_cloud = rotation_matrix @ point_cloud_array + translation_vector
+        # transformed_point_cloud = rotation_matrix @ point_cloud_array +
+        # translation_vector
 
         # return the aligned face
         return output
-
-        # Second, rotate in X-Y
-        """
-        angle_xy = np.degrees(np.arctan2(dY, dX)) - 180
-        ...
-        """
 
 
 def angle(v1, v2, acute):
@@ -251,10 +249,3 @@ def angle(v1, v2, acute):
 
 
 # https://medium.com/@rdadlaney/basics-of-3d-point-cloud-data-manipulation-in-python-95b0a1e1941e
-
-# xyz = np.random.rand(100, 3)
-# pcd = o3d.geometry.PointCloud()
-# pcd.points = o3d.utility.Vector3dVector(xyz)
-# o3d.io.write_point_cloud("./data.ply", pcd)
-
-# o3d.visualization.draw_geometries([pcd])

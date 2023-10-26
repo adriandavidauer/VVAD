@@ -1,15 +1,6 @@
-import math
-
 import numpy as np
-import pandas as pd
-
-from matplotlib import pyplot as plt
 
 from sample import Sample
-import statistics
-import collections
-
-import cv2
 
 
 def main():
@@ -31,7 +22,6 @@ def main():
         # normalize on euclidean distance
         for i in range(len(preds)):
             preds[i] = (1 / euclidean_distance) * preds[i]
-        # print(f"Euclidean distance is: {np.linalg.norm(corner_left_eye - corner_right_eye)}")
         handler.visualize_3d_landmarks(image, None, False)
         rotated_landmarks = handler.align_3d_face(preds)
         handler.visualize_3d_landmarks(image, rotated_landmarks, True)
@@ -40,6 +30,7 @@ def main():
         idx += 1
         if idx > 5:
             break
+
 
 if __name__ == "__main__":
     main()
