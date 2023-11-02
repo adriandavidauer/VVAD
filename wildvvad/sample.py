@@ -17,56 +17,56 @@ class Sample:
         pass
 
     @staticmethod
-    def load_sample_from_disk(path: str):
+    def load_sample_from_disk(file_path: str):
         """
         Loads all video samples from a specified folder.
 
         Args:
-            path (str): Path to folder with samples
+            file_path (str): path to sample file
         Returns:
-            video_samples (): Generator with video samples
+            video_samples (): Generator with frames of one sample
         """
 
-        with os.scandir(path) as folder:
-            for file in folder:
-                count = 0
-                # ToDo check for file type
-                # if file.name.endswith(".XXX"):
-                video_path = os.path.join(path, file.name)
-                vid_obj = cv2.VideoCapture(video_path)
+        # with os.scandir(path) as folder:
+        # for file in path:  # folder:
+        count = 0
+        # ToDo check for file type
+        # if file.name.endswith(".XXX"):
+        video_path = os.path.join(".", file_name + ".mp4")
+        vid_obj = cv2.VideoCapture(video_path)
 
-                if not vid_obj.isOpened():
-                    print("could not open :", video_path)
-                    return
+        if not vid_obj.isOpened():
+            print("could not open :", video_path)
+            return
 
-                frame_num = int(vid_obj.get(cv2.CAP_PROP_FRAME_COUNT))
-                vid_fps = vid_obj.get(cv2.CAP_PROP_FPS)
+        frame_num = int(vid_obj.get(cv2.CAP_PROP_FRAME_COUNT))
+        vid_fps = vid_obj.get(cv2.CAP_PROP_FPS)
 
-                label = True
-                config = {"fps": vid_fps}
-                print("FPS are ", vid_fps)
+        label = True
+        config = {"fps": vid_fps}
+        print("FPS are ", vid_fps)
 
-                success = vid_obj.grab()
+        success = vid_obj.grab()
 
-                if not success:
-                    raise Exception(
-                        "Couldn't grab frame of file {}".format(video_path))
+        if not success:
+            raise Exception(
+                "Couldn't grab frame of file {}".format(video_path))
 
-                # grab frames from start to end frame
-                while success:
-                    _, image = vid_obj.retrieve()
+        # grab frames from start to end frame
+        while success:
+            _, image = vid_obj.retrieve()
 
-                    # ToDo needed?
-                    if count <= frame_num:
-                        pass
-                        # data.append(image)
-                    count += 1
-                    if count > frame_num:
-                        break
+            # ToDo needed?
+            if count <= frame_num:
+                pass
+                # data.append(image)
+            count += 1
+            if count > frame_num:
+                break
 
-                    success = vid_obj.grab()
+            success = vid_obj.grab()
 
-                    yield image
+            yield image
 
     @staticmethod
     def get_face_landmark_from_sample(image):
