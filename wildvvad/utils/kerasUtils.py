@@ -11,7 +11,9 @@ class kerasUtils:
         Uses the dataset to split into x_train, x_test, y_train, and y_test.
 
         Args:
-        dataset (list): Dataset as list of dict.
+            dataset(list): Dataset as list of dict.
+        Returns:
+            X_train, X_test, y_train, y_test(list, list, list, list): Splitted dataset
         """
 
         X = []

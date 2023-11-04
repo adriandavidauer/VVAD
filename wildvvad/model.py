@@ -16,6 +16,7 @@ class LAND_LSTM_Model:
             ReLu activations and add batch normalization layers [17]
             between bidirectional LSTM layers.
     """
+
     @staticmethod
     def build_land_lstm(input_shape, num_td_dense_layers=2,
                         num_blstm_layers=2, dense_dims=512) -> (Sequential, str):
@@ -42,10 +43,10 @@ class LAND_LSTM_Model:
             land_lstm_model.add(TimeDistributed(Dense(dense_dims),
                                                 input_shape=input_shape))
 
-        #model.add(Bidirectional(LSTM(64, activation='relu')))
+        # model.add(Bidirectional(LSTM(64, activation='relu')))
         forward_layer = LSTM(10, activation='relu', return_sequences=True)
         backward_layer = LSTM(1, activation='relu', return_sequences=True,
-                                go_backwards=True)
+                              go_backwards=True)
         for j in range(num_blstm_layers - 1):
             land_lstm_model.add(Bidirectional(layer=forward_layer,
                                               backward_layer=backward_layer,
@@ -63,11 +64,12 @@ class LAND_LSTM_Model:
                                 optimizer='sgd', metrics=["accuracy"])
 
         model_name = 'Land-LSTM_' + \
-                    str(num_td_dense_layers) + '_' + str(num_blstm_layers)
+                     str(num_td_dense_layers) + '_' + str(num_blstm_layers)
         return land_lstm_model, model_name
 
 
 if __name__ == "__main__":
-    model = LAND_LSTM_Model()
-    lstm, name = model.build_land_lstm(input_shape=(200,200))
-    print(name)
+    pass
+    # model = LAND_LSTM_Model()
+    # lstm, name = model.build_land_lstm(input_shape=(200,200))
+    # print(name)
