@@ -1,8 +1,9 @@
 import collections
 import os
+import glob
+import pickle
 
 import cv2
-import numpy
 import numpy as np
 import face_alignment
 from matplotlib import pyplot as plt
@@ -17,7 +18,27 @@ class Sample:
         pass
 
     @staticmethod
-    def load_sample_from_disk(file_path: str):
+    def load_sample_objects_from_disk(folder_path: str):
+        """
+        Loads all sample objects (pickle files) from a folder
+
+        Args:
+            folder_path (str): path to sample file
+        Returns:
+            video_samples_objects (): Generator with sample objects
+        """
+
+        old_cwd = os.getcwd()
+        os.chdir(folder_path)
+        for file in glob.glob("*.pickle"):
+            with open(file, 'rb') as pickle_file:
+                yield pickle.load(pickle_file)
+
+        # Reset to previous working directory
+        os.chdir(old_cwd)
+
+    @staticmethod
+    def load_video_sample_from_disk(file_path: str):
         """
         Loads all video samples from a specified folder.
 
@@ -32,7 +53,7 @@ class Sample:
         count = 0
         # ToDo check for file type
         # if file.name.endswith(".XXX"):
-        video_path = os.path.join(".", file_name + ".mp4")
+        video_path = os.path.join(file_path)
         vid_obj = cv2.VideoCapture(video_path)
 
         if not vid_obj.isOpened():
@@ -137,23 +158,19 @@ class Sample:
         left_eye_pts = landmarks_prediction[l_start:l_end]
         right_eye_pts = landmarks_prediction[r_start:r_end]
 
-        print(left_eye_pts)
+        # print(left_eye_pts)
 
         pcd = o3d.geometry.PointCloud()
         pcd.points = o3d.utility.Vector3dVector(landmarks_prediction)
         # o3d.io.write_point_cloud("./data.ply", pcd)
 
-        print(f"PCD is {pcd}")
-        print(f"Numpy convert is {np.asarray(pcd)}")
-        print(type(pcd))
-        print(type(np.asarray(pcd)))
-        o3d.visualization.draw_geometries([pcd])
+        # o3d.visualization.draw_geometries([pcd])
 
         # compute center of mass for each eye column wise
         left_eye_center = left_eye_pts.mean(axis=0).astype("float")
         right_eye_center = right_eye_pts.mean(axis=0).astype("float")
 
-        print("Center", left_eye_center)
+        # print("Center", left_eye_center)
 
         # compute the angle between the eye centroids
         dX = right_eye_center[0] - left_eye_center[0]
@@ -202,12 +219,12 @@ class Sample:
         # Rotation Matrix 3x3
         R = pcd.get_rotation_matrix_from_xyz((np.deg2rad(angle_x), np.deg2rad(angle_y),
                                               np.deg2rad(angle_z)))
-        print(f"Rotation Matrix is {R}")
+        # print(f"Rotation Matrix is {R}")
         center_x = (left_eye_center[0] + right_eye_center[0]) // 2
         center_y = (left_eye_center[1] + right_eye_center[1]) // 2
         center_z = (left_eye_center[2] + right_eye_center[2]) // 2
         pcd = pcd.rotate(R, center=(center_x, center_y, center_z))
-        o3d.visualization.draw_geometries([pcd])
+        # o3d.visualization.draw_geometries([pcd])
         o3d.geometry.Geometry
         o3d.utility.Matrix3dVector
 

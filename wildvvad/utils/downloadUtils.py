@@ -14,7 +14,7 @@ class downloadUtils:
         self.speaking_videos_url = \
             "http://perception.inrialpes.fr/Free_Access_Data/WVVAD/speaking_videos.zip"
         self.speaking_videos_file = 'speaking_videos.zip'
-        self.speaking_videos_folder = 'speaking'
+        self.speaking_videos_folder = 'speaking_videos'
 
         self.silent_videos_url = \
             "http://perception.inrialpes.fr/Free_Access_Data/WVVAD/silent_videos.zip"
@@ -24,21 +24,21 @@ class downloadUtils:
 
     def download_and_save_speaking_videos(self) -> None:
         """
-        This method will download, save, and extract all speaking videos from
+        This method will download, save, and extract all speaking_videos videos from
         the WildVVAD data set.
         """
 
-        print("Download speaking videos.")
+        print("Download speaking_videos videos.")
         self.download_and_save_videos(self.speaking_videos_url,
                                       self.speaking_videos_folder,
                                       self.speaking_videos_file)
 
     def download_and_save_silent_videos(self) -> None:
         """
-        This method will download, save, and extract all silent videos from
+        This method will download, save, and extract all silent_videos videos from
         the WildVVAD data set.
         """
-        print("Download silent videos.")
+        print("Download silent_videos videos.")
         self.download_and_save_videos(self.silent_videos_url,
                                       self.silent_videos_folder,
                                       self.silent_videos_file)
