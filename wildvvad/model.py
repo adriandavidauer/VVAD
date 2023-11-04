@@ -1,5 +1,5 @@
 import keras
-from keras.layers import Dropout, Bidirectional, Activation
+from keras.layers import Dropout, Bidirectional, Activation, Dense
 from keras.layers.normalization import BatchNormalization
 from keras.layers.recurrent import LSTM
 from keras.layers.wrappers import TimeDistributed
@@ -39,7 +39,7 @@ class LAND_LSTM_Model:
         #   add the convnet with (5, 112, 112, 3) shape
         #   model.add(TimeDistributed(convnet, input_shape=shape))
         for i in range(num_td_dense_layers - 1):
-            land_lstm_model.add(TimeDistributed(keras.Dense(dense_dims),
+            land_lstm_model.add(TimeDistributed(Dense(dense_dims),
                                                 input_shape=input_shape))
 
         #model.add(Bidirectional(LSTM(64, activation='relu')))
@@ -47,13 +47,14 @@ class LAND_LSTM_Model:
         backward_layer = LSTM(1, activation='relu', return_sequences=True,
                                 go_backwards=True)
         for j in range(num_blstm_layers - 1):
-            land_lstm_model.add(Bidirectional(forward_layer,
+            land_lstm_model.add(Bidirectional(layer=forward_layer,
                                               backward_layer=backward_layer,
                                               input_shape=(5, 10)))
+
             # Batch normalization between the LSTM layers
             if j < num_blstm_layers:
                 land_lstm_model.add(BatchNormalization())
-        model.add(Dropout(0.5))
+        land_lstm_model.add(Dropout(0.5))
 
         # ToDo: model.add(Dense(1, activation="softmax"))?
         # Alternative:
@@ -64,3 +65,9 @@ class LAND_LSTM_Model:
         model_name = 'Land-LSTM_' + \
                     str(num_td_dense_layers) + '_' + str(num_blstm_layers)
         return land_lstm_model, model_name
+
+
+if __name__ == "__main__":
+    model = LAND_LSTM_Model()
+    lstm, name = model.build_land_lstm(input_shape=(200,200))
+    print(name)
