@@ -1394,3 +1394,4 @@ if __name__ == "__main__":
 
     if args.option == "makeTestSet":
         makeTestSet(args.dataPath, args.names)
+

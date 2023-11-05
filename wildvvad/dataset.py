@@ -4,8 +4,8 @@ import random
 
 import numpy as np
 
-from wildvvad.sample import Sample
-from wildvvad.utils.kerasUtils import kerasUtils
+from sample import Sample
+from utils.kerasUtils import kerasUtils
 
 
 class dataSet:
