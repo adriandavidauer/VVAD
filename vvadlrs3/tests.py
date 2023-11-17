@@ -3,7 +3,7 @@
 #from imutils import paths
 
 # 3rd party imports
-#import cv2
+# import cv2
 
 # local imports
 # from imageUtils import *
@@ -15,20 +15,19 @@ import pickle
 
 import numpy as np
 import matplotlib.pyplot as plt
+
 #
 if __name__ == "__main__":
-
-
     mu, sigma = 100, 15
     x = mu + sigma * np.random.randn(10000)
     n, bins, patches = plt.hist(x, 50, normed=1, facecolor='g', alpha=0.75)
-    plt.xlabel('Smarts', size = 20)
+    plt.xlabel('Smarts', size=20)
     plt.ylabel('Probability')
     # plt.title('Histogram of IQ', size = 50)
     # plt.text(60, .025, r'$\mu=100,\ \sigma=15$', size = 30)
     plt.axis([40, 160, 0, 0.03])
-    plt.xticks(size = 30)
-    plt.yticks(size = 30)
+    plt.xticks(size=30)
+    plt.yticks(size=30)
     plt.grid(True)
     plt.show()
 
@@ -86,7 +85,7 @@ if __name__ == "__main__":
 #     pool.close()
 #     pool.join()
 #
-#     # a = FeatureizedSample()
+#     # a = FeaturedSample()
 #     # a.load("testSample.pickle")
 #     # a.visualize()
 #
@@ -96,7 +95,7 @@ if __name__ == "__main__":
 #     # parser.add_argument("featureType", help='type of the features' , type=str)
 #     #
 #     # args = parser.parse_args()
-# # Test FeatureizedSample
+# # Test FeaturedSample
 #
 #
 #

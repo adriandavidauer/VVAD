@@ -143,7 +143,7 @@ class TestFeaturedSample(unittest.TestCase):
 
     def test_is_valid(self):
         # Use arbitrary np array to do proof of concept
-        test_sample = sample.FeatureizedSample()
+        test_sample = sample.FeaturedSample()
         test_sample.data = [np.ones((2, 2))] * 5
         test_sample.k = 5
         self.assertTrue(test_sample.is_valid())
@@ -158,7 +158,7 @@ class TestFeaturedSample(unittest.TestCase):
         pass
 
     def test_normalize(self):
-        test_sample = sample.FeatureizedSample()
+        test_sample = sample.FeaturedSample()
 
         array = np.arange(4).reshape((2, 2))
         normalized_array = test_sample._normalize(self, arr=array)
@@ -169,7 +169,7 @@ class TestFeaturedSample(unittest.TestCase):
                 self.assertLessEqual(item, 1)
 
     def test_get_label(self):
-        s = sample.FeatureizedSample()
+        s = sample.FeaturedSample()
         negative_sample_name = "testNegativeSample.pickle"
         sample_path = os.path.join(self.test_data_root, self.sample_pickles,
                                    negative_sample_name)
@@ -197,7 +197,7 @@ class TestFeaturedSample(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmpdirname:
             temp_dir = Path(tmpdirname)
             data_dir = temp_dir.joinpath("test.pickle")
-            test_sample = sample.FeatureizedSample()
+            test_sample = sample.FeaturedSample()
             test_sample.save(data_dir)
 
             self.assertEqual(data_dir.exists(), True)
@@ -208,7 +208,7 @@ class TestFeaturedSample(unittest.TestCase):
         sample_path = os.path.join(self.test_data_root, self.sample_pickles,
                                    "testPositiveSample.pickle")
         try:
-            test_sample = sample.FeatureizedSample()
+            test_sample = sample.FeaturedSample()
             test_sample.load(sample_path)
         except ValueError:
             self.fail("ValueError raised unexpectedly!")

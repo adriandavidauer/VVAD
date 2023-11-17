@@ -35,7 +35,7 @@ class TestDataSet(unittest.TestCase):
             path=None,
             target_fps=25,
             init_multiprocessing=False,
-            shape_model_path="../../../models"
+            shape_model_path="./models"
                              "/shape_predictor_5_face_landmarks.dat "
         )
 
@@ -100,7 +100,7 @@ class TestDataSet(unittest.TestCase):
 
     def test_get_txt_files(self):
         for textfile in self.data_set.get_txt_files(
-                path=os.path.join(self.test_data_root, "getTXT")):
+                 os.path.join(self.test_data_root, "getTXT")):
             self.assertTrue(str(textfile).__contains__("myTXT.txt"))
 
     # ToDo: check if same as test_get_all_positive_samples
@@ -248,7 +248,7 @@ class TestDataSet(unittest.TestCase):
         #                          samples_shape=)
 
     # ToDo fails with "cannot convert float NaN to integer" - sample error
-    #@unittest.expectedFailure unexpected success in pipeline online?
+    # @unittest.expectedFailure unexpected success in pipeline online?
     def test_analyze(self):
         # Windows needs ffmpeg.exe as executable. Might not be needed for Linux
         self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(

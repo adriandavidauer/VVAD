@@ -2,6 +2,19 @@
 
 ## Latest Changes
 
+## 0.2.1
+
+### 🤓 Documentation
+
+❊ Release of first documentation using MkDocs
+
+## 0.2.1-alpha
+ 01.10.2023
+
+### 🤓 Documentation
+
+❊ Pre-release of first documentation using MkDocs
+
 ## 0.2.0
  Apr 27, 2021
 

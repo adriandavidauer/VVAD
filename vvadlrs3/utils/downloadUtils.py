@@ -1,4 +1,4 @@
-""" Utils for downloads """
+''' Utils for downloads '''
 
 # System imports
 import urllib.request
@@ -24,6 +24,15 @@ class DownloadProgressBar(tqdm):
 
 
 def download_url(url, output_path):
+    """ Download a video file from a given URL.
+        In this case, it is about youtube videos which will be saved as
+        *.3gpp files.
+
+    Args:
+        url (str): URL to video to download
+        output_path (str): Path to directory in which the downloaded file should be
+            saved
+    """
     with DownloadProgressBar(unit='B', unit_scale=True,
                              miniters=1, desc=url.split('/')[-1]) as t:
         urllib.request.urlretrieve(

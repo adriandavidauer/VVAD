@@ -1,4 +1,4 @@
-"""Script to calculate the Accuracy for a given set of samples(test set)"""
+'''Script to calculate the Accuracy for a given set of samples(test set)'''
 # System imports
 import argparse
 
