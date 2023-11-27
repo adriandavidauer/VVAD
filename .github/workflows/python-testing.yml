@@ -67,7 +67,7 @@ jobs:
           # install ruff package
           pip install ruff
           # stop the build if there are Python syntax errors or undefined names
-          ruff --format=github --select=E9,F63,F7,F82 --target-version=py37 .
+          ruff --select=E9,F63,F7,F82 --target-version=py37 .
           # default set of ruff rules with GitHub Annotations
           # Exclude: F405: Undefined-local-with-import-star-usage
           # Exclude: F403: Undefined-local-with-import-star
