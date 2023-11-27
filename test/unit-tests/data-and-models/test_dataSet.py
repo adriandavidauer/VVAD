@@ -146,7 +146,7 @@ class TestDataSet(unittest.TestCase):
 
     def test_get_txt_files(self):
         for textfile in self.data_set.get_txt_files(
-                 os.path.join(self.test_data_root, "getTXT")):
+                os.path.join(self.test_data_root, "getTXT")):
             self.assertTrue(str(textfile).__contains__("myTXT.txt"))
 
     def test_get_positive_samples_dry(self):
@@ -324,8 +324,9 @@ class TestDataSet(unittest.TestCase):
         #                          feature_type=,
         #                          samples_shape=)
 
-    @unittest.expectedFailure
-    def _test_analyze(self):
+    # ToDo fails with "cannot convert float NaN to integer" - sample error
+    # @unittest.expectedFailure unexpected success in pipeline online?
+    def test_analyze(self):
         # Windows needs ffmpeg.exe as executable. Might not be needed for Linux
         self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
             self.test_data_root, self.video_folder_path))

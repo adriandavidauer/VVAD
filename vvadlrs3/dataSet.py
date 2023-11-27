@@ -224,7 +224,7 @@ class DataSet:
             txt files. (For Example the pretrain folder)
         """
 
-        # for folder in path call cutTedVideo - need to extract the Video File first
+        # for folder in path call cuttedVideo - need to extract the Video File first
         folders = list(os.walk(path, followlinks=True))[0][1]
         folders.sort()
         for folder in folders:
@@ -326,8 +326,7 @@ class DataSet:
                     if count > sample_config[1]:
                         break
 
-                # ToDo discuss changes
-                current_sample = FeatureizedSample()
+                current_sample = FeaturedSample()
                 current_sample.data = data
                 current_sample.label = label
                 yield current_sample
@@ -468,7 +467,7 @@ class DataSet:
                 txt files. (For Example the pretrain folder)
             save_to (str): Path to save the result's image to
         """
-        p_samples = self.get_all_p_samples(path, dry_run=True)
+        p_samples = self.get_all_p_samples(path, dry_run=False)
         # TODO: norm to the number of analyzedSamples to see how many negative Samples
         #  can be constructed out of how many positive samples
 
@@ -806,7 +805,7 @@ class DataSet:
         num_positives = 0
         num_negatives = 0
         for sampleConfig in self.get_all_samples(
-                "faceImage", path, dryRun=True, showStatus=True):
+                "faceImage", path, dryRun=False, showStatus=True):
             print("Sample Config is ", sampleConfig)
             if sampleConfig[0]:
                 num_positives += 1
