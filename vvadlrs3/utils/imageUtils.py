@@ -11,8 +11,11 @@ import numpy as np
 # local imports
 
 def get_random_face_from_img(image):
-    """
-    returns the bounding box for first face from an image
+    """ returns the bounding box for first face from an image
+
+    Args:
+        image (image): image in R, G, B
+
     """
     detector = dlib.get_frontal_face_detector()
     dets = detector(image, 1)
