@@ -262,9 +262,13 @@ class TestDataSet(unittest.TestCase):
         self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
             self.test_data_root, self.video_folder_path_5))
 
-        self.data_set.analyze(path=os.path.join(self.test_data_root, self.videos_path))
+        self.data_set.analyze(
+            path=os.path.join(self.test_data_root, self.videos_path),
+            save_to=os.path.join(self.test_data_root, self.videos_path))
 
         os.remove(os.path.join(self.test_data_root, self.video_file_path))
+        #os.remove(os.path.join(self.test_data_root, self.video_file_path,
+        #                       ))
 
     def test_grap_from_video(self):
         logtime_data = {}

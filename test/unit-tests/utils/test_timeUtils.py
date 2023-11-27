@@ -18,7 +18,9 @@ class TestTimeUtils(unittest.TestCase):
         logtime_data = {}
         sleep_time = 5
         sleep_x_sec(sleep_time, log_time=logtime_data)
-        self.assertEqual(logtime_data.get(sleep_x_sec.__name__), sleep_time * 1000)
+        print(f"data is {logtime_data}")
+        print("name is", sleep_x_sec.__name__)
+        self.assertEqual(logtime_data.get("SLEEP_X_SEC"), sleep_time * 1000)
 
 
 if __name__ == '__main__':
