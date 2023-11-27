@@ -267,8 +267,8 @@ class TestDataSet(unittest.TestCase):
             save_to=os.path.join(self.test_data_root, self.videos_path))
 
         os.remove(os.path.join(self.test_data_root, self.video_file_path))
-        #os.remove(os.path.join(self.test_data_root, self.video_file_path,
-        #                       ))
+        os.remove(os.path.join(self.test_data_root, self.video_file_path,
+                               "video.png"))
 
     def test_grap_from_video(self):
         logtime_data = {}
