@@ -13,8 +13,8 @@ import matplotlib.pyplot as plt
 from matplotlib import animation, rc
 
 # local imports
-from utils.imageUtils import *
-from utils.timeUtils import *
+from vvadlrs3.utils.imageUtils import *
+from vvadlrs3.utils.timeUtils import *
 
 
 class FaceTracker:

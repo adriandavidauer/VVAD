@@ -2,7 +2,7 @@ import os
 import unittest
 import shutil
 
-from vvadlrs3.convert_samples import convert_samples as sample_conv
+from vvadlrs3.convert_samples import convert_samples_to_images as sample_conv
 from vvadlrs3.convert_samples import parse_args
 
 

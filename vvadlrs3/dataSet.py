@@ -6,7 +6,6 @@ import multiprocessing
 import pathlib
 # System imports
 from importlib import import_module
-from multiprocessing import Process
 from pathlib import Path, PurePath
 
 import h5py
@@ -16,14 +15,14 @@ from file_read_backwards import FileReadBackwards
 from pytube import YouTube
 
 # local imports
-from sample import *
-from utils.multiprocessingUtils import pool, producer, consumer
-from utils.timeUtils import *
+from vvadlrs3.sample import *
+from vvadlrs3.utils.multiprocessingUtils import pool, producer, consumer
+from vvadlrs3.utils.timeUtils import *
 
 # 3rd party imports
 
 # end file header
-__author__ = "Adrian Lubitz"
+__author__ = "Adrian Auer"
 __copyright__ = "Copyright (c)2017, Blackout Technologies"
 
 
@@ -88,6 +87,7 @@ class DataSet:
                  for file in files]
         # get the RefField
         for file in files:
+            print("File's name is ", file)
             if file.suffix == ".txt":
                 text_file = open(file)
                 # hat anscheinend noch ein return mit drinne
@@ -163,7 +163,7 @@ class DataSet:
 
     # TODO add option if you want to use whats there or download if necessary
     def get_all_samples(self, feature_type, path=None, dry_run=False,
-                        showStatus=False, **kwargs):
+                        show_status=False, **kwargs):
         """
         making all the samples from this folder.
 
@@ -171,9 +171,8 @@ class DataSet:
             feature_type (str): MISSING
             path (str): Path to the DataSet folder containing folders, which contain
                 txt files. (For Example the pretrain folder)
-            relative(bool): MISSING
-            dry_run(bool): MISSING
-            show_status(bool): MISSING
+            dry_run(bool): Dry run without actual samples
+            show_status(bool): Print actual progress status
         """
         if show_status:
             ts = time.perf_counter()
@@ -363,7 +362,7 @@ class DataSet:
                                            suffix))
 
             command = f"ffmpeg -i {old_video_path}  -ar 8000 -ab 12.2k " \
-                      f"-filter:v fps={fps} {video_path}"
+                      f"-filter:v fps={fps_in} {video_path}"
 
             print(command)
             os.system(command)
@@ -373,7 +372,7 @@ class DataSet:
             # Remove the old!
             # ToDo Remove old video path
             # os.remove(old_video_path)
-            self.debug_print("Changed FPS of {} to {}".format(video_path, fps))
+            self.debug_print("Changed FPS of {} to {}".format(video_path, fps_in))
         else:
             self.debug_print("{} has already the correct fps".format(video_path))
         return video_path
@@ -1027,7 +1026,8 @@ def transform_points_to_numpy(points):
 
 
 # ToDo function not used?? What is it used for?
-def transform_to_features(path, shape_model_path=None, input_shape=None): # pragma: no cover
+def transform_to_features(path, shape_model_path=None,
+                          input_shape=None): # pragma: no cover
     """
     get a Sample of type faceImage and transforms to lipImage, faceFeatures and
     lipFeatures. Saves them in path.

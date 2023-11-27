@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2fce5029-60e4-4d25-83be-8f2c17ce1663" name="Changes" comment="feat: adapt yaml pipeline file">
+    <list default="true" id="2fce5029-60e4-4d25-83be-8f2c17ce1663" name="Changes" comment="merge into">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/test_video_data/test_video.3gpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/testData/test_video_data/test_video.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/data-and-models/test_dataSet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit-tests/utils/test_multiprocessingUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/utils/test_multiprocessingUtils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiments/analyze_videos.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/analyze_videos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiments/calcAccuracy.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/calcAccuracy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/liveDemo/liveCam.py" beforeDir="false" afterPath="$PROJECT_DIR$/liveDemo/liveCam.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/liveDemo/visualize_samples.py" beforeDir="false" afterPath="$PROJECT_DIR$/liveDemo/visualize_samples.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit-tests/helper-fctns/test_convert_samples.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit-tests/helper-fctns/test_convert_samples.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/convert_samples.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/convert_samples.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vvadlrs3/dataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/dataSet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/dlibmodels.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/dlibmodels.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/onCluster.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/onCluster.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/pretrained_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/pretrained_models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/sample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/downloadUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/downloadUtils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vvadlrs3/utils/timeUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/vvadlrs3/utils/timeUtils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697362955840</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="merge into">
+      <created>1701086471724</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701086471724</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -163,7 +180,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fix: use mp4 as video format" />
     <MESSAGE value="feat: adapt yaml pipeline file" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: adapt yaml pipeline file" />
+    <MESSAGE value="merge into" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge into" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

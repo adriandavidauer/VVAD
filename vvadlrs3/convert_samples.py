@@ -14,7 +14,7 @@ from PIL import Image
 
 # end file header
 
-__author__ = 'Adrian Lubitz'
+__author__ = 'Adrian Auer'
 __copyright__ = 'Copyright (c)2017, Blackout Technologies'
 
 

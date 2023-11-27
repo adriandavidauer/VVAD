@@ -10,7 +10,7 @@ from vvadlrs3 import pretrained_models
 
 # end file header
 
-__author__ = 'Adrian Lubitz'
+__author__ = 'Adrian Auer'
 
 # TODO: this is also implemented in the experiments notebook
 if __name__ == "__main__":
