@@ -1,16 +1,14 @@
 """To run on the DFKI-cluster"""
 # System imports
 import argparse
-import os
+import datetime
+
 # 3rd Party imports
 from keras import callbacks
-from keras.models import load_model
 
 # local imports
-from kerasUtils import *
-from plotUtils import *
-import datetime
-import time
+from utils.kerasUtils import *
+from utils.plotUtils import *
 
 # end file header
 __author__ = 'Adrian Lubitz'
@@ -45,7 +43,7 @@ if __name__ == "__main__":
     if args.task == 'timeSteps':
         print("start: {}".format(datetime.datetime.now()))
         # Get all sample pathes
-        train, test = splitDataSet(dataPath, 0.15, 42)  # 1 to 1 Dataset
+        train, test = split_dataset(dataPath, 0.15, 42)  # 1 to 1 Dataset
         print('Loaded {} training samples and {} validation samples'.format(len(train),
                                                                             len(test)))
 
@@ -59,7 +57,7 @@ if __name__ == "__main__":
         train_samples = None
         valid_samples = None
 
-        (train_x, train_y), validation_data = genData(train,
+        (train_x, train_y), validation_data = gen_data(train,
                                                       test, train_samples=train_samples,
                                                       valid_samples=valid_samples,
                                                       batch_size=batch_size,
@@ -113,7 +111,7 @@ if __name__ == "__main__":
     elif args.task == 'imageSize':
         print("start: {}".format(datetime.datetime.now()))
         # Get all sample pathes
-        train, test = splitDataSet(dataPath, 0.15, 42)  # 1 to 1 Dataset
+        train, test = split_dataset(dataPath, 0.15, 42)  # 1 to 1 Dataset
         print('Loaded {} training samples and {} validation samples'.format(len(train),
                                                                             len(test)))
 
@@ -128,7 +126,7 @@ if __name__ == "__main__":
         print_freq = 1000
         epochs = 200
         start = time.time()
-        (train_x, train_y), validation_data = genData(train,
+        (train_x, train_y), validation_data = gen_data(train,
                                                       test, train_samples=train_samples,
                                                       valid_samples=valid_samples,
                                                       batch_size=batch_size,
@@ -156,7 +154,7 @@ if __name__ == "__main__":
         for image_size in image_sizes:
             start = time.time()
             (train_x_resized, train_y_resized), \
-                validation_data_resized = genDataInternal((train_x, train_y),
+                validation_data_resized = gen_data_internal((train_x, train_y),
                                                           validation_data,
                                                           train_samples=train_samples,
                                                           valid_samples=None,
@@ -223,13 +221,13 @@ if __name__ == "__main__":
     elif args.task == 'bestFaceEndToEnd':
         print("start: {}".format(datetime.datetime.now()))
         # Get all sample pathes
-        train, test = splitDataSet(dataPath, 0.15, 42)  # 1 to 1 Dataset
+        train, test = split_dataset(dataPath, 0.15, 42)  # 1 to 1 Dataset
         print('Loaded {} training samples and {} validation samples'.format(len(train),
                                                                             len(test)))
 
         # Load samples to RAM
         batch_size = 64
-        imageSize = (96, 96)  # faces
+        imageSize = (96, 96) # faces
         # imageSize = None # lips
         grayscale = False
         num_steps = 36  # 38 is max
@@ -237,7 +235,7 @@ if __name__ == "__main__":
         train_samples = None
         valid_samples = None
 
-        (train_x, train_y), validation_data = genData(train,
+        (train_x, train_y), validation_data = gen_data(train,
                                                       test, train_samples=train_samples,
                                                       valid_samples=valid_samples,
                                                       batch_size=batch_size,
@@ -283,8 +281,8 @@ if __name__ == "__main__":
 
     elif args.task == 'FeatureTimeSteps':
         print("start: {}".format(datetime.datetime.now()))
-        # Get all sample pathes
-        train, test = splitDataSet(dataPath, 0.15, 42)  # 1 to 1 Dataset
+        # Get all sample paths
+        train, test = split_dataset(dataPath, 0.15, 42) # 1 to 1 Dataset
         print('Loaded {} training samples and {} validation samples'.format(len(train),
                                                                             len(test)))
 
@@ -300,7 +298,7 @@ if __name__ == "__main__":
         normalize = True
         print_freq = 1000
 
-        (train_x, train_y), validation_data = genData(train,
+        (train_x, train_y), validation_data = gen_data(train,
                                                       test, train_samples=train_samples,
                                                       valid_samples=valid_samples,
                                                       batch_size=batch_size,
@@ -350,7 +348,7 @@ if __name__ == "__main__":
     elif args.task == 'bestFeatures':
         print("start: {}".format(datetime.datetime.now()))
         # Get all sample pathes
-        train, test = splitDataSet(dataPath, 0.15, 42)  # 1 to 1 Dataset
+        train, test = split_dataset(dataPath, 0.15, 42)  # 1 to 1 Dataset
         print('Loaded {} training samples and {} validation samples'.format(len(train),
                                                                             len(test)))
 
@@ -366,7 +364,7 @@ if __name__ == "__main__":
         normalize = True
         print_freq = 1000
 
-        (train_x, train_y), validation_data = genData(train,
+        (train_x, train_y), validation_data = gen_data(train,
                                                       test, train_samples=train_samples,
                                                       valid_samples=valid_samples,
                                                       batch_size=batch_size,
@@ -407,7 +405,7 @@ if __name__ == "__main__":
 
         modelPath = args.modelName + ".h5"
         testSet = os.path.join(dataPath, "testSet")
-        acc, (mae, maeStd), (mse, mseStd), errors = testModel(modelPath, testSet)
+        acc, (mae, maeStd), (mse, mseStd), errors = test_model(modelPath, testSet)
         print("Accuracy for {} is {}".format(modelPath.split("/")[-1], acc))
         print("MAE for {} is {} with std {}".format(modelPath.split("/")[-1], mae,
                                                     maeStd))
@@ -415,7 +413,7 @@ if __name__ == "__main__":
     elif args.task == 'bestLipEndToEnd':
         print("start: {}".format(datetime.datetime.now()))
         # Get all sample pathes
-        train, test = splitDataSet(dataPath, 0.15, 42)  # 1 to 1 Dataset
+        train, test = split_dataset(dataPath, 0.15, 42)  # 1 to 1 Dataset
         print('Loaded {} training samples and {} validation samples'.format(len(train),
                                                                             len(test)))
 
@@ -429,7 +427,7 @@ if __name__ == "__main__":
         train_samples = None
         valid_samples = None
 
-        (train_x, train_y), validation_data = genData(train,
+        (train_x, train_y), validation_data = gen_data(train,
                                                       test, train_samples=train_samples,
                                                       valid_samples=valid_samples,
                                                       batch_size=batch_size,
@@ -476,7 +474,7 @@ if __name__ == "__main__":
     elif args.task == 'bestFaceEndToEndFromCheckpoint':
         print("start: {}".format(datetime.datetime.now()))
         # Get all sample pathes
-        train, test = splitDataSet(dataPath, 0.15, 42)  # 1 to 1 Dataset
+        train, test = split_dataset(dataPath, 0.15, 42)  # 1 to 1 Dataset
         print('Loaded {} training samples and {} validation samples'.format(len(train),
                                                                             len(test)))
 
@@ -494,7 +492,7 @@ if __name__ == "__main__":
         model = load_model('bestFaceEndToEnd.h5')
         modelName = "TheFuckingLastModel"
 
-        (train_x, train_y), validation_data = genData(train,
+        (train_x, train_y), validation_data = gen_data(train,
                                                       test, train_samples=train_samples,
                                                       valid_samples=valid_samples,
                                                       batch_size=batch_size,

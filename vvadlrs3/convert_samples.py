@@ -1,6 +1,5 @@
 """A Script to convert samples into images"""
 import argparse
-# System imports
 import glob
 import os
 import pickle
@@ -19,7 +18,7 @@ __author__ = 'Adrian Lubitz'
 __copyright__ = 'Copyright (c)2017, Blackout Technologies'
 
 
-def convert_samples(input_path, output_path='generatedImages', num=20):
+def convert_samples_to_images(input_path, output_path='generatedImages', num=20):
     """
     Takes a path to a folder of samples and converts a given number of randomly picked
     samples(pickle files)
@@ -44,7 +43,6 @@ def convert_samples(input_path, output_path='generatedImages', num=20):
         with open(filepath, 'rb') as pickle_file:
             sample = pickle.load(pickle_file)
             data = sample['data'][0]
-            # print(data.shape)
             img = Image.fromarray(data, 'RGB')
             b, g, r = img.split()
             img = Image.merge("RGB", (r, g, b))
@@ -53,6 +51,8 @@ def convert_samples(input_path, output_path='generatedImages', num=20):
                                          '.png')
             print("Generated image file is: ", out_file_name)
             img.save(out_file_name)
+            # img.show()
+            # print(sample)
 
 
 def parse_args(args):

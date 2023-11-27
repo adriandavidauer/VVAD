@@ -146,7 +146,7 @@ class TestDataSet(unittest.TestCase):
 
     def test_get_txt_files(self):
         for textfile in self.data_set.get_txt_files(
-                path=os.path.join(self.test_data_root, "getTXT")):
+                 os.path.join(self.test_data_root, "getTXT")):
             self.assertTrue(str(textfile).__contains__("myTXT.txt"))
 
     def test_get_positive_samples_dry(self):

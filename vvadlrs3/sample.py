@@ -7,7 +7,6 @@ import os
 import pickle
 # from collections import deque
 import random
-import time
 
 # 3rd party imports
 import matplotlib.pyplot as plt
@@ -24,19 +23,15 @@ class FaceTracker:
     """
 
     def __init__(self, init_pos, internal_rect_oversize=0.2, relative=True):
-        """
-        initilaize the tracker with a initial position of the face in the Image
+        """ initialize the tracker with an initial position of the face in the Image
 
-        :param init_pos: A bounding box for the initial face. Realative or absolute
-            pixel values in format (x, y, w, h)
-        :type init_pos: list of floats
-        :param internal_rect_oversize: the percentage of which the initial
-        :type internal_rect_oversize: float
-        :param relative: relative or absolute pixel values
-        :type relative: boolean
+        Args:
+            init_pos (list of floats): A bounding box for the initial face. Relative or
+                absolute pixel values in format (x, y, w, h)
+            internal_rect_oversize (float): the percentage of which the initial
+            relative (bool): relative or absolute pixel values
         """
         if type(init_pos) == dlib.rectangle or type(init_pos) == dlib.drectangle:
-            # print("using dlib.rectangle")
             self.init_pos = (init_pos.tl_corner().x, init_pos.tl_corner(
             ).y, init_pos.width(), init_pos.height())
         else:
@@ -49,8 +44,12 @@ class FaceTracker:
         """
         Returns the next FaceImage and the pos of the face in the original image Space
 
-        :param image: openCV image in RGB format
-        :type image: openCV image
+        Args:
+            image (image): openCV image in RGB format
+
+        Returns:
+            face (image): next FaceImage
+            dInImage (array of int): Position of the face in the original image space
         """
         if self.tracker:    #pragma: no cover
             # get x,y, w,h from tracker
@@ -89,7 +88,6 @@ class FaceTracker:
         dets = detector(roi, 1)
         # print("Detected faces:", dets)
         if len(dets) != 1:
-            # self.valid = False
             print("Invalid Sample because there are {} faces".format(len(dets)))
             return False, False  # Means Error
         d_in_image = to_img_space(roi_rect, dets[0])
@@ -110,26 +108,27 @@ class FaceFeatureGenerator:
         """
         init for the specific featureType
 
-        :param feature_type: type of the feature map that should be returned by
-            getFeatures()
-        :type feature_type: String ["faceImage", "lipImage", "faceFeatures",
-            "lipFeatures"]
-        :param shape_model_path: path to the model for the shape_predictor
-        :type shape_model_path: String
+        Args:
+            feature_type (String ["faceImage", "lipImage", "faceFeatures",
+                "lipFeatures"]): type of the feature map that should be returned by
+                getFeatures()
+            shape_model_path (str): path to the model for the shape_predictor
+
+        Returns:
+            Nothing
         """
         self.supportedFeatureTypes = [
             "faceImage", "lipImage", "faceFeatures", "lipFeatures", 'all',
             "allwfaceImage"]
         assert feature_type in self.supportedFeatureTypes, \
-            "unsupported featureType {}. Supported featureTypes are {}".\
+            "unsupported featureType {}. Supported featureTypes are {}". \
             format(feature_type, self.supportedFeatureTypes)
         if feature_type == "faceImage":
             assert shape, "For featureType {} a shape must be set".format(
                 feature_type)
         else:
             assert shape_model_path, "For featureType {} a shapeModelPath " \
-                                     "must be set".format(
-                feature_type)
+                                     "must be set".format(feature_type)
             if feature_type == "lipImage":
                 assert shape, "For featureType {} a shape must be set".format(
                     feature_type)
@@ -140,6 +139,13 @@ class FaceFeatureGenerator:
     def get_features(self, image):
         """
         generates a feature map of the type given in the constructor
+
+        Args:
+            image (image): openCV image in RGB format
+
+        Returns:
+            feature (depends): Returns feature map depending on given feature Type
+                (faceImage, lipImage, faceFeature, lipFeatures, all)
         """
         if self.featureType == "faceImage":
             return resize_and_zero_padding(image, self.shape)
@@ -218,7 +224,7 @@ class FaceFeatureGenerator:
                 self.featureType, self.supportedFeatureTypes))
 
 
-class FeatureizedSample:
+class FeaturedSample:
     """
     This class represents a Sample(with the features for one specific approach)
     """
@@ -227,17 +233,14 @@ class FeatureizedSample:
         """
         init
 
-        :param k: defines the temporal sliding window in frames
-        :type k: int
-        :param data: A list of featureVectors for this sample
-        :type data: List of numpyarrays
-        :param label: positive or negative Label
-        :type label: bool
-        :param type: the type of this sample for the specific approach
-        :type type: String out of ["faceImages", "mouthImages", "faceFeatures",
-            "mouthFeatures"]
-        :param shape: the shape to which an Image should be scaled and zeroPadded
-        :type shape: tuple of ints
+            k (int): defines the temporal sliding window in frames
+            data (List of numpy arrays): A list of featureVectors for this sample
+            label (bool): positive or negative Label
+            type (String out of ["faceImages", "mouthImages", "faceFeatures",
+                "mouthFeatures"]): the type of this sample
+            for the specific approach
+            shape (Tuple of ints): the shape to which an Image should be scaled
+                and zeroPadded
         """
         self.data = []
         self.label = None
@@ -252,21 +255,17 @@ class FeatureizedSample:
     def get_data(self, image_size=None, num_steps=None, grayscale=False,
                  normalize=False):
         """
-        returns the feature map as a numpy array
+        Get image data as numpy arrays from loaded sample
 
-        :param image_size: size of the sample's images
-        :type image_size: tuple of ints
-        :param num_steps: number of steps for the sample
-        :type num_steps: int
-        :param grayscale: decides whether to use grayscale images or not
-        :type grayscale: bool
-        :param normalize: If normalize
-        :type normalize: bool
-        :param normalize: If normalize
-        :type normalize: bool
+        Args:
+            imageSize (Tuple of ints): size of the sample's images
+            num_steps (int): number of steps for the sample
+            grayscale (bool): decides whether to use grayscale images or not
+
+        Returns:
+            feature_map (numpy array): Return the feature map as a numpy array
         """
         # TODO assert imageSize is quadratic - Nope! not for lipImages -
-        #  cv2.resize wont work - mayberesizeandpadding??
         if num_steps and num_steps < self.k:
             step_data = self.data[:num_steps]
         else:
@@ -310,17 +309,19 @@ class FeatureizedSample:
         """
         calculating the distance vectors for a sample
 
-        :param sample: the sample we want the distances to be calculated
-        :type sample: numpy array
+        Args:
+            sample (numpy array): the sample we want the distances to be calculated
+
+        Returns:
+            outSample (unclear): Returns unclear data
         """
         out_sample = np.empty(sample.shape)  # this sets the dtype to np.float64
         base = sample[0][0]
-        print('SAMPLESHAPE: {}  -  should be (38, 68, 2)'.format(sample.shape))
-        print("BASE for sample: {}".format(base))
+
         for frame_num, frame in enumerate(sample):
             new_frame = np.empty(frame.shape)
             for pos_num, pos in enumerate(frame):
-                # TODO: calc distance to base
+                # TODO: calculate distance to base
                 xdist = pos[0] - base[0]
                 ydist = pos[1] - base[1]
                 new_frame[pos_num] = [xdist, ydist]
@@ -329,8 +330,13 @@ class FeatureizedSample:
 
     @staticmethod
     def _normalize(self, arr):
-        """
-        Normalizes the features of the array to [-1, 1].
+        """ Normalizes the features of the array to [-1, 1].
+
+            Args:
+                arr (numpy array): array with features to normalize
+
+            Returns:
+                arr_norm (numpy array): numpy array with features normalized to [-1, 1]
         """
         arr_max = np.max(arr)
         arr_min = np.min(arr)
@@ -344,10 +350,26 @@ class FeatureizedSample:
         return int(self.label)
 
     def generate_sample_from_fixed_frames(self, k, frames, init_pos, label,
-                                          feature_type, shape, shape_model_path=None,
-                                          data_augmentation=False, relative=True):
+                                          feature_type, shape, shape_model_path,
+                                          relative=True):
+        """
+        Generates Sample from fixed frames without return value
+
+        Args:
+            k (int): defines the temporal sliding window in frames
+            frames ():
+            init_pos ():
+            label (bool): positive or negative Label
+
+            feature_type (str): type of the feature map that should be returned by
+                getFeatures()
+            shape (Tuple of ints): the shape to which an Image should be scaled and
+                zeroPadded
+            shape_model_path (str): path to the model for the shape_predictor
+            relative (bool): ??
+        """
         # assert len frames to k
-        # trackface from init_pos
+        # track face from init_pos
         self.label = label
         self.k = k
         self.featureType = feature_type
@@ -363,18 +385,28 @@ class FeatureizedSample:
                 break
 
     def generate_sample_from_buffer(self, sourcebuffer, k):
-        """
-        just get another frame from sourcebuffer - returns False if sampleLngth is
-        smaller k otherwise returns a sample
-        of length k
+        """ get another frame from sourcebuffer
+
+        Args:
+            sourcebuffer ():
+            k (int): defines the temporal sliding window in frames
+
+        Returns:
+            sample (any): returns False if sampleLength is smaller k otherwise returns
+                a sample of length k
         """
         pass  # is only needed for live data...see if I go there
         # use a ringbuffer here
         # empty buffer if one frame is invalid(no face)
 
-    def visualize(self, fps=25, save_to=None, supplier="pyplot"):   # pragma: no cover
-        """
-        visualize the sample depending on the featureType
+    def visualize(self, fps=25, save_to=None, supplier="pyplot"):  # pragma: no cover
+        """ visualize the sample depending on the featureType
+
+        Args:
+            fps (int): Frames per second
+            saveTo (str): Path to save the visualization to (Default: None)
+            supplier (str): Selection between "pyplot" and "opencv"
+
         """
         if "Image" in self.featureType:
             rc('animation', html='html5')
@@ -459,25 +491,32 @@ class FeatureizedSample:
             plt.show()
 
     def save(self, path):
-        """
-        saves the sample to a pickle file - data is converted to a numpyArray first
+        """ saves the sample to a pickle file - data is converted to a numpyArray first
+
+        Args:
+            path (str): Path to save the file to
         """
         self.data = np.array(self.data)
         with open(path, 'wb') as file:
             pickle.dump(self.__dict__, file)
 
     def load(self, path):
-        """
-        loads from a pickle file
+        """ loads from a pickle file
+
+        Args:
+            path (str): Path to load the pickle file from
         """
         with open(path, 'rb') as file:
             self.__dict__.clear()
             self.__dict__.update(pickle.load(file))
 
 
-def visualize_samples(folder):   # pragma: no cover
-    """
-    visualize positive and negative samples from a folder.
+def visualize_samples(folder):  # pragma: no cover
+    """ visualize positive and negative samples from a folder.
+
+    Args:
+        folder (str): Path to folder where negative and positive samples are saved
+            (positiveSamples/negativeSamples)
     """
     positive_folder = os.path.join(folder, "positiveSamples")
     negative_folder = os.path.join(folder, "negativeSamples")
@@ -491,6 +530,6 @@ def visualize_samples(folder):   # pragma: no cover
     # put whole path
     random.shuffle(sample_files)
     for sampleFile in sample_files:
-        sample = FeatureizedSample()
+        sample = FeaturedSample()
         sample.load(sampleFile)
         sample.visualize()

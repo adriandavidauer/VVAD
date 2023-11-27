@@ -5,6 +5,8 @@ data/*
 code/trainingHistories/visualizations/*.png
 .vscode/*
 dataVisualizations/*
+site/*
+env/
 
 *node_modules
 trainingHistories/visualizations
@@ -73,6 +75,9 @@ acs-*.bib
 # amsthm
 *.thm
 
+# pycharm
+./idea/
+
 # beamer
 *.nav
 *.pre
@@ -94,7 +99,7 @@ acs-*.bib
 # endnotes
 *.ent
 
-# fixme
+# fixing me
 *.lox
 
 # feynmf/feynmp
@@ -148,7 +153,7 @@ acs-*.bib
 
 # knitr
 *-concordance.tex
-# TODO Comment the next line if you want to keep your tikz graphics files
+
 *.tikz
 *-tikzDictionary
 
@@ -223,7 +228,7 @@ pythontex-files-*/
 # todonotes
 *.tdo
 
-# easy-todo
+# easy-to do
 *.lod
 
 # xcolor

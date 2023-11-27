@@ -1,0 +1,116 @@
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+site_name: VVAD-LRS3 documentation
+repo_url: https://github.com/adriandavidauer/VVAD
+repo_name: adriandavidauer/VVAD
+
+nav:
+  - Home: README.md
+  - Human Accuracy: human-accuracy.md
+  - VVAD LRS3:
+      - Utily functions:
+        - Overview: 'utils/overview.md'
+        - Download Utils: 'utils/download-utils.md'
+        - Image Utils: 'utils/image-utils.md'
+        - Keras Utils: 'utils/keras-utils.md'
+        - Multiprocessing Utils: 'utils/multiprocessing-utils.md'
+        - Plot Utils: 'utils/plot-utils.md'
+        - Time Utils: 'utils/time-utils.md'
+        - Video Utils: 'utils/video-utils.md'
+      - Sample functions:
+          - Overview: 'sample/overview.md'
+          - FaceTracker: 'sample/facetracker-sample.md'
+          - FaceFeatures: 'sample/facefeature-sample.md'
+          - Sample: 'sample/featured-sample.md'
+      - Dataset functions:
+          - Overview: 'dataset/overview.md'
+          - Dataset: 'dataset/dataset.md'
+          - Additional functions: 'dataset/additional-functions-dataset.md'
+      - Cluster: vvad-lrs3-cluster.md
+      - Models: vvad-lrs3-models.md
+  - WildVVAD:
+      - Models: wildvvad-models.md
+      - Dataset: dataset.md
+  - Release Notes: release-notes.md
+  - About: about.md
+  - Licenses: licenses.md
+
+theme:
+  name: material
+  icon:
+    repo: material/robot-happy
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.path
+    # - toc.integrate
+    - navigation.top
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: en
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: teal
+      accent: purple
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+      primary: teal
+      accent: red
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+extra:
+  social:
+    - icon: fontawesome/brands/square-github
+      name: GitHub-Adrian
+      link: https://github.com/adriandavidauer
+    - icon: fontawesome/brands/linkedin
+      name: Linkedin-Adrian
+      link: https://www.linkedin.com/in/adrian-lubitz/
+    - icon: fontawesome/brands/github
+      name: GitHub-Karim
+      link: https://github.com/K-Zanaty
+    - icon: fontawesome/brands/linkedin-in
+      name: Linkedin-Karim
+      link: https://www.linkedin.com/in/karim-zanaty/
+
+extra_css:
+  - stylesheets/extra.css
+
+copyright: |
+  &copy; 2023 <a href="https://github.com/adriandavidauer" target="_blank" rel="noopener" style="color:#243ae5;">Adrian Auer, </a>
+  <a href="https://github.com/K-Zanaty" target="_blank" rel="noopener" style="color:#22c335;">Karim Zanaty</a>
+
+plugins:
+  - mike
+  - mkdocstrings
+  - git-authors
+  - git-committers:
+      repository: adriandavidauer/VVAD
+      branch: main

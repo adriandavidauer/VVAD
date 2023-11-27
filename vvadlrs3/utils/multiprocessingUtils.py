@@ -21,8 +21,15 @@ pool = multiprocessing.Pool()
 
 # positivesQueue, negativesQueue, getSamplesParams, dataset, semaphore
 def producer(dataset, get_samples_params):
-    # get samples params: path, feature_type, samples_shape, dry_run=False
-    print("[PRODUCER] started")
+    """
+    The producer extracts positive and negative samples from a given video sample
+    and adds the extracted samples to the positive and negative samples queues.
+
+    Args:
+        dataset (dataSet): Instance of dataset class
+        getSamplesParams (**args): Parameters from a given sample
+
+    """
     dataset.debug_print("started Producer for {}".format(get_samples_params))
     for sample in dataset.get_samples(*get_samples_params):
         # Put Samples
@@ -49,6 +56,21 @@ def producer(dataset, get_samples_params):
 
 # There will be only one consumer, therefore it is thread safe enough
 def consumer(positives_folder, negatives_folder, ratio_positives, ratio_negatives):
+    """
+    The consumer consumes all available samples from the positive and negative
+    samples queue considering the defined ratio of each sample type.
+    Subsequently, these are saved as pickle files on the drive.
+
+    Args:
+        positivesFolder (str): path to save positively labeled samples as pickle
+            files
+        negativesFolder (str): path to save negatively labeled samples as pickle
+            files
+        ratioPositives (int): amount of positive samples to store
+        ratioNegatives (int): amount of negative samples to store
+
+    """
+    print("started consumer")
     positive_counter = 0
     negative_counter = 0
     saved_positives = 0

@@ -12,10 +12,9 @@ def visualize_history(history, path=None):
     """
     visualizes the accuracy and loss for training and validation
 
-    :param history: a history from the learninig process
-    :type history: dict
-    :param path: if set it saves the visualizations to that path
-    :type path: string
+    Args:
+        history (dict): a history from the learning process
+        path (str): if set it saves the visualizations to that path
     """
     loss_values = history['loss']
     val_loss_values = history['val_loss']
@@ -66,17 +65,14 @@ def calculate_human_accuracy(mongo_url='mongodb://localhost:27017/', visualize=T
                              save_to=None, consider='all'):
     """
     calculates the average accuracy and standard deviation on every sample
+    Will fail if samples to consider are not correct
 
-    :param mongo_url: the URL to the mongoDB holding the results
-    :type mongo_url: String
-    :param visualize: If visualize
-    :type visualize: bool
-    :param save_to: Save to file
-    :type save_to: String
-    :param consider: Consider which samples
-    :type consider: String
+    Args:
+        mongoURL (str): the URL to the mongoDB holding the results
+        saveTo (str): default = None
+        consider (str): Selection of "pos", "neg", and "all", default = "all"
     """
-    assert consider == 'all' or consider == 'neg' or consider == 'pos',\
+    assert consider == 'all' or consider == 'neg' or consider == 'pos', \
         'consider can only be "all", "pos" or "neg"'
 
     def calc_error(classification, gt):
@@ -144,12 +140,11 @@ def plot_acc_over_time_steps(hist_list, path=None, features=False):
     plot the accuracy over different timeDistributed models with different numbers of
     timeSteps
 
-    :param hist_list: a list of history files from the learninig process
-    :type hist_list: list of Strings
-    :param path: if set it saves the visualizations to that path
-    :type path: string
-    :param features: Features
-    :type features: Any
+    Args:
+        histList (list of Strings): a list of history files from the learning process
+        path (str): if set it saves the visualizations to that path
+        features (bool): ?
+
     """
     x = []  # x shows the timesteps/frames used
     y = []  # y shows the reached maximum accuracy
@@ -178,8 +173,7 @@ def plot_acc_over_time_steps(hist_list, path=None, features=False):
     # 300 represents number of points to make between T.min and T.max
     x_new = np.linspace(min(x), max(x), 300)
 
-    # print("X.SHAPE: {}".format(x.shape))
-    spl = make_interp_spline(x, y)  # BSpline object, default k=3
+    spl = make_interp_spline(x, y, k=3)  # BSpline object
     y_smooth = spl(x_new)
 
     plt.title('Accuracy over the number of used frames')
@@ -196,10 +190,10 @@ def plot_acc_over_imagesize(hist_list, path=None):
     """
     plot the accuracy over one timeDistributed models with different image sizes
 
-    :param hist_list: a list of history files from the learninig process
-    :type hist_list: list of Strings
-    :param path: if set it saves the visualizations to that path
-    :type path: string
+    Args:
+        histList (list of String): a list of history files from the learning process
+        path (str): if set, it saves the visualizations to that provided path
+
     """
     x = []  # x shows the timesteps/frames used
     y = []  # y shows the reached maximum accuracy
@@ -239,6 +233,8 @@ def plot_acc_over_imagesize(hist_list, path=None):
 
 
 def plot_video_analysis(analysis, path=None, show=True):
+    # ToDo: Check code and add description
+
     plt.title('Mean predictions')
     plt.xlabel('seconds')
     plt.ylabel('prediction')
