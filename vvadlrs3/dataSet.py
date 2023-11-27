@@ -334,6 +334,7 @@ class DataSet:
                 current_sample = FeaturedSample
                 current_sample.data = data
                 current_sample.label = label
+                print(f"Current configuration is {configuration}")
                 yield current_sample
             else:
                 yield self.get_second_from_frame(sample_config[0]), \

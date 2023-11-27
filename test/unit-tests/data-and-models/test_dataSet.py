@@ -18,7 +18,7 @@ from vvadlrs3 import dataSet as dSet
 class TestDataSet(unittest.TestCase):
 
     def setUp(self):
-        self.test_data_root = "test/unit-tests/data-and-models/testData"
+        self.test_data_root = "testData"  # "test/unit-tests/data-and-models/testData"
         self.videos_path = "video"
         self.video_folder_path = "video/00j9bKdiOjk"
         self.video_folder_path_2 = "video/0Bhk65bYSI0"
@@ -54,7 +54,7 @@ class TestDataSet(unittest.TestCase):
 
     def test_get_all_positive_samples(self):
         self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
-            self.test_data_root, self.video_folder_path))
+            self.test_data_root, "video/0af00UcTOSc"))
 
         print(os.path.join(self.test_data_root, self.videos_path))
 
@@ -66,14 +66,14 @@ class TestDataSet(unittest.TestCase):
         for sample in all_p_samples:
             print(f"Sample is {sample}")
 
-        video_path_1 = "video/00j9bKdiOjk/00j9bKdiOjk.mp4"
-        video_path_2 = "video/00j9bKdiOjk/00j9bKdiOjk.3gpp"
-        video_path_1_converted = "video/00j9bKdiOjk/00j9bKdiOjk.converted.mp4"
+        video_path_1 = "video/0af00UcTOSc/0af00UcTO-c.mp4"
+        video_path_2 = "video/0af00UcTOSc/0af00UcTO-c.3gpp"
+        video_path_1_converted = "video/0af00UcTOSc/0af00UcTO-c.converted.mp4"
 
         print("Done")
 
         if os.path.exists(os.path.join(self.test_data_root,
-                                                        video_path_1)):
+                                       video_path_1)):
             self.assertTrue(os.path.exists(os.path.join(self.test_data_root,
                                                         video_path_1)))
             os.remove(os.path.join(self.test_data_root, video_path_1))
@@ -102,8 +102,8 @@ class TestDataSet(unittest.TestCase):
             os.remove(os.path.join(
                 self.test_data_root, self.video_folder_path,
                 "00j9bKdiOjk.converted.mp4").replace("\\", "/"))
-        except FileNotFoundError as e:
-            print(f"File not found.")
+        except FileNotFoundError:
+            print("File not found.")
 
     def test_download_lrs3(self):
         self.data_set.download_lrs3(path=os.path.join(
@@ -111,7 +111,7 @@ class TestDataSet(unittest.TestCase):
 
     def test_get_txt_files(self):
         for textfile in self.data_set.get_txt_files(
-                 os.path.join(self.test_data_root, "getTXT")):
+                os.path.join(self.test_data_root, "getTXT")):
             self.assertTrue(str(textfile).__contains__("myTXT.txt"))
 
     # ToDo: check if same as test_get_all_positive_samples
