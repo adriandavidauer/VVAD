@@ -81,10 +81,10 @@ def resize_and_zero_padding(image, shape):
     height_delta = abs(image.shape[0] - shape[1])
     image = cv2.copyMakeBorder(image, 0, height_delta, 0, width_delta,
                                cv2.BORDER_CONSTANT, value=[0, 0, 0])
-    assert min([heightDelta,
-                widthDelta]) == 0, "Padding must only be aplied on one side. " \
+    assert min([height_delta,
+                width_delta]) == 0, "Padding must only be aplied on one side. " \
                                    "widthDelta: {}, heightDelta: {}".format(
-        widthDelta, heightDelta)
+        width_delta, height_delta)
     assert image.shape[0] == shape[1], "Desired height was {} transformed to {}".format(
         shape[1], image.shape[0])
     assert image.shape[1] == shape[0], "Desired width was {} transformed to {}".format(

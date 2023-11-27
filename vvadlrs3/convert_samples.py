@@ -70,4 +70,4 @@ if __name__ == "__main__":   # pragma: no cover
 
     parser = parse_args(sys.argv[1:])
 
-    convert_samples(parser.input_path, parser.output_path, parser.num)
+    convert_samples_to_images(parser.input_path, parser.output_path, parser.num)
