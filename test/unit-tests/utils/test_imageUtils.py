@@ -12,14 +12,14 @@ class TestImageUtils(unittest.TestCase):
     """
     # Returns the bounding box for the first found face in an image, positive test case
     def test_detect_face(self):
-        test_img_path = "./testData/imgUtils_image_example.jpg"
+        test_img_path = "test/unit-tests/utils/testData/imgUtils_image_example.jpg"
 
         self.assertNotEqual(False, imgUtils.get_random_face_from_img(
             load_local_img(test_img_path)))
 
     # Returns False as no face is existent in the example image
     def test_detect_no_face(self):
-        test_img_path = "./testData/imgUtils_image_neg_example.jpg"
+        test_img_path = "test/unit-tests/utils/testData/imgUtils_image_neg_example.jpg"
 
         self.assertEqual(False, imgUtils.get_random_face_from_img(
             load_local_img(test_img_path)))
@@ -41,7 +41,7 @@ class TestImageUtils(unittest.TestCase):
     """
 
     def test_resize_and_zero_padding(self):
-        test_img_path = "testData/imgUtils_image_example.jpg"
+        test_img_path = "test/unit-tests/utils/testData/imgUtils_image_example.jpg"
         shape = (120, 150)
 
         new_img = imgUtils.resize_and_zero_padding(load_local_img(test_img_path), shape)
