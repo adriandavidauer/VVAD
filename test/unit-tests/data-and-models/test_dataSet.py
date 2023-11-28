@@ -35,7 +35,7 @@ class TestDataSet(unittest.TestCase):
             path=None,
             target_fps=25,
             init_multiprocessing=False,
-            shape_model_path="../../../models/shape_predictor_5_face_landmarks.dat "
+            shape_model_path="./models/shape_predictor_5_face_landmarks.dat "
         )
 
     def test_download_LRS3_sample_from_yt(self):
