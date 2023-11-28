@@ -19,7 +19,7 @@
 
    - This can be easily achieved when you install a linter e.g. flake8 or ruff
    - In the pipeline, the ruff linter is used
-     - It is ignoring the following issues on purpose: F405,F403,E402,E722
+     - It is ignoring the following issues on purpose: **F405**, **F403**, **E402**, **E722**
 
 4. If new functionality is added please include unit-tests for it.
    - Unit tests are divided into sample and dataset tests and usual utilities
@@ -28,13 +28,13 @@
 
 6. Commits should try to have the following structure:
    - Commits MUST be prefixed with a type, which consists of a noun, feat, fix, etc., followed by a colon and a space.
-     - feat: (new feature for the user, not a new feature for build script)
-     - fix: (bug fix for the user, not a fix to a build script)
-     - docs: (changes to the documentation)
-     - style: (formatting, missing semi colons, etc; no production code change)
-     - refactor: (refactoring production code, eg. renaming a variable)
-     - test: (adding missing tests, refactoring tests; no production code change)
-     - chore: (updating grunt tasks etc; no production code change)
+     - **feat**: (new feature for the user, not a new feature for build script)
+     - **fix**: (bug fix for the user, not a fix to a build script)
+     - **docs**: (changes to the documentation)
+     - **style**: (formatting, missing semi colons, etc; no production code change)
+     - **refactor**: (refactoring production code, eg. renaming a variable)
+     - **test**: (adding missing tests, refactoring tests; no production code change)
+     - **chore**: (updating grunt tasks etc; no production code change)
    - Commits are titles:
      - Start with a capital letter
      - Don't end the commit with a period
