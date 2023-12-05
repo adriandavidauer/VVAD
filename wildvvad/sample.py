@@ -7,7 +7,7 @@ import cv2
 import numpy as np
 import face_alignment
 from matplotlib import pyplot as plt
-from utils import utils
+from .utils import utils
 import vg
 
 import open3d as o3d
