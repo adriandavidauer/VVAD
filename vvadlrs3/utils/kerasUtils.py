@@ -4,6 +4,8 @@ utils needed for keras.
 # System imports
 import multiprocessing
 import os
+import glob
+import numpy as np
 
 # 3rd party imports
 import h5py
@@ -25,8 +27,8 @@ from keras.models import load_model
 from keras.optimizers import SGD
 from keras_vggface.vggface import VGGFace
 
-from vvadlrs3.sample import *
-from vvadlrs3.utils.timeUtils import *
+import sample as sample
+from utils.timeUtils import *
 
 
 def splitDataSet(dataPath, ratioTest, randomSeed=42):
@@ -227,7 +229,7 @@ class DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
             batch (numpy array): batch to use for data generation
         """
         # get dims once
-        s = FeaturedSample()
+        s = sample.FeaturedSample()
         s.load(batch[0])
         xInit = s.getData(imageSize=self.imageSize, num_steps=self.num_steps,
                           grayscale=self.grayscale, normalize=self.normalize)
@@ -238,7 +240,7 @@ class DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
 
         # Generate data
         for i, path in enumerate(batch):
-            s = FeaturedSample()
+            s = sample.FeaturedSample()
             s.load(path)
             # Store sample
             X[i,] = s.getData(imageSize=self.imageSize, num_steps=self.num_steps,

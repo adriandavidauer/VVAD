@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import pathlib
 import pickle
@@ -67,6 +68,12 @@ class videoUtils:
                             image = np.array(image)
                             video_sample.append(image)
 
+                        # save as sample in dictionary
+                        sample_dict = {
+                            "data": video_sample,
+                            "label": 0 if folder == "silent_videos" else 1,
+                            "featureType": "faceImages"
+                        }
                         # Save as pickle file
                         if folder == "speaking_videos":
                             with open(os.path.join(path, "positives", str(file.stem) + ".pickle"), 'wb') as pickle_file:
