@@ -1,6 +1,7 @@
 # Contributing
 
 We are happy if you want to contribute to this project - always feel free to contact us, we try to answer asap!
+
 For contributions we have the following rules for Pull Requests, please consider them ;-)
 
 ## Pull requests
