@@ -1,5 +1,8 @@
 # Contributing
 
+We are happy if you want to contribute to this project - always feel free to contact us, we try to answer asap!
+For contributions we have the following rules for Pull Requests, please consider them ;-)
+
 ## Pull requests
 
 1. Always use full english names for variable names
@@ -38,7 +41,7 @@
    - Commits are titles:
      - Start with a capital letter
      - Don't end the commit with a period
-     - Commits should be written to answer: If applied, this commit will A good commit would then look like: "Remove deprecated backend function"
+     - Commits should be written to answer: If applied, this commit will `COMMIT_MSG`. A good commit would then look like: "refactor: Remove deprecated backend function"
 
 7. Provide documentation of new features:
 
