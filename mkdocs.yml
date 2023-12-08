@@ -31,6 +31,7 @@ nav:
       - Models: wildvvad-models.md
       - Dataset: dataset.md
   - Release Notes: release-notes.md
+  - Contribute: how-to-contribute.md
   - About: about.md
   - Licenses: licenses.md
 
