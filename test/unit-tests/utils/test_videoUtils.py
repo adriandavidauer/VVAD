@@ -19,7 +19,7 @@ class TestVideoUtils(unittest.TestCase):
 
     def test_analyze_video_check_fps(self):
         self.assertEqual(vidUtils.analyze_video(
-            "testData/videoUtils_example.mp4").get("fps"), 25)
+            "test/unit-tests/utils/testData/videoUtils_example.mp4").get("fps"), 25)
         # default: faceImage
 
     def test_analyze_video_face_features(self):
@@ -29,13 +29,13 @@ class TestVideoUtils(unittest.TestCase):
             "faceFeatures")
 
     def test_analyze_video_wrong_feature_type(self):
-        vidUtils.analyze_video("testData/videoUtils_example.mp4", "wrongFeature")
-        self.assertRaises(
-            'feature_type must be one of ["faceImage", "lipImage", "faceFeatures", '
-            '"lipFeatures"]')
+        self.assertRaises(ValueError,
+                          lambda: vidUtils.analyze_video(
+                              "testData/videoUtils_example.mp4", "wrongFeature"
+                          ))
 
     def test_analyze_video_check_path(self):
         self.assertEqual(
             vidUtils.analyze_video(
                 "testData/videoUtils_example.mp4", "faceFeatures").get("video_path"),
-            "./testData/videoUtils_example.mp4")
+            "testData/videoUtils_example.mp4")

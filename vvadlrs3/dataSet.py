@@ -228,7 +228,7 @@ class DataSet:
             txt files. (For Example the pretrain folder)
         """
 
-        # for folder in path call cutTedVideo - need to extract the Video File first
+        # for folder in path call cuttedVideo - need to extract the Video File first
         folders = list(os.walk(path, followlinks=True))[0][1]
         folders.sort()
         for folder in folders:
@@ -331,7 +331,11 @@ class DataSet:
                     count += 1
                     if count > sample_config[1]:
                         break
-                yield Sample(data, label, configuration, self.shapeModelPath)
+                current_sample = FeaturedSample
+                current_sample.data = data
+                current_sample.label = label
+                print(f"Current configuration is {configuration}")
+                yield current_sample
             else:
                 yield self.get_second_from_frame(sample_config[0]), \
                       self.get_second_from_frame(sample_config[1])
@@ -354,9 +358,9 @@ class DataSet:
             old_video_path = video_path
             video_path = pathlib.Path(os.path.join(
                 old_video_path.parents[0], old_video_path.stem + ".converted" +
-                old_video_path.suffix))
+                ".mp4"))
 
-            command = f"ffmpeg -i {old_video_path} -filter:v fps:{fps_in} {video_path}"
+            command = f"ffmpeg -i {old_video_path} -r {fps_in} {video_path}"
 
             print(command)
             os.system(command)
@@ -462,7 +466,7 @@ class DataSet:
                 txt files. (For Example the pretrain folder)
             save_to (str): Path to save the result's image to
         """
-        p_samples = self.get_all_p_samples(path, dry_run=True)
+        p_samples = self.get_all_p_samples(path, dry_run=False)
         # TODO: norm to the number of analyzedSamples to see how many negative Samples
         #  can be constructed out of how many positive samples
 
@@ -800,7 +804,7 @@ class DataSet:
         num_positives = 0
         num_negatives = 0
         for sampleConfig in self.get_all_samples(
-                "faceImage", path, dryRun=True, showStatus=True):
+                "faceImage", path, dryRun=False, showStatus=True):
             print("Sample Config is ", sampleConfig)
             if sampleConfig[0]:
                 num_positives += 1

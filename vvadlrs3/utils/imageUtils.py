@@ -10,7 +10,7 @@ import numpy as np
 
 # local imports
 
-def getRandomFaceFromImage(image):
+def get_random_face_from_img(image):
     """ returns the bounding box for first face from an image
 
     Args:
