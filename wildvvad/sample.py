@@ -7,6 +7,7 @@ import cv2
 import numpy as np
 import face_alignment
 from matplotlib import pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D # <--- This is important for 3d plotting
 from .utils import utils
 import vg
 
@@ -177,7 +178,7 @@ class Sample:
         dY = right_eye_center[1] - left_eye_center[1]
         dZ = right_eye_center[2] - left_eye_center[2]
         vector_angle = vg.angle(right_eye_center, left_eye_center)
-        print("Angle is", vector_angle)
+        # print("Angle is", vector_angle)
 
         # compute center (x, y, z)-coordinates (i.e., the median point)
         # between the two eyes in the input image

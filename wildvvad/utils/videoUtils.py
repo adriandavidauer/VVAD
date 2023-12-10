@@ -10,6 +10,7 @@ import numpy as np
 
 from wildvvad.sample import Sample
 
+
 class videoUtils:
     def __init__(self):
         self.sample = Sample()
@@ -26,15 +27,24 @@ class videoUtils:
 
         # Create folders for pickle files if they not exist
 
-        if not os.path.exists(os.path.join(path, "positives")):
+        if not os.path.exists(os.path.join(path, "faceImages", "positives")):
             # Create a new directory because it does not exist
-            os.makedirs(os.path.join(path, "positives"))
+            os.makedirs(os.path.join(path, "faceImages", "positives"))
             print("Directory for positive samples is created!")
-        if not os.path.exists(os.path.join(path, "negatives")):
+        if not os.path.exists(os.path.join(path, "faceImages", "negatives")):
             # Create a new directory because it does not exist
-            os.makedirs(os.path.join(path, "negatives"))
+            os.makedirs(os.path.join(path, "faceImages", "negatives"))
+        if not os.path.exists(os.path.join(path, "faceFeatures", "positives")):
+            # Create a new directory because it does not exist
+            os.makedirs(os.path.join(path, "faceFeatures", "positives"))
+            print("Directory for positive samples is created!")
+        if not os.path.exists(os.path.join(path, "faceFeatures", "negatives")):
+            # Create a new directory because it does not exist
+            os.makedirs(os.path.join(path, "faceFeatures", "negatives"))
 
         folders.sort()
+
+        samples_without_face = []
 
         print(f"Available folders: {folders}")
         for folder in folders:
@@ -51,8 +61,10 @@ class videoUtils:
                          for file in files]
                 # get the RefField
                 with Bar(f'Converting in {folder}', fill='@', suffix='%(percent).1f%% - %(eta)ds') as bar:
-                    for file in files:
+                    for index, file in enumerate(files, start=1):
                         print(f"Current file is {file.name}.")
+                        print(f"Processing file number {index} of {len(files)}, "
+                              f"== {round((index / len(files) * 100), 2)} in {folder}")
                         # Convert file from avi to mp4
                         command = f"ffmpeg -y -i {file} -vcodec libx264 -crf 28 -r 25 {os.path.join(file.parents[0], file.stem + '.mp4')}"
 
@@ -63,25 +75,70 @@ class videoUtils:
 
                         current_sample = self.sample.load_video_sample_from_disk(
                             os.path.abspath(new_file))
-                        video_sample = []
+                        video_sample_face_image = []
+                        video_sample_face_feature = []
+                        face_detected = True
                         for image in current_sample:
-                            image = np.array(image)
-                            video_sample.append(image)
+                            # face feature
+                            try:
+                                print("Get landmarks")
+                                preds = self.sample.get_face_landmark_from_sample(image)[-1]
+                                # calculate euclidean distance and normalize
+                                # outmost eye corner is landmark 36 (right eye) and landmark 45 (left eye)
+                                # get euclidean distance
+                                corner_right_eye = preds[36]
+                                corner_left_eye = preds[45]
+                                euclidean_distance = np.linalg.norm(corner_left_eye - corner_right_eye)
+                                # normalize on euclidean distance
+                                for i in range(len(preds)):
+                                    preds[i] = (1 / euclidean_distance) * preds[i]
+                                # self.sample.visualize_3d_landmarks(image, preds, False)
+                                print("Align face")
+                                rotated_landmarks = self.sample.align_3d_face(preds)
+                                # self.sample.visualize_3d_landmarks(image, rotated_landmarks, True)
+
+                                video_sample_face_feature.append(rotated_landmarks)
+
+                                # face images
+                                image = np.array(image)
+                                video_sample_face_image.append(image)
+                            except Exception as e:
+                                face_detected = False
+                                samples_without_face.append(file)
+                                print("Samples without face: ", samples_without_face)
+                                print("Error in detecting faces as ", e)
+                                continue
 
                         # save as sample in dictionary
-                        sample_dict = {
-                            "data": video_sample,
+                        sample_dict_face_images = {
+                            "data": video_sample_face_image,
                             "label": 0 if folder == "silent_videos" else 1,
                             "featureType": "faceImages"
                         }
+                        sample_dict_face_features = {
+                            "data": video_sample_face_feature,
+                            "label": 0 if folder == "silent_videos" else 1,
+                            "featureType": "faceFeatures"
+                        }
                         # Save as pickle file
                         if folder == "speaking_videos":
-                            with open(os.path.join(path, "positives", str(file.stem) + ".pickle"), 'wb') as pickle_file:
-                                pickle.dump(video_sample, file=pickle_file)
+                            with open(os.path.join(path, "faceImages", "positives", str(file.stem) + ".pickle"),
+                                      'wb') as pickle_file:
+                                pickle.dump(video_sample_face_image, file=pickle_file)
+                            if face_detected:
+                                with open(os.path.join(path, "faceFeatures", "positives", str(file.stem) + ".pickle"),
+                                          'wb') as pickle_file:
+                                    pickle.dump(video_sample_face_feature, file=pickle_file)
                         elif folder == "silent_videos":
-                            with open(os.path.join(path, "negatives", str(file.stem) + ".pickle"), 'wb') as pickle_file:
-                                pickle.dump(video_sample, file=pickle_file)
+                            with open(os.path.join(path, "faceImages", "negatives", str(file.stem) + ".pickle"),
+                                      'wb') as pickle_file:
+                                pickle.dump(video_sample_face_image, file=pickle_file)
+                            if face_detected:
+                                with open(os.path.join(path, "faceFeatures", "negatives", str(file.stem) + ".pickle"),
+                                          'wb') as pickle_file:
+                                    pickle.dump(video_sample_face_feature, file=pickle_file)
                         bar.next()
+        print(f"Samples without faces ", samples_without_face)
 
 
 if __name__ == "__main__":
