@@ -3,7 +3,6 @@ import os
 import pathlib
 import pickle
 import sys
-import multiprocessing as mp
 
 from progress.bar import Bar
 
@@ -58,96 +57,87 @@ class videoUtils:
                 except:
                     raise Exception(
                         "Data folder is probably not mounted. Or you gave the wrong path.")
-
-                def process_file(file_name):
-                    file = pathlib.Path(file_name)
-                    print(f"Current file is {file.name}.")
-                    # Convert file from avi to mp4
-                    command = f"ffmpeg -y -i {file} -vcodec libx264 -crf 28 -r 25 {os.path.join(file.parents[0], file.stem + '.mp4')}"
-
-                    new_file = os.path.join(file.parents[0], file.stem + '.mp4')
-
-                    print(command)
-                    os.system(command)
-
-                    current_sample = self.sample.load_video_sample_from_disk(
-                        os.path.abspath(new_file))
-                    video_sample_face_image = []
-                    video_sample_face_feature = []
-                    face_detected = True
-                    for image in current_sample:
-                        # face feature
-                        try:
-                            print("Get landmarks")
-                            preds = self.sample.get_face_landmark_from_sample(image)[-1]
-                            # calculate euclidean distance and normalize
-                            # outmost eye corner is landmark 36 (right eye) and landmark 45 (left eye)
-                            # get euclidean distance
-                            corner_right_eye = preds[36]
-                            corner_left_eye = preds[45]
-                            euclidean_distance = np.linalg.norm(corner_left_eye - corner_right_eye)
-                            # normalize on euclidean distance
-                            for i in range(len(preds)):
-                                preds[i] = (1 / euclidean_distance) * preds[i]
-                            # self.sample.visualize_3d_landmarks(image, preds, False)
-                            print("Align face")
-                            rotated_landmarks = self.sample.align_3d_face(preds)
-                            # self.sample.visualize_3d_landmarks(image, rotated_landmarks, True)
-
-                            video_sample_face_feature.append(rotated_landmarks)
-
-                            # face images
-                            image = np.array(image)
-                            video_sample_face_image.append(image)
-                        except Exception as e:
-                            face_detected = False
-                            samples_without_face.append(file)
-                            print("Samples without face: ", samples_without_face)
-                            print("Error in detecting faces as ", e)
-                            continue
-
-                    # save as sample in dictionary
-                    sample_dict_face_images = {
-                        "data": video_sample_face_image,
-                        "label": 0 if folder == "silent_videos" else 1,
-                        "featureType": "faceImages"
-                    }
-                    sample_dict_face_features = {
-                        "data": video_sample_face_feature,
-                        "label": 0 if folder == "silent_videos" else 1,
-                        "featureType": "faceFeatures"
-                    }
-                    # Save as pickle file
-                    if folder == "speaking_videos":
-                        with open(os.path.join(path, "faceImages", "positives", str(file.stem) + ".pickle"),
-                                  'wb') as pickle_file:
-                            pickle.dump(video_sample_face_image, file=pickle_file)
-                        if face_detected:
-                            with open(os.path.join(path, "faceFeatures", "positives", str(file.stem) + ".pickle"),
-                                      'wb') as pickle_file:
-                                pickle.dump(video_sample_face_feature, file=pickle_file)
-                    elif folder == "silent_videos":
-                        with open(os.path.join(path, "faceImages", "negatives", str(file.stem) + ".pickle"),
-                                  'wb') as pickle_file:
-                            pickle.dump(video_sample_face_image, file=pickle_file)
-                        if face_detected:
-                            with open(os.path.join(path, "faceFeatures", "negatives", str(file.stem) + ".pickle"),
-                                      'wb') as pickle_file:
-                                pickle.dump(video_sample_face_feature, file=pickle_file)
-
                 files = [pathlib.Path(os.path.join(current_folder, file))
                          for file in files]
-
-                file_names_list = []
-                for file in files:
-                    file_names_list.extend(str(file))
-                for file in file_names_list:
-                    with mp.Pool(2) as p:
-                        #p.map(process_file, file_names_list)
-                        p.apply_async(process_file, [file])
                 # get the RefField
-                # with Bar(f'Converting in {folder}', fill='@', suffix='%(percent).1f%% - %(eta)ds') as bar:
+                with Bar(f'Converting in {folder}', fill='@', suffix='%(percent).1f%% - %(eta)ds') as bar:
+                    for index, file in enumerate(files, start=1):
+                        print(f"Current file is {file.name}.")
+                        print(f"Processing file number {index} of {len(files)}, "
+                              f"== {round((index / len(files) * 100), 2)} in {folder}")
+                        # Convert file from avi to mp4
+                        command = f"ffmpeg -y -i {file} -vcodec libx264 -crf 28 -r 25 {os.path.join(file.parents[0], file.stem + '.mp4')}"
 
+                        new_file = os.path.join(file.parents[0], file.stem + '.mp4')
+
+                        print(command)
+                        os.system(command)
+
+                        current_sample = self.sample.load_video_sample_from_disk(
+                            os.path.abspath(new_file))
+                        video_sample_face_image = []
+                        video_sample_face_feature = []
+                        face_detected = True
+                        for image in current_sample:
+                            # face feature
+                            try:
+                                print("Get landmarks")
+                                preds = self.sample.get_face_landmark_from_sample(image)[-1]
+                                # calculate euclidean distance and normalize
+                                # outmost eye corner is landmark 36 (right eye) and landmark 45 (left eye)
+                                # get euclidean distance
+                                corner_right_eye = preds[36]
+                                corner_left_eye = preds[45]
+                                euclidean_distance = np.linalg.norm(corner_left_eye - corner_right_eye)
+                                # normalize on euclidean distance
+                                for i in range(len(preds)):
+                                    preds[i] = (1 / euclidean_distance) * preds[i]
+                                # self.sample.visualize_3d_landmarks(image, preds, False)
+                                print("Align face")
+                                rotated_landmarks = self.sample.align_3d_face(preds)
+                                # self.sample.visualize_3d_landmarks(image, rotated_landmarks, True)
+
+                                video_sample_face_feature.append(rotated_landmarks)
+
+                                # face images
+                                image = np.array(image)
+                                video_sample_face_image.append(image)
+                            except Exception as e:
+                                face_detected = False
+                                samples_without_face.append(file)
+                                print("Samples without face: ", samples_without_face)
+                                print("Error in detecting faces as ", e)
+                                continue
+
+                        # save as sample in dictionary
+                        sample_dict_face_images = {
+                            "data": video_sample_face_image,
+                            "label": 0 if folder == "silent_videos" else 1,
+                            "featureType": "faceImages"
+                        }
+                        sample_dict_face_features = {
+                            "data": video_sample_face_feature,
+                            "label": 0 if folder == "silent_videos" else 1,
+                            "featureType": "faceFeatures"
+                        }
+                        # Save as pickle file
+                        if folder == "speaking_videos":
+                            with open(os.path.join(path, "faceImages", "positives", str(file.stem) + ".pickle"),
+                                      'wb') as pickle_file:
+                                pickle.dump(video_sample_face_image, file=pickle_file)
+                            if face_detected:
+                                with open(os.path.join(path, "faceFeatures", "positives", str(file.stem) + ".pickle"),
+                                          'wb') as pickle_file:
+                                    pickle.dump(video_sample_face_feature, file=pickle_file)
+                        elif folder == "silent_videos":
+                            with open(os.path.join(path, "faceImages", "negatives", str(file.stem) + ".pickle"),
+                                      'wb') as pickle_file:
+                                pickle.dump(video_sample_face_image, file=pickle_file)
+                            if face_detected:
+                                with open(os.path.join(path, "faceFeatures", "negatives", str(file.stem) + ".pickle"),
+                                          'wb') as pickle_file:
+                                    pickle.dump(video_sample_face_feature, file=pickle_file)
+                        bar.next()
         print(f"Samples without faces ", samples_without_face)
 
 
