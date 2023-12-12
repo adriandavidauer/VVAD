@@ -8,7 +8,7 @@ import numpy as np
 import face_alignment
 from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D # <--- This is important for 3d plotting
-from .utils import utils
+from utils import utils
 import vg
 
 import open3d as o3d

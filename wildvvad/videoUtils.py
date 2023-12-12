@@ -8,7 +8,7 @@ from progress.bar import Bar
 
 import numpy as np
 
-from wildvvad.sample import Sample
+from sample import Sample
 
 
 class videoUtils:
@@ -142,5 +142,7 @@ class videoUtils:
 
 
 if __name__ == "__main__":
+    print(sys.executable)
+    print(os.getcwd())
     util = videoUtils()
     util.convert_mp4_to_pickle(path="../../wildvvad_dataset")
