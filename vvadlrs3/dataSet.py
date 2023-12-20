@@ -150,7 +150,7 @@ class DataSet:
 
         Args:
             path (str): Path to the DataSet folder containing folders, which
-            contain txt files. (For Example the pretrain folder)
+                        contain txt files. (For Example the pretrain folder)
         """
         folders = list(os.walk(path, followlinks=True))[0][1]
         folders.sort()
@@ -171,8 +171,9 @@ class DataSet:
             feature_type (str): MISSING
             path (str): Path to the DataSet folder containing folders, which contain
                 txt files. (For Example the pretrain folder)
-            dry_run(bool): Dry run without actual samples
-            show_status(bool): Print actual progress status
+            relative(bool): MISSING
+            dry_run(bool): If this function is called without actual samples
+            show_status(bool): Showing progress status in STD OUT
         """
         if show_status:
             ts = time.perf_counter()
@@ -199,7 +200,6 @@ class DataSet:
     def convert_all_fps(self, path):
         """
         converting all the fps from this folder.
-
         Args:
         path (str): Path to the DataSet folder containing folders, which contain txt
         files. (For Example the pretrain folder)

@@ -25,7 +25,7 @@ pip install vvadlrs3
 ```
 
 # Data
-The models are trained on the VVAD-LRS3 Dataset
+The models are trained on the [VVAD-LRS3](https://www.kaggle.com/datasets/adrianlubitz/vvadlrs3) Dataset.
 
 <p align="center">
     <img src="sampleVisualization.gif">
@@ -34,3 +34,5 @@ The models are trained on the VVAD-LRS3 Dataset
 </p>
 
 
+# How to contribute
+Please check out the [Contributing Page](./how-to-contribute.md)
