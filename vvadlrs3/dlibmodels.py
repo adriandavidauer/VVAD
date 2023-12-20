@@ -15,7 +15,7 @@ from vvadlrs3.utils.downloadUtils import download_url
 
 # end file header
 
-__author__ = 'Adrian Lubitz'
+__author__ = 'Adrian Auer'
 
 
 def SHAPE_PREDICTOR_68_FACE_LANDMARKS():

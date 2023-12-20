@@ -1,7 +1,8 @@
 import os.path
 import pathlib
-import unittest
+import shutil
 import sys
+import unittest
 
 import numpy
 
@@ -21,11 +22,10 @@ class TestDataSet(unittest.TestCase):
         self.test_data_root = "test/unit-tests/data-and-models/testData"
         self.videos_path = "video"
         self.video_folder_path = "video/00j9bKdiOjk"
-        self.video_folder_path_2 = "video/0Bhk65bYSI0"
-        self.video_folder_path_3 = "video/0Amg53UuRqE"
-        self.video_folder_path_4 = "video/0akiEFwtkyA"
-        self.video_folder_path_5 = "video/0af00UcTOSc"
-        self.video_file_path = "video/00j9bKdiOjk/00j9bKdiOjk.3gpp"
+        self.video_folder_path_2 = "video/0Amg53UuRqE"
+        self.video_folder_path_3 = "video/0akiEFwtkyA"
+        self.video_file_path = "video/00j9bKdiOjk/00j9bKdiOjk.mp4"
+        self.video_file_path_converted = "video/00j9bKdiOjk/00j9bKdiOjk.coverted.mp4"
         self.video_txt_file_path = "video/00j9bKdiOjk/00001.txt"
         self.data_set = dSet.DataSet(
             debug_flag=True,
@@ -35,8 +35,7 @@ class TestDataSet(unittest.TestCase):
             path=None,
             target_fps=25,
             init_multiprocessing=False,
-            shape_model_path="./models"
-                             "/shape_predictor_5_face_landmarks.dat "
+            shape_model_path="./models/shape_predictor_5_face_landmarks.dat "
         )
 
     def test_download_LRS3_sample_from_yt(self):
@@ -54,36 +53,37 @@ class TestDataSet(unittest.TestCase):
 
     @unittest.expectedFailure
     def test_get_all_positive_samples(self):
+        # Preparation
         self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
-            self.test_data_root, "video/0af00UcTOSc"))
+            self.test_data_root, self.video_folder_path))
+        self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
+            self.test_data_root, self.video_folder_path_2))
 
-        print(os.path.join(self.test_data_root, self.videos_path))
+        path = os.path.join(self.test_data_root, self.videos_path)
 
-        all_p_samples = self.data_set.get_all_p_samples(
-            os.path.join(self.test_data_root, self.videos_path))
+        # Execution and first evaluation
+        for sample in self.data_set.get_all_p_samples(path):
+            self.assertIsNotNone(sample)
 
-        print(f"Samples: {all_p_samples}")
+        video_path_1 = "video/0Amg53UuRqE/0Amg53UuRqE.mp4"
+        video_path_2 = "video/00j9bKdiOjk/00j9bKdiOjk.mp4"
 
-        for sample in all_p_samples:
-            print(f"Sample is {sample}")
+        # Evaluation
+        self.assertTrue(os.path.exists(os.path.join(self.test_data_root,
+                                                    video_path_1)))
+        self.assertTrue(os.path.exists(os.path.join(self.test_data_root,
+                                                    video_path_2)))
 
-        video_path_1 = "video/0af00UcTOSc/0af00UcTO-c.mp4"
-        video_path_2 = "video/0af00UcTOSc/0af00UcTO-c.3gpp"
-        video_path_1_converted = "video/0af00UcTOSc/0af00UcTO-c.converted.mp4"
-
-        print("Done")
-
-        if os.path.exists(os.path.join(self.test_data_root,
-                                       video_path_1)):
-            self.assertTrue(os.path.exists(os.path.join(self.test_data_root,
-                                                        video_path_1)))
-            os.remove(os.path.join(self.test_data_root, video_path_1))
-        else:
-            self.assertTrue(os.path.exists(os.path.join(self.test_data_root,
-                                                        video_path_2)))
-            os.remove(os.path.join(self.test_data_root, video_path_2))
-
-        os.remove(os.path.join(self.test_data_root, video_path_1_converted))
+        # Clean
+        folders = list(os.walk(path, followlinks=True))[0][1]
+        folders.sort()
+        for folder in folders:
+            files = os.listdir(os.path.join(self.test_data_root, self.videos_path,
+                                            folder))
+            for item in files:
+                if item.endswith(".mp4") or item.endswith(".3gpp"):
+                    os.remove(os.path.join(self.test_data_root, self.videos_path,
+                                           folder, item))
 
     def test_get_all_samples(self):
         self.data_set.get_all_samples(
@@ -93,55 +93,100 @@ class TestDataSet(unittest.TestCase):
 
     def test_convert_all_fps(self):
         # Windows needs ffmpeg.exe as executable. Might not be needed for Linux
+        self.data_set.download_lrs3(path=os.path.join(
+            self.test_data_root, self.videos_path))
         self.data_set.convert_all_fps(
-            os.path.join(self.test_data_root, "video").replace("\\", "/"))
-        self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
-            self.test_data_root, self.video_folder_path))
-        os.remove(os.path.join(
-            self.test_data_root, self.video_file_path))
-        try:
-            os.remove(os.path.join(
-                self.test_data_root, self.video_folder_path,
-                "00j9bKdiOjk.converted.mp4").replace("\\", "/"))
-        except FileNotFoundError:
-            print("File not found.")
+            os.path.join(self.test_data_root, self.videos_path).replace("\\", "/"))
+
+        self.assertEqual(25, self.data_set.fps)
+
+        # Clean
+        path = os.path.join(self.test_data_root, self.videos_path)
+
+        folders = list(os.walk(path, followlinks=True))[0][1]
+        folders.sort()
+        for folder in folders:
+            files = os.listdir(os.path.join(self.test_data_root, self.videos_path,
+                                            folder))
+            for item in files:
+                if item.endswith(".mp4") or item.endswith(".3gpp"):
+                    os.remove(os.path.join(self.test_data_root, self.videos_path,
+                                           folder, item))
 
     def test_download_lrs3(self):
         self.data_set.download_lrs3(path=os.path.join(
-            self.test_data_root, self.video_folder_path))
+            self.test_data_root, self.videos_path))
+
+        self.assertTrue(
+            os.path.exists(
+                os.path.join(self.test_data_root, self.video_folder_path,
+                             "00j9bKdiOjk.mp4")
+            )
+        )
+
+        self.assertTrue(
+            os.path.exists(
+                os.path.join(self.test_data_root, self.video_folder_path_2,
+                             "0Amg53UuRqE.mp4")
+            )
+        )
+
+        # Clean
+        path = os.path.join(self.test_data_root, self.videos_path)
+
+        folders = list(os.walk(path, followlinks=True))[0][1]
+        folders.sort()
+        for folder in folders:
+            files = os.listdir(os.path.join(self.test_data_root, self.videos_path,
+                                            folder))
+            for item in files:
+                if item.endswith(".mp4") or item.endswith(".3gpp"):
+                    os.remove(os.path.join(self.test_data_root, self.videos_path,
+                                           folder, item))
 
     def test_get_txt_files(self):
         for textfile in self.data_set.get_txt_files(
                 os.path.join(self.test_data_root, "getTXT")):
             self.assertTrue(str(textfile).__contains__("myTXT.txt"))
 
-    # ToDo: check if same as test_get_all_positive_samples
-    # @unittest.expectedFailure
-    def test_get_positive_samples(self):
-        # ToDo somehow wrong
-
-        # data_set.downloadLRS3SampleFromYoutube(path=folder_path)
-        self.data_set.get_positive_samples(path=os.path.join(self.test_data_root,
-                                                             self.video_folder_path))
-        print(self.data_set.get_positive_samples(path=os.path.join(
-            self.test_data_root, self.video_folder_path),
-            dry_run=True))
-        for sample in dSet.DataSet.get_positive_samples(os.path.join(
+    def test_get_positive_samples_dry(self):
+        for sample in self.data_set.get_positive_samples(os.path.join(
                 self.test_data_root, self.video_folder_path),
                 True):
-            print("hey")
-            yield sample
+            self.assertIsNotNone(sample)
         print("[getAllPSamples] Folder {} done".format(os.path.join(
             self.test_data_root, self.video_folder_path)))
 
+    @unittest.expectedFailure
+    def test_get_positive_samples(self):
+        self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
+            self.test_data_root, self.video_folder_path))
+        self.assertTrue(os.path.exists(os.path.join(self.test_data_root,
+                                                    self.video_file_path)))
+
+        for sample in self.data_set.get_positive_samples(os.path.join(
+                self.test_data_root, self.video_folder_path),
+                False):
+            print(sample)
+        print("[getAllPSamples] Folder {} done".format(os.path.join(
+            self.test_data_root, self.video_folder_path)))
+
+        # Clean
+        os.remove(os.path.join(self.test_data_root, self.video_file_path))
+        files = os.listdir(os.path.join(self.test_data_root, self.video_folder_path))
+        for item in files:
+            if item.endswith(".3gpp") or item.endswith(".mp4"):
+                os.remove(os.path.join(self.test_data_root, self.video_folder_path,
+                                       item))
+
     def test_get_no_video_path_from_folder_index_error(self):
-        video_path = os.path.join(self.test_data_root, self.video_file_path). \
+        video_path = os.path.join(self.test_data_root, "noVideoData"). \
             replace("\\", "/")
         self.assertRaises(dSet.WrongPathException,
                           lambda: self.data_set.get_video_path_from_folder(video_path))
 
     def test_get_no_video_path_from_folder(self):
-        video_path = os.path.join(self.test_data_root, self.video_folder_path). \
+        video_path = os.path.join(self.test_data_root, "getTXT"). \
             replace("\\", "/")
         self.assertRaises(FileNotFoundError,
                           lambda: self.data_set.get_video_path_from_folder(video_path))
@@ -156,21 +201,36 @@ class TestDataSet(unittest.TestCase):
                                           os.path.join(os.path.abspath(video_path),
                                                        "test_video.mp4"))))
 
-    # ToDo not running through in pipeline
-    @unittest.expectedFailure
+    def test_too_many_videos_in_folder(self):
+        src_dir = os.path.join(self.test_data_root, "test_video_data",
+                               "test_video.mp4"). \
+            replace("\\", "/")
+        dst_dir = os.path.join(self.test_data_root, "test_video_data",
+                               "test_video.converted.mp4"). \
+            replace("\\", "/")
+        shutil.copy(src_dir, dst_dir)
+
+        self.assertTrue(os.path.exists(dst_dir))
+
+        video_path = os.path.join(self.test_data_root, "test_video_data"). \
+            replace("\\", "/")
+
+        self.data_set.get_video_path_from_folder(pathlib.Path(video_path))
+
+        self.assertFalse(os.path.exists(dst_dir))
+
     def test_analyze_negatives(self):
         pauses = self.data_set.analyze_negatives(
             path=os.path.join(self.test_data_root, self.videos_path),
-            save_to=os.path.join(self.test_data_root, "createdFiles/analyze_negatives"))
+            save_to=os.path.join(self.test_data_root, "analyze_negatives"))
 
-        self.assertEqual(len(pauses), 16)
+        self.assertEqual(len(pauses), 4)
         self.assertTrue(os.path.exists(
             os.path.join(self.test_data_root,
-                         "createdFiles/analyze_negatives.png")))
+                         "analyze_negatives.png")))
         os.remove(os.path.join(self.test_data_root,
-                               "createdFiles/analyze_negatives.png"))
+                               "analyze_negatives.png"))
 
-    # ToDo not running through in pipeline
     @unittest.expectedFailure
     def test_analyze_positives(self):
         self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
@@ -178,16 +238,26 @@ class TestDataSet(unittest.TestCase):
 
         positives, num_samples = self.data_set.analyze_positives(
             path=os.path.join(self.test_data_root, self.videos_path),
-            save_to=os.path.join(self.test_data_root, "createdFiles/analyze_positives"))
+            save_to=os.path.join(self.test_data_root, "analyze_positives"))
 
-        self.assertEqual(num_samples, 120)
+        self.assertEqual(num_samples, 3)
         self.assertTrue(os.path.exists(
             os.path.join(self.test_data_root,
-                         "createdFiles/analyze_positives.png")))
+                         "analyze_positives.png")))
         os.remove(os.path.join(self.test_data_root,
-                               "createdFiles/analyze_positives.png"))
-        os.remove(os.path.join(self.test_data_root,
-                               self.video_file_path))
+                               "analyze_positives.png"))
+        # Clean
+        path = os.path.join(self.test_data_root, self.videos_path)
+
+        folders = list(os.walk(path, followlinks=True))[0][1]
+        folders.sort()
+        for folder in folders:
+            files = os.listdir(os.path.join(self.test_data_root, self.videos_path,
+                                            folder))
+            for item in files:
+                if item.endswith(".mp4") or item.endswith(".3gpp"):
+                    os.remove(os.path.join(self.test_data_root, self.videos_path,
+                                           folder, item))
 
     def test_get_frame_from_second(self):
         # default fps = 25
@@ -256,8 +326,8 @@ class TestDataSet(unittest.TestCase):
         #                          samples_shape=)
 
     # ToDo fails with "cannot convert float NaN to integer" - sample error
-    # @unittest.expectedFailure unexpected success in pipeline online?
-    """def test_analyze(self):
+    @unittest.expectedFailure # unexpected success in pipeline online?
+    def test_analyze(self):
         # Windows needs ffmpeg.exe as executable. Might not be needed for Linux
         self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
             self.test_data_root, self.video_folder_path))
@@ -265,20 +335,25 @@ class TestDataSet(unittest.TestCase):
             self.test_data_root, self.video_folder_path_2))
         self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
             self.test_data_root, self.video_folder_path_3))
-        self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
-            self.test_data_root, self.video_folder_path_4))
-        self.data_set.download_lrs3_sample_from_youtube(path=os.path.join(
-            self.test_data_root, self.video_folder_path_5))
 
         self.data_set.analyze(
             path=os.path.join(self.test_data_root, self.videos_path),
             save_to=os.path.join(self.test_data_root, self.videos_path))
 
-        os.remove(os.path.join(self.test_data_root, self.video_file_path))
-        os.remove(os.path.join(self.test_data_root, self.video_file_path,
-                               "video.png"))"""
+        # Clean
+        path = os.path.join(self.test_data_root, self.videos_path)
 
-    def test_grap_from_video(self):
+        folders = list(os.walk(path, followlinks=True))[0][1]
+        folders.sort()
+        for folder in folders:
+            files = os.listdir(os.path.join(self.test_data_root, self.videos_path,
+                                            folder))
+            for item in files:
+                if item.endswith(".mp4") or item.endswith(".3gpp"):
+                    os.remove(os.path.join(self.test_data_root, self.videos_path,
+                                           folder, item))
+
+    def test_grab_from_video(self):
         logtime_data = {}
         self.data_set.grap_from_video(path=os.path.join(self.test_data_root,
                                                         self.videos_path),
@@ -307,12 +382,11 @@ class TestSaveBalancedDataset(unittest.TestCase):
 
 
 class TestTransformations(unittest.TestCase):
-    # ToDo not working in pipeline
-    @unittest.expectedFailure
     def test_transform_to_hdf5(self):
         rootDir = "test/unit-tests/data-and-models/testData"
         dSet.transform_to_hdf5(path=os.path.join(rootDir, "sample_pickles"),
-                               hdf5_path="testData/sample_pickles", testing=True)
+                               hdf5_path=os.path.join(rootDir,
+                                                      "sample_pickles"), testing=True)
         self.assertTrue(os.path.exists(
             os.path.join(rootDir, "sample_pickles/vvad_train.hdf5")) and
                         os.path.exists(os.path.join(rootDir,
@@ -338,10 +412,6 @@ class TestTransformations(unittest.TestCase):
                          numpy.ndarray), 'Argument of wrong type!'
         self.assertEqual(dSet.transform_points_to_numpy(pointsNamespace)[2][1],
                          pointsNamespace[2].y), "Array's content is not correct!"
-
-    # ToDo funtion itself is not used, clarify before writing test
-    def test_transform_to_features(self):
-        pass
 
 
 class TestMakeTestSet(unittest.TestCase):

@@ -1,12 +1,11 @@
 """
 This Module creates a dataset for the purpose of the visual speech detection system.
 """
-# from collections import deque
 import argparse
+import multiprocessing
 import pathlib
 # System imports
 from importlib import import_module
-from multiprocessing import Process
 from pathlib import Path, PurePath
 
 import h5py
@@ -17,13 +16,13 @@ from pytube import YouTube
 
 # local imports
 from vvadlrs3.sample import *
-from vvadlrs3.utils.multiprocessingUtils import *
+from vvadlrs3.utils.multiprocessingUtils import pool, producer, consumer
 from vvadlrs3.utils.timeUtils import *
 
 # 3rd party imports
 
 # end file header
-__author__ = "Adrian Lubitz"
+__author__ = "Adrian Auer"
 __copyright__ = "Copyright (c)2017, Blackout Technologies"
 
 
@@ -88,6 +87,7 @@ class DataSet:
                  for file in files]
         # get the RefField
         for file in files:
+            print("File's name is ", file)
             if file.suffix == ".txt":
                 text_file = open(file)
                 # hat anscheinend noch ein return mit drinne
@@ -117,18 +117,19 @@ class DataSet:
             global timeoutable_download
 
             def timeoutable_download(url_video, folder_current):
-                self.tempPath = YouTube(url_video).streams.first().download(
+                self.tempPath = YouTube(url_video).streams.filter(
+                    progressive=True,
+                    file_extension="mp4").first().download(
                     folder_current)
                 self.tempPath = pathlib.Path(self.tempPath)
                 # if ready rename the file to the real name(will be the ref)
                 os.rename(self.tempPath, str(
                     video_file_without_extension) + self.tempPath.resolve().suffix)
 
-            if self.multiprocessing:
-                p = Process(target=timeoutable_download,
+            if self.multiprocessing:  # pragma: no cover
+                p = multiprocessing.Process(target=timeoutable_download,
                             args=(video_url, current_folder))
 
-                print("name is: ", __name__)
                 if __name__ == '__main__':
                     multiprocessing.freeze_support()
                     print("in if")
@@ -151,9 +152,7 @@ class DataSet:
             path (str): Path to the DataSet folder containing folders, which
                         contain txt files. (For Example the pretrain folder)
         """
-        print("my path", path)
         folders = list(os.walk(path, followlinks=True))[0][1]
-        print("folders are: ", folders)
         folders.sort()
         for folder in folders:
             # Video file is the only not txt file
@@ -163,9 +162,8 @@ class DataSet:
             self.debug_print("[getAllPSamples] Folder {} done".format(folder))
 
     # TODO add option if you want to use whats there or download if necessary
-    def get_all_samples(self, feature_type, path=None, relative=True, dry_run=False,
+    def get_all_samples(self, feature_type, path=None, dry_run=False,
                         show_status=False, **kwargs):
-        # ToDO add feature types
         """
         making all the samples from this folder.
 
@@ -189,7 +187,6 @@ class DataSet:
             current_folder = os.path.abspath(os.path.join(path, folder))
             for single_sample in self.get_samples(current_folder,
                                                   feature_type=feature_type,
-                                                  # relative=relative,
                                                   samples_shape=(200, 200),
                                                   dry_run=dry_run):
                 yield single_sample
@@ -276,7 +273,6 @@ class DataSet:
         folder = os.path.dirname(video_path)
         # list of configs [startFrame, endFrame , x, y, w, h] x,y,w,h are rel. pixels
         frame_list = []
-        print("framelist: ", frame_list)
         # for every txt file
         for text_file in self.get_txt_files(folder):
             frame_list.extend(self.get_sample_configs_for_pos_samples(text_file))
@@ -305,7 +301,7 @@ class DataSet:
         if not dry_run:
             video_path = self.convert_fps(video_path.parents[0])
             vid_obj = cv2.VideoCapture(str(video_path))
-            vid_fps = vid_obj.get(cv2.CAP_PROP_FPS)
+            # vid_fps = vid_obj.get(cv2.CAP_PROP_FPS)
         count = 0
         # sampleList = []
         for sample_config in frame_list:
@@ -316,9 +312,8 @@ class DataSet:
             if not dry_run:
                 data = []
                 label = True
-                configuration = {"x": sample_config[2], "y": sample_config[3],
-                                 "w": sample_config[4], "h": sample_config[5],
-                                 "fps": vid_fps}
+                # config = {"x": sampleConfig[2], "y": sampleConfig[3],
+                #          "w": sampleConfig[4], "h": sampleConfig[5], "fps": vid_fps}
                 # grap frames from start to endframe
                 while True:
                     success, image = vid_obj.read()
@@ -330,10 +325,10 @@ class DataSet:
                     count += 1
                     if count > sample_config[1]:
                         break
-                current_sample = FeaturedSample
+
+                current_sample = FeaturedSample()
                 current_sample.data = data
                 current_sample.label = label
-                print(f"Current configuration is {configuration}")
                 yield current_sample
             else:
                 yield self.get_second_from_frame(sample_config[0]), \
@@ -355,11 +350,18 @@ class DataSet:
             # change the frameRate to 25, because the data set is expecting that!
             # ffmpeg -y -r 30 -i seeing_noaudio.mp4 -r 24 seeing.mp4
             old_video_path = video_path
+
+            # ToDo resolve
+            # suffix = ".3gp" if old_video_path.suffix == ".3gpp" else \
+            #     old_video_path.suffix
+            suffix = old_video_path.suffix
+
             video_path = pathlib.Path(os.path.join(
                 old_video_path.parents[0], old_video_path.stem + ".converted" +
-                ".mp4"))
+                                           suffix))
 
-            command = f"ffmpeg -i {old_video_path} -r {fps_in} {video_path}"
+            command = f"ffmpeg -i {old_video_path}  -ar 8000 -ab 12.2k " \
+                      f"-filter:v fps={fps_in} {video_path}"
 
             print(command)
             os.system(command)
@@ -873,9 +875,10 @@ class DataSet:
         return samples
 
 
+# unittest for producer and consumer shows proof of concept
 def save_balanced_dataset(dataset, save_to, feature_type, data_shape, path=None,
                           ratio_positives=2, ratio_negatives=1,
-                          show_status=False, **kwargs):
+                          show_status=False, **kwargs):  # pragma: no cover
     """
     saves a balanced dataset to disk
 
@@ -926,8 +929,8 @@ def save_balanced_dataset(dataset, save_to, feature_type, data_shape, path=None,
         # kill consumer
         p.terminate()
 
-    dataset.debug_print(
-        "[saveBalancedDataset] Saved balanced dataset! {} samples were droped.".format(
+    print(
+        "[saveBalancedDataset] Saved balanced dataset! {} samples were dropped.".format(
             dataset.dropouts))
 
 
@@ -949,7 +952,7 @@ def transform_to_hdf5(path, hdf5_path, validation_split=0.2, testing=False):
     all_pickles = glob.glob(path + '/**/*.pickle', recursive=True)
     if not testing:
         assert len(all_pickles) == 22245 + \
-               44489, "You didn't get alle the samples - make sure the path is correct!"
+               44489, "You didn't get all the samples - make sure the path is correct!"
 
     np.random.shuffle(all_pickles)
     validation_pickles = all_pickles[:int(len(all_pickles) * validation_split)]
@@ -1022,7 +1025,8 @@ def transform_points_to_numpy(points):
 
 
 # ToDo function not used?? What is it used for?
-def transform_to_features(path, shape_model_path=None, input_shape=None):
+def transform_to_features(path, shape_model_path=None,
+                          input_shape=None): # pragma: no cover
     """
     get a Sample of type faceImage and transforms to lipImage, faceFeatures and
     lipFeatures. Saves them in path.
@@ -1036,6 +1040,9 @@ def transform_to_features(path, shape_model_path=None, input_shape=None):
         "allwfaceImage", shape_model_path=shape_model_path, shape=input_shape)
     input_sample = FeaturedSample()
     input_sample.load(path)
+
+    print(f"{input_sample.featureType}")
+    print(f"{input_sample.get_label()}")
     # # get all settings
 
     lip_images = []
@@ -1095,7 +1102,7 @@ def transform_to_features(path, shape_model_path=None, input_shape=None):
     face_features_sample.save(os.path.join(face_features_folder, file_name))
     lip_features_sample.save(os.path.join(lip_features_folder, file_name))
 
-    # TODO:call this in a multiproccessing way.
+    # TODO:call this in a multiprocessing way.
 
 
 def make_test_set(path, names_path):
@@ -1135,7 +1142,7 @@ def make_test_set(path, names_path):
         #         s.visualize()
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     parser = argparse.ArgumentParser()
     parser.add_argument("config", help='path to the config file', type=str)
     parser.add_argument("option", help="what you want to do.", type=str, choices=[

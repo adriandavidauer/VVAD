@@ -32,26 +32,29 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install ruff
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: perform unit tests
-        run: |
-          # run unittests for data and models
-          python -m unittest discover -s test.unit-tests.data-and-models -v
-      - name: Generate Report
+      - name: Generate Test Report
         run: |
           pip install coverage
-          coverage run -m unittest discover -s test.unit-tests.data-and-models -v
+          coverage run -m unittest discover -s test.unit-tests -v
+          echo "Create HTML coverage report for artifacts"
+          coverage html -i --omit="test/*"
+          echo "Create XML coverage report for issue comment"
           coverage xml -i --omit="test/*"
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: ./htmlcov/*
       - name: Get Cover
         uses: orgoro/coverage@v3.1
         if: github.event_name == 'pull_request'
         with:
           coverageFile: ./coverage.xml
           token: ${{ secrets.GITHUB_TOKEN }}
-          thresholdAll: 0.1
-          thresholdNew: 0.1
-          thresholdModified: 0.1
+          thresholdAll: 0.5
+          thresholdNew: 0.5
+          thresholdModified: 0.5
           passIcon: 🟢
           failIcon: 🔴
 

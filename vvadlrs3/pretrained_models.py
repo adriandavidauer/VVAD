@@ -10,7 +10,7 @@ from keras.models import load_model
 
 # local imports
 
-__author__ = 'Adrian Lubitz'
+__author__ = 'Adrian Auer'
 
 base_path = Path(__file__).absolute().parent
 

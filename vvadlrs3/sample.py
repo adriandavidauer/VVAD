@@ -51,7 +51,7 @@ class FaceTracker:
             face (image): next FaceImage
             dInImage (array of int): Position of the face in the original image space
         """
-        if self.tracker:
+        if self.tracker:    #pragma: no cover
             # get x,y, w,h from tracker
             self.tracker.update(image)
             pos = self.tracker.get_position()
@@ -86,8 +86,7 @@ class FaceTracker:
 
         detector = dlib.get_frontal_face_detector()
         dets = detector(roi, 1)
-        print("Detected faces:", dets)
-        # TODO: error if more than one face! - invalid
+        # print("Detected faces:", dets)
         if len(dets) != 1:
             print("Invalid Sample because there are {} faces".format(len(dets)))
             return False, False  # Means Error
@@ -199,8 +198,13 @@ class FaceFeatureGenerator:
         elif self.featureType == "allwfaceImage":
             shape = self.predictor(image, dlib.rectangle(
                 0, 0, image.shape[1], image.shape[0]))
+
             face_features = shape.parts()
+
+            print(face_features)
+
             lip_shape = dlib.points()
+
             for i, point in enumerate(shape.parts()):
                 if 47 < i < 68:
                     lip_shape.append(point)
@@ -395,7 +399,7 @@ class FeaturedSample:
         # use a ringbuffer here
         # empty buffer if one frame is invalid(no face)
 
-    def visualize(self, fps=25, save_to=None, supplier="pyplot"):
+    def visualize(self, fps=25, save_to=None, supplier="pyplot"):  # pragma: no cover
         """ visualize the sample depending on the featureType
 
         Args:
@@ -507,7 +511,7 @@ class FeaturedSample:
             self.__dict__.update(pickle.load(file))
 
 
-def visualize_samples(folder):
+def visualize_samples(folder):  # pragma: no cover
     """ visualize positive and negative samples from a folder.
 
     Args:

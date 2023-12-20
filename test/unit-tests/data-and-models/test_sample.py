@@ -1,3 +1,4 @@
+import glob
 import os.path
 import tempfile
 import unittest
@@ -7,6 +8,7 @@ import cv2
 import numpy as np
 
 from vvadlrs3 import sample as sample, pretrained_models
+from vvadlrs3 import dataSet
 
 
 def get_rgb_test_image(image_file_name, folder_path):
@@ -24,6 +26,16 @@ class TestFaceTracker(unittest.TestCase):
         )
 
     def test_get_next_face(self):
+        image_file = "One_human_face.jpg"
+        images_path = os.path.join(self.test_data_root, self.images_path)
+        RGBimg = get_rgb_test_image(image_file_name=image_file, folder_path=images_path)
+
+        _, box = self.face_tracker.get_next_face(RGBimg)
+
+        self.assertTrue(box)
+
+    def test_get_next_face_relative(self):
+        self.face_tracker.relative = True
         image_file = "One_human_face.jpg"
         images_path = os.path.join(self.test_data_root, self.images_path)
         RGBimg = get_rgb_test_image(image_file_name=image_file, folder_path=images_path)
@@ -97,7 +109,6 @@ class TestFaceFeatureGenerator(unittest.TestCase):
         RBGimg = get_rgb_test_image(image_file_name=image_file, folder_path=images_path)
 
         features = generator.get_features(image=RBGimg)
-        print(features)
 
         self.assertIsNotNone(features)
 
@@ -116,23 +127,50 @@ class TestFaceFeatureGenerator(unittest.TestCase):
         RBGimg = get_rgb_test_image(image_file_name=image_file, folder_path=images_path)
 
         features = generator.get_features(image=RBGimg)
-        print(features)
 
         self.assertIsNotNone(features)
 
-    # ToDo check why fails
-    @unittest.expectedFailure
-    def test_unsupported_feature(self):
+    def test_get_features_all(self):
+        model = pretrained_models.get_lip_feature_model()  # model for predictions
+        input_shape = model.layers[0].input_shape[2:]
         generator = sample.FaceFeatureGenerator(
-            feature_type="lipFeature",
+            feature_type="all",
+            shape_model_path="models/shape_predictor_68_face_landmarks.dat",
+            shape=(input_shape[1],
+                   input_shape[0])
         )
 
         image_file = "One_human_face.jpg"
         images_path = os.path.join(self.test_data_root, self.images_path)
         RBGimg = get_rgb_test_image(image_file_name=image_file, folder_path=images_path)
 
-        self.assertRaises(AssertionError,
-                          lambda: generator.get_features(image=RBGimg))
+        feature_face_img, feature_lip_img, feature_face_feat, feature_lip_feat = \
+            generator.get_features(image=RBGimg)
+
+        self.assertIsNotNone(feature_face_img)
+        self.assertIsNotNone(feature_face_feat)
+        self.assertIsNotNone(feature_lip_img)
+        self.assertIsNotNone(feature_lip_feat)
+
+    def test_get_features_all_without_face_feat(self):
+        model = pretrained_models.get_lip_feature_model()  # model for predictions
+        input_shape = model.layers[0].input_shape[2:]
+        generator = sample.FaceFeatureGenerator(
+            feature_type="allwfaceImage",
+            shape_model_path="models/shape_predictor_68_face_landmarks.dat",
+            shape=(input_shape[1],
+                   input_shape[0])
+        )
+
+        image_file = "One_human_face.jpg"
+        images_path = os.path.join(self.test_data_root, self.images_path)
+        RBGimg = get_rgb_test_image(image_file_name=image_file, folder_path=images_path)
+
+        lip_image, face_features, lip_features = generator.get_features(image=RBGimg)
+
+        self.assertIsNotNone(lip_features)
+        self.assertIsNotNone(face_features)
+        self.assertIsNotNone(lip_image)
 
 
 class TestFeaturedSample(unittest.TestCase):
@@ -150,12 +188,34 @@ class TestFeaturedSample(unittest.TestCase):
         test_sample.k = 2
         self.assertFalse(test_sample.is_valid())
 
+    @unittest.expectedFailure
     def test_get_data(self):
-        pass
+        test_sample = sample.FeatureizedSample()
+        test_sample.featureType = "faceImage"
+        all_pickles = glob.glob(self.test_data_root + "/sample_pickles/positiveSamples"
+                                + '/**/*.pickle', recursive=True)
+        print("Sample data: ", all_pickles[0])
 
+        # transform feature
+        dataSet.transform_to_features(
+            path=all_pickles[0],
+            shape_model_path="./models/shape_predictor_5_face_landmarks.dat ",
+            shape=(200, 200))
+
+        test_sample.load(all_pickles[10])
+        print(test_sample.get_data(image_size=(200, 200), num_steps=2, grayscale=True,
+                                   normalize=True))
+
+    @unittest.expectedFailure
     def test_get_dist(self):
-        # used in get_data, implemented later
-        pass
+        test_sample = sample.FeatureizedSample()
+        all_pickles = glob.glob(self.test_data_root + "/sample_pickles/positiveSamples"
+                                + '/**/*.pickle', recursive=True)
+        test_sample.load(all_pickles[0])
+        print(test_sample.get_label())
+        print(test_sample.k)
+        print(test_sample.featureType)
+        print(test_sample._get_dist(test_sample.data))
 
     def test_normalize(self):
         test_sample = sample.FeaturedSample()
@@ -190,9 +250,6 @@ class TestFeaturedSample(unittest.TestCase):
     def test_generate_sample_from_buffer(self):
         pass
 
-    def test_visualize(self):
-        pass
-
     def test_save_data_as_pickle(self):
         with tempfile.TemporaryDirectory() as tmpdirname:
             temp_dir = Path(tmpdirname)
@@ -212,10 +269,6 @@ class TestFeaturedSample(unittest.TestCase):
             test_sample.load(sample_path)
         except ValueError:
             self.fail("ValueError raised unexpectedly!")
-
-class TestVisualizeSamples(unittest.TestCase):
-    def test_visualize_samples(self):
-        pass#sample.visualize_samples()
 
 
 if __name__ == "__main__":

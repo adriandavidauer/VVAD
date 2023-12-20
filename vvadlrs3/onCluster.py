@@ -11,7 +11,7 @@ from utils.kerasUtils import *
 from utils.plotUtils import *
 
 # end file header
-__author__ = 'Adrian Lubitz'
+__author__ = 'Adrian Auer'
 __copyright__ = 'Copyright (c)2017, Blackout Technologies'
 
 # dataPath = '/gluster/scratch/alubitz/balancedCleandDataSet'

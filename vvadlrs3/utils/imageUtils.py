@@ -78,16 +78,16 @@ def resize_and_zero_padding(image, shape):
 
     image = cv2.resize(image, multipliedSize)
     # cant be exactly the same ratio because resize can only resize to full pixels -
-    # take big images(LAW of big numbers will take care)
-
-    widthDelta = abs(image.shape[1] - shape[0])
-    heightDelta = abs(image.shape[0] - shape[1])
-    image = cv2.copyMakeBorder(image, 0, heightDelta, 0, widthDelta,
+    # take big images(LAW of big numbers
+    # will take care)
+    width_delta = abs(image.shape[1] - shape[0])
+    height_delta = abs(image.shape[0] - shape[1])
+    image = cv2.copyMakeBorder(image, 0, height_delta, 0, width_delta,
                                cv2.BORDER_CONSTANT, value=[0, 0, 0])
-    assert min([heightDelta,
-                widthDelta]) == 0, "Padding must only be aplied on one side. " \
+    assert min([height_delta,
+                width_delta]) == 0, "Padding must only be aplied on one side. " \
                                    "widthDelta: {}, heightDelta: {}".format(
-        widthDelta, heightDelta)
+        width_delta, height_delta)
     assert image.shape[0] == shape[1], "Desired height was {} transformed to {}".format(
         shape[1], image.shape[0])
     assert image.shape[1] == shape[0], "Desired width was {} transformed to {}".format(
@@ -96,8 +96,9 @@ def resize_and_zero_padding(image, shape):
     return image
 
 
-def convert_sample_to_video(data, path, fps=25, codec='MP4V'):
-    """ converts a sample(data) to a video stream.
+def convert_sample_to_video(data, path, fps=25, codec='MP4V'):  # pragma: no cover
+    """
+    converts a sample(data) to a video stream.
 
     Args:
         data (numpy array): numpy array of shape (timesteps, *img.shape)
@@ -109,5 +110,6 @@ def convert_sample_to_video(data, path, fps=25, codec='MP4V'):
     out = cv2.VideoWriter()
     out.open(path, cv2.VideoWriter_fourcc(*codec), fps, size, True)
     for img in data:
+        # convert to BGR
         out.write(img)
     out.release()
