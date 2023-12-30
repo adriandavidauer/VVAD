@@ -4,6 +4,8 @@ import pathlib
 import pickle
 import sys
 
+import multiprocessing
+
 from progress.bar import Bar
 
 import numpy as np
