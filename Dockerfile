@@ -1,6 +1,8 @@
+FROM tensorflow/tensorflow:2.3.1-gpu  AS base
+LABEL authors="kzanaty"
+
 # Set python version
 FROM python:3.7
-LABEL authors="kzanaty"
 
 RUN apt-get update
 RUN apt-get install git ffmpeg -y
