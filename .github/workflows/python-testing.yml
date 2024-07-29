@@ -34,10 +34,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install ruff
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: perform unit tests
-        run: |
-          # run unittests for data and models
-          python -m unittest discover -s test.unit-tests.data-and-models -v
       - name: Generate Report
         run: |
           pip install coverage
@@ -49,9 +45,9 @@ jobs:
         with:
           coverageFile: ./coverage.xml
           token: ${{ secrets.GITHUB_TOKEN }}
-          thresholdAll: 0.1
-          thresholdNew: 0.1
-          thresholdModified: 0.1
+          thresholdAll: 0.8
+          thresholdNew: 0.8
+          thresholdModified: 0.8
           passIcon: 🟢
           failIcon: 🔴
 
