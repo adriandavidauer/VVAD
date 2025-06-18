@@ -7,7 +7,7 @@ h5py~=3.8.0
 Keras~=2.4.3
 PyYAML~=6.0
 tqdm~=4.65.0
-pytube~=15.0.0
+pytubefix==9.2.0
 ffmpy~=0.3.0
 Pillow~=9.5.0
 imutils~=0.5.4

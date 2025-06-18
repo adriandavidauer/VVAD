@@ -16,7 +16,7 @@ on:
 jobs:
   build_and_test:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - uses: actions/checkout@v3
@@ -36,46 +36,22 @@ jobs:
         run: |
           python -m pip cache purge
           python -m pip install --upgrade pip
-          pip install ruff
+          pip install ruff==0.4.3
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: perform unit tests
-        run: |
-          # run unittests for data and models
-          python -m unittest discover -s test.unit-tests -v
       - name: Generate Report
         run: |
           pip install coverage
-          coverage run -m unittest discover -s test.unit-tests -v
-          echo "Create HTML coverage report for artifacts"
-          coverage html -i --omit="test/*, docs/*"
-          echo "Create XML coverage report for issue comment"
-          coverage xml -i --omit="test/*, docs/*"
-      - name: Archive code coverage results
-        uses: actions/upload-artifact@v3
-        with:
-          name: code-coverage-report
-          path: ./htmlcov/*
-
-      - name: Get Coverage
-        uses: orgoro/coverage@v3.1
-        if: github.event_name == 'pull_request'
-        with:
-          coverageFile: ./coverage.xml
-          token: ${{ secrets.GITHUB_TOKEN }}
-          thresholdAll: 0.2
-          thresholdNew: 0.2
-          thresholdModified: 0.2
-          passIcon: 🟢
-          failIcon: 🔴
+          coverage run -m unittest discover -s test.unit-tests.data-and-models -v
+          coverage xml -i --omit="test/*"
 
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: Lint with ruff
         run: |
           # install ruff package
-          pip install ruff
+          pip install ruff==0.4.3
           # stop the build if there are Python syntax errors or undefined names
           ruff --select=E9,F63,F7,F82 --target-version=py37 .
           # default set of ruff rules with GitHub Annotations

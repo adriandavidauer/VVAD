@@ -133,7 +133,7 @@ dependencies:
     - pylint==2.3.1
     - pymongo==3.8.0
     - pyparsing==2.3.1
-    - pytube==9.3.5
+    - pytubefix==9.2.0
     - pywavelets==1.0.3
     - pyyaml==3.13
     - requests==2.22.0
