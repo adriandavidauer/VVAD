@@ -65,7 +65,7 @@ setup(
         # Keras-Applications is only needed because VGGFace is using it and not
         # installing it correctly
         'Keras-Applications',
-        'pytube',
+        'pytubefix',
         'ffmpy',
         'file-read-backwards'
     ],

@@ -13,7 +13,7 @@ import h5py
 import yaml
 from file_read_backwards import FileReadBackwards
 # 3rd party imports
-from pytube import YouTube
+from pytubefix import YouTube
 
 # local imports
 from vvadlrs3.sample import *
