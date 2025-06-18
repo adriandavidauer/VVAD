@@ -29,7 +29,14 @@ nav:
       - Models: vvad-lrs3-models.md
   - WildVVAD:
       - Models: wildvvad-models.md
-      - Dataset: dataset.md
+      - Dataset: wildvvad-dataset.md
+      - Utils:
+          - Download Utils: 'utils/wild-download-utils.md'
+          - Keras Utils: 'utils/wild-keras-utils.md'
+          - Face Feature Utils: 'utils/wild-face-feature-utils.md'
+          - Model Utils: 'utils/wild-model-utils.md'
+          - General Utils: 'utils/wild-util-utils.md'
+          - Helper Functions: 'utils/wild-helper-functions-utils.md'
   - Release Notes: release-notes.md
   - Contribute: how-to-contribute.md
   - About: about.md
@@ -82,9 +89,9 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.mark
   - attr_list
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+  #- pymdownx.emoji:
+  #    emoji_index: !!python/name:materialx.emoji.twemoji
+  #    emoji_generator: !!python/name:materialx.emoji.to_svg
 
 extra:
   social:
@@ -105,7 +112,7 @@ extra_css:
   - stylesheets/extra.css
 
 copyright: |
-  &copy; 2023 <a href="https://github.com/adriandavidauer" target="_blank" rel="noopener" style="color:#243ae5;">Adrian Auer, </a>
+  &copy; 2024 <a href="https://github.com/adriandavidauer" target="_blank" rel="noopener" style="color:#243ae5;">Adrian Auer, </a>
   <a href="https://github.com/K-Zanaty" target="_blank" rel="noopener" style="color:#22c335;">Karim Zanaty</a>
 
 plugins:

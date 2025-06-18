@@ -1,6 +1,8 @@
 """
 Utils for multiprocessing
 """
+# ToDo: Are they even used??
+
 # from collections import deque
 import multiprocessing
 # System imports
@@ -28,26 +30,25 @@ def producer(dataset, get_samples_params):
         getSamplesParams (**args): Parameters from a given sample
 
     """
-
-    dataset.debugPrint("started Producer for {}".format(get_samples_params))
-    for sample in dataset.getSamples(*get_samples_params):
+    dataset.debug_print("started Producer for {}".format(get_samples_params))
+    for sample in dataset.get_samples(*get_samples_params):
         # Put Samples
-        if sample.label:
+        if sample.label:    # pragma: no cover
             if not positivesQueue.full():
                 # TODO:raises full Exception https://docs.python.org/2/library/
                 #  queue.html#Queue.Queue.put
                 positivesQueue.put(sample)
                 print("[Producer] putting a positive sample")
             else:
-                print("positivesQueue is full. Not puting this positive sample")
-        else:
+                print("positivesQueue is full. Not putting this positive sample")
+        else:    # pragma: no cover
             if not negativesQueue.full():
                 # TODO:raises full Exception https://docs.python.org/2/library/
                 #  queue.html#Queue.Queue.put
                 negativesQueue.put(sample)
                 print("[Producer] putting a negative sample")
             else:
-                print("negativesQueue is full. Not puting this negative sample")
+                print("negativesQueue is full. Not putting this negative sample")
         if not positivesQueue.empty() and not negativesQueue.empty():
             sem.release()
         # consumer can consume
@@ -74,10 +75,21 @@ def consumer(positives_folder, negatives_folder, ratio_positives, ratio_negative
     negative_counter = 0
     saved_positives = 0
     save_negatives = 0
+
+    sem_released = False
+
     while True:
         print("[CONSUMER] in loop")
         # check ratio and save Samples
-        sem.acquire()
+
+        # in case the producer did not find any positive or negative sample
+        if positivesQueue.empty() or negativesQueue.empty():
+            sem.release()
+            sem_released = True
+        else:
+            sem_released = True
+        if sem_released:
+            sem.acquire()
         if positive_counter < ratio_positives and not positivesQueue.empty():
             fname = str(saved_positives) + ".pickle"
             positivesQueue.get().save(os.path.join(positives_folder, fname))
@@ -92,13 +104,15 @@ def consumer(positives_folder, negatives_folder, ratio_positives, ratio_negative
                 os.path.join(negatives_folder, fname)))
             save_negatives += 1
             negative_counter += 1
-        if negative_counter == ratio_negatives and positive_counter == ratio_positives:
-            print("[CONSUMER] reseting counters")
+        if (negative_counter == ratio_negatives and
+                positive_counter == ratio_positives):
+            print("[CONSUMER] resetting counters")
             negative_counter = 0
             positive_counter = 0
+            return
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":   # pragma: no cover
     # TEST
     if not positivesQueue.empty():
         print("positivesQueue not empty???")

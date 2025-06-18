@@ -17,7 +17,7 @@ from vvadlrs3.utils import videoUtils, plotUtils
 # local imports
 
 # end file header
-__author__ = 'Adrian Lubitz'
+__author__ = 'Adrian Auer'
 
 
 if __name__ == "__main__":

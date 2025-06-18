@@ -11,7 +11,7 @@ from utils.kerasUtils import *
 from utils.plotUtils import *
 
 # end file header
-__author__ = 'Adrian Lubitz'
+__author__ = 'Adrian Auer'
 __copyright__ = 'Copyright (c)2017, Blackout Technologies'
 
 # dataPath = '/gluster/scratch/alubitz/balancedCleandDataSet'
@@ -489,7 +489,7 @@ if __name__ == "__main__":
         valid_samples = None
 
         # Load model from CHECKPOINT
-        model = load_model('bestFaceEndToEnd.h5')
+        model = load_model('best_models/2021/bestFaceEndToEnd.h5')
         modelName = "TheFuckingLastModel"
 
         (train_x, train_y), validation_data = gen_data(train,

@@ -17,7 +17,7 @@ from dvg_ringbuffer import RingBuffer
 # local imports
 
 # end file header
-__author__ = 'Adrian Lubitz'
+__author__ = 'Adrian Auer'
 
 # Sliding window approach
 

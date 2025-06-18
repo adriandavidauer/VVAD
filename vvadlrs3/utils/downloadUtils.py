@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 # end file header
 
-__author__ = 'Adrian Lubitz'
+__author__ = 'Adrian Auer'
 
 
 # https://stackoverflow.com/a/53877507

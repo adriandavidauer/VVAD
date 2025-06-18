@@ -12,7 +12,7 @@ from vvadlrs3 import sample
 # local imports
 
 # end file header
-__author__ = 'Adrian Lubitz'
+__author__ = 'Adrian Auer'
 
 # TODO: folder via argparse
 path = "default_fps_samples"

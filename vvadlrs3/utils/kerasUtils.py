@@ -43,14 +43,15 @@ from vvadlrs3.utils.timeUtils import *
 # local imports
 
 
-def split_dataset(data_path, ratio_test, random_seed=42):
-    """ Helper function that returns two lists of pathes to samples - one for training 
-    an one for testing.
+def split_dataset(data_path, ratio_test, random_seed=42):   # pragma: no cover
+    """
+    Helper function that returns two lists of pathes to samples - one for training and
+    one for testing.
 
     Args:
-        data_path (str): Path to the folder containing two folders - one for negative 
+        data_path (str): Path to the folder containing two folders - one for negative
             and one for positive samples
-        ratio_test (float): The ratio which should be reserved for the test set 
+        ratio_test (float): The ratio which should be reserved for the test set
             (between 0 and 1)
         random_seed (int): random seed for reproducible results (default: 42)
 
@@ -94,7 +95,7 @@ def split_dataset(data_path, ratio_test, random_seed=42):
     return training_data, test_data
 
 
-class hdf5DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
+class Hdf5DataGenerator(keras.utils.Sequence):     # pragma: no cover
     """Generates data for Keras"""
 
     def __init__(self, hdf5_path, image_size=None, num_steps=None, grayscale=False,
@@ -180,7 +181,7 @@ class hdf5DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
             return x, y
 
 
-class DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
+class DataGenerator(keras.utils.Sequence):     # pragma: no cover
     """Generates data for Keras"""
 
     def __init__(self, data, image_size=None, num_steps=None, grayscale=False,
@@ -276,7 +277,7 @@ class DataGenerator(keras.utils.Sequence):  # keras.utils.Sequence
             return x, y
 
 
-class DataGeneratorRAM(keras.utils.Sequence):  # keras.utils.Sequence
+class DataGeneratorRAM(keras.utils.Sequence):     # pragma: no cover
     """Generates data for Keras"""
 
     def __init__(self, data, image_size=None, num_steps=None, grayscale=False,
@@ -379,10 +380,10 @@ class DataGeneratorRAM(keras.utils.Sequence):  # keras.utils.Sequence
             return x
 
 
-class Models:
+class Models:   # pragma: no cover
     @staticmethod
-    def buildFeatureLSTM(input_shape, num_lstm_layers=1, lstm_dims=32,
-                         num_dense_layers=1, dense_dims=512):
+    def build_feature_lstm(input_shape, num_lstm_layers=1, lstm_dims=32,
+                           num_dense_layers=1, dense_dims=512, **kwargs):
         """ Building the LSTM model for the features
 
         Args:
@@ -741,8 +742,10 @@ class Models:
 
 
 # TODO:every model will be trained sligthly different because of different samples
-def train_model(model, train, test, epochs, batch_size, init_lr=0.01):
-    """ trains the given model with the given params and data
+def train_model(model, train, test,
+                epochs, batch_size, init_lr=0.01):   # pragma: no cover
+    """
+    trains the given model with the given params and data
 
     Args:
         provided_model (model): model to train from created models
@@ -777,7 +780,8 @@ def train_model(model, train, test, epochs, batch_size, init_lr=0.01):
 
 
 def gen_data(train, test, train_samples=None, valid_samples=None, print_freq=None,
-             **kwargs):
+             **kwargs):   # pragma: no cover
+
     """ Put the whole data or just some batches.
 
     Args:
@@ -882,7 +886,7 @@ def gen_data(train, test, train_samples=None, valid_samples=None, print_freq=Non
 
 
 def gen_data_internal(train, test, train_samples=None, valid_samples=None,
-                      print_freq=None, **kwargs):
+                      print_freq=None, **kwargs):   # pragma: no cover
     """
     Put the whole data or just some batches. - train, test are tuoples of numpyArrays
     in this case
@@ -966,7 +970,7 @@ def gen_data_internal(train, test, train_samples=None, valid_samples=None,
 
 @timeit
 def hdf5_samples_to_memory(train_path, val_path, train_samples=None,
-                           valid_samples=None, **kwargs):
+                           valid_samples=None, **kwargs): # pragma: no cover
     """
     Return train and validation samples from saved datasets on memory
 
@@ -1030,7 +1034,7 @@ def hdf5_samples_to_memory(train_path, val_path, train_samples=None,
 
 # https://stackoverflow.com/questions/43137288/
 #   how-to-determine-needed-memory-of-keras-model
-def get_model_memory_usage(batch_size, model):
+def get_model_memory_usage(batch_size, model): # pragma: no cover
     """
     Get the memory usage from the provided model according to suggested solution
 
@@ -1068,12 +1072,12 @@ def get_model_memory_usage(batch_size, model):
 
 
 @timeit
-def check_data_gen(data_gen, var):
+def check_data_gen(data_gen, var):   # pragma: no cover
     var = data_gen[0]
     print("check data gen: ", var)
 
 
-def test_model(model_path, test_set_path, save_to=None):
+def test_model(model_path, test_set_path, save_to=None): # pragma: no cover
     """ Test a specific model with the corresponding test set.
     Maybe even plots every sample - numbers will probably don't correspond to numbers
     in human Accuracy Test
@@ -1087,7 +1091,7 @@ def test_model(model_path, test_set_path, save_to=None):
         acc (float): Accuracy of the model
         MAE std (tuple of floats): Mean Absolute Error with standard deviation
         MSE std (tuple of floats): Mean Squared Error with standard deviation
-        wrong_labels (list of String): list of samples that were wrong classifies by 
+        wrong_labels (list of String): list of samples that were wrong classifies by
             the model
     """
     # correct_classification = []
@@ -1175,7 +1179,7 @@ def test_model(model_path, test_set_path, save_to=None):
     return ((i + 1) - len(errors)) / (i + 1), (mae, mae_std), (mse, mse_std), errors
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":   # pragma: no cover
     print('############################START###########################')
     models = glob.glob('*model-*.h5')
     print('[MODELS]: {}'.format(models))

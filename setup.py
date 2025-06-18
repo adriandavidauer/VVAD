@@ -10,7 +10,7 @@ from setuptools import setup, find_packages
 # local imports
 
 # end file header
-__author__ = 'Adrian Lubitz'
+__author__ = 'Adrian Auer'
 
 
 # Utility function to read the README file.
@@ -29,7 +29,7 @@ else:
 setup(
     name="vvadlrs3",
     version=VERSION,
-    author="Adrian Lubitz",
+    author="Adrian Auer",
     author_email="adrianlubitz@gmail.com",
     description=(
         "Library to provide models trained on the VVAD-LRS3 Dataset. The library also "

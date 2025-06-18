@@ -6,9 +6,12 @@ on:
   pull_request:
     branches:
       - develop_phase1
+      - develop
   push:
     branches:
       - develop_phase1
+      - develop
+
 
 jobs:
   build_and_test:
@@ -31,6 +34,7 @@ jobs:
         run: python -c "import sys; print(sys.version)"
       - name: Install dependencies
         run: |
+          python -m pip cache purge
           python -m pip install --upgrade pip
           pip install ruff==0.4.3
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
